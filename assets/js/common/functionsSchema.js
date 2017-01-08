@@ -65,12 +65,24 @@ var ComunicWeb = {
          * Error functions
          */
         error:{
+            /**
+             * Submit an error
+             */
+            submitError: function(errorLevel, errorMessage, errorCode, errorData){},
 
             /**
              * Handle and show a fatal error
              */
-            fatalError: function(errorMessage){},
+            fatalError: function(errorMessage, errorCode, errorData){},
         },
+
+        /**
+         * URL functions
+         */
+        url:{
+
+        },
+
 
         /**
          * Operations on JS files

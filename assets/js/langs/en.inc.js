@@ -4,8 +4,7 @@
  * @author Pierre HUBERT
  */
 ComunicWeb.common.langs.en = {
-    //Basic messages
-    "hello": "hello",
-
-    "__number_received_messages": "You have received %p messages",
+    //Error messages
+    "__fatal_error": "Fatal error",
+    "__fatal_error_explanation": "A fatal error occured : <i>%p</i>. Please try to refresh the page...",
 }

@@ -26,6 +26,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/common/errors.js",
     "%PATH_ASSETS%js/common/messages.js",
     "%PATH_ASSETS%js/common/langs.js",
+    "%PATH_ASSETS%js/common/url.js",
     "%PATH_ASSETS%js/common/jsFiles.js",
     "%PATH_ASSETS%js/common/debug.js",
     "%PATH_ASSETS%js/langs/en.inc.js",

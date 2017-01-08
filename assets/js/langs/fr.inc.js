@@ -4,7 +4,7 @@
  * @author Pierre HUBERT
  */
 ComunicWeb.common.langs.fr = {
-    //Basic messages
-    "hello": "bonjour",
-    "__number_received_messages": "Vous avez reçu %p messages",
+    //Error messages
+    "__fatal_error": "Erreur fatale",
+    "__fatal_error_explanation": "Une erreur fatale a survenue : <i>%p</i>. Veuillez réessayer de recharger la page...",
 }
