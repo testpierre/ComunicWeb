@@ -11,7 +11,7 @@
  * @param {String} calloutMessage The message of the callout
  * @param {String} calloutType The type of the callout (danger, info, warning, success)
  */
-ComunicWeb.__createCalloutElem = function(calloutTitle, calloutMessage, calloutType){
+ComunicWeb.common.messages.createCalloutElem = function(calloutTitle, calloutMessage, calloutType){
     //Prepare callout message
     calloutMessage = "<p>" + calloutMessage + "</p>";
     

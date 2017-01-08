@@ -23,18 +23,22 @@
             }
         ?>
 
-        <!-- Main website object -->
-        <script>
-            var ComunicWeb = {};
-        </script>
-
         <!-- Javascript config -->
         <script>
             //Configuration definition
-            ComunicWeb.__config = [];
+            var ComunicConfig = {
+                //Production mode
+                productionMode: <?php echo config['productionMode']; ?>,
 
-            //API URL
-            ComunicWeb.__config['API_URL'] = "<?php echo config['API_URL']; ?>";
+                //apiURL
+                apiURL: "<?php echo config['API_URL']; ?>",
+
+                //Default language
+                defaultLanguage: "en",
+
+                //LanguagesPath
+                languagesPath: "<?php echo str_replace("%PATH_ASSETS%", config['pathAssets'], config['languagesPath']); ?>",
+            };
         </script>
         
     </head>

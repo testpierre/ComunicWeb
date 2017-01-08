@@ -6,7 +6,7 @@
  */
 
 //Path to assets
-$config['pathAssets'] = "assets/";
+$config['pathAssets'] = $config['siteURL']."assets/";
 
 //CSS files to include
 $config['CSSfiles'] = array(
@@ -21,7 +21,21 @@ $config['CSSfiles'] = array(
 $config['JSfiles'] = array(
     "%PATH_ASSETS%adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
     "%PATH_ASSETS%adminLTE/plugins/jquery-ui/jquery-ui.min.js",
+    "%PATH_ASSETS%js/common/functionsSchema.js",
     "%PATH_ASSETS%js/common/api.js",
     "%PATH_ASSETS%js/common/errors.js",
     "%PATH_ASSETS%js/common/messages.js",
+    "%PATH_ASSETS%js/common/langs.js",
+    "%PATH_ASSETS%js/common/jsFiles.js",
+    "%PATH_ASSETS%js/common/debug.js",
+    "%PATH_ASSETS%js/langs/en.inc.js",
+
+    //Init script
+    "%PATH_ASSETS%js/init.js",
 );
+
+//JS language path
+$config['languagesPath'] = "%PATH_ASSETS%js/langs/";
+
+//Production mode
+$config['productionMode'] = 0;

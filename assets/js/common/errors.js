@@ -5,11 +5,11 @@
  */
 
 /**
- * Show a fatal error
+ * Handle and show a fatal error
  * 
  * @param {String} errorMessage Error message
  */
-ComunicWeb.fatalError = function(errorMessage){
+ComunicWeb.common.error.fatalError = function(errorMessage){
     //Make a black splash screen
     var splashScreen = document.createElement("div");
     splashScreen.style.position = "fixed";
@@ -20,7 +20,7 @@ ComunicWeb.fatalError = function(errorMessage){
     splashScreen.style.backgroundColor = "#000000";
     
     //Show a message on screen to inform user
-    var messageElem = this.__createCalloutElem("Fatal error", "A fatal error occured : " + errorMessage + ". Please try to refresh the page...", "danger");
+    var messageElem = ComunicWeb.common.messages.createCalloutElem("Fatal error", "A fatal error occured : " + errorMessage + ". Please try to refresh the page...", "danger");
     messageElem.style.position = "relative";
     messageElem.style.margin = "auto";
     messageElem.style.width = "50%";
