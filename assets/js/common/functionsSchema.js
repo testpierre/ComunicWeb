@@ -83,6 +83,12 @@ var ComunicWeb = {
 
         },
 
+        /**
+         * Page functions
+         */
+        page: {
+
+        },
 
         /**
          * Operations on JS files

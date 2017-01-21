@@ -1,6 +1,17 @@
 <?php
     //Include page initiator
     include("corePage/initPage.php");
+
+    //We check if it is a redirection
+    if(isset($_SERVER["REDIRECT_URL"])){
+        //We check if it is an asset request
+        if(preg_match("<assets>", $_SERVER["REDIRECT_URL"])){
+            //This is a 404 not found error...
+            echo "<p>Error! 404 not found</p>";
+            http_response_code(404);
+            exit();
+        }
+    }
 ?>
 <!--
     Comunic web app client
@@ -29,6 +40,12 @@
             var ComunicConfig = {
                 //Production mode
                 productionMode: <?php echo config['productionMode']; ?>,
+
+                //Assets URL
+                assetsURL: "<?php echo config['pathAssets']; ?>",
+
+                //Site URL
+                siteURL: "<?php echo config['siteURL']; ?>",
 
                 //apiURL
                 apiURL: "<?php echo config['API_URL']; ?>",

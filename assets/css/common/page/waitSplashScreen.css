@@ -1,0 +1,11 @@
+/**
+ * Wait splash screen style sheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.waitSplashScreen {
+    background-color: rgba(128, 128, 128, 0.06);
+    padding-top: 10%;
+    text-align: center;
+}
