@@ -7,8 +7,12 @@
 ComunicWeb.common.page = {
     /**
      * Empty current page content
+     * 
+     * @param {Boolean} createWrapper Optionnal, define if it is required to add a wrapper 
+     * container to the page
+     * @return {Object} Wrapper element if it is created
      */
-    emptyPage: function(){
+    emptyPage: function(createWrapper){
         //Empty body tag
         document.body.innerHTML = "";
 
@@ -19,6 +23,17 @@ ComunicWeb.common.page = {
 
         //Log message
         ComunicWeb.debug.logMessage("Clean the screen.");
+
+        //If required, create the wrapper element
+        if(createWrapper){
+            var wrapper = document.createElement("div");
+            wrapper.className = "wrapper";
+            wrapper.id = "wrapper";
+            document.body.appendChild(wrapper);
+
+            //Return link to wrapper
+            return(wrapper);
+        }
     },
 
 
@@ -50,5 +65,63 @@ ComunicWeb.common.page = {
     openPage: function(pageURI){
         //Log message
         ComunicWeb.debug.logMessage("Open the following page: " + pageURI);
+
+        //Extract the first part of the URL
+        var firstPartURI = pageURI;
+        
+        //Check if pageURI is empty
+        if(firstPartURI == ""){
+            firstPartURI = "home";
+        }
+
+        //Check if there is also subfolders
+        if(firstPartURI.indexOf("/") != "/"){
+            firstPartURI = firstPartURI.split("/")[0];
+        }
+
+        //Check if specied page exists
+        if(ComunicWeb.pagesList[firstPartURI]){
+            var pageInfos = ComunicWeb.pagesList[firstPartURI];
+        }
+        
+        //Else we include the 404 not found page
+        else{
+            var pageInfos = ComunicWeb.pagesList.notFound;
+        }
+
+        //Change page title
+        document.title =  pageInfos.pageTitle;
+
+        //Get the main contener of the page
+        var mainContenerElem = document.getElementById("wrapper");
+
+        //If we didn't get anything, clean the page and create a wrapper element
+        if(!mainContenerElem){
+            mainConterElem = this.emptyPage(true);
+        }
+        
+    },
+
+    /**
+     * Prepare a template load by specifiying datas
+     * 
+     * @return {Object} The object contener with all required infos
+     */
+    prepareLoadTemplate: function(){
+        //Create an object
+        var obj = {
+            templateURL: "",
+            templateDatas: "",
+        };
+
+        //Return object
+        return obj;
     }
+
+    /**
+     * Load, parse and show a template
+     * 
+     * @param {Object} targetElem The target element where the template will be applied
+     * @param {Object} ResumeHERE
+     */
 };

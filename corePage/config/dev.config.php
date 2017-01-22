@@ -29,6 +29,7 @@ $config['JSfiles'] = array(
 
     //App scripts
     "%PATH_ASSETS%js/common/functionsSchema.js",
+    "%PATH_ASSETS%js/pagesList.js",
     "%PATH_ASSETS%js/common/api.js",
     "%PATH_ASSETS%js/common/errors.js",
     "%PATH_ASSETS%js/common/messages.js",
