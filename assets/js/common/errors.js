@@ -70,3 +70,21 @@ ComunicWeb.common.error.fatalError = function(errorMessage, errorCode, errorData
     //Make an API request to submit error
 	this.submitError("fatal", errorMessage, errorCode, errorData);
 }
+
+/**
+ * Handle and show a 404 not found error message
+ * 
+ * @return {Boolean} True for a success
+ */
+ComunicWeb.common.error.pageNotFound = function(){
+	alert("404 not found");
+
+	//Report error
+	var errorData = {
+		pageURL: location.href,
+	};
+	this.submitError("normal", "Page not found", "404", errorData);
+
+	//Everything seems to be OK
+	return true;
+}

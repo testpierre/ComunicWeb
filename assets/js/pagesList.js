@@ -17,7 +17,8 @@ ComunicWeb.pagesList = {
      * 404 Page not found
      */
     notFound: {
-        pageTitle: "404 page not found"
+        pageTitle: "404 page not found",
+        methodHandler: "ComunicWeb.common.error.pageNotFound",
     }
 
 };

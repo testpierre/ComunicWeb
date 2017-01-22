@@ -24,3 +24,14 @@ ComunicWeb.common.jsFiles.includeFile = function(fileURL){
     //Everything is OK
     return true;
 }
+
+/**
+ * Execute some source code contained in a variable
+ * 
+ * @param {String} source The source code to execute
+ */
+ComunicWeb.common.jsFiles.executeJSsource = function(source){
+    var jsSourceContainer = document.createElement("script");
+    jsSourceContainer.innerHTML = source;
+    document.body.appendChild(jsSourceContainer);
+}

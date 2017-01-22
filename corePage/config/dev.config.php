@@ -49,3 +49,6 @@ $config['languagesPath'] = "%PATH_ASSETS%js/langs/";
 
 //Production mode
 $config['productionMode'] = 0;
+
+//Application version
+$config['appVersion'] = "0.1";

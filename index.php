@@ -41,6 +41,9 @@
                 //Production mode
                 productionMode: <?php echo config['productionMode']; ?>,
 
+                //AppVersion
+                appVersion: <?php echo config['appVersion']; ?>,
+
                 //Assets URL
                 assetsURL: "<?php echo config['pathAssets']; ?>",
 

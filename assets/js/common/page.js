@@ -61,8 +61,9 @@ ComunicWeb.common.page = {
      * Open a page
      * 
      * @param {String} pageURI The URI to the page
+     * @param {Object} additionnalData Additionnal data to pass to the new page
      */
-    openPage: function(pageURI){
+    openPage: function(pageURI, additionnalData){
         //Log message
         ComunicWeb.debug.logMessage("Open the following page: " + pageURI);
 
@@ -99,6 +100,13 @@ ComunicWeb.common.page = {
         if(!mainContenerElem){
             mainConterElem = this.emptyPage(true);
         }
+
+        //Check if some additionnal data was specified
+        if(!additionnalData)
+            additionnalData = {};
+        
+        //Call the method related to the page
+
         
     },
 
@@ -116,7 +124,7 @@ ComunicWeb.common.page = {
 
         //Return object
         return obj;
-    }
+    },
 
     /**
      * Load, parse and show a template
@@ -124,4 +132,7 @@ ComunicWeb.common.page = {
      * @param {Object} targetElem The target element where the template will be applied
      * @param {Object} ResumeHERE
      */
+    //getAndShowTemplate: function(){
+
+    //}
 };

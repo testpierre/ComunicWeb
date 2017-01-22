@@ -74,6 +74,11 @@ var ComunicWeb = {
              * Handle and show a fatal error
              */
             fatalError: function(errorMessage, errorCode, errorData){},
+
+            /**
+             * Handle a 404 not found error
+             */
+            pageNotFound: function(){},
         },
 
         /**
@@ -87,7 +92,30 @@ var ComunicWeb = {
          * Page functions
          */
         page: {
+            /**
+             * Empty current page
+             */
+            emptyPage: function(createWrapper){},
 
+            /**
+             * Show a full wait splash screen
+             */
+            showWaitSplashScreen: function(){},
+
+            /**
+             * Open a page
+             */
+            openPage: function(pageURI, additionnalData){},
+
+            /**
+             * Prepare a template load by specifying datas
+             */
+            prepareLoadTemplate: function(){},
+
+            /**
+             * Load, parse and show a template
+             */
+            //Not implemented yet
         },
 
         /**
@@ -99,6 +127,11 @@ var ComunicWeb = {
              * Include a Javascript file
              */
             includeFile: function(fileURL){},
+
+            /**
+             * Execute some source code contained in a variable
+             */
+            executeJSsource: function(source){},
         },
     },
 
@@ -107,8 +140,23 @@ var ComunicWeb = {
      */
     debug:{
         /**
+         * @var {Object} Internal log variable
+         */
+        __log: {},
+
+        /**
          * Display message on browser console
          */
         logMessage: function(message){},
+
+        /**
+         * Save a new log message
+         */
+        saveLogMessage: function(message){},
+
+        /**
+         * Get log content in a string
+         */
+        getLogContent: function(){},
     }
 }
