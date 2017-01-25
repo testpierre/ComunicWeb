@@ -47,6 +47,9 @@
                 //Assets URL
                 assetsURL: "<?php echo config['pathAssets']; ?>",
 
+                //Templates URL
+                templatesURL : "<?php echo config['templatesURL']; ?>",
+
                 //Site URL
                 siteURL: "<?php echo config['siteURL']; ?>",
 

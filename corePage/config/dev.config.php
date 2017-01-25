@@ -27,8 +27,11 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
     "%PATH_ASSETS%adminLTE/plugins/jquery-ui/jquery-ui.min.js",
 
-    //App scripts
+    //Functions schema
     "%PATH_ASSETS%js/common/functionsSchema.js",
+
+    //App scripts
+    "%PATH_ASSETS%js/common/network.js",
     "%PATH_ASSETS%js/pagesList.js",
     "%PATH_ASSETS%js/common/api.js",
     "%PATH_ASSETS%js/common/errors.js",
@@ -52,3 +55,6 @@ $config['productionMode'] = 0;
 
 //Application version
 $config['appVersion'] = "0.1";
+
+//Templates URL
+$config['templatesURL'] = $config['pathAssets']."templates/";

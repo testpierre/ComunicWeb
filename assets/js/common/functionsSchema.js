@@ -15,10 +15,9 @@ var ComunicWeb = {
      */
     common:{
         /**
-         * Network functions
+         * API functions
          */
-        network: {
-
+        api: {
             /**
              * Make an API request
              */
@@ -78,14 +77,17 @@ var ComunicWeb = {
             /**
              * Handle a 404 not found error
              */
-            pageNotFound: function(){},
+            pageNotFound: function(additionnalData, targetElement){},
         },
 
         /**
          * URL functions
          */
         url:{
-
+            /**
+             * Return current URL opened on the website
+             */
+            getCurrentWebsiteURL: function(){},
         },
 
         /**
@@ -115,7 +117,23 @@ var ComunicWeb = {
             /**
              * Load, parse and show a template
              */
-            //Not implemented yet
+            getAndShowTemplate: function(targetElem, dataTemplate, templateURI, nextAction, cleanContener){},
+        },
+
+        /**
+         * Network common requests
+         */
+        network: {
+
+            /**
+             * @var {object} Cache contener
+             */
+            cache: {},
+            
+            /**
+             * Make a get request
+             */
+            getRequest: function(url, cache, GETnextAction){},
         },
 
         /**

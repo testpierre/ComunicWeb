@@ -26,7 +26,7 @@ ComunicWeb.common.error.submitError = function(errorLevel, errorMessage, errorCo
 	nextAction = function(){};
 
 	//Send API request
-	ComunicWeb.common.network.makeAPIrequest(apiURI, params, nextAction);
+	ComunicWeb.common.api.makeAPIrequest(apiURI, params, nextAction);
 }
 
 /**
@@ -74,11 +74,19 @@ ComunicWeb.common.error.fatalError = function(errorMessage, errorCode, errorData
 /**
  * Handle and show a 404 not found error message
  * 
+ * @param {Object} additionnalData Additionnal data passed in the method
+ * @param {element} targetElement Where the template will be applied
  * @return {Boolean} True for a success
  */
-ComunicWeb.common.error.pageNotFound = function(){
-	alert("404 not found");
+ComunicWeb.common.error.pageNotFound = function(additionnalData, targetElement){
+	
+	//Show template element
+	var templateURI = "common/errors/error.tpl";
+	var dataTemplate = {
 
+	};
+	ComunicWeb.common.page.getAndShowTemplate(targetElement, dataTemplate, templateURI, (function(){}), true);
+	
 	//Report error
 	var errorData = {
 		pageURL: location.href,

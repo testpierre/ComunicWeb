@@ -11,7 +11,7 @@
  * @param {Object} params The params to include in request
  * @param {Function} nextAction What to do next
  */
-ComunicWeb.common.network.makeAPIrequest = function(apiURI, params, nextAction){
+ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, nextAction){
     //Prepare the request URL
     var requestURL = ComunicWeb.__config.apiURL + apiURI;
     

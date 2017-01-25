@@ -98,7 +98,7 @@ ComunicWeb.common.page = {
 
         //If we didn't get anything, clean the page and create a wrapper element
         if(!mainContenerElem){
-            mainConterElem = this.emptyPage(true);
+            mainContenerElem = this.emptyPage(true);
         }
 
         //Check if some additionnal data was specified
@@ -106,7 +106,7 @@ ComunicWeb.common.page = {
             additionnalData = {};
         
         //Call the method related to the page
-
+        eval(pageInfos.methodHandler + ("(additionnalData, mainContenerElem);"));
         
     },
 
@@ -130,9 +130,25 @@ ComunicWeb.common.page = {
      * Load, parse and show a template
      * 
      * @param {Object} targetElem The target element where the template will be applied
-     * @param {Object} ResumeHERE
+     * @param {Object} dataTemplate Datas to pass to the template (to parse it)
+     * @param {String} templateURI URI pointing on the template
+     * @param {function} nextAction What to do once the template is loaded
+     * @param {Boolean} cleanContener Specify if contener has to be cleaned or not
+     * @return {Boolean} False if it fails
      */
-    //getAndShowTemplate: function(){
+    getAndShowTemplate: function(targetElem, dataTemplate, templateURI, nextAction, cleanContener){
 
-    //}
+        //First, get the template URL
+        templateURL = ComunicWeb.__config.templatesURL + templateURI;
+        
+        //Define how to apply the template
+        var afterDownloadTemplateContent = function(templateContent){
+            targetElem.innerHTML = (templateContent);
+        }
+
+        //Perform request
+        if(!ComunicWeb.network.getRequest(templateURL, true, afterDownloadTemplateContent))
+            //An error occured
+            return false;
+    },
 };
