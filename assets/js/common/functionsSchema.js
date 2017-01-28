@@ -176,5 +176,17 @@ var ComunicWeb = {
          * Get log content in a string
          */
         getLogContent: function(){},
-    }
+    },
+
+    /**
+     * User functions
+     */
+    user:{
+        /**
+         * Login tokens storage controller
+         */
+        loginTokens: {
+            //TODO: implement
+        },
+    },
 }

@@ -143,7 +143,17 @@ ComunicWeb.common.page = {
         
         //Define how to apply the template
         var afterDownloadTemplateContent = function(templateContent){
-            targetElem.innerHTML = (templateContent);
+
+            //Apply data templates
+            for(elemName in dataTemplate){
+                //We change the template content while it still exists
+                while(templateContent.indexOf("{"+elemName+"}") != -1){
+                    templateContent = templateContent.replace("{"+elemName+"}", dataTemplate[elemName]);
+                } 
+            }
+
+            //Apply template source
+            targetElem.innerHTML = templateContent;
         }
 
         //Perform request

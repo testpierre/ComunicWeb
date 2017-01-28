@@ -83,7 +83,9 @@ ComunicWeb.common.error.pageNotFound = function(additionnalData, targetElement){
 	//Show template element
 	var templateURI = "common/errors/error.tpl";
 	var dataTemplate = {
-
+		error_code: "404",
+		error_title: "Page not found",
+		error_message: "The requested page ("+location.href+") was not found on this website. Please check your request..."
 	};
 	ComunicWeb.common.page.getAndShowTemplate(targetElement, dataTemplate, templateURI, (function(){}), true);
 	
