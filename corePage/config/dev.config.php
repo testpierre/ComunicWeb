@@ -45,6 +45,7 @@ $config['JSfiles'] = array(
 
     //User scripts
     "%PATH_ASSETS%js/user/loginTokens.js",
+    "%PATH_ASSETS%js/user/userLogin.js",
 
     //Init script
     "%PATH_ASSETS%js/init.js",

@@ -6,6 +6,7 @@
  */
 
 ComunicWeb.user.loginTokens = {
+    
     /**
      * Set User tokens
      * 
