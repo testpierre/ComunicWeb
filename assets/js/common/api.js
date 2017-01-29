@@ -9,12 +9,23 @@
  * 
  * @param {String} apiURI The URI to call in the API
  * @param {Object} params The params to include in request
+ * @param {Boolean} requireLoginTokens Specify if login tokens are required or not
  * @param {Function} nextAction What to do next
  */
-ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, nextAction){
+ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginTokens, nextAction){
     //Prepare the request URL
     var requestURL = ComunicWeb.__config.apiURL + apiURI;
     
+    //Add login tokens to params if required
+    if(requireLoginTokens){
+        //Get login tokens
+        tokens = ComunicWeb.user.loginTokens.getLoginTokens();
+
+        //Add tokens
+        params.token1 = tokens.token1;
+        params.token2 = tokens.token2;
+    }
+
     //Prepare data to send in request
     var count = 0;
     var datas = "";
@@ -27,7 +38,7 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, nextAction){
         datas += encodeURIComponent(paramName) + "=" + encodeURIComponent(params[paramName]);
 
         count++; //Increment counter
-    }
+    }     
 
     //Create request
     var apiXHR = new XMLHttpRequest();
@@ -38,10 +49,16 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, nextAction){
         //We continue only if request is terminated
         if(apiXHR.readyState == 4){
             //Prepare result
-            var result = {};
+            var result = JSON.parse(apiXHR.responseText);
+
+            //We check if we got any error
+            if(result.error){
+                //Log error
+                ComunicWeb.debug.logMessage("Got an error in a XHR request! " + result.toString());
+            }
 
             //We can do the next step
-            nextAction(apiXHR.responseText);
+            nextAction(result);
         }
     }
 

@@ -10,7 +10,7 @@ ComunicWeb.user.loginTokens = {
     /**
      * Set User tokens
      * 
-     * @param {Object} tokens The token object
+     * @param {Object} tokens The tokens object
      * @param {Type} storageType The token destination (local or session)
      */
     setUserTokens: function(tokens, storageType){
@@ -64,15 +64,15 @@ ComunicWeb.user.loginTokens = {
      */
     getLoginTokens: function(){
         //First, check in local storage
-        if(localStorage.getItem("loginTokens") != "null"){
+        if(localStorage.getItem("loginTokens") !== null){
             //Return localStorage login tokens
-            var loginTokenString = localStorage.getItem("loginTokens")
+            var loginTokenString = localStorage.getItem("loginTokens");
         }
 
         //Then, check in session storage
-        if(sessionStorage.getItem("loginTokens") != "null"){
+        if(sessionStorage.getItem("loginTokens") !== null){
             //Return session storage login token
-            var loginTokenString = sessionStorage.getItem("loginTokens")
+            var loginTokenString = sessionStorage.getItem("loginTokens");
         }
 
         //Check if we didn't get any login token

@@ -21,12 +21,13 @@ ComunicWeb.common.error.submitError = function(errorLevel, errorMessage, errorCo
 		"errorCode": errorCode,
 		"errorData": errorData.toSource(),
 	}
+	var requireLoginToken = false;
 
 	//Not any next action for now
 	nextAction = function(){};
 
 	//Send API request
-	ComunicWeb.common.api.makeAPIrequest(apiURI, params, nextAction);
+	ComunicWeb.common.api.makeAPIrequest(apiURI, params, requireLoginToken, nextAction);
 }
 
 /**

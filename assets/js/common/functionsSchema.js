@@ -21,7 +21,7 @@ var ComunicWeb = {
             /**
              * Make an API request
              */
-            makeAPIrequest: function(apiURI, params, nextAction){},
+            makeAPIrequest: function(apiURI, params, requireLoginTokens, nextAction){},
         },
 
         /**
@@ -211,7 +211,47 @@ var ComunicWeb = {
          * Manage user login
          */
         userLogin: {
+            /**
+             * @var {Boolean} Store user login state (true by default)
+             */
+            __userLogin: true,
+
+            /**
+             * @var {Integer} Store the current user ID
+             */
+            __userID: 0,
+
+
+            /**
+             * Tell if user is logged in or not
+             */
+            getUserLoginState: function(){},
+
+            /**
+             * Get user ID (if logged in)
+             */
+            getUserID: function(){},
+
+            /**
+             * Try to get and store current user ID
+             */
+            getCurrentUserId: function(afterGetCurrentUserID){},
+
+            /**
+             * Refresh the user login state
+             */
+            refreshLoginState: function(){},
+
+            /**
+             * Try to login user
+             */
+            loginUser: function(usermail, userpassword, permanentLogin, afterLogin){},
+
+        /**
+         * Get user infos
+         */
+        userInfos: {
             //TODO: implement
-        },
+        }
     },
 }
