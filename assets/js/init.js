@@ -25,13 +25,24 @@
     ComunicWeb.common.langs.initLanguages();
 
     /**
-     * Open a page
+     * What to do after login refresh
      */
-    //Get current page URI
-    var currentPage = ComunicWeb.common.url.getCurrentWebsiteURL();
+    var afterLoginRefresh = function(){
+        
+        /**
+         * Open a page
+         */
+        //Get current page URI
+        var currentPage = ComunicWeb.common.url.getCurrentWebsiteURL();
 
-    //Open a page
-    ComunicWeb.common.page.openPage(currentPage);
+        //Open a page
+        ComunicWeb.common.page.openPage(currentPage);
+    }
+
+    /**
+     * Get login state
+     */
+    ComunicWeb.user.userLogin.refreshLoginState(afterLoginRefresh);
 
     //End of init
     ComunicWeb.debug.logMessage("Application is ready !");

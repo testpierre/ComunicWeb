@@ -10,7 +10,7 @@ ComunicWeb.pagesList = {
      */
     home: {
         pageTitle: "Comunic, v2",
-
+        methodHandler: "ComunicWeb.pages.home.home.openHomePage",
     },
 
     /**

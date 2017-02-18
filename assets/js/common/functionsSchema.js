@@ -240,18 +240,43 @@ var ComunicWeb = {
             /**
              * Refresh the user login state
              */
-            refreshLoginState: function(){},
+            refreshLoginState: function(afterLogin){},
 
             /**
              * Try to login user
              */
             loginUser: function(usermail, userpassword, permanentLogin, afterLogin){},
-
+        },
+        
         /**
          * Get user infos
          */
         userInfos: {
             //TODO: implement
-        }
+        },
+    },
+
+    /**
+     * Pages functions
+     */
+    pages:{
+
+        /**
+         * Home page
+         */
+        home: {
+            /**
+             * Common homes functions
+             */
+            home:{
+                /**
+                 * Open home page
+                 */
+                openHomePage: function(additionnalData, targetElement){},
+
+
+            },
+        },
+
     },
 }

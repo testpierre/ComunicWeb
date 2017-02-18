@@ -42,13 +42,13 @@ ComunicWeb.user.loginTokens = {
      */
     checkLoginTokens: function(){
         //First, check in local storage
-        if(localStorage.getItem("loginTokens") != "null"){
+        if(localStorage.getItem("loginTokens") != null){
             //It is OK
             return true;
         }
 
         //Check if we have to remove any thing in session storage
-        if(sessionStorage.getItem("loginTokens") != "null"){
+        if(sessionStorage.getItem("loginTokens") != null){
             //It is OK
             return true;
         }
