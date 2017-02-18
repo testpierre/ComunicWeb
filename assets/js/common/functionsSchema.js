@@ -246,6 +246,11 @@ var ComunicWeb = {
              * Try to login user
              */
             loginUser: function(usermail, userpassword, permanentLogin, afterLogin){},
+
+            /**
+             * Logout user
+             */
+            logoutUser: function(afterLogout){},
         },
         
         /**
@@ -277,6 +282,16 @@ var ComunicWeb = {
 
             },
         },
+
+        /**
+         * Login controller
+         */
+        login:{
+           /**
+            * Open login page
+            */
+            openLoginPage: function(additionnalData, targetElement){},
+        }
 
     },
 }

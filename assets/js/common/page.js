@@ -94,11 +94,11 @@ ComunicWeb.common.page = {
         document.title =  pageInfos.pageTitle;
 
         //Get the main contener of the page
-        var mainContenerElem = document.getElementById("wrapper");
+        //var mainContenerElem = document.getElementById("wrapper");
 
         //If we didn't get anything, clean the page and create a wrapper element
         if(!mainContenerElem){
-            mainContenerElem = this.emptyPage(true);
+           var mainContenerElem = this.emptyPage(true);
         }
 
         //Check if some additionnal data was specified

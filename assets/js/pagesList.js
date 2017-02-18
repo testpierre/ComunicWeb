@@ -14,6 +14,14 @@ ComunicWeb.pagesList = {
     },
 
     /**
+     * Login page
+     */
+    login: {
+        pageTitle: "Login page",
+        methodHandler: "ComunicWeb.pages.login.openLoginPage",
+    },
+
+    /**
      * 404 Page not found
      */
     notFound: {

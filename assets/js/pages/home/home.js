@@ -1,9 +1,12 @@
 /**
  * Common homes functions
+ * 
+ * @author Pierre HUBERT
  */
 ComunicWeb.pages.home.home = {
     /**
      * Open home page
+     * 
      * @param {Object} additionnalData Additionnal data passed in the method
      * @param {element} targetElement Where the template will be applied
      * @returns {Boolean} False if it fails
