@@ -127,22 +127,27 @@ ComunicWeb.common.page = {
     },
 
     /**
-     * Load, parse and show a template
+     * Load, parse and show an HTML template
      * 
      * @param {Object} targetElem The target element where the template will be applied
      * @param {Object} dataTemplate Datas to pass to the template (to parse it)
      * @param {String} templateURI URI pointing on the template
-     * @param {function} nextAction What to do once the template is loaded
+     * @param {function} afterParsingHTMLtemplate What to do once the template is loaded
      * @param {Boolean} cleanContener Specify if contener has to be cleaned or not
      * @return {Boolean} False if it fails
      */
-    getAndShowTemplate: function(targetElem, dataTemplate, templateURI, nextAction, cleanContener){
+    getAndShowTemplate: function(targetElem, dataTemplate, templateURI, afterParsingHTMLtemplate, cleanContener){
 
         //First, get the template URL
         templateURL = ComunicWeb.__config.templatesURL + templateURI;
         
         //Define how to apply the template
         var afterDownloadTemplateContent = function(templateContent){
+
+            //If required, clean the contener
+            if(cleanContener){
+                targetElem.innerHTML = "";
+            }
 
             //Apply data templates
             for(elemName in dataTemplate){
@@ -154,11 +159,130 @@ ComunicWeb.common.page = {
 
             //Apply template source
             targetElem.innerHTML = templateContent;
-        }
+
+            //Perform next action (if there is)
+            if(afterParsingHTMLtemplate)
+                afterParsingHTMLtemplate();
+
+        };
 
         //Perform request
-        if(!ComunicWeb.network.getRequest(templateURL, true, afterDownloadTemplateContent))
+        if(!ComunicWeb.common.network.getRequest(templateURL, true, afterDownloadTemplateContent))
             //An error occured
             return false;
     },
+
+    /**
+     * Convert a JSON object into html elements
+     * 
+     * @param {Object} parentNodeChilds The parent which contains the childs to convert (an object)
+     * @param {Object} values Optionnal, fill the template with predefined values
+     * @returns {HTMLObject} The processed JSON code
+     */
+    convertJSONobjectTOhtmlElement: function(parentNodeChilds, values){
+        //Create variable
+        var resultElements = {};
+
+        //Process each element of the array
+        for(elemID in parentNodeChilds){
+
+            //Determine object type
+            var objType = (parentNodeChilds[elemID].nodeType ? parentNodeChilds[elemID].nodeType : elemID);
+            
+            //Create object
+            var element = document.createElement(objType);
+            element.elemID = elemID;
+
+            //Populate it with its informations
+            for(fieldName in parentNodeChilds[elemID]){
+                if(fieldName == "nodeType"){
+                    //Do nothing
+                }
+
+                //We perform children generation if required
+                else if(fieldName == "children"){
+                    //Call the function to get the element's childs and apply them
+                    var elemChilds = this.convertJSONobjectTOhtmlElement(parentNodeChilds[elemID][fieldName], values);
+                    for(childID in elemChilds){
+                        element.appendChild(elemChilds[childID]);
+                    }
+                }
+
+                //We check if it is innerHTML filling
+                else if(fieldName == "innerHTML"){
+                    element.innerHTML = parentNodeChilds[elemID][fieldName];
+                }
+                
+                //We check if it is auto filling system which is called
+                else if (fieldName == "autofill"){
+                    //Check if required value exists in the data
+                    if(values){
+                        if(values[parentNodeChilds[elemID][fieldName]]){
+                            //Then fill field with the value
+                            element.innerHTML = values[parentNodeChilds[elemID][fieldName]];
+                        }
+                    }
+                }
+
+                //For other input, we use "setAttribute"
+                else{
+                    element.setAttribute(fieldName, parentNodeChilds[elemID][fieldName]);
+                }
+            }
+
+            //Save element
+            resultElements[element.elemID] = element;
+        }
+
+        //Return result
+        return resultElements;
+    },
+
+    /**
+     * Get and show a JSON template
+     * 
+     * @param {Object} targetElem The target element where the template will be applied
+     * @param {String} templateURI URI pointing on the template
+     * @param {Object} additionalData Additionnal to pass to the template
+     * @param {function} afterParsingJSONtemplate What to do once JSON template is loaded
+     * @param {Boolean} cleanContener Specify wether the template contener has to be cleaned or not
+     * @return {Boolean} Flase if it fails
+     */
+    getAndShowJSONtemplate: function(targetElem, templateURI, additionalData, afterParsingJSONtemplate, cleanContener){
+        //Define template URL
+        var templateURL = ComunicWeb.__config.templatesURL + templateURI;
+
+        //Define how to apply the template
+        var afterTemplateDownload = function(templateContent){
+            //Decode JSON content
+            var JSONobject = JSON.parse(templateContent);
+            
+            //Check if parsing failed
+            if(!JSONobject){
+                ComunicWeb.debug.logMessage("Parsing JSON failed with this file: " + templateURL);
+                return false;
+            }
+            
+            //Parse JSON object
+            var result = ComunicWeb.common.page.convertJSONobjectTOhtmlElement(JSONobject, additionalData);
+
+            //Apply each result element
+            for(elem in result){
+                targetElem.appendChild(result[elem]);
+            }
+
+            //Perform next action if required
+            if(afterParsingJSONtemplate){
+                afterParsingJSONtemplate();
+            }
+
+            //Everything OK
+            return true;
+        };
+
+        //Perform request
+        if(!ComunicWeb.common.network.getRequest(templateURL, true, afterTemplateDownload))
+            //An error occured
+            return false;
+    }
 };

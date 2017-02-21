@@ -5,7 +5,7 @@
  */
 
 
-ComunicWeb.network = {
+ComunicWeb.common.network = {
 
     /**
      * @var {object} Cache contener
@@ -16,13 +16,13 @@ ComunicWeb.network = {
      * Make a GET request
      * 
      * @param {String} url Destination URL
-     * @param {Boolean} cache Specify if data can be cached or not (optimize network)
+     * @param {Boolean} cacheResponse Specify if data can be cached or not (optimize network)
      * @param {function} GETnextAction What to do next
      * @return {Boolean} False if it fails
      */
-    getRequest: function(url, cache, GETnextAction){
+    getRequest: function(url, cacheResponse, GETnextAction){
         //First, check if it is required to cache the request
-        if(cache){
+        if(cacheResponse){
             //Prepare cache entry name
             var cacheEntryName = encodeURIComponent(url);
 
@@ -50,9 +50,11 @@ ComunicWeb.network = {
                 }
                 
                 //Check if it is required to cache result
-                if(cache){
-                    ComunicWeb.network.cache[cacheEntryName] = xhrRequest.responseText;
+                if(cacheResponse){
+                    ComunicWeb.common.network.cache[cacheEntryName] = xhrRequest.responseText;
                 }
+
+                ComunicWeb.debug.logMessage("GET request: " + url + " Success (" + xhrRequest.status + ")");
 
                 //Call next action
                 GETnextAction(xhrRequest.responseText);

@@ -115,9 +115,19 @@ var ComunicWeb = {
             prepareLoadTemplate: function(){},
 
             /**
-             * Load, parse and show a template
+             * Load, parse and show an HTML template
              */
             getAndShowTemplate: function(targetElem, dataTemplate, templateURI, nextAction, cleanContener){},
+
+            /**
+             * Convert a JSON object into html elements
+             */
+            convertJSONobjectTOhtmlElement: function(parentNodeChilds, values){},
+
+            /**
+             * Get and show a JSON template
+             */
+            getAndShowJSONtemplate: function(targetElem, templateURI, additionalData, afterParsingJSONtemplate, cleanContener){},
         },
 
         /**

@@ -1,0 +1,118 @@
+{
+    "1":{
+        "nodeType": "div",
+        "class": "login-box",
+        "children":{
+            "0":{
+                "nodeType": "div",
+                "class": "login-logo",
+                
+                "children": {
+                    "0":{
+                        "nodeType": "a",
+                        "href": "#",
+                        "innerHTML": "<b>Comunic</b>"
+                    }
+                }
+            },
+
+            "1":{
+                "nodeType": "div",
+                "class": "login-box-body",
+
+                "children":{
+                    "0":{
+                        "nodeType": "p",
+                        "class": "login-box-msg",
+                        "innerHTML": "Login to your Comunic account."
+                    },
+
+                    "1":{
+                        "nodeType": "form",
+
+                        "children":{
+                            "0":{
+                                "nodeType": "div",
+                                "class": "form-group has-feedback",
+
+                                "children":{
+                                    "0":{
+                                        "nodeType": "input",
+                                        "type": "email",
+                                        "class": "form-control",
+                                        "placeholder": "Email",
+                                        "id": "account-email"
+                                    },
+
+                                    "1":{
+                                        "nodeType": "span",
+                                        "class": "glyphicon glyphicon-envelope form-control-feedback"
+                                    }
+                                }
+                            },
+
+                            "1":{
+                                "nodeType": "div",
+                                "class": "form-group has-feedback",
+
+                                "children":{
+                                    "0":{
+                                        "nodeType": "input",
+                                        "type": "password",
+                                        "class": "form-control",
+                                        "placeholder": "Password",
+                                        "id": "account-password"
+                                    },
+
+                                    "1":{
+                                        "nodeType": "span",
+                                        "class": "glyphicon glyphicon-lock form-control-feedback"
+                                    }
+                                }
+                            },
+
+                            "2":{
+                                "nodeType": "div",
+                                "class": "row",
+
+                                "children":{
+                                    "0":{
+                                        "nodeType": "div",
+                                        "class": "col-xs-8", 
+                                        "children":{
+                                            "0":{
+                                                "nodeType": "div",
+                                                "class": "checkbox icheck",
+
+                                                "children":{
+                                                    "0":{
+                                                        "nodeType": "label",
+                                                        
+                                                        "children":{
+
+                                                            "0":{
+                                                                "nodeType": "input",
+                                                                "type": "checkbox",
+                                                                "id": "permanentLogin"
+                                                            },
+
+                                                            "1":{
+                                                                "nodeType": "text",
+                                                                "innerHTML": " Remember me"
+                                                            }
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

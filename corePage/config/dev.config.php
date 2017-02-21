@@ -14,6 +14,7 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%adminLTE/bootstrap/css/bootstrap.min.css",
     "%PATH_ASSETS%adminLTE/plugins/font-awesome/css/font-awesome.min.css",
     "%PATH_ASSETS%adminLTE/plugins/ionicons/css/ionicons.min.css",
+    "%PATH_ASSETS%adminLTE/plugins/iCheck/square/blue.css",
     "%PATH_ASSETS%adminLTE/dist/css/AdminLTE.min.css",
     "%PATH_ASSETS%adminLTE/dist/css/skins/_all-skins.min.css",
 
@@ -26,6 +27,7 @@ $config['JSfiles'] = array(
     //Framewokr inclusions
     "%PATH_ASSETS%adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
     "%PATH_ASSETS%adminLTE/plugins/jquery-ui/jquery-ui.min.js",
+    "%PATH_ASSETS%adminLTE/plugins/iCheck/icheck.min.js",
 
     //Functions schema
     "%PATH_ASSETS%js/common/functionsSchema.js",
