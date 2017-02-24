@@ -41,9 +41,28 @@ ComunicWeb.pages.login = {
                 increaseArea: '20%' // optional
                 });
             });
+
+            //Get login form element
+            var loginBody = document.getElementById("loginForm");
+
+            //Get login button
+            var loginButton = loginBody.getElementsByClassName("btn-login")[0];
+
+            loginButton.onclick=ComunicWeb.pages.login.loginSubmit;
         };
 
         //Apply template
         ComunicWeb.common.page.getAndShowTemplate(targetElement, additionalData, "pages/login/loginPage.tpl", afterParsingTemplate, true);
-    }
+    },
+
+    /**
+     * Perform user login
+     * 
+     * @return {Boolean} False if it fails
+     */
+    loginSubmit: function(){
+        alert("Login");
+        
+        //var overlay = ComunicWeb.common.page.showTransparentWaitSplashScreen();
+    },
 };

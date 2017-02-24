@@ -1,0 +1,12 @@
+/**
+ * Global CSS rules
+ *
+ * @author Pierre HUBERT
+ */
+
+/**
+ * <a> elements
+ */
+a {
+    cursor: pointer;
+}

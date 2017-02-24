@@ -58,6 +58,28 @@ ComunicWeb.common.page = {
     },
 
     /**
+     * Show a transparent wait splash screen
+     * 
+     * @returns {elem} The splash screen element to let it being deleted
+     */
+    showTransparentWaitSplashScreen: function(){
+        //Create the element
+        var waitSplashScreen = document.createElement("div");
+        waitSplashScreen.className = "transparentWaitSplashScreen";
+
+        //Populate it
+        var imgElem = document.createElement("img");
+        imgElem.src = ComunicWeb.__config.assetsURL+"img/barProgress.gif";
+        waitSplashScreen.appendChild(imgElem);
+
+        //Apply splash screen
+        document.body.appendChild(waitSplashScreen);
+
+        //Return wait splash screen element
+        return waitSplashScreen;
+    },
+
+    /**
      * Open a page
      * 
      * @param {String} pageURI The URI to the page
@@ -68,7 +90,7 @@ ComunicWeb.common.page = {
         ComunicWeb.debug.logMessage("Open the following page: " + pageURI);
 
         //Extract the first part of the URL
-        var firstPartURI = pageURI;
+        var firstPartURI = pageURI.toString();
         
         //Check if pageURI is empty
         if(firstPartURI == ""){
@@ -92,6 +114,9 @@ ComunicWeb.common.page = {
 
         //Change page title
         document.title =  pageInfos.pageTitle;
+
+        //Change page URL
+        ComunicWeb.common.url.changeURI(document.title, pageURI);
 
         //Get the main contener of the page
         //var mainContenerElem = document.getElementById("wrapper");
@@ -159,6 +184,26 @@ ComunicWeb.common.page = {
 
             //Apply template source
             targetElem.innerHTML = templateContent;
+
+            //Make a link live
+            var aElems = targetElem.getElementsByTagName("a");
+            for(num in aElems){
+
+                //Export current element
+                var currentElement =  aElems[num];
+                
+                //Check if it is a real html elements and if it contains a "target" attribute
+                if(currentElement.attributes){
+                    if(currentElement.attributes.target){
+
+                        //Change the onclick behavior of the elements
+                        currentElement.onclick = (function() {
+                            ComunicWeb.common.page.openPage(this.getAttribute("target"));
+                        });
+
+                    }
+                }
+            }
 
             //Perform next action (if there is)
             if(afterParsingHTMLtemplate)

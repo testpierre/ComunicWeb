@@ -19,6 +19,7 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%adminLTE/dist/css/skins/_all-skins.min.css",
 
     //App stylesheets
+    "%PATH_ASSETS%css/common/global.css",
     "%PATH_ASSETS%css/common/page/waitSplashScreen.css",
 );
 

@@ -88,6 +88,11 @@ var ComunicWeb = {
              * Return current URL opened on the website
              */
             getCurrentWebsiteURL: function(){},
+
+            /**
+             * Change the current website URI
+             */
+            changeURI: function(newTitle, newURI){},
         },
 
         /**
@@ -103,6 +108,11 @@ var ComunicWeb = {
              * Show a full wait splash screen
              */
             showWaitSplashScreen: function(){},
+
+            /**
+             * Show a transparent wait splash screen
+             */
+            showTransparentWaitSplashScreen: function(){},
 
             /**
              * Open a page
@@ -301,6 +311,11 @@ var ComunicWeb = {
             * Open login page
             */
             openLoginPage: function(additionnalData, targetElement){},
+
+            /**
+             * Perform user login
+             */
+            loginSubmit: function(){},
         }
 
     },

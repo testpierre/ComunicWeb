@@ -20,4 +20,23 @@ ComunicWeb.common.url = {
         //Return result
         return uripage;
     },
+
+    /**
+	 * Change the current website URI
+	 *
+	 * @param {String} newTitle New title for the page
+	 * @param {String} newURI The new URI
+     * @return {Boolean} False if it fails
+	 */
+	changeURI: function(newTitle, newURI){
+
+        //Determine the new URL
+        var newURL = ComunicWeb.__config.siteURL + newURI;
+
+        //Apply it
+		window.history.pushState("object or string", newTitle, newURI);
+
+        //Everything is OK 
+        return true;
+	},
 };

@@ -1,12 +1,14 @@
+<!-- Login form -->
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Comunic</b></a>
+    <a target="home"><b>Comunic</b></a>
   </div>
-  <!-- /.login-logo -->
   <div class="login-box-body">
+
+    <!-- Login message -->
     <p class="login-box-msg">Login to your Comunic account.</p>
 
-    <form>
+    <div id="loginForm">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email" />
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -25,13 +27,11 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat btn-login">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
-    </form>
+    </div>
   </div>
   <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
-
