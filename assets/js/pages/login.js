@@ -61,8 +61,24 @@ ComunicWeb.pages.login = {
      * @return {Boolean} False if it fails
      */
     loginSubmit: function(){
-        alert("Login");
-        
-        //var overlay = ComunicWeb.common.page.showTransparentWaitSplashScreen();
+        //Get inputs
+        var usermail = document.getElementById("usermail"); //Usermail
+        var userpassword = document.getElementById("userpassword"); //Password
+        var rememberLogin = document.getElementById("rememberLogin"); //Remember login
+
+        //Check inputs
+        if(!(
+            ComunicWeb.common.formChecker.checkInput(usermail, true) && //Check usermail input
+            ComunicWeb.common.formChecker.checkInput(userpassword, true) //Check password input
+        )){
+           //Error notification
+           ComunicWeb.common.notificationSystem.showNotification("Please check what you've typed !", "error");
+
+           //Stop function execution
+           return false;
+        }
+       
+
+        var overlay = ComunicWeb.common.page.showTransparentWaitSplashScreen();
     },
 };

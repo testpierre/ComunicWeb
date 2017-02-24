@@ -141,6 +141,25 @@ var ComunicWeb = {
         },
 
         /**
+         * Functions to check data input in forms
+         */
+        formChecker: {
+            //TODO : implement
+        },
+
+        /**
+         * Notification system
+         */
+        notificationSystem: {
+            
+            /**
+             * Display a notification
+             */
+            showNotification: function(message, notifType, notifDuration, notifTitle){},
+
+        },
+
+        /**
          * Network common requests
          */
         network: {

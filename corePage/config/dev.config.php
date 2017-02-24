@@ -45,6 +45,8 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/common/debug.js",
     "%PATH_ASSETS%js/langs/en.inc.js",
     "%PATH_ASSETS%js/common/page.js",
+    "%PATH_ASSETS%js/common/notifications.js",
+    "%PATH_ASSETS%js/common/formChecker.js",
 
     //User scripts
     "%PATH_ASSETS%js/user/loginTokens.js",
