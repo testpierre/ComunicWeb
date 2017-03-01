@@ -32,9 +32,9 @@ ComunicWeb.common.url = {
 
         //Determine the new URL
         var newURL = ComunicWeb.__config.siteURL + newURI;
-
+        
         //Apply it
-		window.history.pushState("object or string", newTitle, newURI);
+		window.history.pushState("object or string", newTitle, newURL);
 
         //Everything is OK 
         return true;

@@ -8,7 +8,10 @@
     <!-- Login message -->
     <p class="login-box-msg">Login to your Comunic account.</p>
 
-    <div id="loginForm">
+    <!-- Optionnal messages target -->
+    <div id="loginMessagesTarget"></div>
+
+    <form id="loginForm" action="javascript:(function(){})();">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email" id="usermail" />
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -31,7 +34,7 @@
         </div>
         <!-- /.col -->
       </div>
-    </div>
+    </form>
   </div>
   <!-- /.login-box-body -->
 </div>

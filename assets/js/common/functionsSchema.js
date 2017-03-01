@@ -335,7 +335,17 @@ var ComunicWeb = {
              * Perform user login
              */
             loginSubmit: function(){},
-        }
+        },
+
+        /**
+         * Logout controller
+         */
+        logout: {
+            /**
+             * Open logout page and perform logout
+             */
+            openLogoutPage: function(additionnalData, targetElement){},
+        },
 
     },
 }

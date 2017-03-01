@@ -48,7 +48,9 @@ ComunicWeb.pages.login = {
             //Get login button
             var loginButton = loginBody.getElementsByClassName("btn-login")[0];
 
-            loginButton.onclick=ComunicWeb.pages.login.loginSubmit;
+            //Make the login action accessible
+            //loginButton.onclick = ComunicWeb.pages.login.loginSubmit;
+            loginBody.onsubmit = ComunicWeb.pages.login.loginSubmit;
         };
 
         //Apply template
@@ -62,14 +64,14 @@ ComunicWeb.pages.login = {
      */
     loginSubmit: function(){
         //Get inputs
-        var usermail = document.getElementById("usermail"); //Usermail
-        var userpassword = document.getElementById("userpassword"); //Password
-        var rememberLogin = document.getElementById("rememberLogin"); //Remember login
+        var usermailInput = document.getElementById("usermail"); //Usermail
+        var userpasswordInput = document.getElementById("userpassword"); //Password
+        var rememberLoginInput = document.getElementById("rememberLogin"); //Remember login
 
         //Check inputs
         if(!(
-            ComunicWeb.common.formChecker.checkInput(usermail, true) && //Check usermail input
-            ComunicWeb.common.formChecker.checkInput(userpassword, true) //Check password input
+            ComunicWeb.common.formChecker.checkInput(usermailInput, true) && //Check usermail input
+            ComunicWeb.common.formChecker.checkInput(userpasswordInput, true) //Check password input
         )){
            //Error notification
            ComunicWeb.common.notificationSystem.showNotification("Please check what you've typed !", "error");
@@ -78,7 +80,38 @@ ComunicWeb.pages.login = {
            return false;
         }
        
+        //Enable overlay (use .remove() to remove)
+        var screenOverlay = ComunicWeb.common.page.showTransparentWaitSplashScreen();
+        
+        //Retrieve values
+        var usermail = usermailInput.value; 
+        var userpassword = userpasswordInput.value;
+        var permanentLogin = rememberLoginInput.checked;
 
-        var overlay = ComunicWeb.common.page.showTransparentWaitSplashScreen();
+        //What to do once user is logged in (or not)
+        var afterTryLogin = function(loginResult){
+
+            //First, remove overlay
+            screenOverlay.remove();
+
+            //Check if login failed
+            if(!loginResult){
+                //Create error modal
+                errorMessageElem = ComunicWeb.common.messages.createCalloutElem("Login failed", "Please check your usermail and password", "danger");
+
+                //Apply error modal
+                document.getElementById('loginMessagesTarget').innerHTML = "";
+                document.getElementById('loginMessagesTarget').appendChild(errorMessageElem);
+
+                //Return false
+                return false;
+           }
+
+           //Open home page
+           ComunicWeb.common.page.openPage("home");
+        };
+
+        //Try to login user
+        ComunicWeb.user.userLogin.loginUser(usermail, userpassword, permanentLogin, afterTryLogin);
     },
 };

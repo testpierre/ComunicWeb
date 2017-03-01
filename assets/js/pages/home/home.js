@@ -18,9 +18,25 @@ ComunicWeb.pages.home.home = {
         //Dev feature : Show result
         if(userLoggedIn){
             targetElement.appendChild(ComunicWeb.common.messages.createCalloutElem("", "User logged in !", "info"));
+            
+            //Create logout button
+            var loginButton = document.createElement("button");
+            loginButton.onclick = (function(){
+                ComunicWeb.common.page.openPage("logout");
+            });
+            loginButton.innerHTML="Logout";
+            targetElement.appendChild(loginButton);
         }
         else{
             targetElement.appendChild(ComunicWeb.common.messages.createCalloutElem("", "User not logged in !", "warning"));
+
+            //Create login button
+            var loginButton = document.createElement("button");
+            loginButton.onclick = (function(){
+                ComunicWeb.common.page.openPage("login");
+            });
+            loginButton.innerHTML="Login";
+            targetElement.appendChild(loginButton);
         }
 
         //Everything seems to be OK

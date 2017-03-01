@@ -163,9 +163,18 @@ ComunicWeb.user.userLogin = {
                 ComunicWeb.user.loginTokens.setUserTokens(result.tokens, storageType);
             }
 
-            //Perform next action
-            afterLogin(loginstate);
+            //Perform next action if login failed
+            if(!loginstate) {
+                afterLogin(loginstate);
+                return false;
+            }
 
+            //Else refresh login state to get user ID
+            ComunicWeb.user.userLogin.refreshLoginState(function(){
+                //And then we'll be able to perform next action
+                afterLogin(true);
+            });
+            
         };
 
         //Perform request

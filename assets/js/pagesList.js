@@ -22,6 +22,14 @@ ComunicWeb.pagesList = {
     },
 
     /**
+     * Logout page
+     */
+    logout: {
+        pageTitle: "Logout",
+        methodHandler: "ComunicWeb.pages.logout.openLogoutPage",
+    },
+
+    /**
      * 404 Page not found
      */
     notFound: {

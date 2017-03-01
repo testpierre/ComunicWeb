@@ -92,13 +92,18 @@ ComunicWeb.common.page = {
         //Extract the first part of the URL
         var firstPartURI = pageURI.toString();
         
+        //Check if there are hashtag for the URL
+        if(firstPartURI.indexOf("#") != -1){
+            firstPartURI = firstPartURI.split("#")[0];
+        }
+
         //Check if pageURI is empty
         if(firstPartURI == ""){
             firstPartURI = "home";
         }
 
         //Check if there is also subfolders
-        if(firstPartURI.indexOf("/") != "/"){
+        if(firstPartURI.indexOf("/") != -1){
             firstPartURI = firstPartURI.split("/")[0];
         }
 

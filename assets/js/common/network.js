@@ -4,7 +4,6 @@
  * @author Pierre HUBERT
  */
 
-
 ComunicWeb.common.network = {
 
     /**
