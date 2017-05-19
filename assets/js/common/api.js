@@ -21,9 +21,12 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginToke
         //Get login tokens
         tokens = ComunicWeb.user.loginTokens.getLoginTokens();
 
-        //Add tokens
-        params.token1 = tokens.token1;
-        params.token2 = tokens.token2;
+        if(tokens){
+            //Add tokens
+            params.userToken1 = tokens.token1;
+            params.userToken2 = tokens.token2;
+        }
+
     }
 
     //Prepare data to send in request

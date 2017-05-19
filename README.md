@@ -1,3 +1,3 @@
 # WEB-WebComunicApp
 
-WebComunic RestClient
+WebComunic RestClient (Javascript WebApplication)

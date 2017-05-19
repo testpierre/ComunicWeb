@@ -12,6 +12,6 @@ $config['siteMode'] = "dev";
 $config['siteURL'] = "http://devweb.local/comunic/v2/";
 
 //API config
-$config['API_URL'] = "http://devweb.local/comunic/current/api.php/";
-$config['API_SERVICE_NAME'] = "";
-$config['API_SERVICE_TOKEN'] = "";
+$config['API_URL'] = "http://devweb.local/comunic/api/";
+$config['API_SERVICE_NAME'] = "testService";
+$config['API_SERVICE_TOKEN'] = "testPasswd";
