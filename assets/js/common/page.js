@@ -39,13 +39,22 @@ ComunicWeb.common.page = {
 
     /**
      * Show a full wait splash screen
+     * 
+     * @param {String} message A message to explain the reason of the splash screen (optionnal)
      */
-    showWaitSplashScreen: function(){
+    showWaitSplashScreen: function(message){
         //First, empty the screen
         this.emptyPage();
 
         //Log message
         ComunicWeb.debug.logMessage("Display a wait splash screen the screen.");
+
+        //Create message element (if required)
+        if(message){
+            var messageElem = createElem("div", document.body);
+            messageElem.className = "text";
+            messageElem.innerHTML = message;
+        }
 
         //Create image element
         var imgElem = document.createElement("img");

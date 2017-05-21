@@ -113,8 +113,10 @@ var ComunicWeb = {
 
             /**
              * Show a full wait splash screen
+             * 
+             * @param {String} message A message to explain the reason of the splash screen (optionnal)
              */
-            showWaitSplashScreen: function(){},
+            showWaitSplashScreen: function(message){},
 
             /**
              * Show a transparent wait splash screen

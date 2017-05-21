@@ -54,4 +54,17 @@ ComunicWeb.common.system = {
 		//Sucess
 		return true;
 	},
+
+	/**
+	 * Restart the application
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	restart: function(){
+		//Show a wait splashscreen message
+		ComunicWeb.common.page.showWaitSplashScreen("Restarting...");
+
+		//Reload the page
+		location.href = document.location;
+	}
 };
