@@ -151,6 +151,10 @@ ComunicWeb.common.page = {
                 var pageTarget = createElem("div", mainContenerElem);
                 pageTarget.id = "pageTarget";
             }
+            else{
+                //We can empty page target (much faster)
+                pageTarget.innerHTML = "";
+            }
 
             //Set wrapper class
             pageTarget.className = "content-wrapper";
