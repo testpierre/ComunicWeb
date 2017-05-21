@@ -124,22 +124,41 @@ ComunicWeb.common.page = {
         ComunicWeb.common.url.changeURI(document.title, pageURI);
 
         //Get the main contener of the page
-        var mainContenerElem = document.getElementById("wrapper");
+        var mainContenerElem =byId("wrapper");
 
         //If we didn't get anything, clean the page and create a wrapper element
         if(!mainContenerElem){
            var mainContenerElem = this.emptyPage(true);
         }
 
-        //We check if the page is a full screen page
+        //We check if the page is a full screen page or not
         if(pageInfos.disableMenus){
             //We force the screen to be cleaned
              var mainContenerElem = this.emptyPage(true);
-             var pageTarget = mainContenerElem;
+             var pageTarget = mainContenerElem; //The page directly goes to the main target
         }
         //Else
         else {
-            //We try to locate menubar
+
+            //We try to locate the target of the page
+            var pageTarget = byId("pageTarget");
+
+            //We empty screen if we couldn't rich it
+            if(!pageTarget){
+                mainContenerElem.innerHTML = "";
+
+                //We create the pagetTarget element
+                var pageTarget = createElem("div", mainContenerElem);
+                pageTarget.id = "pageTarget";
+            }
+
+            //Set wrapper class
+            mainContenerElem.className = "content-wrapper";
+
+            //Set body class
+            document.body.className="hold-transition skin-blue layout-top-nav";
+
+            //We load the menu
             
         }
 

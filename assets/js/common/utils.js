@@ -12,13 +12,13 @@
  * @return {HTMLElement} The newly created element
  */
 function createElem(nodeType, appendTo){
-    var newElem = document.createElement(nodeType);
+	var newElem = document.createElement(nodeType);
 
-    if(appendTo)
-        appendTo.appendChild(newElem);
+	if(appendTo)
+		appendTo.appendChild(newElem);
 
-    //Return result
-    return newElem;
+	//Return result
+	return newElem;
 }
 
 /**
@@ -28,5 +28,5 @@ function createElem(nodeType, appendTo){
  * @return {HTMLElement} The elemnt / False for a failure
  */
 function byId(nodeName){
-    return document.getElementById(nodeName);
+	return document.getElementById(nodeName);
 }

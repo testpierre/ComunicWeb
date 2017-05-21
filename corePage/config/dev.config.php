@@ -30,6 +30,9 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%adminLTE/plugins/jquery-ui/jquery-ui.min.js",
     "%PATH_ASSETS%adminLTE/plugins/iCheck/icheck.min.js",
 
+    //Utilities
+    "%PATH_ASSETS%js/common/utils.js",
+
     //Functions schema
     "%PATH_ASSETS%js/common/functionsSchema.js",
 
