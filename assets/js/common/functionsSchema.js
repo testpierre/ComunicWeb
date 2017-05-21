@@ -15,6 +15,13 @@ var ComunicWeb = {
      */
     common:{
         /**
+         * Application system functions
+         */
+        system:{
+            //TODO: implement
+        },
+
+        /**
          * API functions
          */
         api: {

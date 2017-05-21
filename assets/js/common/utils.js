@@ -30,3 +30,15 @@ function createElem(nodeType, appendTo){
 function byId(nodeName){
 	return document.getElementById(nodeName);
 }
+
+/**
+ * Create a quick language access function shorcut
+ */
+function lang(stringName, stringParams){
+    //Check if any params has been specified
+    if(!stringParams)
+        var stringParams = [];
+
+    //Call translate function
+    return ComunicWeb.common.langs.getTranslatedText(stringName, stringParams);
+}

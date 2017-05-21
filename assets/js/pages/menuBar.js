@@ -70,5 +70,7 @@ ComunicWeb.pages.menuBar = {
 				ComunicWeb.common.page.openPage("home");
 			});
 
+		//Now we need to know if user is logged in or not
+		
 	},
 };
