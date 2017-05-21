@@ -124,11 +124,23 @@ ComunicWeb.common.page = {
         ComunicWeb.common.url.changeURI(document.title, pageURI);
 
         //Get the main contener of the page
-        //var mainContenerElem = document.getElementById("wrapper");
+        var mainContenerElem = document.getElementById("wrapper");
 
         //If we didn't get anything, clean the page and create a wrapper element
         if(!mainContenerElem){
            var mainContenerElem = this.emptyPage(true);
+        }
+
+        //We check if the page is a full screen page
+        if(pageInfos.disableMenus){
+            //We force the screen to be cleaned
+             var mainContenerElem = this.emptyPage(true);
+             var pageTarget = mainContenerElem;
+        }
+        //Else
+        else {
+            //We try to locate menubar
+            
         }
 
         //Check if some additionnal data was specified
@@ -136,7 +148,7 @@ ComunicWeb.common.page = {
             additionnalData = {};
         
         //Call the method related to the page
-        eval(pageInfos.methodHandler + ("(additionnalData, mainContenerElem);"));
+        eval(pageInfos.methodHandler + ("(additionnalData, pageTarget);"));
         
     },
 

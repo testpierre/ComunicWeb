@@ -11,6 +11,7 @@ ComunicWeb.pagesList = {
     home: {
         pageTitle: "Comunic, v2",
         methodHandler: "ComunicWeb.pages.home.home.openHomePage",
+        disableMenus: false,
     },
 
     /**
@@ -19,6 +20,7 @@ ComunicWeb.pagesList = {
     login: {
         pageTitle: "Login page",
         methodHandler: "ComunicWeb.pages.login.openLoginPage",
+        disableMenus: true,
     },
 
     /**
