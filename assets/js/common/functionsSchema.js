@@ -301,9 +301,16 @@ var ComunicWeb = {
     },
 
     /**
-     * Pages functions
+     * Pages controllers
      */
     pages:{
+
+        /**
+         * Menubar
+         */
+        menuBar: {
+            //TODO: implement
+        },
 
         /**
          * Home page

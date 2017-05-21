@@ -57,6 +57,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/user/userInfos.js",
 
     //Pages scripts
+    "%PATH_ASSETS%js/pages/menuBar.js",
     "%PATH_ASSETS%js/pages/home/home.js",
     "%PATH_ASSETS%js/pages/login.js",
     "%PATH_ASSETS%js/pages/logout.js",

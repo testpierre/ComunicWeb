@@ -153,13 +153,13 @@ ComunicWeb.common.page = {
             }
 
             //Set wrapper class
-            mainContenerElem.className = "content-wrapper";
+            pageTarget.className = "content-wrapper";
 
             //Set body class
             document.body.className="hold-transition skin-blue layout-top-nav";
 
-            //We load the menu
-            
+            //We load the menubar
+            ComunicWeb.pages.menuBar.display();
         }
 
         //Check if some additionnal data was specified
