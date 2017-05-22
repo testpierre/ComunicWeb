@@ -4,7 +4,7 @@
  * @author Pierre HUBERT
  */
 
-ComunicWeb.pages.menuBar = {
+ComunicWeb.components.menuBar = {
 	/**
 	 * Display menu bar
 	 * 

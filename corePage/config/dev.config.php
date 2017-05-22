@@ -52,13 +52,15 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/common/formChecker.js",
     "%PATH_ASSETS%js/common/system.js",
 
+    //Components
+    "%PATH_ASSETS%js/components/menuBar.js",
+
     //User scripts
     "%PATH_ASSETS%js/user/loginTokens.js",
     "%PATH_ASSETS%js/user/userLogin.js",
     "%PATH_ASSETS%js/user/userInfos.js",
 
     //Pages scripts
-    "%PATH_ASSETS%js/pages/menuBar.js",
     "%PATH_ASSETS%js/pages/home/home.js",
     "%PATH_ASSETS%js/pages/login.js",
     "%PATH_ASSETS%js/pages/logout.js",

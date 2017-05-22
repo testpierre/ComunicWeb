@@ -172,7 +172,7 @@ ComunicWeb.common.page = {
             document.body.className="hold-transition skin-blue layout-top-nav";
 
             //We load the menubar
-            ComunicWeb.pages.menuBar.display();
+            ComunicWeb.components.menuBar.display();
         }
 
         //Check if some additionnal data was specified
