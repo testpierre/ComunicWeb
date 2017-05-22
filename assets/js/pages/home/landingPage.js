@@ -12,5 +12,18 @@ ComunicWeb.pages.home.landingPage = {
     display: function(targetElement){
         //Log action
         ComunicWeb.debug.logMessage("Open home landing page.");
+
+        //Prepare additional data
+        var additionalData = {};
+
+        //Preparing next actions
+        var afterParsingTemplate = function(){
+            console.log(byId("homeLandingScreen"));
+            //Change home background
+            byId("homeLandingScreen").style.backgroundImage = "url('"+ComunicWeb.__config.assetsURL + "img/pages/home/landingPage/img_background.jpg')";
+        };
+
+        //Apply template
+        ComunicWeb.common.page.getAndShowTemplate(targetElement, additionalData, "pages/home/landingPage/home.tpl", afterParsingTemplate, true);
     }
 };
