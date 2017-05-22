@@ -62,6 +62,7 @@ $config['JSfiles'] = array(
 
     //Pages scripts
     "%PATH_ASSETS%js/pages/home/home.js",
+    "%PATH_ASSETS%js/pages/home/landingPage.js",
     "%PATH_ASSETS%js/pages/login.js",
     "%PATH_ASSETS%js/pages/logout.js",
 

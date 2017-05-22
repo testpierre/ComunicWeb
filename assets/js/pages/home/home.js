@@ -15,8 +15,9 @@ ComunicWeb.pages.home.home = {
         //Check wether if user is logged in or not
         var userLoggedIn = ComunicWeb.user.userLogin.getUserLoginState();
 
-        //Dev feature : Show result
+        //Check if user is in or not
         if(userLoggedIn){
+            //Dev feature : Show result
             targetElement.appendChild(ComunicWeb.common.messages.createCalloutElem("", "User logged in !", "info"));
             
             //Create logout button
@@ -28,15 +29,8 @@ ComunicWeb.pages.home.home = {
             targetElement.appendChild(loginButton);
         }
         else{
-            targetElement.appendChild(ComunicWeb.common.messages.createCalloutElem("", "User not logged in !", "warning"));
-
-            //Create login button
-            var loginButton = document.createElement("button");
-            loginButton.onclick = (function(){
-                ComunicWeb.common.page.openPage("login");
-            });
-            loginButton.innerHTML="Login";
-            targetElement.appendChild(loginButton);
+            //Display landing page
+            ComunicWeb.pages.home.landingPage.display(targetElement);
         }
 
         //Everything seems to be OK

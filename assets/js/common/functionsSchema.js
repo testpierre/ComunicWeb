@@ -328,7 +328,6 @@ var ComunicWeb = {
 	 */
 	pages:{
 
-
 		/**
 		 * Home page
 		 */
@@ -344,6 +343,13 @@ var ComunicWeb = {
 
 
 			},
+
+			/**
+			 * Landing home page
+			 */
+			landingPage:{
+				//TODO : implement
+			}
 		},
 
 		/**
