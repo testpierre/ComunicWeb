@@ -18,7 +18,7 @@ ComunicWeb.pages.home.landingPage = {
 
         //Preparing next actions
         var afterParsingTemplate = function(){
-            console.log(byId("homeLandingScreen"));
+
             //Change home background
             byId("homeLandingScreen").style.backgroundImage = "url('"+ComunicWeb.__config.assetsURL + "img/pages/home/landingPage/img_background.jpg')";
         };

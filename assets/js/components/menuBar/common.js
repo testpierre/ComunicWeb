@@ -1,10 +1,10 @@
 /**
- * Menu bar object
+ * Menu bar object - common methods
  * 
  * @author Pierre HUBERT
  */
 
-ComunicWeb.components.menuBar = {
+ComunicWeb.components.menuBar.common = {
 	/**
 	 * Display menu bar
 	 * 
@@ -71,6 +71,15 @@ ComunicWeb.components.menuBar = {
 			});
 
 		//Now we need to know if user is logged in or not
-		
+		var userLoggedIn = ComunicWeb.user.userLogin.getUserLoginState();
+
+		//Call specific menu
+		if(userLoggedIn){
+			//Not implemented yet
+		}
+		else{
+			//Call not-logged-in menu
+			ComunicWeb.components.menuBar.notAuthenticated.addElements(containerElem);
+		}
 	},
 };

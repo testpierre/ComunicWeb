@@ -318,7 +318,20 @@ var ComunicWeb = {
 		 * Menubar
 		 */
 		menuBar: {
-			//TODO: implement
+
+			/**
+ 			 * Menu bar object - common methods
+			 */
+			common:{
+				//TODO : implement
+			},
+
+			/**
+			 * Not authenticated menu bar components
+ 			 */
+			notAuthenticated: {
+				//TODO : implement
+			}
 		},
 
 	},
