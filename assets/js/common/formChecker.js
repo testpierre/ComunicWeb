@@ -33,7 +33,7 @@ ComunicWeb.common.formChecker = {
 
         //MailInput
         else if(inputType == "email"){
-            inputOK = input.value.match(/^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]{1,}[.][a-zA-Z]{2,3}$/);
+            inputOK = checkMail(input.value);
         }
 
         //Password input

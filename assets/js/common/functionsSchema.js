@@ -334,6 +334,14 @@ var ComunicWeb = {
 			}
 		},
 
+		/**
+		 * Mails caching component
+		 */
+		mailCaching: {
+			//TODO : implement
+		}
+
+
 	},
 
 	/**

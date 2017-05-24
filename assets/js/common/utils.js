@@ -32,6 +32,16 @@ function byId(nodeName){
 }
 
 /**
+ * Check a given email address
+ * 
+ * @param {String} emailAddress The email address to check
+ * @return {Boolean} True for a valid email address / false else
+ */
+function checkMail(emailAddress){
+	return (emailAddress.match(/^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]{1,}[.][a-zA-Z]{2,5}$/) === null ? false : true);
+}
+
+/**
  * Create a quick language access function shorcut
  */
 function lang(stringName, stringParams){

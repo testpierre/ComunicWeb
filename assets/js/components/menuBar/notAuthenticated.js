@@ -23,7 +23,9 @@ ComunicWeb.components.menuBar.notAuthenticated = {
         loginForm.setAttribute("role", "login");
 
         loginForm.onsubmit = function(){
-            //Try to login user; in case of failure redirect
+            //Try to login user; in case of failure redirect to login page
+
+            return false;
         }
 
         //Add email address formGroup

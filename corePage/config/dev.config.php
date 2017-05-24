@@ -58,6 +58,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/common/system.js",
 
     //Components
+    "%PATH_ASSETS%js/components/mailCaching.js",
     "%PATH_ASSETS%js/components/menuBar/common.js",
     "%PATH_ASSETS%js/components/menuBar/notAuthenticated.js",
 

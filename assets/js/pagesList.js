@@ -29,6 +29,7 @@ ComunicWeb.pagesList = {
     logout: {
         pageTitle: "Logout",
         methodHandler: "ComunicWeb.pages.logout.openLogoutPage",
+        disableMenus: true,
     },
 
     /**
