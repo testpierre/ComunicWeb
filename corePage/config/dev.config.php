@@ -21,14 +21,19 @@ $config['CSSfiles'] = array(
     //App stylesheets
     "%PATH_ASSETS%css/common/global.css",
     "%PATH_ASSETS%css/common/page/waitSplashScreen.css",
+
+    //Components stylesheets
+    "%PATH_ASSETS%css/components/menuBar.css",
 );
 
 //JS files to include (at the end of the page)
 $config['JSfiles'] = array(
     //Framewokr inclusions
     "%PATH_ASSETS%adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
+    "%PATH_ASSETS%adminLTE/bootstrap/js/bootstrap.min.js",
     "%PATH_ASSETS%adminLTE/plugins/jquery-ui/jquery-ui.min.js",
     "%PATH_ASSETS%adminLTE/plugins/iCheck/icheck.min.js",
+    "%PATH_ASSETS%adminLTE/dist/js/app.min.js",
 
     //Utilities
     "%PATH_ASSETS%js/common/utils.js",

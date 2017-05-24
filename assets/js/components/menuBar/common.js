@@ -70,6 +70,17 @@ ComunicWeb.components.menuBar.common = {
 				ComunicWeb.common.page.openPage("home");
 			});
 
+			//Create navbar collapsed button
+			var navbarCollapsedButton = createElem("button", navbarHeader);
+			navbarCollapsedButton.type = "button";
+			navbarCollapsedButton.className = "navbar-toggle collapsed";
+			navbarCollapsedButton.setAttribute("data-toggle", "collapse");
+			navbarCollapsedButton.setAttribute("data-target", "#navbar-collapse");
+
+				//Create navbar icon
+				var navbarCollapsIcon = createElem("i", navbarCollapsedButton);
+				navbarCollapsIcon.className = "fa fa-bars";
+
 		//Now we need to know if user is logged in or not
 		var userLoggedIn = ComunicWeb.user.userLogin.getUserLoginState();
 

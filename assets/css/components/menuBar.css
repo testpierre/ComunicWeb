@@ -1,0 +1,12 @@
+/**
+ * Menubar stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+/**
+ * Login form
+ */
+.menubar-loginForm .form-control {
+    margin-right: 1px;
+}
