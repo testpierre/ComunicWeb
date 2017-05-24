@@ -161,6 +161,9 @@ ComunicWeb.user.userLogin = {
                     storageType = "session";
                 }
                 ComunicWeb.user.loginTokens.setUserTokens(result.tokens, storageType);
+
+                //Save email address
+                ComunicWeb.components.mailCaching.set(usermail);
             }
 
             //Perform next action if login failed

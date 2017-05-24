@@ -13,6 +13,11 @@ ComunicWeb.pages.login = {
 	 * @returns {Boolean} False if it fails 
 	 */
 	openLoginPage: function(additionnalData, targetElement){
+
+		//Prevent errors
+		if(!additionnalData)
+			additionnalData = {};
+
 		//First, check if user is already logged in or not
 		if(ComunicWeb.user.userLogin.getUserLoginState() === true){
 			//Log message
@@ -55,12 +60,15 @@ ComunicWeb.pages.login = {
 			//loginButton.onclick = ComunicWeb.pages.login.loginSubmit;
 			loginBody.onsubmit = ComunicWeb.pages.login.loginSubmit;
 
-			//Check if additionnal data were specified
-			if(additionnalData){
-				//Check if we have to display a login failed message
-				if(additionnalData.loginFailedMessage)
-					ComunicWeb.pages.login.displayLoginError();
-			}
+
+			//Check now additional parametres changes
+			//Check if a specific email address was specified
+			if(additionnalData.emailInput)
+				byId("usermail").value = additionnalData.emailInput;
+
+			//Check if we have to display a login failed message
+			if(additionnalData.loginFailedMessage)
+				ComunicWeb.pages.login.displayLoginError();
 		};
 
 		//Apply template
@@ -104,9 +112,6 @@ ComunicWeb.pages.login = {
 			//First, remove overlay
 			screenOverlay.remove();
 
-			//Save email address
-			ComunicWeb.components.mailCaching.set(usermail);
-
 			//Check if login failed
 			if(!loginResult){
 				
@@ -117,8 +122,8 @@ ComunicWeb.pages.login = {
 				return false;
 		   }
 
-		   //Open home page
-		   ComunicWeb.common.page.openPage("home");
+			//Open home page
+			ComunicWeb.common.page.openPage("home");
 		};
 
 		//Try to login user
