@@ -11,6 +11,11 @@ var ComunicWeb = {
 	__config: ComunicConfig,
 
 	/**
+	 * List of available pages
+	 */
+	pagesList:{},
+
+	/**
 	 * Common functions
 	 */
 	common:{
@@ -386,6 +391,13 @@ var ComunicWeb = {
 			 * Perform user login
 			 */
 			loginSubmit: function(){},
+
+			/**
+			 * Display login error message
+			 * 
+			 * @return {Boolean} True for a success
+			 */
+			displayLoginError: function(){},
 		},
 
 		/**
@@ -399,4 +411,4 @@ var ComunicWeb = {
 		},
 
 	},
-}
+};

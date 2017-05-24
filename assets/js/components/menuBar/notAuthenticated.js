@@ -24,6 +24,11 @@ ComunicWeb.components.menuBar.notAuthenticated = {
 
         loginForm.onsubmit = function(){
             //Try to login user; in case of failure redirect to login page
+            //TODO : implement
+            //In case of error
+            ComunicWeb.common.page.openPage("login", {
+                loginFailedMessage: true,
+            });
 
             return false;
         }
@@ -37,6 +42,7 @@ ComunicWeb.components.menuBar.notAuthenticated = {
         emailInput.className = "form-control";
         emailInput.placeholder = "Email address";
         emailInput.type = "email";
+        emailInput.value = ComunicWeb.components.mailCaching.get();
 
         //Add password formGroup
         var passwordFormGroup = createElem("div", loginForm);

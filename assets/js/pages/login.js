@@ -5,113 +5,140 @@
  */
 
 ComunicWeb.pages.login = {
-    /**
-     * Open login page
-     * 
-     * @param {Object} additionnalData Additionnal data passed in the method
-     * @param {element} targetElement Where the template will be applied
-     * @returns {Boolean} False if it fails 
-     */
-    openLoginPage: function(additionnalData, targetElement){
-        //First, check if user is already logged in or not
-        if(ComunicWeb.user.userLogin.getUserLoginState() === true){
-            //Log message
-            ComunicWeb.debug.logMessage("Couldn't open login page because user is already logged in !");
+	/**
+	 * Open login page
+	 * 
+	 * @param {Object} additionnalData Additionnal data passed in the method
+	 * @param {element} targetElement Where the template will be applied
+	 * @returns {Boolean} False if it fails 
+	 */
+	openLoginPage: function(additionnalData, targetElement){
+		//First, check if user is already logged in or not
+		if(ComunicWeb.user.userLogin.getUserLoginState() === true){
+			//Log message
+			ComunicWeb.debug.logMessage("Couldn't open login page because user is already logged in !");
 
-            //Open home page
-            ComunicWeb.common.page.openPage("home");
+			//Open home page
+			ComunicWeb.common.page.openPage("home");
 
-            //Quit page
-            return false;
-        }
+			//Quit page
+			return false;
+		}
 
-        //Prepare additional data
-        var additionalData = {};
+		//Prepare additional data
+		var additionalTemplateData = {};
 
-        //Preparing next actions
-        var afterParsingTemplate = function(){
-            //Change body class name
-            document.body.className = "login-page hold-transition";
+		//Preparing next actions
+		var afterParsingTemplate = function(){
+			//Change body class name
+			document.body.className = "login-page hold-transition";
 
-            //Enable iCheck
-            $(function () {
-                $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-                });
-            });
+			//Enable iCheck
+			$(function () {
+				$('input').iCheck({
+				checkboxClass: 'icheckbox_square-blue',
+				radioClass: 'iradio_square-blue',
+				increaseArea: '20%' // optional
+				});
+			});
 
-            //Get login form element
-            var loginBody = document.getElementById("loginForm");
+			//Define email address (if possible)
+			byId("usermail").value = ComunicWeb.components.mailCaching.get();
 
-            //Get login button
-            var loginButton = loginBody.getElementsByClassName("btn-login")[0];
+			//Get login form element
+			var loginBody = document.getElementById("loginForm");
 
-            //Make the login action accessible
-            //loginButton.onclick = ComunicWeb.pages.login.loginSubmit;
-            loginBody.onsubmit = ComunicWeb.pages.login.loginSubmit;
-        };
+			//Get login button
+			var loginButton = loginBody.getElementsByClassName("btn-login")[0];
 
-        //Apply template
-        ComunicWeb.common.page.getAndShowTemplate(targetElement, additionalData, "pages/login/loginPage.tpl", afterParsingTemplate, true);
-    },
+			//Make the login action accessible
+			//loginButton.onclick = ComunicWeb.pages.login.loginSubmit;
+			loginBody.onsubmit = ComunicWeb.pages.login.loginSubmit;
 
-    /**
-     * Perform user login
-     * 
-     * @return {Boolean} False if it fails
-     */
-    loginSubmit: function(){
-        //Get inputs
-        var usermailInput = document.getElementById("usermail"); //Usermail
-        var userpasswordInput = document.getElementById("userpassword"); //Password
-        var rememberLoginInput = document.getElementById("rememberLogin"); //Remember login
+			//Check if additionnal data were specified
+			if(additionnalData){
+				//Check if we have to display a login failed message
+				if(additionnalData.loginFailedMessage)
+					ComunicWeb.pages.login.displayLoginError();
+			}
+		};
 
-        //Check inputs
-        if(!(
-            ComunicWeb.common.formChecker.checkInput(usermailInput, true) && //Check usermail input
-            ComunicWeb.common.formChecker.checkInput(userpasswordInput, true) //Check password input
-        )){
-           //Error notification
-           ComunicWeb.common.notificationSystem.showNotification("Please check what you've typed !", "error");
+		//Apply template
+		ComunicWeb.common.page.getAndShowTemplate(targetElement, additionalTemplateData, "pages/login/loginPage.tpl", afterParsingTemplate, true);
+	},
 
-           //Stop function execution
-           return false;
-        }
-       
-        //Enable overlay (use .remove() to remove)
-        var screenOverlay = ComunicWeb.common.page.showTransparentWaitSplashScreen();
-        
-        //Retrieve values
-        var usermail = usermailInput.value; 
-        var userpassword = userpasswordInput.value;
-        var permanentLogin = rememberLoginInput.checked;
+	/**
+	 * Perform user login
+	 * 
+	 * @return {Boolean} False if it fails
+	 */
+	loginSubmit: function(){
+		//Get inputs
+		var usermailInput = byId("usermail"); //Usermail
+		var userpasswordInput = byId("userpassword"); //Password
+		var rememberLoginInput = document.getElementById("rememberLogin"); //Remember login
 
-        //What to do once user is logged in (or not)
-        var afterTryLogin = function(loginResult){
+		//Check inputs
+		if(!(
+			ComunicWeb.common.formChecker.checkInput(usermailInput, true) && //Check usermail input
+			ComunicWeb.common.formChecker.checkInput(userpasswordInput, true) //Check password input
+		)){
+		   //Error notification
+		   ComunicWeb.common.notificationSystem.showNotification("Please check what you've typed !", "error");
 
-            //First, remove overlay
-            screenOverlay.remove();
+		   //Stop function execution
+		   return false;
+		}
+	   
+		//Enable overlay (use .remove() to remove)
+		var screenOverlay = ComunicWeb.common.page.showTransparentWaitSplashScreen();
+		
+		//Retrieve values
+		var usermail = usermailInput.value; 
+		var userpassword = userpasswordInput.value;
+		var permanentLogin = rememberLoginInput.checked;
 
-            //Check if login failed
-            if(!loginResult){
-                //Create error modal
-                errorMessageElem = ComunicWeb.common.messages.createCalloutElem("Login failed", "Please check your usermail and password", "danger");
+		//What to do once user is logged in (or not)
+		var afterTryLogin = function(loginResult){
 
-                //Apply error modal
-                document.getElementById('loginMessagesTarget').innerHTML = "";
-                document.getElementById('loginMessagesTarget').appendChild(errorMessageElem);
+			//First, remove overlay
+			screenOverlay.remove();
 
-                //Return false
-                return false;
-           }
+			//Save email address
+			ComunicWeb.components.mailCaching.set(usermail);
 
-           //Open home page
-           ComunicWeb.common.page.openPage("home");
-        };
+			//Check if login failed
+			if(!loginResult){
+				
+				//Display error
+				ComunicWeb.pages.login.displayLoginError();
 
-        //Try to login user
-        ComunicWeb.user.userLogin.loginUser(usermail, userpassword, permanentLogin, afterTryLogin);
-    },
+				//Return false
+				return false;
+		   }
+
+		   //Open home page
+		   ComunicWeb.common.page.openPage("home");
+		};
+
+		//Try to login user
+		ComunicWeb.user.userLogin.loginUser(usermail, userpassword, permanentLogin, afterTryLogin);
+	},
+
+	/**
+	 * Display login error message
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	displayLoginError: function(){
+		//Create error modal
+		errorMessageElem = ComunicWeb.common.messages.createCalloutElem("Login failed", "Please check your usermail and password", "danger");
+
+		//Apply error modal
+		document.getElementById('loginMessagesTarget').innerHTML = "";
+		document.getElementById('loginMessagesTarget').appendChild(errorMessageElem);
+
+		//Success
+		return true;
+	},
 };
