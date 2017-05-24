@@ -21,7 +21,7 @@ ComunicWeb.pages.logout = {
         ComunicWeb.user.userLogin.logoutUser();
 
         //Show a success notification
-        ComunicWeb.common.notificationSystem.showNotification("Good bye, you sucessfully terminated your session !", "sucess", 5);
+        ComunicWeb.common.notificationSystem.showNotification("Good bye, you successfully terminated your session !", "sucess", 5);
 
         //Open login page
         ComunicWeb.common.page.openPage("home");
