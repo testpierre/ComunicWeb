@@ -168,6 +168,10 @@ ComunicWeb.common.page = {
             //Set wrapper class
             pageTarget.className = "content-wrapper";
 
+            //Ask adminLTE to fix layout
+            if($.AdminLTE.layout)
+                $.AdminLTE.layout.fix();
+
             //Set body class
             document.body.className="hold-transition skin-blue layout-top-nav";
 

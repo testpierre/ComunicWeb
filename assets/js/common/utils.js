@@ -25,10 +25,31 @@ function createElem(nodeType, appendTo){
  * Get an HTML element specified by an ID
  * 
  * @param {String} nodeName The ID of the element
- * @return {HTMLElement} The elemnt / False for a failure
+ * @return {HTMLElement} The element / False for a failure
  */
 function byId(nodeName){
 	return document.getElementById(nodeName);
+}
+
+/**
+ * Remove all nodes of a specified HTML element
+ * 
+ * @param {HTMLElement} container The container to empty
+ * @return {Boolean} True for a success
+ */
+function emptyElem(container){
+	//Get children references
+	var children = container.childNodes;
+
+	//Process each child
+	for(i in children){
+		if(children[i].remove)
+			children[i].remove();
+	}
+		
+	
+	//Success
+	return true;
 }
 
 /**

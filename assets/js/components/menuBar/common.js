@@ -19,8 +19,18 @@ ComunicWeb.components.menuBar.common = {
 
 		//We check if the menubar is present or not on the page
 		if(menuBar){
-			ComunicWeb.debug.logMessage("Info: The menubar is already present on the page");
-			return true;
+
+			//We check if menubar is made for a logged user when not any is logged in or vice-versa
+			if(menuBar.getAttribute("forActiveUser") !== ComunicWeb.user.userLogin.getUserLoginState().toString()){
+				//Remove previously created menuBar
+				this.reset(menuBar);
+			}
+			else {
+				//Nothing to be done
+				ComunicWeb.debug.logMessage("Info: The menubar is already present on the page");
+				return true;
+			}
+			
 		}
 
 		//So we have to initializate it
@@ -84,6 +94,9 @@ ComunicWeb.components.menuBar.common = {
 		//Now we need to know if user is logged in or not
 		var userLoggedIn = ComunicWeb.user.userLogin.getUserLoginState();
 
+		//Save login information in menubar before continuing
+		menuContainer.setAttribute("forActiveUser", userLoggedIn);
+
 		//Call specific menu
 		if(userLoggedIn){
 			//Not implemented yet
@@ -93,4 +106,20 @@ ComunicWeb.components.menuBar.common = {
 			ComunicWeb.components.menuBar.notAuthenticated.addElements(containerElem);
 		}
 	},
+
+	/**
+	 * Reset a specified menubar
+	 * 
+	 * @param {HTMLElement} menuBar The menuBar to reset
+	 * @return {Boolean} True for a success
+	 */
+	reset: function(menuBar){
+
+		//Log action
+		ComunicWeb.debug.logMessage("Cleaning a menuBar element.");
+
+		//Perform action
+		return emptyElem(menuBar);
+
+	}
 };
