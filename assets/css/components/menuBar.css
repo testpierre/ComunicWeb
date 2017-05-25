@@ -5,6 +5,18 @@
  */
 
 /**
+ * Authenticated useres
+ */
+header .dropdown .fa-gear {
+    vertical-align: middle;
+}
+
+
+/**
+ * Not authenticated users
+ */
+
+/**
  * Login form
  */
 .menubar-loginForm .form-control {

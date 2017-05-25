@@ -40,7 +40,16 @@ ComunicWeb.components.menuBar.authenticated = {
 		var dropdownButton = createElem("a", dropdown);
 		dropdownButton.className = "dropdown-toggle";
 		dropdownButton.setAttribute("data-toggle", "dropdown");
-		dropdownButton.innerHTML = "Menu";
+		
+		//Add dropdown button icon
+		var dropdownButtonIcon = createElem("i", dropdownButton);
+		dropdownButtonIcon.className = "fa fa-gear";
+
+		dropdownButton.innerHTML += " ";
+
+		//Add dropdown button arrow
+		var dropdownButtonArrow = createElem("span", dropdownButton);
+		dropdownButtonArrow.className = "caret";
 
 		//Create dropdown menu content
 		var dropdownContent = createElem("ul", dropdown);
