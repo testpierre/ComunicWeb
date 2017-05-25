@@ -95,6 +95,14 @@ ComunicWeb.components.menuBar.authenticated = {
 		userNameElem.innerHTML = "Loading...";
 
 		//Make a request to get informations about the user
-		
+		ComunicWeb.user.getUserInfos.getUserInfos("current", (function(userInfos){
+
+			//Change user name
+			userNameElem.innerHTML = userInfos.firstName + " "+ userInfos.lastName;
+
+			//Change avatar url
+			userimage.src = userInfos.accountImage;
+
+		}));
 	},
 };

@@ -13,6 +13,9 @@ ComunicWeb.pages.home.landingPage = {
         //Log action
         ComunicWeb.debug.logMessage("Open home landing page.");
 
+        //Change page title
+        document.title = "Comunic, a transparent social network";
+
         //Prepare additional data
         var additionalData = {};
 
