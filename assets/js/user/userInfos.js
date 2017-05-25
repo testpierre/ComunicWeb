@@ -58,10 +58,12 @@ ComunicWeb.user.getUserInfos = {
      * Empty user informations cache
      * Remove all entries from user informations cache
      * 
-     * @return {Boolean} False if it fails
+     * @return {Boolean} True for a success
      */
     emptyUserInfosCache: function(){
         this.userInfos = undefined; //Mark user info cache as undefined
         this.userInfos = {}; //Create a new variable
+
+        return true;
     },
 }
