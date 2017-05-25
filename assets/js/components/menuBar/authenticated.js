@@ -20,6 +20,9 @@ ComunicWeb.components.menuBar.authenticated = {
 		var navbarElemList = createElem("ul", navbarCollapse);
 		navbarElemList.className = "nav navbar-nav";
 
+		//Add user name
+		this.addUserName(navbarElemList);
+
 		//Add dropdown menu
 		this.addDropdown(navbarElemList);
 		
@@ -29,7 +32,7 @@ ComunicWeb.components.menuBar.authenticated = {
 	 * Add dropdown menu
 	 * 
 	 * @param {HTMLElement} navbarElem The target navbarlist element 
-	 * @return {Boolean} True for a success
+	 * @return {HTMLElement} The dropdown content element
 	 */
 	addDropdown: function(navbarElem){
 		//Create dropdown menu
@@ -45,6 +48,7 @@ ComunicWeb.components.menuBar.authenticated = {
 		var dropdownButtonIcon = createElem("i", dropdownButton);
 		dropdownButtonIcon.className = "fa fa-gear";
 
+		//Add space
 		dropdownButton.innerHTML += " ";
 
 		//Add dropdown button arrow
@@ -61,5 +65,36 @@ ComunicWeb.components.menuBar.authenticated = {
 		var logoutButtonLink = createElem("a", logoutButton);
 		logoutButtonLink.innerHTML = "Logout";
 		logoutButton.onclick = function(){openPage("logout")};
-	}
+
+		//Return dropdown content element
+		return dropdownContent;
+	},
+
+	/**
+	 * Add user name element
+	 * 
+	 * @param {HTMLElement} navbarElem The target navbarlist element 
+	 * @return {HTMLElement} The user element
+	 */
+	addUserName: function(navbarElem){
+		//Create user element
+		var userelement = createElem("li", navbarElem);
+		userelement.className = "user-menu";
+
+		//Add user link element
+		var userlinkelement = createElem("a", userelement);
+
+		//Add user image
+		var userimage = createElem("img", userlinkelement);
+		userimage.className = "user-image";
+		userimage.src = ComunicWeb.__config.assetsURL + "img/defaultAvatar.png";
+
+		//Add user name
+		var userNameElem = createElem("span", userlinkelement);
+		userNameElem.className = "hidden-xs";
+		userNameElem.innerHTML = "Loading...";
+
+		//Make a request to get informations about the user
+		
+	},
 };
