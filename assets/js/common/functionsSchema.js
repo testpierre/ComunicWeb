@@ -339,7 +339,7 @@ var ComunicWeb = {
 			 * Empty user informations cache
 			 * Remove all entries from user informations cache
 			 */
-			emptyUserInfosCache: function(){}
+			emptyUserInfosCache: function(){},
 		},
 	},
 
@@ -357,21 +357,50 @@ var ComunicWeb = {
  			 * Menu bar object - common methods
 			 */
 			common:{
-				//TODO : implement
+				/**
+	 			 * Display menu bar
+				 */
+				display: function(){},
+
+				/**
+				 * Initializate a menubar
+				 */
+				init: function(menuContainer){},
+
+				/**
+				 * Reset a specified menubar
+				 */
+				reset: function(menuBar){},
 			},
 
 			/**
 			 * Not authenticated menu bar components
  			 */
 			notAuthenticated: {
-				//TODO : implement
+				/**
+				 * Add not-authenticated user specific elements
+				 */
+				addElements: function(container){},
 			},
 
 			/**
  			 * Menubar for authenticated users complements
 			 */
 			authenticated:{
-				//TODO : implement
+				/**
+				 * Add authenticated user specific elements
+				 */
+				addElements: function(container){},
+
+				/**
+				 * Add dropdown menu
+				 */
+				addDropdown: function(navbarElem){},
+
+				/**
+				 * Add user name element
+				 */
+				addUserName: function(navbarElem){},
 			},
 		},
 
@@ -379,7 +408,20 @@ var ComunicWeb = {
 		 * Mails caching component
 		 */
 		mailCaching: {
-			//TODO : implement
+			/**
+			 * @var Mail caching variable name
+			 */
+			__mailCachingVarName: "lastLoginMail",
+
+			/**
+			 * Get current cached value
+			 */
+			get: function(){},
+
+			/**
+			 * Set a new mail value
+			 */
+			set: function(mail){},
 		}
 
 
@@ -410,7 +452,10 @@ var ComunicWeb = {
 			 * Landing home page
 			 */
 			landingPage:{
-				//TODO : implement
+				/**
+				 * Display home landing page
+				 */
+				display: function(targetElement){},
 			}
 		},
 
