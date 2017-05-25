@@ -27,7 +27,15 @@ var ComunicWeb = {
 		 * Application system functions
 		 */
 		system:{
-			//TODO: implement
+			/**
+			 * Initializate the application
+			 */
+			init: function(){},
+
+			/**
+			 * Restart the application
+			 */
+			restart: function(){},
 		},
 
 		/**
@@ -162,7 +170,10 @@ var ComunicWeb = {
 		 * Functions to check data input in forms
 		 */
 		formChecker: {
-			//TODO : implement
+			/**
+  			 * Check an input
+			 */
+			checkInput: function(input, inFormGroup){},
 		},
 
 		/**
@@ -314,7 +325,21 @@ var ComunicWeb = {
 		 * Get user infos
 		 */
 		userInfos: {
-			//TODO: implement
+			/**
+			 * @var {String} User infos cache
+			 */
+			usersInfos: {},
+
+			/**
+			 * Get user informations
+			 */
+			getUserInfos: function(userID, afterGetUserInfos){},
+
+			/**
+			 * Empty user informations cache
+			 * Remove all entries from user informations cache
+			 */
+			emptyUserInfosCache: function(){}
 		},
 	},
 
