@@ -3,6 +3,10 @@
  * 
  * @author Pierre HUBERT
  */
+
+/**
+ * ComunicWeb main object
+ */
 var ComunicWeb = {
 
 	/**
@@ -336,7 +340,14 @@ var ComunicWeb = {
  			 */
 			notAuthenticated: {
 				//TODO : implement
-			}
+			},
+
+			/**
+ 			 * Menubar for authenticated users complements
+			 */
+			authenticated:{
+				//TODO : implement
+			},
 		},
 
 		/**

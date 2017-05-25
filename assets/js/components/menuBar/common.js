@@ -99,10 +99,11 @@ ComunicWeb.components.menuBar.common = {
 
 		//Call specific menu
 		if(userLoggedIn){
-			//Not implemented yet
+			//Call authenticated menubar
+			ComunicWeb.components.menuBar.authenticated.addElements(containerElem);
 		}
 		else{
-			//Call not-logged-in menu
+			//Call not-logged-in menubar
 			ComunicWeb.components.menuBar.notAuthenticated.addElements(containerElem);
 		}
 	},

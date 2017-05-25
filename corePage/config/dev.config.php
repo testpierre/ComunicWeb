@@ -61,6 +61,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/components/mailCaching.js",
     "%PATH_ASSETS%js/components/menuBar/common.js",
     "%PATH_ASSETS%js/components/menuBar/notAuthenticated.js",
+    "%PATH_ASSETS%js/components/menuBar/authenticated.js",
 
     //User scripts
     "%PATH_ASSETS%js/user/loginTokens.js",
