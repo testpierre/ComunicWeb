@@ -174,7 +174,7 @@ ComunicWeb.common.page = {
                 $.AdminLTE.layout.fix();
 
             //Set body class
-            document.body.className="hold-transition skin-blue layout-top-nav";
+            document.body.className="hold-transition fixed skin-blue layout-top-nav";
 
             //We load the menubar
             ComunicWeb.components.menuBar.common.display();

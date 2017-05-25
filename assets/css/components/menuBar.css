@@ -5,10 +5,19 @@
  */
 
 /**
+ * adminLTE fixes
+ */
+@media (max-width: 767px) {
+ 	.fixed .content-wrapper {
+		padding-top: 50px !important;
+	}
+}
+
+/**
  * Authenticated useres
  */
 header .dropdown .fa-gear {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 
@@ -20,5 +29,5 @@ header .dropdown .fa-gear {
  * Login form
  */
 .menubar-loginForm .form-control {
-    margin-right: 1px;
+	margin-right: 1px;
 }

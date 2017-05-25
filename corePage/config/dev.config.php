@@ -33,6 +33,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%adminLTE/bootstrap/js/bootstrap.min.js",
     "%PATH_ASSETS%adminLTE/plugins/jquery-ui/jquery-ui.min.js",
     "%PATH_ASSETS%adminLTE/plugins/iCheck/icheck.min.js",
+    "%PATH_ASSETS%adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
     "%PATH_ASSETS%adminLTE/dist/js/app.min.js",
 
     //Utilities
