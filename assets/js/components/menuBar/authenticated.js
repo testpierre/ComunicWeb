@@ -51,6 +51,6 @@ ComunicWeb.components.menuBar.authenticated = {
 		var logoutButton = createElem("li", dropdownContent);
 		var logoutButtonLink = createElem("a", logoutButton);
 		logoutButtonLink.innerHTML = "Logout";
-		logoutButton.onclick
+		logoutButton.onclick = function(){openPage("logout")};
 	}
 };
