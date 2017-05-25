@@ -93,6 +93,7 @@ ComunicWeb.common.page = {
      * 
      * @param {String} pageURI The URI to the page
      * @param {Object} additionnalData Additionnal data to pass to the new page
+     * @return {Boolean} True for a success
      */
     openPage: function(pageURI, additionnalData){
         //Log message
@@ -186,6 +187,8 @@ ComunicWeb.common.page = {
         //Call the method related to the page
         eval(pageInfos.methodHandler + ("(additionnalData, pageTarget);"));
         
+        //Success
+        return true;
     },
 
     /**

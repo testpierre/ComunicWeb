@@ -74,6 +74,9 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/pages/login.js",
     "%PATH_ASSETS%js/pages/logout.js",
 
+    //Create shortcuts for common functions
+    "%PATH_ASSETS%js/common/shorcuts.js",
+
     //Init script
     "%PATH_ASSETS%js/init.js",
 );

@@ -61,15 +61,3 @@ function emptyElem(container){
 function checkMail(emailAddress){
 	return (emailAddress.match(/^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]{1,}[.][a-zA-Z]{2,5}$/) === null ? false : true);
 }
-
-/**
- * Create a quick language access function shorcut
- */
-function lang(stringName, stringParams){
-    //Check if any params has been specified
-    if(!stringParams)
-        var stringParams = [];
-
-    //Call translate function
-    return ComunicWeb.common.langs.getTranslatedText(stringName, stringParams);
-}
