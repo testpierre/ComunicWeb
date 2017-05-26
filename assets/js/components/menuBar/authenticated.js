@@ -91,7 +91,7 @@ ComunicWeb.components.menuBar.authenticated = {
 
 		//Add user name
 		var userNameElem = createElem("span", userlinkelement);
-		userNameElem.className = "hidden-xs";
+		//userNameElem.className = "hidden-xs";
 		userNameElem.innerHTML = "Loading...";
 
 		//Make a request to get informations about the user
