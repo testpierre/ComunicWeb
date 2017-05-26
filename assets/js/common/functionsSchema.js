@@ -401,6 +401,11 @@ var ComunicWeb = {
 				 * Add user name element
 				 */
 				addUserName: function(navbarElem){},
+
+				/**
+				 * Add search form element
+				 */
+				addSearchForm: function(navbarElem){},
 			},
 		},
 

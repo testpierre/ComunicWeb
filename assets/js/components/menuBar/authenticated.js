@@ -14,17 +14,26 @@ ComunicWeb.components.menuBar.authenticated = {
 		//Create an auto-collapsed element
 		var navbarCollapse = createElem("div", container);
 		navbarCollapse.id = "navbar-collapse";
-		navbarCollapse.className = "navbar-collapse pull-right collapse";
+		navbarCollapse.className = "navbar-collapse pull-left collapse";
 
 		//Create navbar elements list
-		var navbarElemList = createElem("ul", navbarCollapse);
-		navbarElemList.className = "nav navbar-nav";
+		var navbarCollapseElemList = createElem("ul", navbarCollapse);
+		navbarCollapseElemList.className = "nav navbar-nav";
+
+		//Add search form
+		this.addSearchForm(navbarCollapseElemList);
+
+		//Navbar right elements
+		var navbarRight = createElem("div", container);
+		navbarRight.className = "navbar-custom-menu";
+		var navbarRightElemList = createElem("ul", navbarRight);
+		navbarRightElemList.className = "nav navbar-nav";
 
 		//Add user name
-		this.addUserName(navbarElemList);
+		this.addUserName(navbarRightElemList);
 
 		//Add dropdown menu
-		this.addDropdown(navbarElemList);
+		this.addDropdown(navbarRightElemList);
 		
 	},
 
@@ -37,7 +46,7 @@ ComunicWeb.components.menuBar.authenticated = {
 	addDropdown: function(navbarElem){
 		//Create dropdown menu
 		var dropdown = createElem("li", navbarElem);
-		dropdown.className = "dropdown";
+		dropdown.className = "dropdown dropdown-user-menu-action";
 
 		//Add dropdown button
 		var dropdownButton = createElem("a", dropdown);
@@ -91,7 +100,7 @@ ComunicWeb.components.menuBar.authenticated = {
 
 		//Add user name
 		var userNameElem = createElem("span", userlinkelement);
-		//userNameElem.className = "hidden-xs";
+		userNameElem.className = "hidden-xs";
 		userNameElem.innerHTML = "Loading...";
 
 		//Make a request to get informations about the user
@@ -105,4 +114,29 @@ ComunicWeb.components.menuBar.authenticated = {
 
 		}));
 	},
+
+	/**
+	 * Add search form element
+	 * 
+	 * @param {HTMLElement} navbarElem The target navbarlist element 
+	 * @return {HTMLElement} The user element
+	 */
+	addSearchForm: function(navbarElem){
+		//Create form element
+		var searchForm = createElem("form", navbarElem.parentNode);
+		searchForm.className = "navbar-form navbar-left";
+		searchForm.setAttribute("role", "search");
+
+		//Create form group
+		var formGroup = createElem("div", searchForm);
+		formGroup.className = "form-group";
+
+		//Create search input
+		var searchInput = createElem("input", formGroup);
+		searchInput.className = "form-control";
+		searchInput.placeholder = "Search...";
+		searchInput.type = "text";
+		searchInput.id = "navbar-search-input";
+		
+	}
 };
