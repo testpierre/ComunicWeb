@@ -26,15 +26,6 @@ ComunicWeb.components.searchForm = {
 		var searchBoxContainer = createElem("div", searchBoxCore);
 		searchBoxContainer.className = "searchBoxResultsContainer";
 		
-		//Create menu list
-		var menuList = createElem("ul", searchBoxContainer);
-		menuList.className = "menu";
-
-		//Enable slimscroll
-		/*$(menuList).slimScroll({
-			height: '200px',
-		}));*/
-
 		//Create footer
 		var searchFooter = createElem("li", searchResultBox);
 		searchFooter.className = "footer";
@@ -77,5 +68,25 @@ ComunicWeb.components.searchForm = {
 
 		//Change "see more result" value
 		footerLink.setAttribute("data-searchValue", textInput.value);
+
+		//Perform a request on the server
+		apiURI = "search/request";
+		params = {
+			query: textInput.value,
+		};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(){
+			//Remove any remainging element in searchResultBox
+			console.log("result");
+			//Create menu list
+			var menuList = createElem("ul", searchBoxContainer);
+			menuList.className = "menu";
+
+			//Enable slimscroll
+			/*$(menuList).slimScroll({
+				height: '200px',
+			}));*/
+		});
+
+
 	},
 }
