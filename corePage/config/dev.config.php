@@ -63,6 +63,7 @@ $config['JSfiles'] = array(
 
     //Components
     "%PATH_ASSETS%js/components/mailCaching.js",
+    "%PATH_ASSETS%js/components/searchForm/searchForm.js",
     "%PATH_ASSETS%js/components/menuBar/common.js",
     "%PATH_ASSETS%js/components/menuBar/notAuthenticated.js",
     "%PATH_ASSETS%js/components/menuBar/authenticated.js",

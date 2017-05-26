@@ -427,7 +427,14 @@ var ComunicWeb = {
 			 * Set a new mail value
 			 */
 			set: function(mail){},
-		}
+		},
+
+		/**
+		 * Search form component
+		 */
+		searchForm: {
+			//TODO : implement
+		},
 
 
 	},

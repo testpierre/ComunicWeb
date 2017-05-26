@@ -123,8 +123,8 @@ ComunicWeb.components.menuBar.authenticated = {
 	 */
 	addSearchForm: function(navbarElem){
 		//Create form element
-		var searchForm = createElem("form", navbarElem.parentNode);
-		searchForm.className = "navbar-form navbar-left";
+		var searchForm = createElem("li", navbarElem);
+		searchForm.className = "dropdown navbar-form navbar-left";
 		searchForm.setAttribute("role", "search");
 
 		//Create form group
@@ -137,6 +137,6 @@ ComunicWeb.components.menuBar.authenticated = {
 		searchInput.placeholder = "Search...";
 		searchInput.type = "text";
 		searchInput.id = "navbar-search-input";
-		
+
 	}
 };
