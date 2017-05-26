@@ -11,12 +11,12 @@ $config['pathAssets'] = $config['siteURL']."assets/";
 //CSS files to include
 $config['CSSfiles'] = array(
     //CSS files
-    "%PATH_ASSETS%adminLTE/bootstrap/css/bootstrap.min.css",
-    "%PATH_ASSETS%adminLTE/plugins/font-awesome/css/font-awesome.min.css",
-    "%PATH_ASSETS%adminLTE/plugins/ionicons/css/ionicons.min.css",
-    "%PATH_ASSETS%adminLTE/plugins/iCheck/square/blue.css",
-    "%PATH_ASSETS%adminLTE/dist/css/AdminLTE.min.css",
-    "%PATH_ASSETS%adminLTE/dist/css/skins/_all-skins.min.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/bootstrap/css/bootstrap.min.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/font-awesome/css/font-awesome.min.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/ionicons/css/ionicons.min.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/square/blue.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/dist/css/AdminLTE.min.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",
 
     //App stylesheets
     "%PATH_ASSETS%css/common/global.css",
@@ -28,13 +28,16 @@ $config['CSSfiles'] = array(
 
 //JS files to include (at the end of the page)
 $config['JSfiles'] = array(
-    //Framewokr inclusions
-    "%PATH_ASSETS%adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
-    "%PATH_ASSETS%adminLTE/bootstrap/js/bootstrap.min.js",
-    "%PATH_ASSETS%adminLTE/plugins/jquery-ui/jquery-ui.min.js",
-    "%PATH_ASSETS%adminLTE/plugins/iCheck/icheck.min.js",
-    "%PATH_ASSETS%adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
-    "%PATH_ASSETS%adminLTE/dist/js/app.min.js",
+    //Framework inclusions
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
+    "%PATH_ASSETS%3rdparty/adminLTE/bootstrap/js/bootstrap.min.js",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/jquery-ui/jquery-ui.min.js",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/icheck.min.js",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
+    "%PATH_ASSETS%3rdparty/adminLTE/dist/js/app.min.js",
+
+    //Bootstrap notify
+    "%PATH_ASSETS%3rdparty/bootstrap-notify-3.1.3.min.js",
 
     //Utilities
     "%PATH_ASSETS%js/common/utils.js",
