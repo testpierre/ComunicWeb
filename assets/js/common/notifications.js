@@ -39,7 +39,7 @@ ComunicWeb.common.notificationSystem = {
 		$.notify(options,{
 			// settings
 			type: notifType,
-			timer: notifDuration*1000,
+			delay: notifDuration*1000,
 		});
 	}
 
