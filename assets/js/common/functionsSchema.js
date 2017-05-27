@@ -336,6 +336,11 @@ var ComunicWeb = {
 			getUserInfos: function(userID, afterGetUserInfos){},
 
 			/**
+			 * Get multiple users informations
+			 */
+			getMultipleUsersInfos: function(usersID, afterGetUserInfos){},
+
+			/**
 			 * Empty user informations cache
 			 * Remove all entries from user informations cache
 			 */

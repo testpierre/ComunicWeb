@@ -80,30 +80,33 @@ ComunicWeb.components.searchForm = {
 			if(response.error)
 				return false;
 			
-			//Remove any remainging element in searchResultBox
-			emptyElem(searchBoxContainer);
+			//Preload users informations
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(response, function(userInfos){
 
-			//Create menu list
-			var menuList = createElem("ul", searchBoxContainer);
-			menuList.className = "menu";
-			
-			//Process each result
-			for(i in response){
+				//Remove any remainging element in searchResultBox
+				emptyElem(searchBoxContainer);
 
-				//Retrieve userID
-				var userID = response[i];
+				//Create menu list
+				var menuList = createElem("ul", searchBoxContainer);
+				menuList.className = "menu";
 
-				//Display user informations
-				ComunicWeb.components.searchForm.displayUser(userID, menuList);
+				//Process each result
+				for(i in response){
 
-			}
+					//Retrieve userID
+					var userID = response[i];
 
-			//Enable slimscroll
-			$(menuList).slimScroll({
-				height: '200px',
+					//Display user informations
+					ComunicWeb.components.searchForm.displayUser(userID, menuList);
+
+				}
+
+				//Enable slimscroll
+				$(menuList).slimScroll({
+					height: '200px',
+				});
 			});
 		});
-
 		
 	},
 
