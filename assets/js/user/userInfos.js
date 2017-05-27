@@ -20,46 +20,22 @@ ComunicWeb.user.userInfos = {
 	 */
 	getUserInfos: function(userID, afterGetUserInfos){
 
-		//If requested user is the current user, replace "current" with userID
-		if(userID === "current")
-			userID = ComunicWeb.user.userLogin.__userID;
+		//Check if current user infos were required
+		if(userID == "current")
+			userID = ComunicWeb.user.userLogin.getUserID();
 
-		//First, check if informations are already available in the cache
-		if(this.usersInfos["user-"+userID]){
-			afterGetUserInfos(this.usersInfos["user-"+userID]); //Then return these informations now
-			return true;
-		}
-			
-		//Else we have to perform an API request
-		var apiURI = "user/getInfos";
-		var params = {
-			userID: userID
-		};
+		//getMultipleUsersInfos mirror
+		var usersID = [userID];
 
-		//Specify what to do next
-		var onceGetUserInfos = function(result){
-			if(result.error){
-				ComunicWeb.debug.logMessage("ERROR : couldn't get infos about user ID : "+userID+" !");
-
-				//Returns the error to the next function
+		return this.getMultipleUsersInfos(usersID, function(result){
+			//We check if an error occured
+			if(result.error)
 				afterGetUserInfos(result);
 
-				return false;
-			}
-			else {
-				//Save result
-				ComunicWeb.user.userInfos.usersInfos["user-"+userID] = result[0];
-
-				//Return result
-				afterGetUserInfos(result[0]);
-			}
-		}
-
-		//Perform request
-		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, onceGetUserInfos);
-
-		//Everything is OK
-		return true;
+			//Return a simple array
+			else
+				afterGetUserInfos(result[userID]);
+		});
 
 	},
 
