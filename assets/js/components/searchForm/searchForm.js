@@ -74,19 +74,71 @@ ComunicWeb.components.searchForm = {
 		params = {
 			query: textInput.value,
 		};
-		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(){
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(response){
+			
+			//Continue only in case of success
+			if(response.error)
+				return false;
+			
 			//Remove any remainging element in searchResultBox
-			console.log("result");
+			emptyElem(searchBoxContainer);
+
 			//Create menu list
 			var menuList = createElem("ul", searchBoxContainer);
 			menuList.className = "menu";
+			
+			//Process each result
+			for(i in response){
+
+				//Retrieve userID
+				var userID = response[i];
+
+				//Display user informations
+				ComunicWeb.components.searchForm.displayUser(userID, menuList);
+
+			}
 
 			//Enable slimscroll
-			/*$(menuList).slimScroll({
+			$(menuList).slimScroll({
 				height: '200px',
-			}));*/
+			});
 		});
 
+		
+	},
 
+	/**
+	 * Display a user on the result list
+	 * 
+	 * @param {Integer} userID The ID of the user to display
+	 * @param {HTMLElement} menuList The target list menu
+	 * @return {Boolean} True for a success
+	 */
+	displayUser: function(userID, menuList){
+		//Create user element
+		var userListElement = createElem("li", menuList);
+		var userLinkElement = createElem("a", userListElement);
+		
+		//User account image
+		var userAccountImageContainer = createElem("div", userLinkElement);
+		userAccountImageContainer.className = "pull-left";
+
+		var userImage = createElem("img", userAccountImageContainer);
+		userImage.className = "img-circle";
+		userImage.alt = "User image";
+		userImage.src = path_assets("img/defaultAvatar.png");
+
+		//User name
+		var usernameElem = createElem("h4", userLinkElement);
+		usernameElem.innerHTML = "Loading...";
+
+		//Get informations about user
+		ComunicWeb.user.userInfos.getUserInfos(userID, function(userInfos){
+			
+			//Apply informations
+			userImage.src = userInfos.accountImage;
+			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
+
+		});
 	},
 }

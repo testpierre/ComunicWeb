@@ -82,6 +82,7 @@ $config['JSfiles'] = array(
 
     //Create shortcuts for common functions
     "%PATH_ASSETS%js/common/shorcuts.js",
+    "%PATH_ASSETS%js/common/helpers.js",
 
     //Init script
     "%PATH_ASSETS%js/init.js",

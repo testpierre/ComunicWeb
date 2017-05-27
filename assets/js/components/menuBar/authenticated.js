@@ -104,7 +104,7 @@ ComunicWeb.components.menuBar.authenticated = {
 		userNameElem.innerHTML = "Loading...";
 
 		//Make a request to get informations about the user
-		ComunicWeb.user.getUserInfos.getUserInfos("current", (function(userInfos){
+		ComunicWeb.user.userInfos.getUserInfos("current", (function(userInfos){
 
 			//Change user name
 			userNameElem.innerHTML = userInfos.firstName + " "+ userInfos.lastName;
@@ -124,7 +124,7 @@ ComunicWeb.components.menuBar.authenticated = {
 	addSearchForm: function(navbarElem){
 		//Create form element
 		var searchForm = createElem("li", navbarElem);
-		searchForm.className = "dropdown navbar-form navbar-left notifications-menu";
+		searchForm.className = "dropdown navbar-form navbar-left messages-menu";
 		searchForm.setAttribute("role", "search");
 
 		//Create form group

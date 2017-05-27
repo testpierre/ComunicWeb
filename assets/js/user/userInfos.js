@@ -4,7 +4,7 @@
  * @author Pierre HUBERT
  */
 
-ComunicWeb.user.getUserInfos = {
+ComunicWeb.user.userInfos = {
 
     /**
      * @var {String} User infos cache
@@ -30,6 +30,7 @@ ComunicWeb.user.getUserInfos = {
         }
         else{
             ComunicWeb.debug.logMessage("ERROR : getUserInfos not implemented for other user than the current one !");
+            return false;
         }
 
         //Specify what to do next
@@ -40,7 +41,7 @@ ComunicWeb.user.getUserInfos = {
             }
             
             //Save result
-            ComunicWeb.user.getUserInfos.usersInfos[""+userID] = result[0];
+            ComunicWeb.user.userInfos.usersInfos[""+userID] = result[0];
 
             //Return result
             afterGetUserInfos(result[0]);

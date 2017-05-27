@@ -57,7 +57,7 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginToke
             //We check if we got any error
             if(result.error){
                 //Log error
-                ComunicWeb.debug.logMessage("Got an error in a XHR request! " + result.toString());
+                ComunicWeb.debug.logMessage("Got an error in a XHR request! \n Request URL: "+requestURL+" \n Response : "+apiXHR.responseText);
             }
 
             //We can do the next step
