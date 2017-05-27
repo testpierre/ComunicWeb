@@ -81,7 +81,7 @@ ComunicWeb.components.searchForm = {
 				return false;
 			
 			//Preload users informations
-			ComunicWeb.user.userInfos.getMultipleUsersInfos(response, function(userInfos){
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(response, function(usersInfos){
 
 				//Remove any remainging element in searchResultBox
 				emptyElem(searchBoxContainer);
@@ -95,9 +95,11 @@ ComunicWeb.components.searchForm = {
 
 					//Retrieve userID
 					var userID = response[i];
-
-					//Display user informations
-					ComunicWeb.components.searchForm.displayUser(userID, menuList);
+					
+					//We show user only if we have informations about him
+					if(usersInfos[userID])
+						//Display user informations
+						ComunicWeb.components.searchForm.displayUser(usersInfos[userID], menuList);
 
 				}
 
@@ -113,11 +115,11 @@ ComunicWeb.components.searchForm = {
 	/**
 	 * Display a user on the result list
 	 * 
-	 * @param {Integer} userID The ID of the user to display
+	 * @param {Integer} userInfos Informations about the user
 	 * @param {HTMLElement} menuList The target list menu
 	 * @return {Boolean} True for a success
 	 */
-	displayUser: function(userID, menuList){
+	displayUser: function(userInfos, menuList){
 		//Create user element
 		var userListElement = createElem("li", menuList);
 		var userLinkElement = createElem("a", userListElement);
@@ -134,14 +136,9 @@ ComunicWeb.components.searchForm = {
 		//User name
 		var usernameElem = createElem("h4", userLinkElement);
 		usernameElem.innerHTML = "Loading...";
-
-		//Get informations about user
-		ComunicWeb.user.userInfos.getUserInfos(userID, function(userInfos){
 			
-			//Apply informations
-			userImage.src = userInfos.accountImage;
-			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
-
-		});
+		//Apply user informations
+		userImage.src = userInfos.accountImage;
+		usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
 	},
 }

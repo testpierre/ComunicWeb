@@ -112,7 +112,7 @@ ComunicWeb.components.menuBar.authenticated = {
 			//Change avatar url
 			userimage.src = userInfos.accountImage;
 
-		}));
+		}), true);
 	},
 
 	/**

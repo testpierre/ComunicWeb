@@ -16,9 +16,10 @@ ComunicWeb.user.userInfos = {
 	 * 
 	 * @param {String} userID User on which to make request (current to get connected user)
 	 * @param {function} afterGetUserInfos What to do once user informations are available
+	 * @param {Boolean} forceRequest Force the request to be made
 	 * @return {Boolean} True for a success
 	 */
-	getUserInfos: function(userID, afterGetUserInfos){
+	getUserInfos: function(userID, afterGetUserInfos, forceRequest){
 
 		//Check if current user infos were required
 		if(userID == "current")
@@ -35,7 +36,7 @@ ComunicWeb.user.userInfos = {
 			//Return a simple array
 			else
 				afterGetUserInfos(result[userID]);
-		});
+		}, forceRequest);
 
 	},
 
@@ -44,9 +45,10 @@ ComunicWeb.user.userInfos = {
 	 * 
 	 * @param {String} usersID User on which to make request (current to get connected user)
 	 * @param {function} afterGetUserInfos What to do once users informations are available
+	 * @param {Boolean} forceRequest Force the request to be made
 	 * @return {Boolean} True for a success
 	 */
-	getMultipleUsersInfos: function(usersID, afterGetUserInfos){
+	getMultipleUsersInfos: function(usersID, afterGetUserInfos, forceRequest){
 
 		//First, check if informations are already available in the cache for some users
 		var cachedInformations = {};
@@ -57,14 +59,14 @@ ComunicWeb.user.userInfos = {
 			var processUserID = usersID[i];
 
 			//Check the local cache
-			if(this.usersInfos["user-"+processUserID]){
+			if(this.usersInfos["user-"+processUserID] && !forceRequest){
 				//Add user information to cached informations
 				cachedInformations[processUserID] = this.usersInfos["user-"+processUserID];
 			}
 			else {
 				//Else we'll have to get data
 				needRequest = true;
-				usersToGetList += usersID+",";
+				usersToGetList += processUserID + ",";
 			}
 		}
 

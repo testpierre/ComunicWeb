@@ -333,12 +333,12 @@ var ComunicWeb = {
 			/**
 			 * Get user informations
 			 */
-			getUserInfos: function(userID, afterGetUserInfos){},
+			getUserInfos: function(userID, afterGetUserInfos, forceRequest){},
 
 			/**
 			 * Get multiple users informations
 			 */
-			getMultipleUsersInfos: function(usersID, afterGetUserInfos){},
+			getMultipleUsersInfos: function(usersID, afterGetUserInfos, forceRequest){},
 
 			/**
 			 * Empty user informations cache
