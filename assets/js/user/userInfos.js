@@ -25,8 +25,8 @@ ComunicWeb.user.userInfos = {
             userID = ComunicWeb.user.userLogin.__userID;
 
         //First, check if informations are already available in the cache
-        if(this.usersInfos[userID]){
-            afterGetUserInfos(this.usersInfos[userID]); //Then return these informations now
+        if(this.usersInfos["user-"+userID]){
+            afterGetUserInfos(this.usersInfos["user-"+userID]); //Then return these informations now
             return true;
         }
             
@@ -48,7 +48,7 @@ ComunicWeb.user.userInfos = {
             }
             else {
                 //Save result
-                ComunicWeb.user.userInfos.usersInfos[""+userID] = result[0];
+                ComunicWeb.user.userInfos.usersInfos["user-"+userID] = result[0];
 
                 //Return result
                 afterGetUserInfos(result[0]);
