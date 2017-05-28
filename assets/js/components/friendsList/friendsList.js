@@ -26,6 +26,7 @@ ComunicWeb.components.friendsList = {
 
 		//Create and apply friends list element
 		var friendsListContainer = createElem("div");
+		friendsListContainer.id = "friendsList";
 		
 		//Check if "pageTarget" already exists or not
 		var pageTarget = byId("pageTarget");
@@ -52,8 +53,39 @@ ComunicWeb.components.friendsList = {
 	 */
 	init: function(friendsListContainer){
 
+		//First, create the table container
+		var listFriendsElem = createElem("table", friendsListContainer);
+		listFriendsElem.className = "table table-condensed";
+
+		//Refresh friends list
+		this.refresh(listFriendsElem);
 
 		//Success
 		return true;
-	}
+	},
+
+	/**
+	 * Refresh a friend list
+	 * 
+	 * @param {HTMLElement} listFriendsElem The element that contains the list of friens
+	 * @return {Boolean} True for a success
+	 */
+	refresh: function(listFriendsElem){
+		//First, perform an API request
+		var apiURI = "friends/getList";
+		var params = {};
+
+		//Perform request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(result){
+			
+			//Check for error
+			if(result.error){
+				ComunicWeb.debug.logMessage("Couldn't get a new version of friends list !");
+				return false;
+			}
+
+			//Log information
+			ComunicWeb.debug.logMessage("Got a new version of friends list !");
+		});
+	},
 }
