@@ -107,6 +107,11 @@ ComunicWeb.common.page = {
             firstPartURI = firstPartURI.split("#")[0];
         }
 
+        //Check if there are $_GET parametres included with the URL
+        if(firstPartURI.includes("?") != -1){
+            firstPartURI = firstPartURI.split("?")[0];
+        }
+
         //Check if pageURI is empty
         if(firstPartURI == ""){
             firstPartURI = "home";
@@ -134,7 +139,7 @@ ComunicWeb.common.page = {
         ComunicWeb.common.url.changeURI(document.title, pageURI);
 
         //Get the main contener of the page
-        var mainContenerElem =byId("wrapper");
+        var mainContenerElem = byId("wrapper");
 
         //If we didn't get anything, clean the page and create a wrapper element
         if(!mainContenerElem){
@@ -178,6 +183,12 @@ ComunicWeb.common.page = {
 
             //We load the menubar
             ComunicWeb.components.menuBar.common.display();
+
+            //We load specific components for logged in users
+            if(ComunicWeb.user.userLogin.getUserLoginState()){
+                //We load frieds list (if user is logged in)
+                ComunicWeb.components.friendsList.display();
+            }
         }
 
         //Check if some additionnal data was specified

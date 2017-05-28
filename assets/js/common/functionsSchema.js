@@ -441,7 +441,12 @@ var ComunicWeb = {
 			//TODO : implement
 		},
 
-
+		/**
+		 * Friends list
+		 */
+		friendsList: {
+			//TODO : implement
+		}
 	},
 
 	/**
