@@ -444,8 +444,20 @@ var ComunicWeb = {
 		/**
 		 * Friends list
 		 */
-		friendsList: {
-			//TODO : implement
+		friends: {
+			/**
+			 * Friends list caching system
+			 */
+			list:{
+
+			},
+
+			/**
+ 			 * Friends bar
+			*/
+			bar:{
+
+			},
 		}
 	},
 
