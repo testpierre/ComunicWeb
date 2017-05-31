@@ -97,9 +97,9 @@ ComunicWeb.components.searchForm = {
 					var userID = response[i];
 					
 					//We show user only if we have informations about him
-					if(usersInfos[userID])
+					if(usersInfos["user-"+userID])
 						//Display user informations
-						ComunicWeb.components.searchForm.displayUser(usersInfos[userID], menuList);
+						ComunicWeb.components.searchForm.displayUser(usersInfos["user-"+userID], menuList);
 
 				}
 

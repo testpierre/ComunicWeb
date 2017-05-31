@@ -35,7 +35,7 @@ ComunicWeb.user.userInfos = {
 
 			//Return a simple array
 			else
-				afterGetUserInfos(result[userID]);
+				afterGetUserInfos(result["user-"+userID]);
 		}, forceRequest);
 
 	},
@@ -61,7 +61,7 @@ ComunicWeb.user.userInfos = {
 			//Check the local cache
 			if(this.usersInfos["user-"+processUserID] && !forceRequest){
 				//Add user information to cached informations
-				cachedInformations[processUserID] = this.usersInfos["user-"+processUserID];
+				cachedInformations["user-"+processUserID] = this.usersInfos["user-"+processUserID];
 			}
 			else {
 				//Else we'll have to get data
@@ -107,7 +107,7 @@ ComunicWeb.user.userInfos = {
 					//Store
 					ComunicWeb.user.userInfos.usersInfos["user-"+userID] = result[i];
 
-					returnInformations[userID] = result[i];
+					returnInformations["user-"+userID] = result[i];
 				}
 				
 
