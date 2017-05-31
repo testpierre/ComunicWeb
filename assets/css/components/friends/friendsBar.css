@@ -15,6 +15,7 @@
 	width: 50px;
 	transition: width 1s;
 	font-size: 70%;
+	padding-top: 50px;
 }
 
 #friendsList:hover {
