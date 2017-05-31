@@ -187,7 +187,7 @@ ComunicWeb.common.page = {
             //We load specific components for logged in users
             if(ComunicWeb.user.userLogin.getUserLoginState()){
                 //We load frieds list (if user is logged in)
-                ComunicWeb.components.friendsList.display();
+                ComunicWeb.components.friends.bar.display();
             }
         }
 

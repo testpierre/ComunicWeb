@@ -65,27 +65,36 @@ ComunicWeb.components.friends.bar = {
 	},
 
 	/**
-	 * Refresh a friend list
+	 * Refresh the listbar
 	 * 
 	 * @param {HTMLElement} listFriendsElem The element that contains the list of friens
 	 * @return {Boolean} True for a success
 	 */
 	refresh: function(listFriendsElem){
-		//First, perform an API request
-		var apiURI = "friends/getList";
-		var params = {};
-
-		//Perform request
-		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(result){
-			
+		//Refresh it
+		ComunicWeb.components.friends.list.refresh(function(list){
 			//Check for error
-			if(result.error){
-				ComunicWeb.debug.logMessage("Couldn't get a new version of friends list !");
+			if(!list){
+				//Log information
+				ComunicWeb.debug.logMessage("ERROR : Can't refresh menubar without the latest list !");
+
+				//Error
 				return false;
 			}
 
-			//Log information
-			ComunicWeb.debug.logMessage("Got a new version of friends list !");
+			//Get users list to get information about them
+			usersID = {};
+			for(i in list){
+				//Extract user id
+				var processID = list[i].ID_friend;
+
+				usersID["user_"+processID] = processID;
+			}
+			
+			//Get users ID informations
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, function(usersInfo){
+				console.log(usersInfo);
+			});
 		});
 	},
 }
