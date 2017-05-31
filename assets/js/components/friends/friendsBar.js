@@ -54,8 +54,9 @@ ComunicWeb.components.friends.bar = {
 	init: function(friendsListContainer){
 
 		//First, create the table container
-		var listFriendsElem = createElem("table", friendsListContainer);
-		listFriendsElem.className = "table table-condensed";
+		var listFriendsElemTable = createElem("table", friendsListContainer);
+		listFriendsElemTable.className = "table table-condensed";
+		var listFriendsElem = createElem("tbody", listFriendsElemTable);
 
 		//Refresh friends list
 		this.refresh(listFriendsElem);
@@ -72,9 +73,9 @@ ComunicWeb.components.friends.bar = {
 	 */
 	refresh: function(listFriendsElem){
 		//Refresh it
-		ComunicWeb.components.friends.list.refresh(function(list){
+		ComunicWeb.components.friends.list.refresh(function(friendsList){
 			//Check for error
-			if(!list){
+			if(!friendsList){
 				//Log information
 				ComunicWeb.debug.logMessage("ERROR : Can't refresh menubar without the latest list !");
 
@@ -84,16 +85,38 @@ ComunicWeb.components.friends.bar = {
 
 			//Get users list to get information about them
 			usersID = {};
-			for(i in list){
+			for(i in friendsList){
 				//Extract user id
-				var processID = list[i].ID_friend;
+				var processID = friendsList[i].ID_friend;
 
 				usersID["user_"+processID] = processID;
 			}
 			
 			//Get users ID informations
-			ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, function(usersInfo){
-				console.log(usersInfo);
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, function(usersInfos){
+				
+				//Show each friend
+				for(i in friendsList){
+
+					//Extract friend ID
+					var friendID = friendsList[i].ID_friend;
+
+					//Create a row
+					var friendRow = createElem("tr", listFriendsElem);
+
+					//Add user avatar
+					var imageRow = createElem("td", friendRow);
+					var imageElem = createElem("img", imageRow);
+					imageElem.src = usersInfos["user-"+friendID].accountImage;
+					imageElem.className = "account-image";
+
+					//Add user name
+					var nameRow = createElem("td", friendRow);
+					nameRow.innerHTML = usersInfos["user-"+friendID].firstName + " " + usersInfos["user-"+friendID].lastName;
+
+					console.log(usersInfos["user-"+friendID]);
+				}
+
 			});
 		});
 	},

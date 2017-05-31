@@ -1,0 +1,35 @@
+/**
+ * Friends bar style sheet
+ *
+ * @author Pierre HUBERT
+ */
+
+#friendsList {
+	position: fixed;
+	right: 0px;
+	border-left: 1px black solid;
+	z-index: 999;
+	background-color: #fff3ff80;
+	top: 0px;
+	height: 100%;
+	padding: 10px;
+	padding-top: 50px;
+	width: 70px;
+	transition: width 1s;
+}
+
+#friendsList:hover {
+	width: 230px;
+	background-color: #ffffff;
+}
+
+#friendsList td {
+	vertical-align: middle;
+}
+
+#friendsList .account-image {
+	margin: auto 10px auto auto;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
