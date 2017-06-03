@@ -32,6 +32,9 @@ ComunicWeb.components.menuBar.authenticated = {
 		//Add user name
 		this.addUserName(navbarRightElemList);
 
+		//Add friends list button
+		this.addFriendListButton(navbarRightElemList);
+
 		//Add dropdown menu
 		this.addDropdown(navbarRightElemList);
 		
@@ -77,6 +80,30 @@ ComunicWeb.components.menuBar.authenticated = {
 
 		//Return dropdown content element
 		return dropdownContent;
+	},
+
+	/**
+	 * Add friendsList toggle button
+	 * 
+	 * @param {HTMLElement} navbarElem The target navbarlist element 
+	 * @return {HTMLElement} The button element
+	 */
+	addFriendListButton: function(navbarElem){
+		//Create button
+		var friendButton = createElem("li", navbarElem);
+		friendButton.className = "friendToggleButton";
+
+		//Create link
+		var friendButtonLink = createElem("a", friendButton);
+		var friendIcon = createElem("i", friendButtonLink);
+		friendIcon.className = "fa fa-users";
+
+		//Makes link live
+		friendButtonLink.onclick = function(){
+			ComunicWeb.components.friends.bar.toggleShowHide();
+		};
+
+		return friendButtonLink;
 	},
 
 	/**

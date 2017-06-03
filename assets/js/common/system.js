@@ -56,7 +56,7 @@ ComunicWeb.common.system = {
 		 */
 		var autoRefresh = setInterval((function(){
 			ComunicWeb.user.userLogin.refreshLoginState();
-		}), 15000);
+		}), 20000);
 
 		//Sucess
 		return true;

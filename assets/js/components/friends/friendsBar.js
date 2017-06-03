@@ -138,4 +138,30 @@ ComunicWeb.components.friends.bar = {
 			});
 		});
 	},
+
+	/**
+	 * Toogle show / hide friends bar
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	toggleShowHide: function(){
+		//Get friends list element
+		var friendListElem = byId("friendsList");
+
+		//Log action
+		ComunicWeb.debug.logMessage("Toggle friends list");
+
+		//Check current bar state
+		if(friendListElem.className == ""){
+			//Show the bar
+			friendListElem.className = "visible-bar";
+		}
+		else
+			//Hide the bar
+			friendListElem.className = "";
+
+		//Success
+		return true;
+	}
+
 }

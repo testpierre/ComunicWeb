@@ -64,8 +64,8 @@ ComunicWeb.user.userLogin = {
                     ComunicWeb.user.userLogin.__userLogin = false;
                     ComunicWeb.user.loginTokens.deleteLoginTokens();
                     
-                    //Refresh the page
-                    location.href = document.location;
+                    //Restart the application
+                    ComunicWeb.common.system.restart();
                 }
 
                 //Perform next action

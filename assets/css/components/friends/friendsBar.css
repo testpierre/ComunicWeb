@@ -4,38 +4,86 @@
  * @author Pierre HUBERT
  */
 
-#friendsList {
-	position: fixed;
-	right: 0px;
-	border-left: 1px black solid;
-	z-index: 999;
-	background-color: #fff3ff80;
-	top: 0px;
-	height: 100%;
-	padding-top: 50px;
+/**
+ * For computers / tablets (any size)
+ */
+@media screen and (min-width: 513px)  {
 
-	/**
-	width: 50px;
-	font-size: 70%;
-	transition: width 1s;
-	*/
-
-	width: 230px;
-	transition: right 1s;
-	right: -175px;
+	#friendsList {
+		position: fixed;
+		right: 0px;
+		border-left: 1px black solid;
+		z-index: 999;
+		top: 0px;
+		height: 100%;
+		padding-top: 50px;
+	}
 }
 
-#friendsList:hover {
-	background-color: #ffffff;
+/**
+ * For big screens
+ */
+@media screen and (min-width: 1200px) {
+
+	#friendsList {
+		width: 230px;
+		transition: right 1s;
+		right: -175px;
+		background-color: #fff3ff80;
+		display: block !important;
+	}
+
+	#friendsList:hover {
+		background-color: #ffffff;
+		right: 0px;
+	}
 
 	/**
-	width: 230px;
-	font-size: 100%;
-	padding: 10px;
-	padding-top: 50px;
-	*/
+	 * Hide friend button toggle
+	 */
+	.friendToggleButton {
+		display: none !important;
+	}
 
-	right: 0px;
+}
+
+/**
+ * For small screens / tablets
+ */
+@media screen and (max-width: 1200px) and (min-width: 513px)  {
+	#friendsList {
+		right: 0px;
+		background-color: #ffffff;
+	}
+}
+
+/**
+ * Common to small screen / tablets / smartphones
+ */
+@media screen and (max-width: 1200px) {
+	#friendsList {
+		display: none;
+	}
+
+	#friendsList.visible-bar {
+		display: block;
+	}
+}
+
+/**
+ * Very small computers / tablets / smartphones
+ */
+@media screen and (max-width: 513px)  {
+	#friendsList {
+		background-color: #ffffff;
+		padding-top: 50px;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		top: 0px;
+		left: 0px;
+		overflow: auto;
+	}
 }
 
 #friendsList td {
@@ -52,4 +100,5 @@
 
 #friendsList .statusRow {
 	width: 48px;
+	text-align: center;
 }

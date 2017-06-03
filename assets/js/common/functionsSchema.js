@@ -410,6 +410,11 @@ var ComunicWeb = {
 				addDropdown: function(navbarElem){},
 
 				/**
+				 * Add user friends toggle button
+				 */
+				addFriendListButton: function(navbarElem){},
+
+				/**
 				 * Add user name element
 				 */
 				addUserName: function(navbarElem){},
