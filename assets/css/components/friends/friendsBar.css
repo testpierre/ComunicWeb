@@ -12,18 +12,30 @@
 	background-color: #fff3ff80;
 	top: 0px;
 	height: 100%;
-	width: 50px;
-	transition: width 1s;
-	font-size: 70%;
 	padding-top: 50px;
+
+	/**
+	width: 50px;
+	font-size: 70%;
+	transition: width 1s;
+	*/
+
+	width: 230px;
+	transition: right 1s;
+	right: -175px;
 }
 
 #friendsList:hover {
-	width: 230px;
 	background-color: #ffffff;
+
+	/**
+	width: 230px;
 	font-size: 100%;
 	padding: 10px;
 	padding-top: 50px;
+	*/
+
+	right: 0px;
 }
 
 #friendsList td {

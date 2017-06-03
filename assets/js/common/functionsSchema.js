@@ -219,6 +219,13 @@ var ComunicWeb = {
 			 */
 			executeJSsource: function(source){},
 		},
+
+		/**
+		 * The date library
+		 */
+		date:{
+			//TODO: implement
+		},
 	},
 
 	/**

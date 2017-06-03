@@ -61,6 +61,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/common/page.js",
     "%PATH_ASSETS%js/common/notifications.js",
     "%PATH_ASSETS%js/common/formChecker.js",
+    "%PATH_ASSETS%js/common/date.js",
     "%PATH_ASSETS%js/common/system.js",
 
     //Components

@@ -114,7 +114,23 @@ ComunicWeb.components.friends.bar = {
 					var nameRow = createElem("td", friendRow);
 					nameRow.innerHTML = usersInfos["user-"+friendID].firstName + " " + usersInfos["user-"+friendID].lastName;
 
-					console.log(usersInfos["user-"+friendID]);
+					//Add user login status
+					var statusRow = createElem("td", friendRow);
+					var iconsStats = createElem("i", statusRow);
+					iconsStats.className = "fa fa-fw fa-circle";
+
+					//Check if user is online or not
+					var currentTime = ComunicWeb.common.date.time();
+					var timeDifference = currentTime - friendsList[i].time_last_activity;
+
+					if(timeDifference < 30){
+						//User is logged in
+						iconsStats.style.color = "green";
+					}
+					else {
+						//User isn't logged in
+						statusRow.innerHTML = ComunicWeb.common.date.diffToStr();
+					}
 				}
 
 			});
