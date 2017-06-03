@@ -61,12 +61,19 @@ ComunicWeb.components.friends.bar = {
 		//Refresh friends list
 		this.refresh(listFriendsElem);
 
+		//Make the friend bar automaticaly refreshed (if the interval wasn't already defined)
+		if(!this.refreshInterval)
+			this.refreshInterval = setInterval(function(){
+				if(byId("friendsList"))
+					ComunicWeb.components.friends.bar.refresh(listFriendsElem);
+			}, 1000);
+
 		//Success
 		return true;
 	},
 
 	/**
-	 * Refresh the listbar
+	 * Refresh the friendbar
 	 * 
 	 * @param {HTMLElement} listFriendsElem The element that contains the list of friens
 	 * @return {Boolean} True for a success
@@ -95,6 +102,9 @@ ComunicWeb.components.friends.bar = {
 			//Get users ID informations
 			ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, function(usersInfos){
 				
+				//Clean the area
+				listFriendsElem.innerHTML = "";
+
 				//Show each friend
 				for(i in friendsList){
 
@@ -134,6 +144,11 @@ ComunicWeb.components.friends.bar = {
 						logoutTime.innerHTML = ComunicWeb.common.date.diffToStr(timeDifference);
 					}
 				}
+
+				//Enable slimscroll
+				$(listFriendsElem.parentNode.parentNode).slimScroll({
+					height: '100%;'
+				});
 
 			});
 		});

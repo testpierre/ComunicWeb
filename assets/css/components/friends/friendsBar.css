@@ -26,7 +26,7 @@
 @media screen and (min-width: 1200px) {
 
 	#friendsList {
-		width: 230px;
+		width: 230px !important;
 		transition: right 1s;
 		right: -175px;
 		background-color: #fff3ff80;
@@ -79,10 +79,9 @@
 		padding-top: 50px;
 		position: fixed;
 		height: 100%;
-		width: 100%;
+		width: 100% !important;
 		top: 0px;
 		left: 0px;
-		overflow: auto;
 	}
 }
 

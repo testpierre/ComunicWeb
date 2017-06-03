@@ -105,7 +105,7 @@ ComunicWeb.components.searchForm = {
 
 				//Enable slimscroll
 				$(menuList).slimScroll({
-					height: '200px',
+					height: '100%'
 				});
 			});
 		});
