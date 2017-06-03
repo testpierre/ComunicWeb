@@ -25,6 +25,9 @@
         <!-- Page title, should be automaticaly modified next -->
         <title>Comunic</title>
 
+        <!-- Make the website responsive -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
         <!--Stylesheet requirements -->
         <?php
             foreach($config['CSSfiles'] as $file){
