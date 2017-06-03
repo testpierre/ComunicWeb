@@ -83,7 +83,7 @@ ComunicWeb.components.menuBar.notAuthenticated = {
 			};
 
 			//Try to login user
-			ComunicWeb.user.userLogin.loginUser(emailInput.value, passwordInput.value, false, afterTryLogin);
+			ComunicWeb.user.userLogin.loginUser(emailInput.value, passwordInput.value, true, afterTryLogin);
 
 			//Block form
 			return false;

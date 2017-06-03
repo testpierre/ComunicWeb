@@ -24,7 +24,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" id="rememberLogin" /> Remember Me
+              <input type="checkbox" id="rememberLogin" checked /> Remember Me
             </label>
           </div>
         </div>
