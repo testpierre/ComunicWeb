@@ -61,12 +61,15 @@ ComunicWeb.components.friends.bar = {
 		//Refresh friends list
 		this.refresh(listFriendsElem);
 
-		//Make the friend bar automaticaly refreshed (if the interval wasn't already defined)
-		if(!this.refreshInterval)
-			this.refreshInterval = setInterval(function(){
-				if(byId("friendsList"))
-					ComunicWeb.components.friends.bar.refresh(listFriendsElem);
-			}, 1000);
+		//Remove previously existing interval
+		if(this.refreshInterval)
+			clearInterval(this.refreshInterval);
+
+		//Make the friend bar automaticaly refreshed
+		this.refreshInterval = setInterval(function(){
+			if(byId("friendsList"))
+				ComunicWeb.components.friends.bar.refresh(listFriendsElem);
+		}, 15000);
 
 		//Success
 		return true;
