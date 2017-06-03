@@ -49,3 +49,7 @@
 	border-radius: 50%;
 	visibility: visible
 }
+
+#friendsList .statusRow {
+	width: 48px;
+}

@@ -115,7 +115,8 @@ ComunicWeb.components.friends.bar = {
 					nameRow.innerHTML = usersInfos["user-"+friendID].firstName + " " + usersInfos["user-"+friendID].lastName;
 
 					//Add user login status
-					var statusRow = createElem("td", friendRow);					
+					var statusRow = createElem("td", friendRow);
+					statusRow.className = "statusRow";					
 
 					//Check if user is online or not
 					var currentTime = ComunicWeb.common.date.time();
