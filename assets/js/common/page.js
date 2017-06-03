@@ -186,8 +186,12 @@ ComunicWeb.common.page = {
 
             //We load specific components for logged in users
             if(ComunicWeb.user.userLogin.getUserLoginState()){
-                //We load frieds list (if user is logged in)
+                
+                //We load friends list (if user is logged in)
                 ComunicWeb.components.friends.bar.display();
+
+                //We load discussions manager (login required)
+                ComunicWeb.components.discussions.manager.display();
             }
         }
 

@@ -470,7 +470,19 @@ var ComunicWeb = {
 			bar:{
 
 			},
-		}
+		},
+
+		/**
+		 * Discussions
+		 */
+		discussions:{
+			/**
+			 * Discussions manager
+			 */
+			manager:{
+				//TODO : implement
+			},
+		},
 	},
 
 	/**

@@ -72,6 +72,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/components/menuBar/authenticated.js",
     "%PATH_ASSETS%js/components/friends/friendsList.js",
     "%PATH_ASSETS%js/components/friends/friendsBar.js",
+    "%PATH_ASSETS%js/components/discussions/manager.js",
 
     //User scripts
     "%PATH_ASSETS%js/user/loginTokens.js",
