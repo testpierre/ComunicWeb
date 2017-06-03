@@ -115,9 +115,7 @@ ComunicWeb.components.friends.bar = {
 					nameRow.innerHTML = usersInfos["user-"+friendID].firstName + " " + usersInfos["user-"+friendID].lastName;
 
 					//Add user login status
-					var statusRow = createElem("td", friendRow);
-					var iconsStats = createElem("i", statusRow);
-					iconsStats.className = "fa fa-fw fa-circle";
+					var statusRow = createElem("td", friendRow);					
 
 					//Check if user is online or not
 					var currentTime = ComunicWeb.common.date.time();
@@ -125,11 +123,14 @@ ComunicWeb.components.friends.bar = {
 
 					if(timeDifference < 30){
 						//User is logged in
+						var iconsStats = createElem("i", statusRow);
+						iconsStats.className = "fa fa-fw fa-circle";
 						iconsStats.style.color = "green";
 					}
 					else {
 						//User isn't logged in
-						statusRow.innerHTML = ComunicWeb.common.date.diffToStr();
+						var logoutTime = createElem("small", statusRow);
+						logoutTime.innerHTML = ComunicWeb.common.date.diffToStr(timeDifference);
 					}
 				}
 
