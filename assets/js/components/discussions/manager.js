@@ -54,6 +54,29 @@ ComunicWeb.components.discussions.manager = {
 	 * @return {Boolean} True for a success
 	 */
 	init: function(discussionsContainerElem){
+		
+		//First, add the "open a conversation" new
+		this.addOpenConversationButton(discussionsContainerElem);
 
 	},
+
+	/**
+	 * Add the "open conversation" button
+	 * 
+	 * @param {HTMLElement} targetElem The target of the button
+	 * @return {Boolean} True for a success
+	 */
+	addOpenConversationButton: function(targetElem){
+
+		//Create the button
+		var addButton = createElem("button", targetElem);
+		addButton.className = "btn btn-primary open-conversation-button";
+		addButton.innerHTML = "Open a conversation";
+		
+		
+		//Temporary behavior
+		addButton.onclick = function(){
+			alert("Open a conversation !");
+		}
+	}
 }

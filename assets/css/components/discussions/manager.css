@@ -1,0 +1,20 @@
+/**
+ * Discussions manager stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+#discussionsElem {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	text-align: right;
+	padding-right: 5px;
+}
+
+#discussionsElem .open-conversation-button {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}

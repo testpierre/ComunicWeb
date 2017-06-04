@@ -26,6 +26,7 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%css/components/menuBar.css",
     "%PATH_ASSETS%css/components/searchForm.css",
     "%PATH_ASSETS%css/components/friends/friendsBar.css",
+    "%PATH_ASSETS%css/components/discussions/manager.css",
 );
 
 //JS files to include (at the end of the page)
