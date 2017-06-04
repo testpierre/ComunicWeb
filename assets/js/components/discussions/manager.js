@@ -25,7 +25,35 @@ ComunicWeb.components.discussions.manager = {
 		//Else inform user and create discussion manager
 		ComunicWeb.debug.logMessage("INFO : initializate discussion manager");
 
+		//Create discussions manager element
+		var discussionsContainerElem = createElem("div");
+		discussionsContainerElem.id = "discussionsElem";
+		
+		//Insert the element at the right place
+		var pageTarget = byId("pageTarget");
+		if(pageTarget){
+			//Insert disucssion element before it
+			byId("wrapper").insertBefore(discussionsContainerElem, pageTarget);
+		}
+		else{
+			//Just apply the element
+			byId("wrapper").appendChild(discussionsContainerElem);
+		}
+
+		//Initializate discussion element
+		this.init(discussionsContainerElem);
+
 		//Success
 		return true;
-	}
+	},
+
+	/**
+	 * Initializate discussions element
+	 * 
+	 * @param {HTMLElement} discussionsContainerElem The container of the discussion element
+	 * @return {Boolean} True for a success
+	 */
+	init: function(discussionsContainerElem){
+
+	},
 }
