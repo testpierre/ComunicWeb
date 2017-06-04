@@ -61,5 +61,32 @@ ComunicWeb.components.friends.list = {
 	get: function(){
 		//Return the list
 		return this.__list;
-	}
+	},
+
+	/**
+	 * Respond a friendship request
+	 * 
+	 * @param {Integer} friendID The friend ID to respond
+	 * @param {Boolean} accept Specify if the request was accepted or not
+	 * @param {Function} afterResponse Specify an action to do next
+	 * @return {Boolean} True for a success
+	 */
+	respondRequest: function(friendID, accept, afterResponse){
+		//Prepare the API request
+		var apiURI = "friends/respondRequest"
+		var params = {
+			"friendID": friendID,
+		};
+		
+		if(accept)
+			params.accept = "true";
+		else
+			params.accept = "false";
+		
+		//Process request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, afterResponse);
+
+		//Success
+		return true;
+	},
 };

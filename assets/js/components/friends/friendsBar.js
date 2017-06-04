@@ -110,42 +110,8 @@ ComunicWeb.components.friends.bar = {
 
 				//Show each friend
 				for(i in friendsList){
-
-					//Extract friend ID
-					var friendID = friendsList[i].ID_friend;
-
-					//Create a row
-					var friendRow = createElem("tr", listFriendsElem);
-
-					//Add user avatar
-					var imageRow = createElem("td", friendRow);
-					var imageElem = createElem("img", imageRow);
-					imageElem.src = usersInfos["user-"+friendID].accountImage;
-					imageElem.className = "account-image";
-
-					//Add user name
-					var nameRow = createElem("td", friendRow);
-					nameRow.innerHTML = usersInfos["user-"+friendID].firstName + " " + usersInfos["user-"+friendID].lastName;
-
-					//Add user login status
-					var statusRow = createElem("td", friendRow);
-					statusRow.className = "statusRow";					
-
-					//Check if user is online or not
-					var currentTime = ComunicWeb.common.date.time();
-					var timeDifference = currentTime - friendsList[i].time_last_activity;
-
-					if(timeDifference < 30){
-						//User is logged in
-						var iconsStats = createElem("i", statusRow);
-						iconsStats.className = "fa fa-fw fa-circle";
-						iconsStats.style.color = "green";
-					}
-					else {
-						//User isn't logged in
-						var logoutTime = createElem("small", statusRow);
-						logoutTime.innerHTML = ComunicWeb.common.date.diffToStr(timeDifference);
-					}
+					//Show informations about the friend
+					ComunicWeb.components.friends.bar.showFriendInfos(usersInfos["user-"+friendsList[i].ID_friend], friendsList[i], listFriendsElem);
 				}
 
 				//Enable slimscroll
@@ -155,6 +121,80 @@ ComunicWeb.components.friends.bar = {
 
 			});
 		});
+	},
+
+	/**
+	 * Show a friend informations
+	 * 
+	 * @param {Object} userInfos Informations about the user
+	 * @param {Object} friendshipInfos Informations about the friendship
+	 * @param {HTMLElement} listFriendsElem The target for the friends list
+	 * @return {Boolean} True for a success
+	 */
+	showFriendInfos: function(userInfos, friendshipInfos, listFriendsElem){
+		//Extract friend ID
+		var friendID = friendshipInfos.ID_friend;
+
+		//Create a row
+		var friendRow = createElem("tr", listFriendsElem);
+
+		//Add user avatar
+		var imageRow = createElem("td", friendRow);
+		var imageElem = createElem("img", imageRow);
+		imageElem.src = userInfos.accountImage;
+		imageElem.className = "account-image";
+
+		//Add user name
+		var nameRow = createElem("td", friendRow);
+		nameRow.innerHTML = userInfos.firstName + " " + userInfos.lastName;
+
+		//Add user login status
+		var statusRow = createElem("td", friendRow);
+		statusRow.className = "statusRow";					
+
+		//Check if the user was accepted or not
+		if(friendshipInfos.accepted == "1"){
+
+			//Check if user is online or not
+			var currentTime = ComunicWeb.common.date.time();
+			var timeDifference = currentTime - friendshipInfos.time_last_activity;
+
+			if(timeDifference < 30){
+				//User is logged in
+				var iconsStats = createElem("i", statusRow);
+				iconsStats.className = "fa fa-fw fa-circle";
+				iconsStats.style.color = "green";
+			}
+			else {
+				//User isn't logged in
+				var logoutTime = createElem("small", statusRow);
+				logoutTime.innerHTML = ComunicWeb.common.date.diffToStr(timeDifference);
+			}
+		}
+		else {
+			//We offer user to accept invitation
+			var acceptButton = createElem("button", statusRow);
+			acceptButton.className = "btn btn-xs btn-success";
+			acceptButton.innerHTML = "<i class='fa fa-check'></i>";
+			acceptButton.onclick = function(){
+				ComunicWeb.components.friends.bar.processFriendShipRequest(friendID, true, statusRow)
+			};
+
+			//Insert space
+			var space = createElem("span", statusRow);
+			space.innerHTML = "&nbsp";
+
+			//But he can also refuse it
+			var refuseButton = createElem("button", statusRow);
+			refuseButton.className = "btn btn-xs btn-danger";
+			refuseButton.innerHTML = "<i class='fa fa-times'></i>";
+			refuseButton.onclick = function(){
+				ComunicWeb.components.friends.bar.processFriendShipRequest(friendID, false, statusRow)
+			};
+		}
+
+		//Sucess
+		return true;
 	},
 
 	/**
@@ -180,6 +220,31 @@ ComunicWeb.components.friends.bar = {
 
 		//Success
 		return true;
-	}
+	},
+
+	/**
+	 * Accept / Deny a friendship request
+	 * 
+	 * @param {Integer} friendID The ID of the friend to accept / rejet
+	 * @param {Boolean} accepted True if friendship is accepted, false else
+	 * @param {HTMLElement} statusRow The parent node of friendship area
+	 * @return {Boolean} True for a success
+	 */
+	processFriendShipRequest: function(friendID, accepted, statusRow){
+
+		//Log action
+		ComunicWeb.debug.logMessage("Process friendship request "+friendID);
+
+		//Change statusRow style
+		if(accepted)
+			statusRow.innerHTML = "Accepted";
+		else
+			statusRow.innerHTML = "Refused";
+		
+		//Perform an API request
+		ComunicWeb.components.friends.list.respondRequest(friendID, accepted);
+
+	},
+
 
 }

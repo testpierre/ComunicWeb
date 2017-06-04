@@ -61,7 +61,8 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginToke
             }
 
             //We can do the next step
-            nextAction(result);
+            if(nextAction)
+                nextAction(result);
         }
     }
 
