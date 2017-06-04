@@ -18,6 +18,10 @@
 		height: 100%;
 		padding-top: 50px;
 	}
+
+	#friendsList:hover {
+		z-index: 1001;
+	}
 }
 
 /**

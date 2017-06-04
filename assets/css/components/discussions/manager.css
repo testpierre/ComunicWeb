@@ -10,6 +10,7 @@
 	width: 100%;
 	text-align: right;
 	padding-right: 5px;
+	z-index: 1000;
 }
 
 #discussionsElem .open-conversation-button {
