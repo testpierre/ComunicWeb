@@ -28,6 +28,9 @@
         <!-- Make the website responsive -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
+        <!-- UTF-8 support -->
+        <meta charset="utf-8">
+
         <!--Stylesheet requirements -->
         <?php
             foreach($config['CSSfiles'] as $file){
@@ -69,8 +72,19 @@
         
     </head>
     <body>
-        <!-- No javascript message, will be removed soon... -->
-        <p>Please consider using a modern browser which support Javascript to be able to use this website. We recomend you to download & install Mozilla Firefox...</p>
+        <!-- Welcome message -->
+        <div style="text-align: center; font-size: 150%; padding-top: 10%;">
+            Welcome !<br />
+            Bienvenue !<br /><br />
+
+            <img src="<?php echo config['pathAssets']; ?>img/roundProgress.gif" /><br /><br />
+
+            Please wait while Comunic is starting...<br />
+            Veuillez patienter pendant le d&eacute;marrage de Comunic...<br /><br />
+        
+        
+            <p><small>If this screen doesn't disappear after a while, please check javascript is enabled in your browser...</small></p>
+        </div>
     
         <!-- Javascript files inclusion -->
         <?php
