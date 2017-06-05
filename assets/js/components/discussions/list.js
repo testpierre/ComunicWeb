@@ -69,7 +69,17 @@ ComunicWeb.components.discussions.list = {
 		var createForm = createElem("div", listBox.boxBody);
 
 		//Discussion name
-		var discussionNameInput = createFormGroup()
+		var discussionNameInput = createFormGroup(createForm, "Discussion name", "Optionnal", "text");
+
+		//Follow disucssion
+		var followDiscussionInput = createFormGroup(createForm, "Follow discussion", "true", "checkbox");
+		
+
+		//Create button
+		var createButton = createElem("butto", createForm);
+		createButton.className = "btn btn-primary";
+		createButton.style.width = "100%";
+		createButton.innerHTML = "Create discussion";
 
 		//Success
 		return true;

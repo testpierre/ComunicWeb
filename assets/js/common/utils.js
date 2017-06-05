@@ -67,7 +67,8 @@ function checkMail(emailAddress){
  * 
  * @param {HTMLElement} target The target of the field
  * @param {String} label The label of the field
- * @param {String} placeholder The placeholder of the field
+ * @param {String} placeholder The placeholder of the field (for checkbox: 
+ * 	defines if the box has to be checked by default)
  * @param {String} type The type of the field
  * @return {HTMLElement} The input 
  */
@@ -78,17 +79,46 @@ function createFormGroup(target, label, placeholder, type){
 
 	//Add label
 	var labelElem = createElem("label", formGroup);
-	labelElem.innerHTML = label;
 
-	//Create input group
-	var inputGroup = createElem("div", formGroup);
-	inputGroup.className = "input-group";
+	//Treatement differs if it is a checkbox
+	if(type == "checkbox"){
 
-	//Create input
-	var input = createElem("input", inputGroup);
-	input.type = type;
-	input.placeholder = placeholder;
+		//Create checkbox
+		var input = createElem("input", labelElem) ;
+		input.type = "checkbox";
 
+		//Check if input has to be checked by default
+		if(placeholder){
+			if(placeholder === "true"){
+				input.checked = "true";
+			}
+		}
+
+		//Add label value
+		var labelValue = createElem("span", labelElem);
+		labelValue.innerHTML = " "+label;
+
+		//Enable iCheck
+		$(input).iCheck({
+			checkboxClass: 'icheckbox_flat-blue',
+      		radioClass: 'iradio_flat-blue'
+		});
+	}
+	else {
+		//Else continue the function as a normal input type
+		labelElem.innerHTML = label;
+
+		//Create input group
+		var inputGroup = createElem("div", formGroup);
+		inputGroup.className = "input-group";
+		inputGroup.style.width = "100%";
+
+		//Create input
+		var input = createElem("input", inputGroup);
+		input.className = "form-control";
+		input.type = type;
+		input.placeholder = placeholder;
+	}
 
 	//Return input
 	return input;

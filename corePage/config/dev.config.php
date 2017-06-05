@@ -15,6 +15,7 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/font-awesome/css/font-awesome.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/ionicons/css/ionicons.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/square/blue.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/flat/blue.css",
     "%PATH_ASSETS%3rdparty/adminLTE/dist/css/AdminLTE.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",
 
