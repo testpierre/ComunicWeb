@@ -14,6 +14,11 @@ ComunicWeb.common.system = {
 		//Start init
 		ComunicWeb.debug.logMessage("Start initialization...");
 
+		//Disable tooltips
+		$(function () {
+			$(document.body).tooltip("disable");
+		});
+
 		/**
 		 * Prepare login
 		 */

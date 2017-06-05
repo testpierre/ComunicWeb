@@ -41,7 +41,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/jquery-ui/jquery-ui.min.js",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/icheck.min.js",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
-    "%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.js", //remove .min to debug
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.min.js",
     "%PATH_ASSETS%3rdparty/adminLTE/dist/js/app.min.js",
 
     //Bootstrap notify
