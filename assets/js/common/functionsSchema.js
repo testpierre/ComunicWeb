@@ -352,6 +352,11 @@ var ComunicWeb = {
 			 * Remove all entries from user informations cache
 			 */
 			emptyUserInfosCache: function(){},
+
+			/**
+			 * Given a query, search for users and return the result
+			 */
+			search: function(query, afterSearch){},
 		},
 	},
 

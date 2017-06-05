@@ -136,4 +136,33 @@ ComunicWeb.user.userInfos = {
 
 		return true;
 	},
+
+	/**
+	 * Given a query, search for users and return the result
+	 * 
+	 * @param {String} query The query to search
+	 * @param {Function} afterSearch What to do once we got results
+	 * @return {Boolean} True for a success
+	 */
+	search: function(query, afterSearch){
+		//Perform a request on the server
+		apiURI = "user/search";
+		params = {
+			query: query,
+		};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(response){
+			
+			//Continue only in case of success
+			if(response.error){
+				afterSearch(false);
+				return false;
+			}
+			
+			//Preload users informations
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(response, function(usersInfos){
+				//Go to next action
+				afterSearch(usersInfos);
+			});
+		});
+	}
 }
