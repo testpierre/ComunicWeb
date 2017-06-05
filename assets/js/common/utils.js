@@ -61,3 +61,35 @@ function emptyElem(container){
 function checkMail(emailAddress){
 	return (emailAddress.match(/^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]{1,}[.][a-zA-Z]{2,5}$/) === null ? false : true);
 }
+
+/**
+ * Create a formgroup element
+ * 
+ * @param {HTMLElement} target The target of the field
+ * @param {String} label The label of the field
+ * @param {String} placeholder The placeholder of the field
+ * @param {String} type The type of the field
+ * @return {HTMLElement} The input 
+ */
+function createFormGroup(target, label, placeholder, type){
+	//Create formgroup
+	var formGroup = createElem("div", target);
+	formGroup.className = "form-group";
+
+	//Add label
+	var labelElem = createElem("label", formGroup);
+	labelElem.innerHTML = label;
+
+	//Create input group
+	var inputGroup = createElem("div", formGroup);
+	inputGroup.className = "input-group";
+
+	//Create input
+	var input = createElem("input", inputGroup);
+	input.type = type;
+	input.placeholder = placeholder;
+
+
+	//Return input
+	return input;
+}
