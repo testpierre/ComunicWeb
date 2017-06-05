@@ -502,6 +502,13 @@ var ComunicWeb = {
 
 			},
 		},
+
+		/**
+		 * User selector
+		 */
+		userSelect:{
+			//TODO : implement
+		}
 	},
 
 	/**

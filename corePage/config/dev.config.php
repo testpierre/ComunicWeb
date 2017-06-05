@@ -16,6 +16,7 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/ionicons/css/ionicons.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/square/blue.css",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/flat/blue.css",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/dist/css/AdminLTE.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",
 
@@ -29,6 +30,7 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%css/components/friends/friendsBar.css",
     "%PATH_ASSETS%css/components/discussions/manager.css",
     "%PATH_ASSETS%css/components/discussions/windows.css",
+    "%PATH_ASSETS%css/components/userSelect/userSelect.css",
 );
 
 //JS files to include (at the end of the page)
@@ -39,6 +41,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/jquery-ui/jquery-ui.min.js",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/icheck.min.js",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
+    "%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.js", //remove .min to debug
     "%PATH_ASSETS%3rdparty/adminLTE/dist/js/app.min.js",
 
     //Bootstrap notify
@@ -78,6 +81,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/components/discussions/manager.js",
     "%PATH_ASSETS%js/components/discussions/list.js",
     "%PATH_ASSETS%js/components/discussions/windows.js",
+    "%PATH_ASSETS%js/components/userSelect/userSelect.js",
 
     //User scripts
     "%PATH_ASSETS%js/user/loginTokens.js",

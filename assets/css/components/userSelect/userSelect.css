@@ -1,0 +1,10 @@
+/**
+ * Users select
+ *
+ * @author Pierre HUBERT
+ */
+
+.user-select-image {
+	border-radius: 50%;
+	width: 25px;
+}
