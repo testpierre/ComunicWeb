@@ -76,7 +76,7 @@ ComunicWeb.components.discussions.manager = {
 		
 		//Temporary behavior
 		addButton.onclick = function(){
-			alert("Open a conversation !");
+			ComunicWeb.components.discussions.list.display(this);
 		}
 	}
 }

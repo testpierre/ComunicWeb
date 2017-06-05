@@ -482,6 +482,20 @@ var ComunicWeb = {
 			manager:{
 				//TODO : implement
 			},
+
+			/**
+			 * Discussions list windo
+			 */
+			list:{
+				//TODO : implement
+			},
+
+			/**
+			 * Discussiosn windows manager
+			 */
+			windows:{
+
+			},
 		},
 	},
 

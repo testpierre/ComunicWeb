@@ -1,0 +1,15 @@
+/**
+ * Conversation window
+ * 
+ * @author Pierre HUBERT
+ */
+
+#discussionsElem .box {
+	width: 250px;
+	height: 350px;
+	max-width: 100%;
+	display: inline-block;
+	margin-left: 5px;
+	text-align: justify;
+	margin-bottom: 0px;
+}
