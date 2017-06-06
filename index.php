@@ -31,6 +31,10 @@
         <!-- UTF-8 support -->
         <meta charset="utf-8">
 
+        <!-- Favicons -->
+        <link rel="icon" type="image/vnd.microsoft.icon" href="<?php echo config['pathAssets']; ?>img/favicon.png" />
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo config['pathAssets']; ?>img/favicon.png" />
+
         <!--Stylesheet requirements -->
         <?php
             foreach($config['CSSfiles'] as $file){
