@@ -39,6 +39,10 @@ ComunicWeb.pages.home.home = {
             //Initialize user selector
             ComunicWeb.components.userSelect.init(selectElement);
 
+            setInterval(function(){
+                console.log(ComunicWeb.components.userSelect.getResults(selectElement));
+            }, 3000);
+
         }
         else{
             //Display landing page
