@@ -81,6 +81,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/components/discussions/manager.js",
     "%PATH_ASSETS%js/components/discussions/list.js",
     "%PATH_ASSETS%js/components/discussions/windows.js",
+    "%PATH_ASSETS%js/components/discussions/interface.js",
     "%PATH_ASSETS%js/components/userSelect/userSelect.js",
 
     //User scripts

@@ -104,7 +104,7 @@ ComunicWeb.components.discussions.list = {
 		//Generate a summary object about all the informations we have got
 		var infos = {
 			listBox: listBox,
-			userElement: usersElement,
+			usersElement: usersElement,
 			discussionNameInput: discussionNameInput,
 			followDiscussionInput: followDiscussionInput,
 		};
@@ -123,7 +123,7 @@ ComunicWeb.components.discussions.list = {
 	 * 
 	 * @param {Object} infos Data to pass to the function
 	 * * @info {Object} listBox Informations about the listbox creating the discussion
-	 * * @info {HTMLElement} userElement Pointer on userElement
+	 * * @info {HTMLElement} usersElement Pointer on userElement
 	 * * @info {HTMLElement} discussionNameInput Pointer on the input of the form of the discussion
 	 * * @info {HTMLElement} followDiscussionInput Pointer on the "follow discussion" checkbox
 	 * @return {Boolean} True for a success
@@ -131,6 +131,30 @@ ComunicWeb.components.discussions.list = {
 	submitCreateDiscussionForm: function(infos){
 
 		//First, get the list of users
-		console.log("hello from list.js");
+		var selectedUsers = ComunicWeb.components.userSelect.getResults(infos.usersElement);
+
+		//We check if less than one user was selected
+		if(selectedUsers.length < 1){
+			//Display an error notification
+			ComunicWeb.common.notificationSystem.showNotification("Please select at least one user!", "danger", 2);
+
+			return false;
+		}
+
+		//Add current user to the list
+		selectedUsers.push(ComunicWeb.user.userLogin.getUserID());
+
+		//Prepare the creation of the conversation
+		//Get all required informations
+		var discussionInformations = {
+			users: selectedUsers,
+			follow: infos.followDiscussionInput.checked,
+			discussionName: (infos.discussionNameInput.value == "" ? false : infos.discussionNameInput.value),
+		};
+
+		//Change box body style
+		var splashScreen = ComunicWeb.common.page.showTransparentWaitSplashScreen(infos.listBox.boxBody);
+
+		//Contact the interface to create the conversation
 	}
 }

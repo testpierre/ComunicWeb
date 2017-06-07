@@ -69,20 +69,24 @@ ComunicWeb.common.page = {
     /**
      * Show a transparent wait splash screen
      * 
-     * @returns {elem} The splash screen element to let it being deleted
+     * @param {HTMLElement} target Optionnal, defines the target of the transparent splashscreen
+     * @returns {HTMLElement} The splash screen element to let it being deleted
      */
-    showTransparentWaitSplashScreen: function(){
+    showTransparentWaitSplashScreen: function(target){
         //Create the element
-        var waitSplashScreen = document.createElement("div");
+        var waitSplashScreen = createElem("div");
         waitSplashScreen.className = "transparentWaitSplashScreen";
 
         //Populate it
-        var imgElem = document.createElement("img");
+        var imgElem = createElem("img");
         imgElem.src = ComunicWeb.__config.assetsURL+"img/barProgress.gif";
         waitSplashScreen.appendChild(imgElem);
 
         //Apply splash screen
-        document.body.appendChild(waitSplashScreen);
+        if(!target)
+            document.body.appendChild(waitSplashScreen);
+        else
+            target.appendChild(waitSplashScreen);
 
         //Return wait splash screen element
         return waitSplashScreen;

@@ -138,7 +138,7 @@ var ComunicWeb = {
 			/**
 			 * Show a transparent wait splash screen
 			 */
-			showTransparentWaitSplashScreen: function(){},
+			showTransparentWaitSplashScreen: function(target){},
 
 			/**
 			 * Open a page
