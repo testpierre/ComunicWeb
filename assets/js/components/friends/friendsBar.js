@@ -114,11 +114,21 @@ ComunicWeb.components.friends.bar = {
 					ComunicWeb.components.friends.bar.showFriendInfos(usersInfos["user-"+friendsList[i].ID_friend], friendsList[i], listFriendsElem);
 				}
 
+				//Check if the friends hasn't any friend
+				if(friendsList.length == 0){
+					//Display adapted message
+					var noFriendMessageRow = createElem("tr", listFriendsElem);
+					var noFriendMessageColumn = createElem("td", noFriendMessageRow);
+					var noFriendMessage = createElem("span", noFriendMessageColumn);
+					noFriendMessage.style.color = "#3c8dbc";
+					noFriendMessage.style.fontSize = "150%";
+					noFriendMessage.innerHTML = "You have no friends yet! <br /> We can't display anything here for you for now... :("
+				}
+
 				//Enable slimscroll
 				$(listFriendsElem.parentNode.parentNode).slimScroll({
 					height: '100%;'
 				});
-
 			});
 		});
 	},
