@@ -28,21 +28,6 @@ ComunicWeb.pages.home.home = {
             loginButton.innerHTML="Logout";
             targetElement.appendChild(loginButton);
 
-            //Create select user element
-            var formGroup = createElem("div", targetElement);
-            formGroup.className = "form-group";
-            var selectElement = createElem("select", formGroup);
-            selectElement.className = "form-control select2";
-            selectElement.setAttribute("multiple", "multiple");
-            selectElement.setAttribute("data-placeholder", "Select users");
-
-            //Initialize user selector
-            ComunicWeb.components.userSelect.init(selectElement);
-
-            setInterval(function(){
-                console.log(ComunicWeb.components.userSelect.getResults(selectElement));
-            }, 3000);
-
         }
         else{
             //Display landing page
