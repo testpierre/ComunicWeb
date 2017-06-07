@@ -55,23 +55,23 @@ ComunicWeb.components.discussions.manager = {
 	 */
 	init: function(discussionsContainerElem){
 		
-		//First, add the "open a conversation" new
-		this.addOpenConversationButton(discussionsContainerElem);
+		//First, add the "open a discussion" new
+		this.addOpenDiscussionButton(discussionsContainerElem);
 
 	},
 
 	/**
-	 * Add the "open conversation" button
+	 * Add the "open discussion" button
 	 * 
 	 * @param {HTMLElement} targetElem The target of the button
 	 * @return {Boolean} True for a success
 	 */
-	addOpenConversationButton: function(targetElem){
+	addOpenDiscussionButton: function(targetElem){
 
 		//Create the button
 		var addButton = createElem("button", targetElem);
-		addButton.className = "btn btn-primary open-conversation-button";
-		addButton.innerHTML = "Open a conversation";
+		addButton.className = "btn btn-primary open-discussion-button";
+		addButton.innerHTML = "Open a discussion";
 		
 		
 		//Temporary behavior
