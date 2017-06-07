@@ -488,32 +488,32 @@ var ComunicWeb = {
 		},
 
 		/**
-		 * Discussions
+		 * Conversations
 		 */
-		discussions:{
+		conversations:{
 			/**
-			 * Discussions manager
+			 * Conversations manager
 			 */
 			manager:{
 				//TODO : implement
 			},
 
 			/**
-			 * Discussions list windo
+			 * Conversations list windo
 			 */
 			list:{
 				//TODO : implement
 			},
 
 			/**
-			 * Discussiosn windows manager
+			 * Conversations windows manager
 			 */
 			windows:{
 
 			},
 
 			/**
-			 * Interface between discussion UI and the API
+			 * Interface between conversation UI and the API
 			 */
 			interface:{},
 		},

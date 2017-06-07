@@ -1,12 +1,12 @@
 /**
- * Discussions list window
+ * Conversations list window
  * 
  * @author Pierre HUBERT
  */
 
-ComunicWeb.components.discussions.list = {
+ComunicWeb.components.conversations.list = {
 	/**
-	 * Display discussions list window
+	 * Display conversations list window
 	 * 
 	 * @param {HTMLElement} nodeBefore The node before the destination
 	 * @return {Boolean} True for a success
@@ -17,10 +17,10 @@ ComunicWeb.components.discussions.list = {
 		ComunicWeb.debug.logMessage("INFO : initialize conversation list box.");
 
 		//Create a window
-		var listBox = ComunicWeb.components.discussions.windows.create(nodeBefore);
+		var listBox = ComunicWeb.components.conversations.windows.create(nodeBefore);
 
 		//Change box title
-		listBox.boxTitle.innerHTML = "Discussions";
+		listBox.boxTitle.innerHTML = "Conversations";
 
 		//Remove footer
 		listBox.boxFooter.remove();
@@ -30,7 +30,7 @@ ComunicWeb.components.discussions.list = {
 		listBox.boxTools.insertBefore(createButton, listBox.boxTools.children[0]);
 		createButton.className = "btn btn-box-tool";
 		createButton.onclick = function(){
-			ComunicWeb.components.discussions.list.displayCreateForm(listBox);
+			ComunicWeb.components.conversations.list.displayCreateForm(listBox);
 		}
 
 			//Button icon
@@ -45,7 +45,7 @@ ComunicWeb.components.discussions.list = {
 	},
 
 	/**
-	 * Display the form to create a new discussion
+	 * Display the form to create a new conversation
 	 * 
 	 * @param {Object} listBox Informations about the listbox target
 	 * @return {Boolean} True for a success
@@ -53,7 +53,7 @@ ComunicWeb.components.discussions.list = {
 	displayCreateForm: function(listBox){
 
 		//Log action
-		ComunicWeb.debug.logMessage("INFO : initialize create discussion form");
+		ComunicWeb.debug.logMessage("INFO : initialize create conversation form");
 
 		//Hide boxy body contents
 		var boxBodyElem = listBox.boxBody.children;
@@ -63,9 +63,9 @@ ComunicWeb.components.discussions.list = {
 		}
 
 		//Change box title
-		listBox.boxTitle.innerHTML = "New discussion";
+		listBox.boxTitle.innerHTML = "New conversation";
 
-		//Create and display discussion creation form
+		//Create and display conversation creation form
 		var createForm = createElem("div", listBox.boxBody);
 
 		//Choose users
@@ -81,17 +81,17 @@ ComunicWeb.components.discussions.list = {
 		ComunicWeb.components.userSelect.init(usersElement);
 
 
-		//Discussion name
-		var discussionNameInput = createFormGroup({
+		//Conversation name
+		var conversationNameInput = createFormGroup({
 			target: createForm, 
-			label: "Discussion name", 
+			label: "Conversation name", 
 			placeholder: "Optionnal", 
 			type: "text"});
 
 		//Follow disucssion
-		var followDiscussionInput = createFormGroup({
+		var followConversationInput = createFormGroup({
 			target: createForm, 
-			label: "Follow discussion", 
+			label: "Follow conversation", 
 			checked: true,
 			type: "checkbox"});
 
@@ -99,19 +99,19 @@ ComunicWeb.components.discussions.list = {
 		var createButton = createElem("button", createForm);
 		createButton.className = "btn btn-primary";
 		createButton.style.width = "100%";
-		createButton.innerHTML = "Create discussion";
+		createButton.innerHTML = "Create conversation";
 
 		//Generate a summary object about all the informations we have got
 		var infos = {
 			listBox: listBox,
 			usersElement: usersElement,
-			discussionNameInput: discussionNameInput,
-			followDiscussionInput: followDiscussionInput,
+			conversationNameInput: conversationNameInput,
+			followConversationInput: followConversationInput,
 		};
 
 		//Make button lives
 		createButton.onclick = function(){
-			ComunicWeb.components.discussions.list.submitCreateDiscussionForm(infos);
+			ComunicWeb.components.conversations.list.submitCreateConversationForm(infos);
 		};
 
 		//Success
@@ -119,16 +119,16 @@ ComunicWeb.components.discussions.list = {
 	},
 
 	/**
-	 * Submit a create a discussion form
+	 * Submit a create a conversation form
 	 * 
 	 * @param {Object} infos Data to pass to the function
-	 * * @info {Object} listBox Informations about the listbox creating the discussion
+	 * * @info {Object} listBox Informations about the listbox creating the conversation
 	 * * @info {HTMLElement} usersElement Pointer on userElement
-	 * * @info {HTMLElement} discussionNameInput Pointer on the input of the form of the discussion
-	 * * @info {HTMLElement} followDiscussionInput Pointer on the "follow discussion" checkbox
+	 * * @info {HTMLElement} conversationNameInput Pointer on the input of the form of the conversation
+	 * * @info {HTMLElement} followConversationInput Pointer on the "follow conversation" checkbox
 	 * @return {Boolean} True for a success
 	 */
-	submitCreateDiscussionForm: function(infos){
+	submitCreateConversationForm: function(infos){
 
 		//First, get the list of users
 		var selectedUsers = ComunicWeb.components.userSelect.getResults(infos.usersElement);
@@ -146,10 +146,10 @@ ComunicWeb.components.discussions.list = {
 
 		//Prepare the creation of the conversation
 		//Get all required informations
-		var discussionInformations = {
+		var conversationInformations = {
 			users: selectedUsers,
-			follow: infos.followDiscussionInput.checked,
-			discussionName: (infos.discussionNameInput.value == "" ? false : infos.discussionNameInput.value),
+			follow: infos.followConversationInput.checked,
+			conversationName: (infos.conversationNameInput.value == "" ? false : infos.conversationNameInput.value),
 		};
 
 		//Change box body style

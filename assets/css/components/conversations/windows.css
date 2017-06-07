@@ -1,10 +1,10 @@
 /**
- * Discussions windows
+ * Conversations windows
  * 
  * @author Pierre HUBERT
  */
 
-#discussionsElem .box {
+#conversationsElem .box {
 	width: 250px;
 	height: 350px;
 	max-width: 100%;

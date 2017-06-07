@@ -29,8 +29,8 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%css/components/menuBar.css",
     "%PATH_ASSETS%css/components/searchForm.css",
     "%PATH_ASSETS%css/components/friends/friendsBar.css",
-    "%PATH_ASSETS%css/components/discussions/manager.css",
-    "%PATH_ASSETS%css/components/discussions/windows.css",
+    "%PATH_ASSETS%css/components/conversations/manager.css",
+    "%PATH_ASSETS%css/components/conversations/windows.css",
     "%PATH_ASSETS%css/components/userSelect/userSelect.css",
 );
 
@@ -79,10 +79,10 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/components/menuBar/authenticated.js",
     "%PATH_ASSETS%js/components/friends/friendsList.js",
     "%PATH_ASSETS%js/components/friends/friendsBar.js",
-    "%PATH_ASSETS%js/components/discussions/manager.js",
-    "%PATH_ASSETS%js/components/discussions/list.js",
-    "%PATH_ASSETS%js/components/discussions/windows.js",
-    "%PATH_ASSETS%js/components/discussions/interface.js",
+    "%PATH_ASSETS%js/components/conversations/manager.js",
+    "%PATH_ASSETS%js/components/conversations/list.js",
+    "%PATH_ASSETS%js/components/conversations/windows.js",
+    "%PATH_ASSETS%js/components/conversations/interface.js",
     "%PATH_ASSETS%js/components/userSelect/userSelect.js",
 
     //User scripts

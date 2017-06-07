@@ -1,10 +1,10 @@
 /**
- * Discussions windows manager
+ * Conversations windows manager
  * 
  * @author Pierre HUBERT
  */
 
-ComunicWeb.components.discussions.windows = {
+ComunicWeb.components.conversations.windows = {
 
 	/**
 	 * Create a new conversation window
@@ -14,16 +14,16 @@ ComunicWeb.components.discussions.windows = {
 	 */
 	create: function(nodeBefore){
 		//Create listbox element
-		var discussionBox = createElem("div", nodeBefore.parentNode);
-		discussionBox.className = "box box-primary";
+		var conversationBox = createElem("div", nodeBefore.parentNode);
+		conversationBox.className = "box box-primary";
 
 		//Create close box function
 		var closeBox = function(){
-			discussionBox.remove();
+			conversationBox.remove();
 		}
 
 		//Create box header
-		var boxHeader = createElem("div", discussionBox);
+		var boxHeader = createElem("div", conversationBox);
 		boxHeader.className = "box-header with-border";
 
 		//Add box title
@@ -45,16 +45,16 @@ ComunicWeb.components.discussions.windows = {
 			closeIcon.className = "fa fa-times";
 		
 		//Box body
-		var boxBody = createElem("div", discussionBox);
+		var boxBody = createElem("div", conversationBox);
 		boxBody.className = "box-body";
 
 		//Box footer
-		var boxFooter = createElem("div", discussionBox);
+		var boxFooter = createElem("div", conversationBox);
 		boxFooter.className = "box-footer";
 
 		//Prepare return
 		var boxElements ={
-			rootElem: discussionBox,
+			rootElem: conversationBox,
 			closeFunction: closeBox,
 			boxTitle: boxTitle,
 			boxTools: boxTools,

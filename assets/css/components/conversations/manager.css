@@ -1,10 +1,10 @@
 /**
- * Discussions manager stylesheet
+ * Conversations manager stylesheet
  *
  * @author Pierre HUBERT
  */
 
-#discussionsElem {
+#conversationsElem {
 	position: fixed;
 	bottom: 0px;
 	text-align: right;
@@ -13,7 +13,7 @@
 	right: 0px;
 }
 
-#discussionsElem .open-discussion-button {
+#conversationsElem .open-conversation-button {
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 	border-bottom-left-radius: 0px;
