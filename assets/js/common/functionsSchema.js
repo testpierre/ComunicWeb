@@ -501,6 +501,11 @@ var ComunicWeb = {
 			windows:{
 
 			},
+
+			/**
+			 * Interface between discussion UI and the API
+			 */
+			interface:{},
 		},
 
 		/**

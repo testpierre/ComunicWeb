@@ -70,7 +70,7 @@ ComunicWeb.components.discussions.list = {
 
 		//Choose users
 		//Create select user element
-		var selectElement = createFormGroup({
+		var usersElement = createFormGroup({
 			target: createForm, 
 			label: "Users", 
 			multiple: true,
@@ -78,7 +78,7 @@ ComunicWeb.components.discussions.list = {
 			type: "select2"});
 
 		//Initialize user selector
-		ComunicWeb.components.userSelect.init(selectElement);
+		ComunicWeb.components.userSelect.init(usersElement);
 
 
 		//Discussion name
@@ -101,7 +101,36 @@ ComunicWeb.components.discussions.list = {
 		createButton.style.width = "100%";
 		createButton.innerHTML = "Create discussion";
 
+		//Generate a summary object about all the informations we have got
+		var infos = {
+			listBox: listBox,
+			userElement: usersElement,
+			discussionNameInput: discussionNameInput,
+			followDiscussionInput: followDiscussionInput,
+		};
+
+		//Make button lives
+		createButton.onclick = function(){
+			ComunicWeb.components.discussions.list.submitCreateDiscussionForm(infos);
+		};
+
 		//Success
 		return true;
+	},
+
+	/**
+	 * Submit a create a discussion form
+	 * 
+	 * @param {Object} infos Data to pass to the function
+	 * * @info {Object} listBox Informations about the listbox creating the discussion
+	 * * @info {HTMLElement} userElement Pointer on userElement
+	 * * @info {HTMLElement} discussionNameInput Pointer on the input of the form of the discussion
+	 * * @info {HTMLElement} followDiscussionInput Pointer on the "follow discussion" checkbox
+	 * @return {Boolean} True for a success
+	 */
+	submitCreateDiscussionForm: function(infos){
+
+		//First, get the list of users
+		console.log("hello from list.js");
 	}
 }
