@@ -82,15 +82,18 @@ ComunicWeb.components.userSelect = {
 	 */
 	getResults: function(inputSelect){
 		
+		//Get entries
+		var selectUsersResult = $(inputSelect).select2("data");
+
 		//Prepare return
 		var usersID = [];
 
-		for(i in inputSelect.children){
+		for(i in selectUsersResult){
 
 			//Check it is really a children
-			if(inputSelect.children[i].value){
+			if(selectUsersResult[i].id){
 				//Add ID to the table
-				usersID.push(inputSelect.children[i].value);
+				usersID.push(selectUsersResult[i].id);
 			}
 		}
 
