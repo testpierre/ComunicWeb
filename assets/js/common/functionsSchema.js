@@ -202,6 +202,11 @@ var ComunicWeb = {
 			 * Make a get request
 			 */
 			getRequest: function(url, cache, GETnextAction){},
+
+			/**
+			 * Update the status of the network
+			 */
+			setStatus: function(success){},
 		},
 
 		/**

@@ -1,0 +1,14 @@
+/**
+ * Network error stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+#networkErrorMessage {
+	position: fixed;
+	bottom: 2px;
+	left: 1px;
+	width: 300px;
+	max-width: 100%;
+	text-align: justify;
+}

@@ -51,6 +51,17 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginToke
     apiXHR.onreadystatechange = function(){
         //We continue only if request is terminated
         if(apiXHR.readyState == 4){
+
+            //Check if response code is 0
+            if(apiXHR.status == 0){
+                //An error occured
+                ComunicWeb.common.network.setStatus(false);
+            }
+            else{
+                //It is a success
+                ComunicWeb.common.network.setStatus(true);
+            }
+
             //Prepare result
             var result = JSON.parse(apiXHR.responseText);
 

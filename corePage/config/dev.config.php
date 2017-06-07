@@ -23,6 +23,7 @@ $config['CSSfiles'] = array(
     //App stylesheets
     "%PATH_ASSETS%css/common/global.css",
     "%PATH_ASSETS%css/common/page/waitSplashScreen.css",
+    "%PATH_ASSETS%css/common/network/networkError.css",
 
     //Components stylesheets
     "%PATH_ASSETS%css/components/menuBar.css",
