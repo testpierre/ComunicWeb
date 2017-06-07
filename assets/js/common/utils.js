@@ -65,38 +65,40 @@ function checkMail(emailAddress){
 /**
  * Create a formgroup element
  * 
- * @param {HTMLElement} target The target of the field
- * @param {String} label The label of the field
- * @param {String} placeholder The placeholder of the field (for checkbox: 
- * 	defines if the box has to be checked by default)
- * @param {String} type The type of the field
+ * @param {Object} infos Informations about the formgroup element to create
+ * * @info {HTMLElement} target The target of the field
+ * * @info {String} label The label of the field
+ * * @info {String} placeholder The placeholder of the field
+ * * @info {Boolean} checked Defines if the fields has to be checked or not (checkbox only)
+ * * @info {Boolean} multiple Defines if the fields can accept more than one response
+ * * @info {String} type The type of the field
  * @return {HTMLElement} The input 
  */
-function createFormGroup(target, label, placeholder, type){
+function createFormGroup(infos){
 	//Create formgroup
-	var formGroup = createElem("div", target);
+	var formGroup = createElem("div", infos.target);
 	formGroup.className = "form-group";
 
 	//Add label
 	var labelElem = createElem("label", formGroup);
 
 	//Treatement differs if it is a checkbox
-	if(type == "checkbox"){
+	if(infos.type == "checkbox"){
 
 		//Create checkbox
 		var input = createElem("input", labelElem) ;
 		input.type = "checkbox";
 
 		//Check if input has to be checked by default
-		if(placeholder){
-			if(placeholder === "true"){
+		if(infos.checked){
+			if(infos.checked === true){
 				input.checked = "true";
 			}
 		}
 
 		//Add label value
 		var labelValue = createElem("span", labelElem);
-		labelValue.innerHTML = " "+label;
+		labelValue.innerHTML = " "+infos.label;
 
 		//Enable iCheck
 		$(input).iCheck({
@@ -104,9 +106,27 @@ function createFormGroup(target, label, placeholder, type){
       		radioClass: 'iradio_flat-blue'
 		});
 	}
+	else if(infos.type == "select2"){
+		//In case of select2 element
+		//Check for label
+		if(infos.label)
+			labelElem.innerHTML = infos.label;
+		else
+			labelElem.remove(); //Remove useless label element
+		
+		//Create input
+		var input = createElem("select", formGroup);
+		input.style.width = "100%";
+		input.className = "form-control select2";
+		if(infos.multiple) //For multiple changes
+			input.setAttribute("multiple", "multiple");
+		if(infos.placeholder) //Placeholder if required
+			input.setAttribute("data-placeholder", infos.placeholder);
+
+	}
 	else {
 		//Else continue the function as a normal input type
-		labelElem.innerHTML = label;
+		labelElem.innerHTML = infos.label;
 
 		//Create input group
 		var inputGroup = createElem("div", formGroup);
@@ -116,8 +136,8 @@ function createFormGroup(target, label, placeholder, type){
 		//Create input
 		var input = createElem("input", inputGroup);
 		input.className = "form-control";
-		input.type = type;
-		input.placeholder = placeholder;
+		input.type = infos.type;
+		input.placeholder = infos.placeholder;
 	}
 
 	//Return input
