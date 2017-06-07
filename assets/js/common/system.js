@@ -11,6 +11,10 @@ ComunicWeb.common.system = {
 	 * @return {Boolean} True for a success
 	 */
 	init: function(){
+
+		//Display Comunic logo
+		ComunicWeb.debug.displayComunicLogo();
+
 		//Start init
 		ComunicWeb.debug.logMessage("Start initialization...");
 

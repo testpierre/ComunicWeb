@@ -251,6 +251,11 @@ var ComunicWeb = {
 		 * Get log content in a string
 		 */
 		getLogContent: function(){},
+
+		/**
+     	 * Display Comunic Logo on the developper console
+		 */
+		displayComunicLogo: function(){},
 	},
 
 	/**

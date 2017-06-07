@@ -69,4 +69,35 @@ ComunicWeb.debug = {
         return logString;
     },
 
+
+    /**
+     * Display Comunic Logo on the developper console
+     * 
+     * @return {Boolean} True for a success
+     */
+    displayComunicLogo: function(){
+        //Prepare message
+        var message = "                          \n";
+        message += "                          \n";
+        message += "   ====================   \n";
+        message += "   ====================   \n";
+        message += "   ====================   \n";
+        message += "   ========               \n";
+        message += "   ========               \n";
+        message += "   ========               \n";
+        message += "   ========               \n";
+        message += "   ========               \n";
+        message += "   ========               \n";
+        message += "   ====================   \n";
+        message += "   ====================   \n";
+        message += "   ====================   \n";
+        message += "                          \n";
+        message += "     ComunicWeb  2.0      \n";
+        message += "                          \n";
+        message += "          v"+ComunicWeb.__config.appVersion+"          \n";
+        message += "                          \n";
+
+        //Display message
+        console.log(message);
+    }
 }
