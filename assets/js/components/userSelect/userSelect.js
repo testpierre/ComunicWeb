@@ -78,21 +78,19 @@ ComunicWeb.components.userSelect = {
 	 * Returns the results of a specified select element
 	 * 
 	 * @param {HTMLElement} inputSelect The target element
-	 * @return {Object} An object with all the select IDs
+	 * @return {Array} An array with all the select IDs
 	 */
 	getResults: function(inputSelect){
 		
 		//Prepare return
-		var usersID = {};
+		var usersID = [];
 
 		for(i in inputSelect.children){
 
 			//Check it is really a children
 			if(inputSelect.children[i].value){
-				//Get ID
-				var userID = inputSelect.children[i].value;
-
-				usersID['user-'+userID] = userID;
+				//Add ID to the table
+				usersID.push(inputSelect.children[i].value);
 			}
 		}
 
