@@ -74,7 +74,7 @@ ComunicWeb.components.conversations.manager = {
 		addButton.innerHTML = "Open a conversation";
 		
 		
-		//Temporary behavior
+		//Make button lives
 		addButton.onclick = function(){
 			ComunicWeb.components.conversations.list.display(this);
 		}

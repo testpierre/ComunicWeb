@@ -37,8 +37,8 @@ ComunicWeb.components.conversations.list = {
 			var createButtonIcon = createElem("i", createButton);
 			createButtonIcon.className = "fa fa-pencil";
 
-		//Display conversations list
-		listBox.boxBody.innerHTML = "<p>Hello world</p>";
+		//Get and display conversations list
+		//TODO : implement
 
 		//Success
 		return true;
@@ -171,7 +171,14 @@ ComunicWeb.components.conversations.list = {
 			}
 
 			//Success
-			alert("success");
+			notifMessage = "The conversation was successfully created !";
+			ComunicWeb.common.notificationSystem.showNotification(notifMessage, "success", 2);
+
+			//Remove the conversation box
+			infos.listBox.rootElem.remove();
+
+			//Open the conversation (under construction)
+			console.log("Open conversation ID: " + response.conversationID);
 		})
 	}
 }
