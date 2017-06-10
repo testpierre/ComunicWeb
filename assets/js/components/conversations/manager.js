@@ -78,5 +78,5 @@ ComunicWeb.components.conversations.manager = {
 		addButton.onclick = function(){
 			ComunicWeb.components.conversations.list.display(this);
 		}
-	}
+	},
 }

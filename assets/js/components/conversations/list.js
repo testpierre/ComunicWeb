@@ -156,5 +156,22 @@ ComunicWeb.components.conversations.list = {
 		var splashScreen = ComunicWeb.common.page.showTransparentWaitSplashScreen(infos.listBox.boxBody);
 
 		//Contact the interface to create the conversation
+		ComunicWeb.components.conversations.interface.createConversation(conversationInformations, function(response){
+
+			//First, remove splash screen
+			splashScreen.remove();
+
+			//Check for errors
+			if(response.error){
+				//Make an error notification
+				notifMessage = "An error occured while trying to create conversation. Please try again.";
+				ComunicWeb.common.notificationSystem.showNotification(notifMessage, "danger", 3);
+
+				return false;
+			}
+
+			//Success
+			alert("success");
+		})
 	}
 }
