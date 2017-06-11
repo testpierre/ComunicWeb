@@ -31,6 +31,7 @@ ComunicWeb.components.conversations.list = {
 		createButton.className = "btn btn-box-tool";
 		createButton.onclick = function(){
 			ComunicWeb.components.conversations.list.displayCreateForm(listBox);
+			this.remove();
 		}
 
 			//Button icon
@@ -38,7 +39,7 @@ ComunicWeb.components.conversations.list = {
 			createButtonIcon.className = "fa fa-pencil";
 
 		//Get and display conversations list
-		//TODO : implement
+		this.showConversationsList();
 
 		//Success
 		return true;
@@ -180,5 +181,23 @@ ComunicWeb.components.conversations.list = {
 			//Open the conversation (under construction)
 			console.log("Open conversation ID: " + response.conversationID);
 		})
-	}
+	},
+
+	/**
+	 * Show the conversations list
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	showConversationsList: function(){
+
+		//Get and show the conversation list
+		ComunicWeb.components.conversations.interface.getList(function(){
+
+			console.log("OK --------------------");
+
+		}, true);
+
+		//Success
+		return true;
+	},
 }
