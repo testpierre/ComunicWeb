@@ -49,6 +49,6 @@ function userID(){
  * @param {Boolean} forceRequest Force the request to be made
  * @return {Boolean} True for a success
  */
-function getUsersInfos(usersID, afterGetUserInfos, forceRequest){
+function getMultipleUsersInfos(usersID, afterGetUserInfos, forceRequest){
 	ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, afterGetUserInfos, forceRequest);
 }

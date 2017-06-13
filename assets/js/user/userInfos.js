@@ -164,5 +164,40 @@ ComunicWeb.user.userInfos = {
 				afterSearch(usersInfos);
 			});
 		});
-	}
+	},
+
+	/**
+	 * Given user IDs (in an array) the function return their names in a string
+	 * 
+	 * @param {Array} usersID The users to return as a string
+	 * @param {Function} afterNames What to do once we have got the names
+	 * @return {Boolean} True for a success
+	 */
+	getNames: function(usersID, afterNames){
+		//Get users informations
+		this.getMultipleUsersInfos(usersID, function(usersInfo){
+
+			//Check for errors
+			if(usersInfo.error){
+				afterNames("Error");
+			}
+
+			//Prepare conversation name
+			var usersName = "";
+
+			//Process users informations
+			for(i in usersInfo){
+				if(usersInfo[i].firstName)
+
+					//Add a coma if required
+					if(usersName != "")
+						usersName += ", ";
+
+					usersName += usersInfo[i].firstName + " " + usersInfo[i].lastName;
+			}
+			
+			//Perform next action with result
+			afterNames(usersName);
+		});
+	},
 }

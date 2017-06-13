@@ -22,6 +22,9 @@ ComunicWeb.components.conversations.list = {
 		//Change box title
 		listBox.boxTitle.innerHTML = "Conversations";
 
+		//Change box root elem class
+		listBox.rootElem.className += " conversations-list-box";
+
 		//Remove footer
 		listBox.boxFooter.remove();
 
@@ -243,6 +246,19 @@ ComunicWeb.components.conversations.list = {
 
 		console.log(conversationInfos); //DEBUG - temporary
 
+
+		//Add conversations last activity
+		var lastActivityElem = createElem("small", linkElem);
+		lastActivityElem.className = "pull-right last-activity";
+		var lastActivityIcon = createElem("i", lastActivityElem);
+		lastActivityIcon.className = "fa fa-clock-o";
+		var lastActivityValueElem = createElem("span", lastActivityElem);
+
+		//Calculate last conversation activity
+		var currentTime = ComunicWeb.common.date.time();
+		lastActivityValueElem.innerHTML = " "+ComunicWeb.common.date.diffToStr(currentTime - conversationInfos.last_active);
+
+
 		//Create the conversation name element
 		var conversationNameElem = createElem("strong", linkElem);
 		
@@ -274,30 +290,16 @@ ComunicWeb.components.conversations.list = {
 			}
 
 			//Get users informations
-			getUsersInfos(firstMembers, function(usersInfo){
-				//Prepare conversation name
-				var conversationName = "";
+			ComunicWeb.user.userInfos.getNames(firstMembers, function(usersName){
 
-				//Process users informations
-				for(i in usersInfo){
-					if(usersInfo[i].firstName)
-
-						//Add a coma if required
-						if(conversationName != "")
-							conversationName += ", ";
-
-						conversationName += usersInfo[i].firstName + " " + usersInfo[i].lastName;
-				}
-
-				//For converstions with many members
-				if(conversationInfos.members.length > 2)
-					conversationName += ", ...";
+				//For conversations with many members (more than 3 - we musn't forget current user)
+				if(conversationInfos.members.length > 3)
+					usersName += ", ...";
 
 				//Apply conversation name
-				conversationNameElem.innerHTML = conversationName;
-			})
+				conversationNameElem.innerHTML = usersName;
+			});
 		}
-
 
 		//Success
 		return true;

@@ -31,6 +31,7 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%css/components/friends/friendsBar.css",
     "%PATH_ASSETS%css/components/conversations/manager.css",
     "%PATH_ASSETS%css/components/conversations/windows.css",
+    "%PATH_ASSETS%css/components/conversations/list.css",
     "%PATH_ASSETS%css/components/userSelect/userSelect.css",
 );
 

@@ -367,6 +367,11 @@ var ComunicWeb = {
 			 * Given a query, search for users and return the result
 			 */
 			search: function(query, afterSearch){},
+
+			/**
+			 * Given user IDs (in an array) the function return their names in a string
+			 */
+			getNames: function(usersID, afterNames){},
 		},
 	},
 
