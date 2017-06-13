@@ -223,7 +223,7 @@ ComunicWeb.components.conversations.list = {
 				var liElem = createElem("li", ulElem);
 				
 				//Display entry
-				ComunicWeb.components.conversations.list.showConversationEntry(conversationInfos, liElem);
+				ComunicWeb.components.conversations.list.showConversationEntry(conversationInfos, liElem, listBox);
 			}
 
 		}, true);
@@ -237,15 +237,22 @@ ComunicWeb.components.conversations.list = {
 	 *
 	 * @param {Object} conversationInfos Informations about the conversation
 	 * @param {HTMLElement} entryTarget The target for the entry
+	 * @param {Object} listBox HTML elements about the listBox
 	 * @return {Boolean} True for a success
 	 */
-	showConversationEntry: function(conversationInfos, entryTarget){
+	showConversationEntry: function(conversationInfos, entryTarget, listBox){
 		
 		//Create link element
 		var linkElem = createElem("a", entryTarget);
 
-		console.log(conversationInfos); //DEBUG - temporary
+		//Make the link element live
+		linkElem.onclick = function(){
+			//Remove conversations list
+			listBox.rootElem.remove();
 
+			//Show conversation
+			console.log("Open conversation ID: " + conversationInfos.ID);
+		}
 
 		//Add conversations last activity
 		var lastActivityElem = createElem("small", linkElem);
