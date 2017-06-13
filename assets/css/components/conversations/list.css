@@ -9,3 +9,11 @@
 	color: #777;
 	font-size: 10px;
 }
+
+.conversations-list-box .conversations-members-numbers .fa.fa-users {
+	margin-right: 2px;
+}
+
+.conversations-list-box .conversations-members-numbers {
+	margin-bottom: 0px;
+}

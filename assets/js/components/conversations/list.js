@@ -301,6 +301,20 @@ ComunicWeb.components.conversations.list = {
 			});
 		}
 
+		//Add members number
+		//Create paragraph
+		var membersNumberParagraphElem = createElem("p", linkElem);
+		membersNumberParagraphElem.className = "conversations-members-numbers";
+		var membersNumberSmallElem = createElem("small", membersNumberParagraphElem);
+
+		//Add icon
+		var membersNumberIconElem = createElem("i", membersNumberSmallElem);
+		membersNumberIconElem.className = "fa fa-users";
+
+		//Specify value
+		var membersNumberValueElem = createElem("span", membersNumberSmallElem);
+		membersNumberValueElem.innerHTML = (conversationInfos.members.length === 1 ? "1 member" : conversationInfos.members.length + " members");
+
 		//Success
 		return true;
 	}
