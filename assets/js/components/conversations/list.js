@@ -26,7 +26,7 @@ ComunicWeb.components.conversations.list = {
 		listBox.boxFooter.remove();
 
 		//Add the create button
-		var createButton = createElem("button");
+		/*var createButton = createElem("button");
 		listBox.boxTools.insertBefore(createButton, listBox.boxTools.children[0]);
 		createButton.className = "btn btn-box-tool";
 		createButton.onclick = function(){
@@ -36,10 +36,10 @@ ComunicWeb.components.conversations.list = {
 
 			//Button icon
 			var createButtonIcon = createElem("i", createButton);
-			createButtonIcon.className = "fa fa-pencil";
+			createButtonIcon.className = "fa fa-pencil";*/
 
 		//Get and display conversations list
-		this.showConversationsList();
+		this.showConversationsList(listBox);
 
 		//Success
 		return true;
@@ -186,18 +186,120 @@ ComunicWeb.components.conversations.list = {
 	/**
 	 * Show the conversations list
 	 * 
+	 * @param {Object} listBox HTML elements about the listBox
 	 * @return {Boolean} True for a success
 	 */
-	showConversationsList: function(){
+	showConversationsList: function(listBox){
 
 		//Get and show the conversation list
-		ComunicWeb.components.conversations.interface.getList(function(){
+		ComunicWeb.components.conversations.interface.getList(function(conversations){
 
-			console.log("OK --------------------");
+			//Add the "create a conversation button"
+			var createConversationButton = createElem("button", listBox.boxBody);
+			createConversationButton.style.width = "100%";
+			createConversationButton.style.marginBottom = "5px";
+			createConversationButton.className = "btn btn-default btn-flat";
+			createConversationButton.innerHTML = "Create a new conversation";
+
+			//Create a ul element that will contain conversation list
+			var ulElem = createElem("ul", listBox.boxBody);
+			ulElem.className = "nav nav-pills nav-stacked";
+
+			//Make create converstion button lives
+			createConversationButton.onclick = function(){
+				ComunicWeb.components.conversations.list.displayCreateForm(listBox);
+			};
+
+			//Process each conversation elements
+			for(i in conversations){
+
+				//Extract conversation informations
+				var conversationInfos = conversations[i];
+
+				//Create subElement
+				var liElem = createElem("li", ulElem);
+				
+				//Display entry
+				ComunicWeb.components.conversations.list.showConversationEntry(conversationInfos, liElem);
+			}
 
 		}, true);
 
 		//Success
 		return true;
 	},
+
+	/**
+	 * Show a conversation entry
+	 *
+	 * @param {Object} conversationInfos Informations about the conversation
+	 * @param {HTMLElement} entryTarget The target for the entry
+	 * @return {Boolean} True for a success
+	 */
+	showConversationEntry: function(conversationInfos, entryTarget){
+		
+		//Create link element
+		var linkElem = createElem("a", entryTarget);
+
+		console.log(conversationInfos); //DEBUG - temporary
+
+		//Create the conversation name element
+		var conversationNameElem = createElem("strong", linkElem);
+		
+		//Check if the conversation has a name or not
+		if(conversationInfos.name)
+			conversationNameElem.innerHTML = conversationInfos.name;
+		else {
+
+			//Put conversation name field in a waiting state
+			conversationNameElem.style.fontSize = "90%";
+			conversationNameElem.innerHTML = "Loading...";
+
+			//Get informations about the first two members
+			var firstMembers = [];
+
+			//Retrieve IDs
+			for(o in conversationInfos.members){
+				//Limit number to 2
+				if(firstMembers.length < 2){ 
+
+					//Check this is a valid entry
+					if(conversationInfos.members[o]){
+
+						//Exclude current user ID
+						if(conversationInfos.members[o] != userID()) 
+							firstMembers.push(conversationInfos.members[o]);
+					}
+				}
+			}
+
+			//Get users informations
+			getUsersInfos(firstMembers, function(usersInfo){
+				//Prepare conversation name
+				var conversationName = "";
+
+				//Process users informations
+				for(i in usersInfo){
+					if(usersInfo[i].firstName)
+
+						//Add a coma if required
+						if(conversationName != "")
+							conversationName += ", ";
+
+						conversationName += usersInfo[i].firstName + " " + usersInfo[i].lastName;
+				}
+
+				//For converstions with many members
+				if(conversationInfos.members.length > 2)
+					conversationName += ", ...";
+
+				//Apply conversation name
+				conversationNameElem.innerHTML = conversationName;
+			})
+		}
+
+
+		//Success
+		return true;
+	}
 }

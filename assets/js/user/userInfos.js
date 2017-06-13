@@ -43,7 +43,7 @@ ComunicWeb.user.userInfos = {
 	/**
 	 * Get multiple users informations
 	 * 
-	 * @param {String} usersID User on which to make request (current to get connected user)
+	 * @param {Array~Object} usersID User on which to make request (current to get connected user)
 	 * @param {function} afterGetUserInfos What to do once users informations are available
 	 * @param {Boolean} forceRequest Force the request to be made
 	 * @return {Boolean} True for a success
