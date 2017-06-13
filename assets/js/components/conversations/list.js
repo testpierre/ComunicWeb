@@ -226,6 +226,11 @@ ComunicWeb.components.conversations.list = {
 				ComunicWeb.components.conversations.list.showConversationEntry(conversationInfos, liElem, listBox);
 			}
 
+			//Enable scrollbar
+			$(ulElem).slimScroll({
+					height: '100%'
+			});
+
 		}, true);
 
 		//Success

@@ -4,6 +4,10 @@
  * @author Pierre HUBERT
  */
 
+.conversations-list-box ul {
+	max-height: 250px;
+}
+
 .conversations-list-box .last-activity {
 	margin-left: 5px;
 	color: #777;
