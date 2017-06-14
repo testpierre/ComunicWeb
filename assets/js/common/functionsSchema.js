@@ -540,6 +540,13 @@ var ComunicWeb = {
 			},
 
 			/**
+ 			 * Conversation chat window functions
+			 */
+			chatWindows: {
+				//TODO : implement
+			},
+
+			/**
 			 * Interface between conversation UI and the API
 			 */
 			interface:{
@@ -552,6 +559,13 @@ var ComunicWeb = {
 			cachingOpened:{
 				//TODO : implement
 			},
+
+			/**
+			 * Conversation service file
+			 */
+			service:{
+				//TODO : implement
+			}
 		},
 
 		/**

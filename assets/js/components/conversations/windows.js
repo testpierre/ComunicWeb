@@ -56,6 +56,7 @@ ComunicWeb.components.conversations.windows = {
 		var boxElements ={
 			rootElem: conversationBox,
 			closeFunction: closeBox,
+			closeButton: closeButton,
 			boxTitle: boxTitle,
 			boxTools: boxTools,
 			boxBody: boxBody,

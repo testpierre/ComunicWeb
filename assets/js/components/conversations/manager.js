@@ -5,6 +5,12 @@
  */
 
 ComunicWeb.components.conversations.manager = {
+
+	/**
+	 * @var {String} The ID of the conversation contener
+	 */
+	__conversationsContenerID: "conversationsElem",
+
 	/**
 	 * Display conversations manager
 	 * 
@@ -13,7 +19,7 @@ ComunicWeb.components.conversations.manager = {
 	display: function(){
 
 		//Try to get conversation manager
-		var conversationsContainerElem = byId("conversationsElem");
+		var conversationsContainerElem = byId(this.__conversationsContenerID);
 
 		//Check if element exists or not
 		if(conversationsContainerElem){
@@ -27,7 +33,7 @@ ComunicWeb.components.conversations.manager = {
 
 		//Create conversations manager element
 		var conversationsContainerElem = createElem("div");
-		conversationsContainerElem.id = "conversationsElem";
+		conversationsContainerElem.id = this.__conversationsContenerID;
 		
 		//Insert the element at the right place
 		var pageTarget = byId("pageTarget");
@@ -100,11 +106,23 @@ ComunicWeb.components.conversations.manager = {
 			return false;
 		}
 
+		//Check if the conversation is already open or not
+		if(ComunicWeb.components.conversations.cachingOpened.isopen(conversationID)){
+			ComunicWeb.debug.logMessage("The conversation " + conversationID + " is already opened !");
+			return false;
+		}
+
 		//Log action
 		ComunicWeb.debug.logMessage("Opening conversation " + conversationID);
 
 		//Save conversation ID in session storage
-		
+		ComunicWeb.components.conversations.cachingOpened.add(conversationID);
+
+		//Create a conversation windows
+		ComunicWeb.components.conversations.chatWindows.create({
+			target: byId(this.__conversationsContenerID),
+			conversationID: conversationID
+		});
 
 		//Success
 		return true;

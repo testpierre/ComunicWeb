@@ -54,6 +54,21 @@ ComunicWeb.components.conversations.cachingOpened = {
 		//Save the new values
 		var conversationsString = conversations.join(";");
 		sessionStorage.setItem(this.__varName, conversationsString);
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Check is a conversation ID is open or not
+	 * 
+	 * @param {Integer} conversationID The ID of the conversation to check
+	 * @return {Boolean} Depends of the presence of the conversation
+	 */
+	isopen: function(conversationID){
+		var conversations = this.getAll();
+
+		return conversations.includes(conversationID.toString());
 	},
 
 	/**

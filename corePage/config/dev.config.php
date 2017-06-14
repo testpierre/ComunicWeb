@@ -10,7 +10,7 @@ $config['pathAssets'] = $config['siteURL']."assets/";
 
 //CSS files to include
 $config['CSSfiles'] = array(
-    //CSS files
+    //CSS files - adminLTE distribution / bootstrap / plugins
     "%PATH_ASSETS%3rdparty/adminLTE/bootstrap/css/bootstrap.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/font-awesome/css/font-awesome.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/ionicons/css/ionicons.min.css",
@@ -20,30 +20,52 @@ $config['CSSfiles'] = array(
     "%PATH_ASSETS%3rdparty/adminLTE/dist/css/AdminLTE.min.css",
     "%PATH_ASSETS%3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",
 
-    //App stylesheets
+    //App stylesheets - common stylesheets
     "%PATH_ASSETS%css/common/global.css",
     "%PATH_ASSETS%css/common/page/waitSplashScreen.css",
     "%PATH_ASSETS%css/common/network/networkError.css",
 
     //Components stylesheets
+    //Menubar stylesheet
     "%PATH_ASSETS%css/components/menuBar.css",
+    
+    //Searchform stylesheet
     "%PATH_ASSETS%css/components/searchForm.css",
+    
+    //Friendbar stylesheet
     "%PATH_ASSETS%css/components/friends/friendsBar.css",
+    
+    //Conversations stylesheet
     "%PATH_ASSETS%css/components/conversations/manager.css",
     "%PATH_ASSETS%css/components/conversations/windows.css",
     "%PATH_ASSETS%css/components/conversations/list.css",
+    
+    //User selector stylesheet
     "%PATH_ASSETS%css/components/userSelect/userSelect.css",
 );
 
 //JS files to include (at the end of the page)
 $config['JSfiles'] = array(
     //Framework inclusions
+    //Jquery
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
+    
+    //Bootstrap
     "%PATH_ASSETS%3rdparty/adminLTE/bootstrap/js/bootstrap.min.js",
+    
+    //JQuery UI
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/jquery-ui/jquery-ui.min.js",
+    
+    //iCheck
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/icheck.min.js",
+    
+    //Slimscroll
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
+    
+    //Select2
     "%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.min.js",
+    
+    //adminLTE script
     "%PATH_ASSETS%3rdparty/adminLTE/dist/js/app.min.js",
 
     //Bootstrap notify
@@ -55,10 +77,12 @@ $config['JSfiles'] = array(
     //Functions schema
     "%PATH_ASSETS%js/common/functionsSchema.js",
 
-    //App scripts
+    //Pages list
+    "%PATH_ASSETS%js/pagesList.js",
+
+    //App scripts -- common scripts
     "%PATH_ASSETS%js/common/cacheManager.js",
     "%PATH_ASSETS%js/common/network.js",
-    "%PATH_ASSETS%js/pagesList.js",
     "%PATH_ASSETS%js/common/api.js",
     "%PATH_ASSETS%js/common/errors.js",
     "%PATH_ASSETS%js/common/messages.js",
@@ -66,26 +90,41 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/common/url.js",
     "%PATH_ASSETS%js/common/jsFiles.js",
     "%PATH_ASSETS%js/common/debug.js",
-    "%PATH_ASSETS%js/langs/en.inc.js",
     "%PATH_ASSETS%js/common/page.js",
     "%PATH_ASSETS%js/common/notifications.js",
     "%PATH_ASSETS%js/common/formChecker.js",
     "%PATH_ASSETS%js/common/date.js",
     "%PATH_ASSETS%js/common/system.js",
 
+    //Default langage
+    "%PATH_ASSETS%js/langs/en.inc.js",
+
     //Components
+    //Mail caching
     "%PATH_ASSETS%js/components/mailCaching.js",
+    
+    //Search form
     "%PATH_ASSETS%js/components/searchForm/searchForm.js",
+    
+    //Main menubar
     "%PATH_ASSETS%js/components/menuBar/common.js",
     "%PATH_ASSETS%js/components/menuBar/notAuthenticated.js",
     "%PATH_ASSETS%js/components/menuBar/authenticated.js",
+    
+    //Friends components
     "%PATH_ASSETS%js/components/friends/friendsList.js",
     "%PATH_ASSETS%js/components/friends/friendsBar.js",
+    
+    //Private conversations
     "%PATH_ASSETS%js/components/conversations/manager.js",
     "%PATH_ASSETS%js/components/conversations/list.js",
     "%PATH_ASSETS%js/components/conversations/windows.js",
+    "%PATH_ASSETS%js/components/conversations/chatWindows.js",
     "%PATH_ASSETS%js/components/conversations/interface.js",
+    "%PATH_ASSETS%js/components/conversations/service.js",
     "%PATH_ASSETS%js/components/conversations/cachingOpened.js",
+    
+    //User selector
     "%PATH_ASSETS%js/components/userSelect/userSelect.js",
 
     //User scripts
@@ -94,9 +133,14 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/user/userInfos.js",
 
     //Pages scripts
+    //Home page
     "%PATH_ASSETS%js/pages/home/home.js",
     "%PATH_ASSETS%js/pages/home/landingPage.js",
+    
+    //Login page
     "%PATH_ASSETS%js/pages/login.js",
+    
+    //Logout page
     "%PATH_ASSETS%js/pages/logout.js",
 
     //Create shortcuts for common functions
