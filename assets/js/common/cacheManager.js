@@ -63,6 +63,9 @@ ComunicWeb.common.cacheManager = {
 				eval(this.__cachesCleaners[i][0]+"()");
 		}
 
+		//Clean list
+		this.__cachesCleaners = [];
+
 		//Success
 		return true;
 	},
@@ -81,6 +84,9 @@ ComunicWeb.common.cacheManager = {
 			//if(allCaches || !this.__intervalsList[i][1])
 				clearInterval(this.__intervalsList[i]);
 		}
+
+		//Remove intervals
+		this.__intervalsList = [];
 
 		//Success
 		return true
