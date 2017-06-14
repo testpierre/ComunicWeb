@@ -34,6 +34,29 @@ ComunicWeb.components.conversations.cachingOpened = {
 	},
 
 	/**
+	 * Remove a conversation from the list
+	 * 
+	 * @param {Integer} conversationID The ID of the conversation to remove
+	 * @return {Boolean} True for a success
+	 */
+	remove: function(conversationID){
+		
+		var conversations = this.getAll();
+
+		if(!conversations.includes(conversationID.toString())){
+			return false; //The conversation was not found
+		}
+
+		//Remove the entry
+		var entryNumber = conversations.indexOf(conversationID.toString());
+		conversations.splice(entryNumber, 1);
+
+		//Save the new values
+		var conversationsString = conversations.join(";");
+		sessionStorage.setItem(this.__varName, conversationsString);
+	},
+
+	/**
 	 * Get all conversations ID in the list
 	 * 
 	 * @return {array} An array with all opened conversations ID
