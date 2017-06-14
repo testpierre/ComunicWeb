@@ -89,4 +89,21 @@ ComunicWeb.components.friends.list = {
 		//Success
 		return true;
 	},
+
+	/**
+	 * Empty friends cache list
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	emptyCache: function(){
+
+		//Empty cache
+		this.__list = {};
+
+		//Success
+		return true;
+	}
 };
+
+//Register cache cleaner
+ComunicWeb.common.cacheManager.registerCacheCleaner("ComunicWeb.components.friends.list.emptyCache");

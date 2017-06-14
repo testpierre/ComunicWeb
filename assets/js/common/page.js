@@ -47,7 +47,7 @@ ComunicWeb.common.page = {
         this.emptyPage();
 
         //Log message
-        ComunicWeb.debug.logMessage("Display a wait splash screen the screen.");
+        ComunicWeb.debug.logMessage("Display a wait splash screen on the screen.");
 
         //Create message element (if required)
         if(message){

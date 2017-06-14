@@ -56,6 +56,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/common/functionsSchema.js",
 
     //App scripts
+    "%PATH_ASSETS%js/common/cacheManager.js",
     "%PATH_ASSETS%js/common/network.js",
     "%PATH_ASSETS%js/pagesList.js",
     "%PATH_ASSETS%js/common/api.js",
@@ -84,6 +85,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/components/conversations/list.js",
     "%PATH_ASSETS%js/components/conversations/windows.js",
     "%PATH_ASSETS%js/components/conversations/interface.js",
+    "%PATH_ASSETS%js/components/conversations/cachingOpened.js",
     "%PATH_ASSETS%js/components/userSelect/userSelect.js",
 
     //User scripts

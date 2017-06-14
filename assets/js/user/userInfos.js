@@ -200,4 +200,19 @@ ComunicWeb.user.userInfos = {
 			afterNames(usersName);
 		});
 	},
-}
+
+	/**
+	 * Empty users cache
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	emptyCache: function(){
+		this.usersInfos = {};
+
+		//Success
+		return true;
+	}
+};
+
+//Register cache cleaner
+ComunicWeb.common.cacheManager.registerCacheCleaner("ComunicWeb.user.userInfos.emptyCache");

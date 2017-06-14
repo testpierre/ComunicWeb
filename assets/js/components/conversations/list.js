@@ -182,7 +182,9 @@ ComunicWeb.components.conversations.list = {
 			infos.listBox.rootElem.remove();
 
 			//Open the conversation (under construction)
-			console.log("Open conversation ID: " + response.conversationID);
+			ComunicWeb.components.conversations.manager.openConversation({
+				conversationID: response.conversationID
+			});
 		})
 	},
 
@@ -255,8 +257,10 @@ ComunicWeb.components.conversations.list = {
 			//Remove conversations list
 			listBox.rootElem.remove();
 
-			//Show conversation
-			console.log("Open conversation ID: " + conversationInfos.ID);
+			//Open conversation
+			ComunicWeb.components.conversations.manager.openConversation({
+				conversationID: conversationInfos.ID
+			});
 		}
 
 		//Add conversations last activity

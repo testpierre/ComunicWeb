@@ -79,4 +79,34 @@ ComunicWeb.components.conversations.manager = {
 			ComunicWeb.components.conversations.list.display(this);
 		}
 	},
+
+	/**
+	 * Open a conversation accordingly to specified informations
+	 * 
+	 * @param {Object} infos Informations about the conversation to open
+	 * @info {Integer} conversationID The ID of the conversation to open
+	 * @return {Boolean} True or false depending of the success of the operation
+	 */
+	openConversation: function(infos){
+		
+		//We check if a conversation ID was specified or not
+		if(infos.conversationID){
+			ComunicWeb.debug.logMessage("Open a conversation based on its ID");
+			var conversationID = infos.conversationID;
+		}
+		else {
+			//It is an error
+			ComunicWeb.debug.logMessage("Don't know which conversation to open !");
+			return false;
+		}
+
+		//Log action
+		ComunicWeb.debug.logMessage("Opening conversation " + conversationID);
+
+		//Save conversation ID in session storage
+		
+
+		//Success
+		return true;
+	}
 }

@@ -30,12 +30,17 @@ var ComunicWeb = {
 			/**
 			 * Initializate the application
 			 */
-			init: function(){},
+			init: function(openPage){},
 
 			/**
 			 * Restart the application
 			 */
 			restart: function(){},
+
+			/**
+			 * Reset the application
+			 */
+			reset: function(complete, openPage){},
 		},
 
 		/**
@@ -46,6 +51,13 @@ var ComunicWeb = {
 			 * Make an API request
 			 */
 			makeAPIrequest: function(apiURI, params, requireLoginTokens, nextAction){},
+		},
+
+		/**
+		 * Global cache management system
+		 */
+		cacheManager:{
+			//TODO : implement
 		},
 
 		/**
@@ -202,6 +214,11 @@ var ComunicWeb = {
 			 * Make a get request
 			 */
 			getRequest: function(url, cache, GETnextAction){},
+
+			/**
+			 * Empty network cache
+			 */
+			emptyCache: function(){},
 
 			/**
 			 * Update the status of the network
@@ -372,6 +389,11 @@ var ComunicWeb = {
 			 * Given user IDs (in an array) the function return their names in a string
 			 */
 			getNames: function(usersID, afterNames){},
+
+			/**
+			 * Empty users cache
+			 */
+			emptyCache: function(){},
 		},
 	},
 
@@ -481,14 +503,14 @@ var ComunicWeb = {
 			 * Friends list caching system
 			 */
 			list:{
-
+				//TODO : implement
 			},
 
 			/**
  			 * Friends bar
 			*/
 			bar:{
-
+				//TODO : implement
 			},
 		},
 
@@ -514,13 +536,22 @@ var ComunicWeb = {
 			 * Conversations windows manager
 			 */
 			windows:{
-
+				//TODO : implement
 			},
 
 			/**
 			 * Interface between conversation UI and the API
 			 */
-			interface:{},
+			interface:{
+				//TODO : implement
+			},
+
+			/**
+			 * Opened conversations caching system
+			 */
+			cachingOpened:{
+				//TODO : implement
+			},
 		},
 
 		/**

@@ -62,8 +62,9 @@ ComunicWeb.components.friends.bar = {
 		this.refresh(listFriendsElem);
 
 		//Remove previously existing interval
-		if(this.refreshInterval)
+		if(this.refreshInterval){
 			clearInterval(this.refreshInterval);
+		}
 
 		//Make the friend bar automaticaly refreshed
 		this.refreshInterval = setInterval(function(){

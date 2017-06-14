@@ -8,9 +8,10 @@ ComunicWeb.common.system = {
 	/**
 	 * Initializate the application
 	 * 
+	 * @param {String} Specify a page to open
 	 * @return {Boolean} True for a success
 	 */
-	init: function(){
+	init: function(openPage){
 
 		//Display Comunic logo
 		ComunicWeb.debug.displayComunicLogo();
@@ -30,7 +31,7 @@ ComunicWeb.common.system = {
 		ComunicWeb.common.page.emptyPage();
 		
 		//Show a wait splash screen
-		ComunicWeb.common.page.showWaitSplashScreen();
+		ComunicWeb.common.page.showWaitSplashScreen("Starting up...");
 
 		/**
 		 * Language initator
@@ -45,11 +46,16 @@ ComunicWeb.common.system = {
 			/**
 			 * Open a page
 			 */
-			//Get current page URI
-			var currentPage = ComunicWeb.common.url.getCurrentWebsiteURL();
+			if(!openPage){
+				//Get current page URI
+				var currentPage = ComunicWeb.common.url.getCurrentWebsiteURL();
 
-			//Open a page
-			ComunicWeb.common.page.openPage(currentPage);
+				//Open a page
+				ComunicWeb.common.page.openPage(currentPage);
+			}
+			else
+				//Open specified page
+				ComunicWeb.common.page.openPage(openPage);
 
 			//End of init
 			ComunicWeb.debug.logMessage("Application is ready !");
@@ -66,8 +72,9 @@ ComunicWeb.common.system = {
 		var autoRefresh = setInterval((function(){
 			ComunicWeb.user.userLogin.refreshLoginState();
 		}), 20000);
+		ComunicWeb.common.cacheManager.registerInterval(autoRefresh);
 
-		//Sucess
+		//Success
 		return true;
 	},
 
@@ -82,5 +89,29 @@ ComunicWeb.common.system = {
 
 		//Reload the page
 		location.href = document.location;
-	}
+	},
+
+	/**
+	 * Reset the application
+	 * 
+	 * @param {Boolean} complete Specify wether the cache cleaning has to be complete or not (for logout)
+	 * @param {String} openPage Specify a page to open once the application is restarted
+	 * @return {Boolean} True for a success
+	 */
+	reset: function(complete, openPage){
+		//Show a wait splashscreen message
+		ComunicWeb.common.page.showWaitSplashScreen("Reset the application in progress...");
+
+		//Clear intervals
+		ComunicWeb.common.cacheManager.cleanIntervals();
+
+		//Clean caches
+		ComunicWeb.common.cacheManager.cleanCaches(complete);
+
+		//Init the page again
+		this.init(openPage);
+
+		//Success
+		return true;
+	},
 };

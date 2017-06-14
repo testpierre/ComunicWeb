@@ -20,11 +20,8 @@ ComunicWeb.pages.logout = {
         //Perform logout
         ComunicWeb.user.userLogin.logoutUser();
 
-        //Show a success notification
-        ComunicWeb.common.notificationSystem.showNotification("Good bye, you successfully terminated your session !", "success", 3);
-
-        //Open login page
-        ComunicWeb.common.page.openPage("home");
+        //Clean all caches
+        ComunicWeb.common.system.reset(true, "home");
 
         //Remove overlay
         screenOverlay.remove();

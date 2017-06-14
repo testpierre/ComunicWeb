@@ -65,6 +65,18 @@ ComunicWeb.common.network = {
 	},
 
 	/**
+	 * Empty network cache
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	emptyCache: function(){
+		this.cache = {};
+
+		//Success
+		return true;
+	},
+
+	/**
 	 * Update the status of the network
 	 * 
 	 * @param {Boolean} success True for a successful request, false else
@@ -102,5 +114,5 @@ ComunicWeb.common.network = {
 			//Make sure the error message is visible on the screen
 			byId("networkErrorMessage").style.display = "block";
 		}
-	}
+	},
 };
