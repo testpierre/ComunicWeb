@@ -39,14 +39,18 @@ function byId(nodeName){
  */
 function emptyElem(container){
 	//Get children references
-	var children = container.childNodes;
+	var children = container.children;
 
 	//Process each child
-	for(i in children){
-		if(children[i].remove)
-			children[i].remove();
-	}
+	while(container.children.length > 0){
 		
+		//Check if the child has subchild
+		if(container.children[0].children)
+			emptyElem(container.children[0]); //Remove them first
+
+		//Remove child
+		container.children[0].remove();
+	}
 	
 	//Success
 	return true;
