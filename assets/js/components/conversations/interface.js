@@ -120,8 +120,36 @@ ComunicWeb.components.conversations.interface = {
 		}
 
 		//Else, perform an API request
-		//TODO : implement ON NEXT DEVELOPMENT SESSION
-		console.log("Please implement me !!!!!!");
+		var apiURI = "conversations/getInfosOne";
+		var params = {
+			conversationID: conversationID,
+		};
+
+		//Perform the API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(result){
+
+			//Check for errors
+			if(result.error){
+				
+				//Log error
+				ComunicWeb.debug.logMessage("Couldn't get informations about the conversation number "+conversationID+" !")
+
+				//Perform next action now
+				nextStep(result);
+
+				return false;
+			}
+
+			//Else it is a success
+			//Cache the result
+			ComunicWeb.components.conversations.interface.__conversationsList["conversation-"+conversationID] = result;
+
+			//Perform next action
+			nextStep(result);
+
+			return true;
+
+		});
 
 		//Success
 		return true;

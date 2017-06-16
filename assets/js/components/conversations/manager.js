@@ -66,7 +66,7 @@ ComunicWeb.components.conversations.manager = {
 
 		//Then, open any already active conversation
 		var openedConversations = ComunicWeb.components.conversations.cachingOpened.getAll();
-		console.log(openedConversations);
+		
 		//Process opened conversations
 		for(i in openedConversations){
 			if(i < openedConversations.length)
@@ -156,6 +156,7 @@ ComunicWeb.components.conversations.manager = {
 			if(informations.error){
 				//Display error notification
 				ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about the conversation !", "danger");
+				return false;
 			}
 
 			//Change the name of the conversation
