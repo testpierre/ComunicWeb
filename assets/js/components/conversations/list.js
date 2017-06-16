@@ -181,8 +181,8 @@ ComunicWeb.components.conversations.list = {
 			//Remove the conversation box
 			infos.listBox.rootElem.remove();
 
-			//Open the conversation (under construction)
-			ComunicWeb.components.conversations.manager.openConversation({
+			//Add & open the conversation
+			ComunicWeb.components.conversations.manager.addConversation({
 				conversationID: response.conversationID
 			});
 		})
@@ -257,8 +257,8 @@ ComunicWeb.components.conversations.list = {
 			//Remove conversations list
 			listBox.rootElem.remove();
 
-			//Open conversation
-			ComunicWeb.components.conversations.manager.openConversation({
+			//Add & open conversation
+			ComunicWeb.components.conversations.manager.addConversation({
 				conversationID: conversationInfos.ID
 			});
 		}
@@ -278,44 +278,14 @@ ComunicWeb.components.conversations.list = {
 		//Create the conversation name element
 		var conversationNameElem = createElem("strong", linkElem);
 		
-		//Check if the conversation has a name or not
-		if(conversationInfos.name)
-			conversationNameElem.innerHTML = conversationInfos.name;
-		else {
+		//Put conversation name field in a waiting state
+		conversationNameElem.style.fontSize = "90%";
+		conversationNameElem.innerHTML = "Loading...";
 
-			//Put conversation name field in a waiting state
-			conversationNameElem.style.fontSize = "90%";
-			conversationNameElem.innerHTML = "Loading...";
-
-			//Get informations about the first two members
-			var firstMembers = [];
-
-			//Retrieve IDs
-			for(o in conversationInfos.members){
-				//Limit number to 2
-				if(firstMembers.length < 2){ 
-
-					//Check this is a valid entry
-					if(conversationInfos.members[o]){
-
-						//Exclude current user ID
-						if(conversationInfos.members[o] != userID()) 
-							firstMembers.push(conversationInfos.members[o]);
-					}
-				}
-			}
-
-			//Get users informations
-			ComunicWeb.user.userInfos.getNames(firstMembers, function(usersName){
-
-				//For conversations with many members (more than 3 - we musn't forget current user)
-				if(conversationInfos.members.length > 3)
-					usersName += ", ...";
-
-				//Apply conversation name
-				conversationNameElem.innerHTML = usersName;
-			});
-		}
+		//Get conversation name and apply it
+		ComunicWeb.components.conversations.utils.getName(conversationInfos, function(conversationName){
+			conversationNameElem.innerHTML = conversationName;
+		});
 
 		//Add members number
 		//Create paragraph

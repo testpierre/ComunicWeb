@@ -9,7 +9,7 @@ ComunicWeb.components.conversations.interface = {
 	/**
 	 * @var {Object} __conversationsList Cached list of conversations
 	 */
-	__conversationsList: false,
+	__conversationsList: {},
 
 	/**
 	 * Get and return the list of available conversations
@@ -98,4 +98,48 @@ ComunicWeb.components.conversations.interface = {
 		//Success
 		return true;
 	},
+
+	/**
+	 * Get informations about a unique conversation
+	 * 
+	 * @param {Integer} conversationID The ID of the conversation
+	 * @param {function} nextStep What to do once the operation is completed
+	 * @param {Boolean} forceRefresh Force informations about the conversation to be fetched (ignore cached informations)
+	 * @return {Boolan} True for a success
+	 */
+	getInfosOne: function(conversationID, nextStep, forceRefresh){
+
+		//First, if the conversation is available in the cache
+		if(!forceRefresh && this.__conversationsList['conversation-'+conversationID]){
+
+			//Perform next action now without getting fresh informations on the server
+			nextStep(this.__conversationsList['conversation-'+conversationID]);
+
+			//Success
+			return true;
+		}
+
+		//Else, perform an API request
+		//TODO : implement ON NEXT DEVELOPMENT SESSION
+		console.log("Please implement me !!!!!!");
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Empty conversations cache
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	emptyCache: function(){
+		//Empty cache
+		clearObject(this.__conversationsList);
+
+		//Success
+		return true;
+	}
 }
+
+//Register conversations cache cleaning function
+ComunicWeb.common.cacheManager.registerCacheCleaner("ComunicWeb.components.conversations.interface.emptyCache");

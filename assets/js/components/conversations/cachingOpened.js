@@ -21,10 +21,10 @@ ComunicWeb.components.conversations.cachingOpened = {
 		//Add new conversation (if required)
 		if(!conversations.includes(conversationID.toString())){
 			conversations.push(conversationID);
-
+			
 			//Convert into string
 			var conversationsString = conversations.join(";");
-
+			
 			//Save the new values
 			sessionStorage.setItem(this.__varName, conversationsString);
 		}

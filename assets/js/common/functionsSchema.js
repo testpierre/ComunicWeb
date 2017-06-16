@@ -565,6 +565,13 @@ var ComunicWeb = {
 			 */
 			service:{
 				//TODO : implement
+			},
+
+			/**
+			 * Conversations utilities
+			 */
+			utils:{
+				//TODO : implement
 			}
 		},
 

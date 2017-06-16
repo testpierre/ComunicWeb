@@ -64,6 +64,15 @@ ComunicWeb.components.conversations.manager = {
 		//First, add the "open a conversation" new
 		this.addOpenConversationButton(conversationsContainerElem);
 
+		//Then, open any already active conversation
+		var openedConversations = ComunicWeb.components.conversations.cachingOpened.getAll();
+		console.log(openedConversations);
+		//Process opened conversations
+		for(i in openedConversations){
+			if(i < openedConversations.length)
+				this.openConversation(openedConversations[i]);
+		}
+
 	},
 
 	/**
@@ -87,14 +96,13 @@ ComunicWeb.components.conversations.manager = {
 	},
 
 	/**
-	 * Open a conversation accordingly to specified informations
+	 * Add a new conversation to the list of opened conversation accordingly to specified informations
 	 * 
 	 * @param {Object} infos Informations about the conversation to open
 	 * @info {Integer} conversationID The ID of the conversation to open
 	 * @return {Boolean} True or false depending of the success of the operation
 	 */
-	openConversation: function(infos){
-		
+	addConversation: function(infos){
 		//We check if a conversation ID was specified or not
 		if(infos.conversationID){
 			ComunicWeb.debug.logMessage("Open a conversation based on its ID");
@@ -112,16 +120,49 @@ ComunicWeb.components.conversations.manager = {
 			return false;
 		}
 
+		//Open the conversation
+		this.openConversation(conversationID);
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Open a conversation 
+	 * 
+	 * @param {Integer} conversationID The ID of the conversation to open
+	 * @return {Boolean} True or false depending of the success of the operation
+	 */
+	openConversation: function(conversationID){
+		
 		//Log action
 		ComunicWeb.debug.logMessage("Opening conversation " + conversationID);
 
 		//Save conversation ID in session storage
 		ComunicWeb.components.conversations.cachingOpened.add(conversationID);
 
-		//Create a conversation windows
-		ComunicWeb.components.conversations.chatWindows.create({
+		//Create a conversation window
+		var conversationWindow = ComunicWeb.components.conversations.chatWindows.create({
 			target: byId(this.__conversationsContenerID),
 			conversationID: conversationID
+		});
+
+		//Change conversation window name (loading state)
+		ComunicWeb.components.conversations.chatWindows.changeName("Loading", conversationWindow);
+
+		//Peform a request to informations about the conversation
+		ComunicWeb.components.conversations.interface.getInfosOne(conversationID, function(informations){
+			//In case of error
+			if(informations.error){
+				//Display error notification
+				ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about the conversation !", "danger");
+			}
+
+			//Change the name of the conversation
+			ComunicWeb.components.conversations.utils.getName(informations, function(conversationName){
+				ComunicWeb.components.conversations.chatWindows.changeName(conversationName, conversationWindow);
+			});
+
 		});
 
 		//Success

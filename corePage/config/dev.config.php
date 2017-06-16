@@ -123,6 +123,7 @@ $config['JSfiles'] = array(
     "%PATH_ASSETS%js/components/conversations/interface.js",
     "%PATH_ASSETS%js/components/conversations/service.js",
     "%PATH_ASSETS%js/components/conversations/cachingOpened.js",
+    "%PATH_ASSETS%js/components/conversations/utils.js",
     
     //User selector
     "%PATH_ASSETS%js/components/userSelect/userSelect.js",
