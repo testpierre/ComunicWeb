@@ -53,6 +53,34 @@ function emptyElem(container){
 }
 
 /**
+ * Delete all the content of an object
+ * 
+ * @param {Object} object The object to clear
+ * @return {Boolean} True for a success
+ */
+function clearObject(object){
+
+	//Variable (for loop) is specific to this local scop
+	var i = 0;
+	
+	//Process each node of the object
+	for(i in object){
+		
+		//Check if the node is an object
+		if(object[i].toString() === "[object Object]"){
+			clearObject(object[i]); //Delete object content
+			console.log("Hello world");
+		}
+		
+		//Delete node
+		delete object[i];
+	}
+
+	//Success
+	return true;
+}
+
+/**
  * Check a given email address
  * 
  * @param {String} emailAddress The email address to check
