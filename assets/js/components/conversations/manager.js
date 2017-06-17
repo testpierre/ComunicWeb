@@ -152,6 +152,7 @@ ComunicWeb.components.conversations.manager = {
 
 		//Peform a request to informations about the conversation
 		ComunicWeb.components.conversations.interface.getInfosOne(conversationID, function(informations){
+
 			//In case of error
 			if(informations.error){
 				//Display error notification
@@ -159,11 +160,31 @@ ComunicWeb.components.conversations.manager = {
 				return false;
 			}
 
-			//Change the name of the conversation
-			ComunicWeb.components.conversations.utils.getName(informations, function(conversationName){
-				ComunicWeb.components.conversations.chatWindows.changeName(conversationName, conversationWindow);
-			});
+			//Get informations about the members of the conversation
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(informations.members, function(membersInfos){
 
+				//Quit in case of error
+				if(informations.error){
+					//Display error notification
+					ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about the conversation members !", "danger");
+					return false;
+				}
+				
+				//Create conversation informations root object
+				var conversationInfos = {
+					box: conversationWindow,
+					membersInfos: membersInfos,
+					infos: informations
+				};
+
+				//Change the name of the conversation
+				ComunicWeb.components.conversations.utils.getName(informations, function(conversationName){
+					ComunicWeb.components.conversations.chatWindows.changeName(conversationName, conversationWindow);
+				});
+
+				//Update conversation members informations
+				ComunicWeb.components.conversations.chatWindows.updateMembersList(conversationInfos);
+			});
 		});
 
 		//Success

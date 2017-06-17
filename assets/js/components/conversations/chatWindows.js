@@ -21,7 +21,11 @@ ComunicWeb.components.conversations.chatWindows = {
 		//First, create the generic conversation window
 		var infosBox = ComunicWeb.components.conversations.windows.create(infos.target.children[0]);
 
+		//Save conversation ID
 		infosBox.conversationID = infos.conversationID;
+
+		//Change box root class name
+		infosBox.rootElem.className += " direct-chat";
 
 		//Adapt close button behaviour
 		infosBox.closeFunction = function(){
@@ -35,6 +39,31 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		infosBox.closeButton.onclick = infosBox.closeFunction;
 
+
+		//Debug
+		infosBox.boxBody.innerHTML = "<div class='direct-chat-messages'>Hello world</p>";
+
+		//Add button to get conversation members
+		infosBox.membersButton = createElem("button");
+		infosBox.closeButton.parentNode.insertBefore(infosBox.membersButton, infosBox.closeButton);
+		infosBox.membersButton.type = "button";
+		infosBox.membersButton.className = "btn btn-box-tool";
+		infosBox.membersButton.setAttribute("data-toggle", "tooltip");
+		infosBox.membersButton.setAttribute("data-widget", "chat-pane-toggle");
+		infosBox.membersButton.title = "Conversation members";
+
+			//Add button icon
+			var buttonIcon = createElem("i", infosBox.membersButton);
+			buttonIcon.className = "fa fa-users";
+
+		//Add conversation members pane
+		var membersPane = createElem("div", infosBox.boxBody);
+		membersPane.className = "direct-chat-contacts";
+		
+		//Add conversation members list
+		infosBox.membersList = createElem("ul", membersPane);
+		infosBox.membersList.className = "contacts-list";
+		
 		//Return informations about the chat window
 		return infosBox;
 
@@ -62,5 +91,70 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Success
 		return true;
+	},
+
+	/**
+	 * Update conversation members list
+	 * 
+	 * @param {Object} conversation Informations about the conversation
+	 * @return {Boolean} True for a success
+	 */
+	updateMembersList: function(conversation){
+		
+		//First, make sure conversation members pane is empty
+		emptyElem(conversation.box.membersList);
+
+		//Then process each user
+		var i = 0;
+		for(i in conversation.infos.members){
+			if(conversation.membersInfos['user-'+conversation.infos.members[i]]){
+				var memberInfos = conversation.membersInfos['user-'+conversation.infos.members[i]];
+
+				//Display user informations
+				var userLi = createElem("li", conversation.box.membersList);
+				var userLink = createElem("a", userLi);
+				
+				//Add user account image
+				var userImage = createElem("img", userLink);
+				userImage.className = "contacts-list-img";
+				userImage.src = memberInfos.accountImage;
+				
+				//Add member informations
+				var memberInfosList = createElem2({
+					type: "div", 
+					appendTo: userLink,
+					class: "contacts-list-info",
+				});
+
+				//Add user name
+				var memberName = createElem2({
+					type: "span",
+					appendTo: memberInfosList,
+					class: "contacts-list-name",
+					innerHTML: memberInfos.firstName + " " + memberInfos.lastName,
+				});
+
+				//Check if members is a moderator or not of the conversation
+				var memberStatus = conversation.infos.ID_owner == memberInfos.userID ? "Moderator" : "Member";
+
+				//Add member status
+				var memberStatus = createElem2({
+					type: "span",
+					appendTo: memberInfosList,
+					class: "contats-list-msg",
+					innerHTML: memberStatus
+				});
+			}
+		}
+
+		//Enable slimscrooll
+		$(conversation.box.membersList).slimscroll({
+			height: "100%",
+			color: "#FFFFFF"
+		});
+
+		//Success
+		return true;
 	}
+
 }
