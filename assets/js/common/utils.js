@@ -22,6 +22,51 @@ function createElem(nodeType, appendTo){
 }
 
 /**
+ * Create a new HTML node (version2)
+ * 
+ * @param {Object} infos Informations about the HTML node to create
+ * @info {String} type The type of the new node
+ * @info {HTMLElement} appendTo HTML Element that will receive the new node
+ * @info {HTMLElement} insertBefore Insert before specified HTML element
+ * @info {HTMLElement} class The class of the new element
+ * @info {HTMLElement} id The ID of the new element
+ * @info {HTMLElement} title The title of the new element
+ * @info {HTMLElement} src The src attribute of the new element
+ * @return {HTMLElement} The newly created element
+ */
+function createElem2(infos){
+
+	var newElem = document.createElement(infos.type);
+
+	//Append to a specific element
+	if(infos.appendTo)
+		infos.appendTo.appendChild(newElem);
+
+	//Append before a specific element
+	if(infos.insertBefore)
+		infos.insertBefore.parentNode.insertBefore(newElem, infos.insertBefore);
+	
+	//Specify the class of the element
+	if(infos.class)
+		newElem.className = infos.class;
+
+	//Specify the ID of the element
+	if(infos.id)
+		newElem.id = infos.id;
+	
+	//Specify the title of the new element
+	if(infos.title)
+		newElem.title = infos.title;
+	
+	//Specify the source of the element
+	if(infos.src)
+		newElem.src = infos.src;
+
+	//Return newly created element
+	return newElem;
+}
+
+/**
  * Get an HTML element specified by an ID
  * 
  * @param {String} nodeName The ID of the element
