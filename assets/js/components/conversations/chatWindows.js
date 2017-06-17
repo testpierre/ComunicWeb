@@ -160,15 +160,15 @@ ComunicWeb.components.conversations.chatWindows = {
 	/**
 	 * Show conversation settings (button + pane)
 	 * 
-	 * @param {Object} infos Informations about the conversation
+	 * @param {Object} conversation Informations about the conversation
 	 * @return {Boolean} True for a success
 	 */
-	showConversationSettings: function(infos){
+	showConversationSettings: function(conversation){
 		
 		//Create and display conversation settings button wheel
-		infos.box.settingsButton = createElem2({
+		conversation.box.settingsButton = createElem2({
 			type: "button",
-			insertBefore: infos.box.membersButton,
+			insertBefore: conversation.box.membersButton,
 			class: "btn btn-box-tool",
 			type: "button"
 		});
@@ -176,19 +176,19 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Add button icon
 		createElem2({
 			type: "i",
-			appendTo: infos.box.settingsButton,
+			appendTo: conversation.box.settingsButton,
 			class: "fa fa-gear",
 		});
 
 		//Create settings pane
 		var settingsPane = createElem2({
 			type: "div",
-			appendTo: infos.box.boxBody,
+			appendTo: conversation.box.boxBody,
 			class: "conversation-settings-pane",
 		});
 
 		//Make the settings button lives
-		infos.box.settingsButton.onclick = function(){
+		conversation.box.settingsButton.onclick = function(){
 			//Update settings pane classname
 			if(settingsPane.className.includes(" open"))
 				settingsPane.className = settingsPane.className.replace(" open", ""); //Close the pane
@@ -200,22 +200,84 @@ ComunicWeb.components.conversations.chatWindows = {
 		var settingsForm = ComunicWeb.components.conversations.utils.createConversationForm(settingsPane);
 
 		//Update form informations
-		settingsForm.createButton.innerHTML = "Update conversation";
+		settingsForm.createButton.innerHTML = "Update settings";
 		
 		//Update conversation name
-		if(infos.infos.name)
-			settingsForm.conversationNameInput.value = infos.infos.name;
+		if(conversation.infos.name)
+			settingsForm.conversationNameInput.value = conversation.infos.name;
 
-		//Update conversation members
-		ComunicWeb.components.userSelect.pushEntries(settingsForm.usersElement, infos.infos.members);
+		//Check if user is a ocnversation moderator or not
+		if(conversation.infos.ID_owner == userID()){
+			//Update conversation members
+			ComunicWeb.components.userSelect.pushEntries(settingsForm.usersElement, conversation.infos.members);
+		}
+		else {
+			//We disable name field
+			settingsForm.conversationNameInput.disabled = "true";
+
+			//We hide conversation users (presents in members pane)
+			settingsForm.usersElement.parentNode.style.display = "none";
+		}
 
 		//Update follow conversation checkbox
+		if(conversation.infos.following == "1"){
+			$(settingsForm.followConversationInput).iCheck("check");
+		}
+		else {
+			$(settingsForm.followConversationInput).iCheck("uncheck");
+		}
 
-		console.log(infos);
-		console.log(settingsForm);
+		//Save settings form in global form
+		conversation.settingsForm = settingsForm;
+
+		//Make update settings button lives
+		settingsForm.createButton.onclick = function(){
+			ComunicWeb.components.conversations.chatWindows.submitUpdateForm(conversation);
+		};
 
 		//Success
 		return true;
 	},
 
+
+	/**
+	 * Process submited update conversation form
+	 * 
+	 * @param {Object} conversation Informations about the conversation
+	 * @return {Boolean} True for a success
+	 */
+	submitUpdateForm: function(conversation){
+		console.log(conversation);
+
+		//Then, get informations about the input
+		var newValues = {
+			following: conversation.settingsForm.followConversationInput.checked,
+		}
+
+		//Add other fields if the user is a conversation moderator
+		if(conversation.infos.ID_owner == userID()){
+			//Specify conversation name
+			var nameValue = conversation.settingsForm.conversationNameInput.value
+			newValues.name = (nameValue === "" ? false : nameValue);
+			
+			//Get conversation members
+			newValues.members = ComunicWeb.components.userSelect.getResults(conversation.settingsForm.usersElement);
+
+			//Check if any users were selected
+			if(newValues.members.length === 0){
+				//Inform user that its input is invalid
+				ComunicWeb.common.notificationSystem.showNotification("Please select at least one user !", "danger", 3);
+				return false;
+			}
+
+		}
+
+		//Now, freeze the submit button
+		conversation.settingsForm.createButton.disabled = "true";
+
+		//Peform a request through the interface
+
+		//Success
+		return true;
+	},
 }
