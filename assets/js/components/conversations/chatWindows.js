@@ -247,10 +247,10 @@ ComunicWeb.components.conversations.chatWindows = {
 	 * @return {Boolean} True for a success
 	 */
 	submitUpdateForm: function(conversation){
-		console.log(conversation);
 
 		//Then, get informations about the input
 		var newValues = {
+			conversationID: conversation.infos.ID,
 			following: conversation.settingsForm.followConversationInput.checked,
 		}
 
@@ -276,6 +276,9 @@ ComunicWeb.components.conversations.chatWindows = {
 		conversation.settingsForm.createButton.disabled = "true";
 
 		//Peform a request through the interface
+		ComunicWeb.components.conversations.interface.updateSettings(newValues, function(result){
+			console.log("Function callback !!!!!!!!!!!!!!", result);
+		});
 
 		//Success
 		return true;

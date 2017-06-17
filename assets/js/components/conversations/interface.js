@@ -66,7 +66,7 @@ ComunicWeb.components.conversations.interface = {
 	 * 
 	 * @param {Object} infos Informations about the conversation to create
 	 * * @info {Array} users A list of the members of the conversation
-	 * * @info {Boolan} follow Defines if the current user wants to follow the conversation or not
+	 * * @info {Boolean} follow Defines if the current user wants to follow the conversation or not
 	 * * @info {Mixed} conversationName The name of the conversation
 	 * @param {Function} afterCreate What to do once the conversation is created
 	 * @return {Boolean} True for a success
@@ -97,6 +97,21 @@ ComunicWeb.components.conversations.interface = {
 
 		//Success
 		return true;
+	},
+
+	/**
+	 * Update conversation settings
+	 * 
+	 * @param {infos} infos Informations about the conversation to update
+	 * @info {Integer} conversationID The ID of the conversation to update
+	 * @info {Boolean} following Specify if the user is following the conversation or not
+	 * @info {String} name Specify a new name for the conversation
+	 * @info {array} members Specify the new list of members for the conversation
+	 * @param {function} callback The function callback
+	 * @return {Boolean} True for a success
+	 */
+	updateSettings: function(infos, callback){
+		console.log("PLEASE IMPLEMENT ME ON NEXT DEVELOPPEMENT FUNCTION");
 	},
 
 	/**
