@@ -52,7 +52,59 @@ ComunicWeb.components.conversations.utils = {
 
 		//Success
 		return true;
-	}
+	},
+
+	/**
+	 * Create and display a conversation creation / edition form
+	 * 
+	 * @param {HTMLElement} target The target of the creation form
+	 * @return {Object} Informations about the form
+	 */
+	createConversationForm: function(target){
+
+		//Create form object
+		var form = {};
+
+		//Create and display conversation creation form
+		form.rootElem = createElem("div", target);
+
+		//Choose users
+		//Create select user element
+		form.usersElement = createFormGroup({
+			target: form.rootElem, 
+			label: "Users", 
+			multiple: true,
+			placeholder: "Select users",
+			type: "select2"});
+
+		//Initialize user selector
+		ComunicWeb.components.userSelect.init(form.usersElement);
 
 
+		//Conversation name
+		form.conversationNameInput = createFormGroup({
+			target: form.rootElem, 
+			label: "Conversation name", 
+			placeholder: "Optionnal", 
+			type: "text"});
+
+		//Follow disucssion
+		form.followConversationInput = createFormGroup({
+			target: form.rootElem, 
+			label: "Follow conversation", 
+			checked: true,
+			type: "checkbox"});
+
+		//Create button
+		form.createButton = createElem2({
+			type: "button", 
+			appendTo: form.rootElem,
+			class: "btn btn-primary",
+			innerHTML: "Create conversation"
+		});
+		form.createButton.style.width = "100%";
+
+		//Return result
+		return form;
+	},
 }

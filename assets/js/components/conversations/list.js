@@ -69,52 +69,19 @@ ComunicWeb.components.conversations.list = {
 		//Change box title
 		listBox.boxTitle.innerHTML = "New conversation";
 
-		//Create and display conversation creation form
-		var createForm = createElem("div", listBox.boxBody);
-
-		//Choose users
-		//Create select user element
-		var usersElement = createFormGroup({
-			target: createForm, 
-			label: "Users", 
-			multiple: true,
-			placeholder: "Select users",
-			type: "select2"});
-
-		//Initialize user selector
-		ComunicWeb.components.userSelect.init(usersElement);
-
-
-		//Conversation name
-		var conversationNameInput = createFormGroup({
-			target: createForm, 
-			label: "Conversation name", 
-			placeholder: "Optionnal", 
-			type: "text"});
-
-		//Follow disucssion
-		var followConversationInput = createFormGroup({
-			target: createForm, 
-			label: "Follow conversation", 
-			checked: true,
-			type: "checkbox"});
-
-		//Create button
-		var createButton = createElem("button", createForm);
-		createButton.className = "btn btn-primary";
-		createButton.style.width = "100%";
-		createButton.innerHTML = "Create conversation";
+		//Create the form
+		var form = ComunicWeb.components.conversations.utils.createConversationForm(listBox.boxBody);
 
 		//Generate a summary object about all the informations we have got
 		var infos = {
 			listBox: listBox,
-			usersElement: usersElement,
-			conversationNameInput: conversationNameInput,
-			followConversationInput: followConversationInput,
+			usersElement: form.usersElement,
+			conversationNameInput: form.conversationNameInput,
+			followConversationInput: form.followConversationInput,
 		};
 
 		//Make button lives
-		createButton.onclick = function(){
+		form.createButton.onclick = function(){
 			ComunicWeb.components.conversations.list.submitCreateConversationForm(infos);
 		};
 
