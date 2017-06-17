@@ -155,6 +155,49 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Success
 		return true;
-	}
+	},
+
+	/**
+	 * Show conversation settings (button + pane)
+	 * 
+	 * @param {Object} infos Informations about the conversation
+	 * @return {Boolean} True for a success
+	 */
+	showConversationSettings: function(infos){
+		console.log(infos);
+		//Create and display conversation settings button wheel
+		infos.box.settingsButton = createElem2({
+			type: "button",
+			insertBefore: infos.box.membersButton,
+			class: "btn btn-box-tool",
+			type: "button"
+		});
+
+		//Add button icon
+		createElem2({
+			type: "i",
+			appendTo: infos.box.settingsButton,
+			class: "fa fa-gear",
+		});
+
+		//Create settings pane
+		var settingsPane = createElem2({
+			type: "div",
+			appendTo: infos.box.boxBody,
+			class: "conversation-settings-pane",
+			innerHTML: "<p>Welcome to settings world</p>",
+		});
+
+		//Make the settings button lives
+		infos.box.settingsButton.onclick = function(){
+			if(settingsPane.className.includes(" open"))
+				settingsPane.className = settingsPane.className.replace(" open", ""); //Close the pane
+			else
+				settingsPane.className += " open"; //Open the pane
+		};
+
+		//Success
+		return true;
+	},
 
 }

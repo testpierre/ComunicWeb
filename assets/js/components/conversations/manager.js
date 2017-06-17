@@ -184,6 +184,10 @@ ComunicWeb.components.conversations.manager = {
 
 				//Update conversation members informations
 				ComunicWeb.components.conversations.chatWindows.updateMembersList(conversationInfos);
+
+				//Display conversation settings pane
+				ComunicWeb.components.conversations.chatWindows.showConversationSettings(conversationInfos);
+
 			});
 		});
 

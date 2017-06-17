@@ -14,3 +14,29 @@
 	text-align: justify;
 	margin-bottom: 0px;
 }
+
+
+/**
+ * Conversation settings pane 
+ */
+#conversationsElem .conversation-settings-pane {
+	-webkit-transform: translate(101%, 0);
+	-ms-transform: translate(101%, 0);
+	-o-transform: translate(101%, 0);
+	transform: translate(101%, 0);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 250px;
+	width: 100%;
+	background: #d2d6de;
+	overflow: auto;
+	transition: transform .5s cubic-bezier(.22,.61,.36,1);
+}
+
+#conversationsElem .conversation-settings-pane.open {
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	-o-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
