@@ -29,9 +29,10 @@
 	bottom: 0;
 	height: 250px;
 	width: 100%;
-	background: #d2d6de;
+	background: #FFFFFF;
 	overflow: auto;
 	transition: transform .5s cubic-bezier(.22,.61,.36,1);
+	padding: 10px;
 }
 
 #conversationsElem .conversation-settings-pane.open {
