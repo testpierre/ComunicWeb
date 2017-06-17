@@ -207,6 +207,7 @@ ComunicWeb.components.conversations.chatWindows = {
 			settingsForm.conversationNameInput.value = infos.infos.name;
 
 		//Update conversation members
+		ComunicWeb.components.userSelect.pushEntries(settingsForm.usersElement, infos.infos.members);
 
 		//Update follow conversation checkbox
 

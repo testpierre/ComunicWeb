@@ -100,5 +100,46 @@ ComunicWeb.components.userSelect = {
 		//Return result IDs
 		return usersID;
 
+	},
+
+	/**
+	 * Push entries to user select element
+	 * 
+	 * @param {HTMLElement} inputSelect The target element (select2 initialized)
+	 * @param {array} usersID The ID of the users to push in select2 element
+	 * @return {Boolean} True for a success
+	 */
+	pushEntries(inputSelect, usersID){
+
+		//Get informations about the entries
+		getMultipleUsersInfos(usersID, function(usersInfos){
+			
+			//Check for errors
+			if(usersInfos.error){
+				//Log error
+				ComunicWeb.debug.logMessage("Error ! Couldn't fill select2 element because a request on the server failed !");
+				return false;
+			}
+
+			//In case of success
+			var i;
+			for(i in usersInfos){
+				
+				//Create the new option
+				var option = createElem2({
+					type: "option",
+					value: usersInfos[i].userID,
+					innerHTML: usersInfos[i].firstName + " " + usersInfos[i].lastName,
+				});
+				option.setAttribute("selected", "true");
+
+				//Apply the new option
+				$(inputSelect).append(option);
+				$(inputSelect).trigger("change");
+			}
+		})
+
+		//Success
+		return true;
 	}
 };

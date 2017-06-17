@@ -33,6 +33,7 @@ function createElem(nodeType, appendTo){
  * @info {HTMLElement} title The title of the new element
  * @info {HTMLElement} src The src attribute of the new element
  * @info {HTMLElement} type The type of the new element
+ * @info {HTMLElement} value The value of the new element
  * @info {HTMLElement} innerHTML Specify the html content of the newly created element
  * @return {HTMLElement} The newly created element
  */
@@ -67,6 +68,10 @@ function createElem2(infos){
 	//Specify element type
 	if(infos.type)
 		newElem.type = infos.type;
+
+	//Specify element value
+	if(infos.value)
+		newElem.value = infos.value;
 
 	//Specify node content
 	if(infos.innerHTML)
