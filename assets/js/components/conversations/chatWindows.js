@@ -7,6 +7,11 @@
 ComunicWeb.components.conversations.chatWindows = {
 
 	/**
+	 * @var {Object} __conversationsCache Chat windows cache
+	 */
+	__conversationsCache: {},
+
+	/**
 	 * Open a new conversation window
 	 * 
 	 * @param {Integer} conversationID The ID of the window to open
@@ -68,6 +73,9 @@ ComunicWeb.components.conversations.chatWindows = {
 					infos: informations
 				};
 
+				//Save conversation informations in the cache
+				ComunicWeb.components.conversations.chatWindows.__conversationsCache["conversation-"+conversationID] = conversationInfos;
+
 				//Change the name of the conversation
 				ComunicWeb.components.conversations.utils.getName(informations, function(conversationName){
 					ComunicWeb.components.conversations.chatWindows.changeName(conversationName, conversationWindow);
@@ -81,6 +89,46 @@ ComunicWeb.components.conversations.chatWindows = {
 
 			});
 		});
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Unload a chat window
+	 * 
+	 * @param {Integer} conversationID The ID of the conversation to unload
+	 * @param {Boolean} keepInfos Keep informations about the chat window
+	 * @return {Boolean} True for a success
+	 */
+	unload: function(conversationID, keepInfos){
+
+		if(!this.__conversationsCache["conversation-"+conversationID]){
+			ComunicWeb.debug.logMessage("Couldn't unload conversation: " + conversationID +". It seems not to be loaded...");
+			return false;
+		}
+
+		//Log action
+		ComunicWeb.debug.logMessage("Unloading a conversation: " + conversationID);
+
+		//Remove informations if required
+		if(!keepInfos){
+			delete this.__conversationsCache["conversation-"+conversationID];
+		}
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Unload all chat windows
+	 * 
+	 * @return {Boolean} True for a success
+	 */
+	unloadAll: function(){
+
+		//Clear conversation object
+		clearObject(this.__conversationsCache);
 
 		//Success
 		return true;
@@ -116,6 +164,9 @@ ComunicWeb.components.conversations.chatWindows = {
 
 			//Remove the conversation from opened ones
 			ComunicWeb.components.conversations.cachingOpened.remove(infosBox.conversationID);
+
+			//Unload conversation
+			ComunicWeb.components.conversations.chatWindows.unload(infosBox.conversationID);
 		}
 
 		infosBox.closeButton.onclick = infosBox.closeFunction;
@@ -154,7 +205,7 @@ ComunicWeb.components.conversations.chatWindows = {
 	 * Change the name of the converation at the top of the windows
 	 * 
 	 * @param {String} newName The new name for the conversation window
-	 * @param {Ojbect} infos INformations about the conversation window
+	 * @param {Ojbect} infos Informations about the conversation window
 	 * @return {Boolean} True for a success
 	 */
 	changeName: function(newName, infos){
@@ -369,9 +420,6 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Now, freeze the submit button
 		conversation.settingsForm.createButton.disabled = true;
 
-		//Export conversation ID (to avoid error after)
-		var conversationID = conversation.infos.ID;
-
 		//Peform a request through the interface
 		ComunicWeb.components.conversations.interface.updateSettings(newValues, function(result){
 			
@@ -383,12 +431,14 @@ ComunicWeb.components.conversations.chatWindows = {
 				ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to update conversation settings !", "danger", 4);
 			
 			//Reload the conversation
-			ComunicWeb.components.conversations.chatWindows.load(conversationID, conversation.box);
-
-			console.log("Function callback !!!!!!!!!!!!!!", result);
+			ComunicWeb.components.conversations.chatWindows.unload(conversation.infos.ID, true);
+			ComunicWeb.components.conversations.chatWindows.load(conversation.infos.ID, conversation.box);
 		});
 
 		//Success
 		return true;
 	},
 }
+
+//Register conversations cache cleaning function
+ComunicWeb.common.cacheManager.registerCacheCleaner("ComunicWeb.components.conversations.chatWindows.unloadAll");
