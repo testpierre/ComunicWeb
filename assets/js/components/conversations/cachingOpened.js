@@ -52,8 +52,13 @@ ComunicWeb.components.conversations.cachingOpened = {
 		conversations.splice(entryNumber, 1);
 
 		//Save the new values
-		var conversationsString = conversations.join(";");
-		sessionStorage.setItem(this.__varName, conversationsString);
+		if(conversations.length === 0){
+			this.emptyStorage(); //Clear storage
+		}
+		else {
+			var conversationsString = conversations.join(";");
+			sessionStorage.setItem(this.__varName, conversationsString);
+		}
 
 		//Success
 		return true;
