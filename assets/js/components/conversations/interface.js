@@ -111,7 +111,31 @@ ComunicWeb.components.conversations.interface = {
 	 * @return {Boolean} True for a success
 	 */
 	updateSettings: function(infos, callback){
-		console.log("PLEASE IMPLEMENT ME ON NEXT DEVELOPPEMENT FUNCTION");
+		//Prepare the API request
+		var apiURI = "conversations/updateSettings";
+		var params = {
+			conversationID: infos.conversationID
+		};
+
+		//Add conversation name (if specified)
+		if(infos.name)
+			params.name = infos.name;
+		
+		//Add conversation members (if specified)
+		if(infos.members)
+			params.members = infos.members;
+		
+		//Add conversation following status (if specified)
+		if(infos.following !== undefined)
+			params.following = infos.following;
+
+		//Perform API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(result){
+			console.log("Result");
+		});
+
+		//Success
+		return true;
 	},
 
 	/**
