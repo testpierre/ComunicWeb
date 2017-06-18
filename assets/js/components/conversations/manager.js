@@ -70,7 +70,7 @@ ComunicWeb.components.conversations.manager = {
 		//Process opened conversations
 		for(i in openedConversations){
 			if(i < openedConversations.length)
-				this.openConversation(openedConversations[i]);
+				ComunicWeb.components.conversations.chatWindows.openConversation(openedConversations[i]);
 		}
 
 	},
@@ -121,77 +121,9 @@ ComunicWeb.components.conversations.manager = {
 		}
 
 		//Open the conversation
-		this.openConversation(conversationID);
+		ComunicWeb.components.conversations.chatWindows.openConversation(conversationID);
 
 		//Success
 		return true;
 	},
-
-	/**
-	 * Open a conversation 
-	 * 
-	 * @param {Integer} conversationID The ID of the conversation to open
-	 * @return {Boolean} True or false depending of the success of the operation
-	 */
-	openConversation: function(conversationID){
-		
-		//Log action
-		ComunicWeb.debug.logMessage("Opening conversation " + conversationID);
-
-		//Save conversation ID in session storage
-		ComunicWeb.components.conversations.cachingOpened.add(conversationID);
-
-		//Create a conversation window
-		var conversationWindow = ComunicWeb.components.conversations.chatWindows.create({
-			target: byId(this.__conversationsContenerID),
-			conversationID: conversationID
-		});
-
-		//Change conversation window name (loading state)
-		ComunicWeb.components.conversations.chatWindows.changeName("Loading", conversationWindow);
-
-		//Peform a request to informations about the conversation
-		ComunicWeb.components.conversations.interface.getInfosOne(conversationID, function(informations){
-
-			//In case of error
-			if(informations.error){
-				//Display error notification
-				ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about the conversation !", "danger");
-				return false;
-			}
-
-			//Get informations about the members of the conversation
-			ComunicWeb.user.userInfos.getMultipleUsersInfos(informations.members, function(membersInfos){
-
-				//Quit in case of error
-				if(informations.error){
-					//Display error notification
-					ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about the conversation members !", "danger");
-					return false;
-				}
-				
-				//Create conversation informations root object
-				var conversationInfos = {
-					box: conversationWindow,
-					membersInfos: membersInfos,
-					infos: informations
-				};
-
-				//Change the name of the conversation
-				ComunicWeb.components.conversations.utils.getName(informations, function(conversationName){
-					ComunicWeb.components.conversations.chatWindows.changeName(conversationName, conversationWindow);
-				});
-
-				//Update conversation members informations
-				ComunicWeb.components.conversations.chatWindows.updateMembersList(conversationInfos);
-
-				//Display conversation settings pane
-				ComunicWeb.components.conversations.chatWindows.showConversationSettings(conversationInfos);
-
-			});
-		});
-
-		//Success
-		return true;
-	}
 }

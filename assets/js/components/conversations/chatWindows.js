@@ -5,6 +5,75 @@
  */
 
 ComunicWeb.components.conversations.chatWindows = {
+
+	/**
+	 * Open a new conversation window
+	 * 
+	 * @param {Integer} windowID The ID of the window to open
+	 * @return {Boolean} True for a success
+	 */
+	openConversation: function(conversationID){
+		
+		//Log action
+		ComunicWeb.debug.logMessage("Opening conversation " + conversationID);
+
+		//Save conversation ID in session storage
+		ComunicWeb.components.conversations.cachingOpened.add(conversationID);
+
+		//Create a conversation window
+		var conversationWindow = this.create({
+			target: byId(ComunicWeb.components.conversations.manager.__conversationsContenerID),
+			conversationID: conversationID
+		});
+
+		//Change conversation window name (loading state)
+		this.changeName("Loading", conversationWindow);
+
+		//Peform a request to informations about the conversation
+		ComunicWeb.components.conversations.interface.getInfosOne(conversationID, function(informations){
+
+			//In case of error
+			if(informations.error){
+				//Display error notification
+				ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about the conversation !", "danger");
+				return false;
+			}
+
+			//Get informations about the members of the conversation
+			getMultipleUsersInfos(informations.members, function(membersInfos){
+
+				//Quit in case of error
+				if(informations.error){
+					//Display error notification
+					ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about the conversation members !", "danger");
+					return false;
+				}
+				
+				//Create conversation informations root object
+				var conversationInfos = {
+					box: conversationWindow,
+					membersInfos: membersInfos,
+					infos: informations
+				};
+
+				//Change the name of the conversation
+				ComunicWeb.components.conversations.utils.getName(informations, function(conversationName){
+					ComunicWeb.components.conversations.chatWindows.changeName(conversationName, conversationWindow);
+				});
+
+				//Update conversation members informations
+				ComunicWeb.components.conversations.chatWindows.updateMembersList(conversationInfos);
+
+				//Display conversation settings pane
+				ComunicWeb.components.conversations.chatWindows.showConversationSettings(conversationInfos);
+
+			});
+		});
+
+		//Success
+		return true;
+	},
+
 	/**
 	 * Create a new chat window
 	 * 
@@ -17,7 +86,7 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Log action
 		ComunicWeb.debug.logMessage("Create a new chat window");
-
+		
 		//First, create the generic conversation window
 		var infosBox = ComunicWeb.components.conversations.windows.create(infos.target.children[0]);
 
