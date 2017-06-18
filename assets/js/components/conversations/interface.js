@@ -118,7 +118,7 @@ ComunicWeb.components.conversations.interface = {
 		};
 
 		//Add conversation name (if specified)
-		if(infos.name)
+		if(infos.name !== undefined)
 			params.name = infos.name;
 		
 		//Add conversation members (if specified)
@@ -131,7 +131,16 @@ ComunicWeb.components.conversations.interface = {
 
 		//Perform API request
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(result){
-			console.log("Result");
+			//Empty the cache (considered as deprecated)
+			ComunicWeb.components.conversations.interface.emptyCache(true);
+
+			//Check for error
+			if(result.error)
+				ComunicWeb.debug.logMessage("Error! An error occured while trying to update conversation settings !");
+
+			//Perform next action
+			callback(result);
+			
 		});
 
 		//Success
@@ -197,11 +206,15 @@ ComunicWeb.components.conversations.interface = {
 	/**
 	 * Empty conversations cache
 	 * 
+	 * @param {Boolean} notHard Specify that the object hasn't to be recursively cleaned
 	 * @return {Boolean} True for a success
 	 */
-	emptyCache: function(){
+	emptyCache: function(notHard){
 		//Empty cache
-		clearObject(this.__conversationsList);
+		if(!notHard)
+			clearObject(this.__conversationsList);
+		else
+			this.__conversationsList = {}; //"Light" clean
 
 		//Success
 		return true;

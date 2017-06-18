@@ -9,7 +9,7 @@ ComunicWeb.components.conversations.chatWindows = {
 	/**
 	 * Open a new conversation window
 	 * 
-	 * @param {Integer} windowID The ID of the window to open
+	 * @param {Integer} conversationID The ID of the window to open
 	 * @return {Boolean} True for a success
 	 */
 	openConversation: function(conversationID){
@@ -17,15 +17,27 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Log action
 		ComunicWeb.debug.logMessage("Opening conversation " + conversationID);
 
-		//Save conversation ID in session storage
-		ComunicWeb.components.conversations.cachingOpened.add(conversationID);
-
 		//Create a conversation window
 		var conversationWindow = this.create({
 			target: byId(ComunicWeb.components.conversations.manager.__conversationsContenerID),
-			conversationID: conversationID
+			conversationID: conversationID,
 		});
 
+		//Load the conversation
+		this.load(conversationID, conversationWindow);
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Load (or reload) a conversation
+	 * 
+	 * @param {Integer} conversationID The ID of the conversation to load
+	 * @param {Object} conversationWindow Informations about the conversation window
+	 * @return {Boolean} True for a success
+	 */
+	load: function(conversationID, conversationWindow){
 		//Change conversation window name (loading state)
 		this.changeName("Loading", conversationWindow);
 
@@ -234,6 +246,18 @@ ComunicWeb.components.conversations.chatWindows = {
 	 */
 	showConversationSettings: function(conversation){
 		
+		//First, check conversation settings button and pane don't exists yet
+		if(conversation.box.settingsButton){
+			if(conversation.box.settingsButton.remove){
+				conversation.box.settingsButton.remove();
+			}
+		}
+		if(conversation.box.settingsPane){
+			if(conversation.box.settingsPane.remove){
+				conversation.box.settingsPane.remove();
+			}
+		}
+
 		//Create and display conversation settings button wheel
 		conversation.box.settingsButton = createElem2({
 			type: "button",
@@ -255,6 +279,7 @@ ComunicWeb.components.conversations.chatWindows = {
 			appendTo: conversation.box.boxBody,
 			class: "conversation-settings-pane",
 		});
+		conversation.box.settingsPane = settingsPane;
 
 		//Make the settings button lives
 		conversation.box.settingsButton.onclick = function(){
@@ -275,7 +300,7 @@ ComunicWeb.components.conversations.chatWindows = {
 		if(conversation.infos.name)
 			settingsForm.conversationNameInput.value = conversation.infos.name;
 
-		//Check if user is a ocnversation moderator or not
+		//Check if user is a conversation moderator or not
 		if(conversation.infos.ID_owner == userID()){
 			//Update conversation members
 			ComunicWeb.components.userSelect.pushEntries(settingsForm.usersElement, conversation.infos.members);
@@ -288,7 +313,7 @@ ComunicWeb.components.conversations.chatWindows = {
 			settingsForm.usersElement.parentNode.style.display = "none";
 		}
 
-		//Update follow conversation checkbox
+		//Update follow conversation checkbox status
 		if(conversation.infos.following == "1"){
 			$(settingsForm.followConversationInput).iCheck("check");
 		}
@@ -342,10 +367,24 @@ ComunicWeb.components.conversations.chatWindows = {
 		}
 
 		//Now, freeze the submit button
-		conversation.settingsForm.createButton.disabled = "true";
+		conversation.settingsForm.createButton.disabled = true;
+
+		//Export conversation ID (to avoid error after)
+		var conversationID = conversation.infos.ID;
 
 		//Peform a request through the interface
 		ComunicWeb.components.conversations.interface.updateSettings(newValues, function(result){
+			
+			//Enable again update button
+			conversation.settingsForm.createButton.disabled = false;
+			
+			//Check for errors
+			if(result.error)
+				ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to update conversation settings !", "danger", 4);
+			
+			//Reload the conversation
+			ComunicWeb.components.conversations.chatWindows.load(conversationID, conversation.box);
+
 			console.log("Function callback !!!!!!!!!!!!!!", result);
 		});
 

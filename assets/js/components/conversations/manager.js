@@ -120,6 +120,9 @@ ComunicWeb.components.conversations.manager = {
 			return false;
 		}
 
+		//Save conversation ID in session storage
+		ComunicWeb.components.conversations.cachingOpened.add(conversationID);
+
 		//Open the conversation
 		ComunicWeb.components.conversations.chatWindows.openConversation(conversationID);
 

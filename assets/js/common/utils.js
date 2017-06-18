@@ -133,7 +133,6 @@ function clearObject(object){
 		//Check if the node is an object
 		if(object[i].toString() === "[object Object]"){
 			clearObject(object[i]); //Delete object content
-			console.log("Hello world");
 		}
 		
 		//Delete node
