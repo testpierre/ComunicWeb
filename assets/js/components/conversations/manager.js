@@ -129,4 +129,38 @@ ComunicWeb.components.conversations.manager = {
 		//Success
 		return true;
 	},
+
+	/**
+	 * Open a private conversation with only one user
+	 * 
+	 * @param {Integer} otherID The ID of the user with who the conversation will be started
+	 * @return {Boolean} True for a success
+	 */
+	openPrivate: function(otherID){
+
+		//Search for such conversation in the database, create it in case of failure
+		//Prepare what to do next
+		var callback = function(result){
+
+			//In case of error
+			if(result.error){
+				//Notify user
+				ComunicWeb.common.notificationSystem.showNotification("Couldn't create a conversation with this user ! Please try again...", "danger", 2);
+				return false;
+			}
+
+			//Open the first conversation
+			ComunicWeb.components.conversations.manager.addConversation({
+				conversationID: result.conversationsID[0],
+			});
+
+		};
+
+		//Peform request
+		ComunicWeb.components.conversations.interface.searchPrivate(otherID, true, callback);
+
+		//Success
+		return true;
+
+	},
 }

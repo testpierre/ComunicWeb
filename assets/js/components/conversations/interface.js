@@ -204,6 +204,39 @@ ComunicWeb.components.conversations.interface = {
 	},
 
 	/**
+	 * Search for private conversation
+	 * 
+	 * @param {Integer} otherUser The ID of the other user
+	 * @param {Boolean} allowCreation Allow the server to create the conversation if not found
+	 * @param {function} callback What to do once the request is completed
+	 * @return {Boolean} True for a success
+	 */
+	searchPrivate: function(otherUser, allowCreation, callback){
+
+		//Perform an API request
+		var apiURI = "conversations/getPrivate";
+		var params = {
+			otherUser: otherUser,
+			allowCreate: allowCreation
+		}
+
+		//Perform API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, function(result){
+
+			//Check for errors
+			if(result.error)
+				ComunicWeb.debug.logMessage("An error occured while trying to get a private conversation ID !");
+			
+			//Perfrorm next action
+			callback(result);
+
+		});
+
+		//Success
+		return true;
+	},
+
+	/**
 	 * Empty conversations cache
 	 * 
 	 * @param {Boolean} notHard Specify that the object hasn't to be recursively cleaned
@@ -218,7 +251,7 @@ ComunicWeb.components.conversations.interface = {
 
 		//Success
 		return true;
-	}
+	},
 }
 
 //Register conversations cache cleaning function
