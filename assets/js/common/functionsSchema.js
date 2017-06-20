@@ -580,7 +580,21 @@ var ComunicWeb = {
 		 */
 		userSelect:{
 			//TODO : implement
-		}
+		},
+
+		/**
+		 * Emoji functions
+		 */
+		emoji:{
+
+			/**
+			 * Emoji parser system
+			 */
+			parser: {
+				//TODO : implement
+			},
+			
+		},
 	},
 
 	/**

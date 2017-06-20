@@ -28,6 +28,18 @@ ComunicWeb.pages.home.home = {
             loginButton.innerHTML="Logout";
             targetElement.appendChild(loginButton);
 
+            //Dev feature emojies
+            var emojiesArea = createElem2({
+                appendTo: targetElement,
+                type: "p",
+                innerHTML: "Emoji test : :)  &#x1F1EC;&#x1F1EB;  &#x1F385;&#x1F3FB;"
+            });
+
+
+            //Parse emojies
+            ComunicWeb.components.emoji.parser.parse({
+                element: emojiesArea,
+            });
         }
         else{
             //Display landing page
