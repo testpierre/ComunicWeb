@@ -14,3 +14,4 @@ ComunicWeb would not exists without the following technologies developped by the
 - iCheck
 - Select2 4.0
 - bootstrap-notify
+- Twitter Emoji (https://github.com/twitter/twemoji)
