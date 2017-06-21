@@ -35,6 +35,128 @@ ComunicWeb.components.conversations.chatWindows = {
 		return true;
 	},
 
+
+	/**
+	 * Create a new chat window
+	 * 
+	 * @param {Object} infos Informations required for the new chat window
+	 * @info {HTMLElement} target The target of the new chat window
+	 * @info {Integer} conversationID The ID of the target conversation
+	 * @return {Object} Informations about the new chat window
+	 */
+	create: function(infos){
+
+		//Log action
+		ComunicWeb.debug.logMessage("Create a new chat window");
+		
+		//First, create the generic conversation window
+		var infosBox = ComunicWeb.components.conversations.windows.create(infos.target.children[0]);
+
+		//Save conversation ID
+		infosBox.conversationID = infos.conversationID;
+
+		//Change box root class name
+		infosBox.rootElem.className += " direct-chat";
+
+		//Adapt close button behaviour
+		infosBox.closeFunction = function(){
+			
+			//Remove root element
+			infosBox.rootElem.remove();
+
+			//Remove the conversation from opened ones
+			ComunicWeb.components.conversations.cachingOpened.remove(infosBox.conversationID);
+
+			//Unload conversation
+			ComunicWeb.components.conversations.chatWindows.unload(infosBox.conversationID);
+		}
+
+		infosBox.closeButton.onclick = infosBox.closeFunction;
+
+
+		//Debug
+		infosBox.boxBody.innerHTML = "<div class='direct-chat-messages'>Hello world</p>";
+
+		//Add button to get conversation members
+		infosBox.membersButton = createElem("button");
+		infosBox.closeButton.parentNode.insertBefore(infosBox.membersButton, infosBox.closeButton);
+		infosBox.membersButton.type = "button";
+		infosBox.membersButton.className = "btn btn-box-tool";
+		infosBox.membersButton.setAttribute("data-toggle", "tooltip");
+		infosBox.membersButton.setAttribute("data-widget", "chat-pane-toggle");
+		infosBox.membersButton.title = "Conversation members";
+
+			//Add button icon
+			var buttonIcon = createElem("i", infosBox.membersButton);
+			buttonIcon.className = "fa fa-users";
+
+		//Add conversation members pane
+		var membersPane = createElem("div", infosBox.boxBody);
+		membersPane.className = "direct-chat-contacts";
+		
+		//Add conversation members list
+		infosBox.membersList = createElem("ul", membersPane);
+		infosBox.membersList.className = "contacts-list";
+		
+		//Add send a message form
+		this.addMessageform(infosBox);
+
+		//Return informations about the chat window
+		return infosBox;
+
+	},
+
+	/**
+	 * Add a message form to the chat windows
+	 * 
+	 * @param {Object} infosBox Informations about the chat box
+	 * @return {Boolean} True for a success
+	 */
+	addMessageform: function(infosBox){
+
+		//Create form contener
+		var conversationFormContener = createElem2({
+			appendTo: infosBox.boxFooter,
+			type: "div",
+			class: "create-message-form"
+		});
+
+		//Create input gropu
+		var inputGroup = createElem2({
+			appendTo: conversationFormContener,
+			type: "div",
+			class: "input-group"
+		});
+
+		//Create text input (for message)
+		var inputText = createElem2({
+			appendTo: inputGroup,
+			type: "input",
+			class: "form-control",
+			placeholder: "New message...",
+			elemType: "text"
+		});
+
+		//Create button group
+		var buttonGroup = createElem2({
+			appendTo: inputGroup,
+			type: "span",
+			class: "input-group-btn",
+		});
+
+		//Add send button
+		var sendButton = createElem2({
+			appendTo: buttonGroup,
+			type: "button",
+			class: "btn btn-primary btn-flat",
+			elemType: "submit",
+			innerHTML: "Send",
+		});
+
+		//Success
+		return true;
+	},
+
 	/**
 	 * Load (or reload) a conversation
 	 * 
@@ -132,73 +254,6 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Success
 		return true;
-	},
-
-	/**
-	 * Create a new chat window
-	 * 
-	 * @param {Object} infos Informations required for the new chat window
-	 * @info {HTMLElement} target The target of the new chat window
-	 * @info {Integer} conversationID The ID of the target conversation
-	 * @return {Object} Informations about the new chat window
-	 */
-	create: function(infos){
-
-		//Log action
-		ComunicWeb.debug.logMessage("Create a new chat window");
-		
-		//First, create the generic conversation window
-		var infosBox = ComunicWeb.components.conversations.windows.create(infos.target.children[0]);
-
-		//Save conversation ID
-		infosBox.conversationID = infos.conversationID;
-
-		//Change box root class name
-		infosBox.rootElem.className += " direct-chat";
-
-		//Adapt close button behaviour
-		infosBox.closeFunction = function(){
-			
-			//Remove root element
-			infosBox.rootElem.remove();
-
-			//Remove the conversation from opened ones
-			ComunicWeb.components.conversations.cachingOpened.remove(infosBox.conversationID);
-
-			//Unload conversation
-			ComunicWeb.components.conversations.chatWindows.unload(infosBox.conversationID);
-		}
-
-		infosBox.closeButton.onclick = infosBox.closeFunction;
-
-
-		//Debug
-		infosBox.boxBody.innerHTML = "<div class='direct-chat-messages'>Hello world</p>";
-
-		//Add button to get conversation members
-		infosBox.membersButton = createElem("button");
-		infosBox.closeButton.parentNode.insertBefore(infosBox.membersButton, infosBox.closeButton);
-		infosBox.membersButton.type = "button";
-		infosBox.membersButton.className = "btn btn-box-tool";
-		infosBox.membersButton.setAttribute("data-toggle", "tooltip");
-		infosBox.membersButton.setAttribute("data-widget", "chat-pane-toggle");
-		infosBox.membersButton.title = "Conversation members";
-
-			//Add button icon
-			var buttonIcon = createElem("i", infosBox.membersButton);
-			buttonIcon.className = "fa fa-users";
-
-		//Add conversation members pane
-		var membersPane = createElem("div", infosBox.boxBody);
-		membersPane.className = "direct-chat-contacts";
-		
-		//Add conversation members list
-		infosBox.membersList = createElem("ul", membersPane);
-		infosBox.membersList.className = "contacts-list";
-		
-		//Return informations about the chat window
-		return infosBox;
-
 	},
 
 	/**

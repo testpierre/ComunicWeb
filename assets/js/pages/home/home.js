@@ -60,7 +60,7 @@ ComunicWeb.pages.home.home = {
                 maxHeight: "70px",
             });
 
-            console.log(textarea2);
+            
         }
         else{
             //Display landing page
