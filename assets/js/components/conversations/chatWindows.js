@@ -117,11 +117,11 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Create form contener
 		var conversationFormContener = createElem2({
 			appendTo: infosBox.boxFooter,
-			type: "div",
+			type: "form",
 			class: "create-message-form"
 		});
 
-		//Create input gropu
+		//Create input group
 		var inputGroup = createElem2({
 			appendTo: conversationFormContener,
 			type: "div",
@@ -131,11 +131,25 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Create text input (for message)
 		var inputText = createElem2({
 			appendTo: inputGroup,
-			type: "input",
+			type: "textarea",
 			class: "form-control",
 			placeholder: "New message...",
-			elemType: "text"
 		});
+
+		//Enable textarea 2.0 on the message
+		var textarea2 = new ComunicWeb.components.textarea();
+		textarea2.init({
+			element: inputText,
+			minHeight: "34px",
+			autosize: true,
+		});
+
+		//Create image input (for optionnal image)
+		var inputImage = createElem2({
+			type: "input",
+			elemType: "file",
+		});
+		
 
 		//Create button group
 		var buttonGroup = createElem2({
@@ -144,14 +158,50 @@ ComunicWeb.components.conversations.chatWindows = {
 			class: "input-group-btn",
 		});
 
+		//Add image button
+		var imageButton = createElem2({
+			appendTo: buttonGroup,
+			type: "button",
+			elemType: "button",
+			class: "btn btn-flat btn-add-image",
+		});
+		imageButton.onclick = function(){
+			//Call file selector
+			inputImage.click();
+		};
+		
+			//Add image icon
+			createElem2({
+				type: "i",
+				appendTo: imageButton, 
+				class: "fa fa-image"
+			});
+		
 		//Add send button
 		var sendButton = createElem2({
 			appendTo: buttonGroup,
-			type: "button",
+			type: "input",
 			class: "btn btn-primary btn-flat",
 			elemType: "submit",
-			innerHTML: "Send",
+			value: "Send",
 		});
+
+		//Prevent textarea from adding a new line when pressing enter
+		$(inputText).keypress(function(event){
+			if(event.keyCode == 13){
+				event.preventDefault();
+				sendButton.click();
+			}
+		});
+
+		//Add required elements to infosBox
+		infosBox.sendMessageForm = {
+			formRoot: conversationFormContener,
+			sendButton: sendButton,
+			inputText: inputText,
+			textarea2: textarea2,
+			inputImage: inputImage,
+		};
 
 		//Success
 		return true;
@@ -208,6 +258,16 @@ ComunicWeb.components.conversations.chatWindows = {
 
 				//Display conversation settings pane
 				ComunicWeb.components.conversations.chatWindows.showConversationSettings(conversationInfos);
+
+				//Make send a message button lives
+				conversationInfos.box.sendMessageForm.formRoot.onsubmit = function(){
+					
+					//Submit new message
+					ComunicWeb.components.conversations.chatWindows.submitMessageForm(conversationInfos);
+
+					//Block page reloading
+					return false;
+				};
 
 			});
 		});
@@ -489,6 +549,25 @@ ComunicWeb.components.conversations.chatWindows = {
 			ComunicWeb.components.conversations.chatWindows.unload(conversation.infos.ID, true);
 			ComunicWeb.components.conversations.chatWindows.load(conversation.infos.ID, conversation.box);
 		});
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Submit a new message form
+	 * 
+	 * @param {Object} convInfos Informations about the conversation
+	 * @return {Boolean} True for a success
+	 */
+	submitMessageForm: function(convInfos){
+
+		//Log action
+		ComunicWeb.debug.logMessage("Send a new message in a conversation system.");
+		console.log(convInfos);
+
+		//Check if message is empty
+		//if(convInfos.sendMessageForm.inputText)
 
 		//Success
 		return true;

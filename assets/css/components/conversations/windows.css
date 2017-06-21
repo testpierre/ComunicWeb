@@ -23,6 +23,15 @@
 	padding-right:6px;
 }
 
+#conversationsElem .create-message-form .btn.btn-add-image {
+	background: none;
+	color: #808080;
+}
+
+#conversationsElem .create-message-form .btn.btn-add-image:hover{
+	color: black;
+}
+
 /**
  * Conversation settings pane 
  */

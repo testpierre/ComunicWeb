@@ -18,6 +18,7 @@ var textArea2 = function(infos){
  * @info {HTMLElement} element The element to make modern
  * @info {Integer} minHeight The minimal height for the textarea
  * @info {Integer} maxHeight The maximal height for the textarea
+ * @info {Boolean} autosize Enable textarea auto-size plugin
  * @return {Boolean} True for a success
  */
 textArea2.prototype.init = function(infos){
@@ -38,7 +39,8 @@ textArea2.prototype.init = function(infos){
 		this.element.style.maxHeight = infos.maxHeight;
 
 	//Initializate textarea auto-size
-	$(this.element).textareaAutoSize();
+	if(infos.autosize === undefined || infos.autosize)
+		$(this.element).textareaAutoSize();
 
 	//Success
 	return true;
