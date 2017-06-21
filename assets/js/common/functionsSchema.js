@@ -602,6 +602,13 @@ var ComunicWeb = {
 			},
 			
 		},
+
+		/**
+		 * Modern textarea handler
+		 */
+		textarea: {
+
+		},
 	},
 
 	/**

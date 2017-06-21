@@ -27,14 +27,15 @@ function createElem(nodeType, appendTo){
  * @param {Object} infos Informations about the HTML node to create
  * @info {String} type The type of the new node
  * @info {HTMLElement} appendTo HTML Element that will receive the new node
- * @info {HTMLElement} insertBefore Insert before specified HTML element
- * @info {HTMLElement} class The class of the new element
- * @info {HTMLElement} id The ID of the new element
- * @info {HTMLElement} title The title of the new element
- * @info {HTMLElement} src The src attribute of the new element
- * @info {HTMLElement} type The type of the new element
- * @info {HTMLElement} value The value of the new element
- * @info {HTMLElement} innerHTML Specify the html content of the newly created element
+ * @info {String} insertBefore Insert before specified HTML element
+ * @info {String} class The class of the new element
+ * @info {String} id The ID of the new element
+ * @info {String} title The title of the new element
+ * @info {String} src The src attribute of the new element
+ * @info {String} type The type of the new element
+ * @info {String} value The value of the new element
+ * @info {String} placeholder The placeholder of the new element
+ * @info {String} innerHTML Specify the html content of the newly created element
  * @return {HTMLElement} The newly created element
  */
 function createElem2(infos){
@@ -72,6 +73,10 @@ function createElem2(infos){
 	//Specify element value
 	if(infos.value)
 		newElem.value = infos.value;
+
+	//Specify element placeholder
+	if(infos.placeholder)
+		newElem.placeholder = infos.placeholder;
 
 	//Specify node content
 	if(infos.innerHTML)
@@ -213,6 +218,23 @@ function createFormGroup(infos){
 			input.setAttribute("multiple", "multiple");
 		if(infos.placeholder) //Placeholder if required
 			input.setAttribute("data-placeholder", infos.placeholder);
+
+	}
+	//In case of textarea
+	else if(infos.type = "textarea"){
+		//Fill label value
+		if(infos.label)
+			labelElem.innerHTML = infos.label;
+		else
+			labelElem.remove(); //Remove useless label element
+		
+		//Create textarea element
+		var input = createElem2({
+			appendTo: formGroup,
+			type: "textarea",
+			class: "form-control",
+			placeholder: infos.placeholder,
+		});
 
 	}
 	else {

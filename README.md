@@ -15,3 +15,4 @@ ComunicWeb would not exists without the following technologies developped by the
 - Select2 4.0
 - bootstrap-notify
 - Twitter Emoji (https://github.com/twitter/twemoji)
+- jQuery Textarea AutoSize plugin (by Javier Julio)

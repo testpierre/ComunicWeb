@@ -28,6 +28,8 @@ ComunicWeb.pages.home.home = {
             loginButton.innerHTML="Logout";
             targetElement.appendChild(loginButton);
 
+
+
             //Dev feature emojies
             var emojiesArea = createElem2({
                 appendTo: targetElement,
@@ -40,6 +42,23 @@ ComunicWeb.pages.home.home = {
             ComunicWeb.components.emoji.parser.parse({
                 element: emojiesArea,
             });
+
+            //Create textarea element
+            var textarea = createFormGroup({
+                target: targetElement,
+                type: "textarea",
+                label: "Textarea",
+                placeholder: "New message",
+            });
+            textarea.style.width = "200px";
+
+            //Initializate textarea
+            var textarea2 = new ComunicWeb.components.textarea();
+            textarea2.init({
+                element: textarea
+            });
+
+            console.log(textarea2);
         }
         else{
             //Display landing page

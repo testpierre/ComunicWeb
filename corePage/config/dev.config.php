@@ -77,6 +77,9 @@ $config['JSfiles'] = array(
 		//Twitter emojies
 		"%PATH_ASSETS%3rdparty/twemoji/2/twemoji.min.js",
 
+		//Textarea auto-size
+		"%PATH_ASSETS%3rdparty/jquery.textarea_autosize/jquery.textarea_autosize.min.js",
+
 	//Utilities
 	"%PATH_ASSETS%js/common/utils.js",
 
@@ -138,6 +141,9 @@ $config['JSfiles'] = array(
 		//Emojies
 		"%PATH_ASSETS%js/components/emoji/parser.js",
 		"%PATH_ASSETS%js/components/emoji/list.js",
+
+		//Modern textarea handler
+		"%PATH_ASSETS%js/components/textarea.js",
 
 	//User scripts
 	"%PATH_ASSETS%js/user/loginTokens.js",
