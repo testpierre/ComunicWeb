@@ -561,13 +561,14 @@ ComunicWeb.components.conversations.chatWindows = {
 	 * @return {Boolean} True for a success
 	 */
 	submitMessageForm: function(convInfos){
-
+		
 		//Log action
 		ComunicWeb.debug.logMessage("Send a new message in a conversation system.");
 		console.log(convInfos);
 
 		//Check if message is empty
-		//if(convInfos.sendMessageForm.inputText)
+		if(!checkString(convInfos.box.sendMessageForm.inputText.value))
+			ComunicWeb.common.notificationSystem.showNotification("Please type a valid message before trying to send it !", "danger", 2);
 
 		//Success
 		return true;

@@ -256,3 +256,20 @@ function createFormGroup(infos){
 	//Return input
 	return input;
 }
+
+/**
+ * Check if a string is valid and ready to be sent to be saved
+ * 
+ * @param {String} value The input string to send
+ * @return {Boolean} True if the string is valid, false else
+ */
+function checkString(value){
+	
+	//First, check string length
+	if(value.length < 5)
+		return false; //Lenght invalid
+
+	//Success, the string seems to be valid
+	return true;
+
+}
