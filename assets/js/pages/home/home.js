@@ -32,7 +32,7 @@ ComunicWeb.pages.home.home = {
             var emojiesArea = createElem2({
                 appendTo: targetElement,
                 type: "p",
-                innerHTML: "Emoji test : :)  &#x1F1EC;&#x1F1EB;  &#x1F385;&#x1F3FB;"
+                innerHTML: "Emoji test : :)  &#x1F1EC;&#x1F1EB;  &#x1F385;&#x1F3FB; :( (movie) (cool)"
             });
 
 

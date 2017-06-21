@@ -137,6 +137,7 @@ $config['JSfiles'] = array(
 
 		//Emojies
 		"%PATH_ASSETS%js/components/emoji/parser.js",
+		"%PATH_ASSETS%js/components/emoji/list.js",
 
 	//User scripts
 	"%PATH_ASSETS%js/user/loginTokens.js",

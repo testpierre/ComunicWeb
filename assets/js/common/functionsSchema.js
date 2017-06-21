@@ -593,6 +593,13 @@ var ComunicWeb = {
 			parser: {
 				//TODO : implement
 			},
+
+			/**
+			 * Emojies list
+			 */
+			list: {
+				//TODO : implement
+			},
 			
 		},
 	},

@@ -23,6 +23,8 @@ ComunicWeb.components.emoji.parser = {
 	 */
 	parse: function(infos){
 
+		//Peform string parsing
+		infos.element.innerHTML = this.shorcutToHTMLcode(infos.element.innerHTML);
 
 		//Perform Twitter parsing
 		this.twitterEmojiesParsing(infos.element);
@@ -47,5 +49,28 @@ ComunicWeb.components.emoji.parser = {
 		//Success
 		return true;
 	},
+
+	/**
+	 * Perform shorcut emoji to HTML code parsing
+	 * 
+	 * @param {String} string The input string
+	 * @return {String} The output string
+	 */
+	shorcutToHTMLcode: function(string){
+
+		//Process all emojie list
+		var i;
+		for(i in ComunicWeb.components.emoji.list.translation){
+
+			//Change smileys as many time as required
+			while(string.includes(i))
+				string = string.replace(i, ComunicWeb.components.emoji.list.translation[i]);
+
+		}
+
+		//Return result
+		return string;
+	}
+
 
 }
