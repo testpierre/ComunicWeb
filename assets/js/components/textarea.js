@@ -16,6 +16,9 @@ var textArea2 = function(infos){
  * 
  * @param {Object} infos Informations about the textarea to enable
  * @info {HTMLElement} element The element to make modern
+ * @info {Integer} minHeight The minimal height for the textarea
+ * @info {Integer} maxHeight The maximal height for the textarea
+ * @return {Boolean} True for a success
  */
 textArea2.prototype.init = function(infos){
 	
@@ -24,10 +27,21 @@ textArea2.prototype.init = function(infos){
 
 	//Adapt textarea style
 	this.element.style.overflow = "hidden";
+	this.element.style.resize = "none";
+
+	//Check for minimal and maximal height
+	if(infos.minHeight){
+		this.element.style.height = infos.minHeight;
+		this.element.style.minHeight = infos.minHeight;
+	}
+	if(infos.maxHeight)
+		this.element.style.maxHeight = infos.maxHeight;
 
 	//Initializate textarea auto-size
 	$(this.element).textareaAutoSize();
 
+	//Success
+	return true;
 };
 
 /**

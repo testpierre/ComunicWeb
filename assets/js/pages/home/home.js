@@ -55,7 +55,9 @@ ComunicWeb.pages.home.home = {
             //Initializate textarea
             var textarea2 = new ComunicWeb.components.textarea();
             textarea2.init({
-                element: textarea
+                element: textarea,
+                minHeight: "32px",
+                maxHeight: "70px",
             });
 
             console.log(textarea2);
