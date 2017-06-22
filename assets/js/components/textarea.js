@@ -55,5 +55,12 @@ textArea2.prototype.getValue = function(){
 	return this.element.innerText;
 };
 
+/**
+ * Reset textarea height to its minimal height
+ */
+textArea2.prototype.resetHeight = function(){
+	this.element.style.height = this.element.style.minHeight;
+}
+
 //Save the function in the system
 ComunicWeb.components.textarea = textArea2;

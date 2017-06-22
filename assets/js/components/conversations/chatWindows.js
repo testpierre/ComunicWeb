@@ -564,11 +564,94 @@ ComunicWeb.components.conversations.chatWindows = {
 		
 		//Log action
 		ComunicWeb.debug.logMessage("Send a new message in a conversation system.");
-		console.log(convInfos);
+		
+		//Extract main fields
+		var form = convInfos.box.sendMessageForm;
 
 		//Check if message is empty
-		if(!checkString(convInfos.box.sendMessageForm.inputText.value))
+		if(!checkString(form.inputText.value) && !form.inputImage.files[0]){
 			ComunicWeb.common.notificationSystem.showNotification("Please type a valid message before trying to send it !", "danger", 2);
+			return false;
+		}
+		
+		//Lock send button
+		form.sendButton.value = "Sending";
+		form.sendButton.disabled = true;
+
+		//Prepare what to do next
+		var onceSent = function(result){
+
+			//Check for errors
+			if(result.error){
+				ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to send message! Please try again...", "danger", 2);
+
+				//Unlock send button
+				form.sendButton.value = "Send";
+				form.sendButton.disabled = false;
+
+				return false;
+			}
+
+			//Reset the form
+			ComunicWeb.components.conversations.chatWindows.resetCreateMessageForm(convInfos);
+		}
+
+		//Check if an image is included with the message or not
+		if(form.inputImage.files[0]){
+			//Include the image with the request (export the image as URL)
+			var reader = new FileReader();
+			reader.readAsDataURL(form.inputImage.files[0]);
+			var sendImage = reader.result;
+
+			//The function will resume once the image is fully converted
+			reader.addEventListener("load", function() {
+
+				//Send the message throught the interface
+				ComunicWeb.components.conversations.interface.sendMessage({
+					conversationID: convInfos.infos.ID,
+					message: form.inputText.value,
+					image: reader.result,
+					callback: onceSent
+				});
+
+			}, false);
+
+		}
+		else {
+			//Send the message throught the interface
+			ComunicWeb.components.conversations.interface.sendMessage({
+				conversationID: convInfos.infos.ID,
+				message: form.inputText.value,
+				callback: onceSent
+			});
+		}
+			
+		
+		//Success
+		return true;
+	},
+
+	/**
+	 * Reset a create a message form
+	 * 
+	 * @param {Object} infos Informations about the conversation
+	 * @return {Boolean} True for a success
+	 */
+	resetCreateMessageForm: function(infos){
+
+		//Extract form informations
+		var form = infos.box.sendMessageForm;
+
+		//Unlock send button and reset its value
+		form.sendButton.value = "Send";
+		form.sendButton.disabled = false;
+
+		//Empty textarea
+		form.inputText.value = "";
+		form.textarea2.resetHeight();
+
+		//Remove image from image input
+		form.inputImage.value = "";
 
 		//Success
 		return true;

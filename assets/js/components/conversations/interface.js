@@ -237,6 +237,34 @@ ComunicWeb.components.conversations.interface = {
 	},
 
 	/**
+	 * Send a new message
+	 * 
+	 * @param {Object} infos Informations about the message to send
+	 * @info {Integer} conversationID The ID of the conversation
+	 * @info {String} message The message to send
+	 * @info {String} image Optionnal, base64-encoded image
+	 * @info {function} callback What to do once the image was successfully sent
+	 * @return {Boolean} true for a success
+	 */
+	sendMessage: function(infos){
+
+		//Perform an API request
+		var apiURI = "/conversations/sendMessage";
+		var params = {
+			message: infos.message,
+			conversationID: infos.conversationID,
+		}
+
+		//Add an image (if any specified)
+		if(infos.image)
+			params.image = infos.image;
+		
+		//Perform an API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, infos.callback);
+
+	},
+
+	/**
 	 * Empty conversations cache
 	 * 
 	 * @param {Boolean} notHard Specify that the object hasn't to be recursively cleaned
