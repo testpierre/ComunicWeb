@@ -18,6 +18,12 @@
 /**
  * Conversations create message form
  */
+
+#conversationsElem .box-footer {
+	position: absolute;
+	bottom: 0;
+}
+
 #conversationsElem .create-message-form .btn {
 	padding-left: 6px;
 	padding-right:6px;
