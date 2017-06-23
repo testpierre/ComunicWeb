@@ -8,8 +8,8 @@
 //Path to assets
 $config['pathAssets'] = $config['siteURL']."assets/";
 
-//CSS files to include
-$config['CSSfiles'] = array(
+//3rdparty CSS files to include
+$config['3rdPartyCSSfiles'] = array(
 	//CSS files - adminLTE distribution / bootstrap / plugins
 	"%PATH_ASSETS%3rdparty/adminLTE/bootstrap/css/bootstrap.min.css",
 	"%PATH_ASSETS%3rdparty/adminLTE/plugins/font-awesome/css/font-awesome.min.css",
@@ -19,7 +19,10 @@ $config['CSSfiles'] = array(
 	"%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.min.css",
 	"%PATH_ASSETS%3rdparty/adminLTE/dist/css/AdminLTE.min.css",
 	"%PATH_ASSETS%3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",
+);
 
+//App CSS files
+$config['CSSfiles'] = array(
 	//App stylesheets - common stylesheets
 	"%PATH_ASSETS%css/common/global.css",
 	"%PATH_ASSETS%css/common/page/waitSplashScreen.css",
@@ -47,38 +50,41 @@ $config['CSSfiles'] = array(
 	"%PATH_ASSETS%css/components/emoji/parser.css",
 );
 
-//JS files to include (at the end of the page)
+//3rd party JS files to include (at the end of the page)
+$config['3rdPartyJSfiles'] = array(
+	//Jquery
+	"%PATH_ASSETS%3rdparty/adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
+	
+	//Bootstrap
+	"%PATH_ASSETS%3rdparty/adminLTE/bootstrap/js/bootstrap.min.js",
+	
+	//JQuery UI
+	"%PATH_ASSETS%3rdparty/adminLTE/plugins/jquery-ui/jquery-ui.min.js",
+	
+	//iCheck
+	"%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/icheck.min.js",
+	
+	//Slimscroll
+	"%PATH_ASSETS%3rdparty/adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
+	
+	//Select2
+	"%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.min.js",
+	
+	//adminLTE script
+	"%PATH_ASSETS%3rdparty/adminLTE/dist/js/app.min.js",
+
+	//Bootstrap notify
+	"%PATH_ASSETS%3rdparty/bootstrap-notify-3.1.3.min.js",
+
+	//Twitter emojies
+	"%PATH_ASSETS%3rdparty/twemoji/2/twemoji.min.js",
+
+	//Textarea auto-size
+	"%PATH_ASSETS%3rdparty/jquery.textarea_autosize/jquery.textarea_autosize.min.js",
+);
+
+//Application JS files
 $config['JSfiles'] = array(
-	//Framework inclusions
-		//Jquery
-		"%PATH_ASSETS%3rdparty/adminLTE/plugins/jQuery/jquery-2.2.3.min.js",
-		
-		//Bootstrap
-		"%PATH_ASSETS%3rdparty/adminLTE/bootstrap/js/bootstrap.min.js",
-		
-		//JQuery UI
-		"%PATH_ASSETS%3rdparty/adminLTE/plugins/jquery-ui/jquery-ui.min.js",
-		
-		//iCheck
-		"%PATH_ASSETS%3rdparty/adminLTE/plugins/iCheck/icheck.min.js",
-		
-		//Slimscroll
-		"%PATH_ASSETS%3rdparty/adminLTE/plugins/slimScroll/jquery.slimscroll.min.js",
-		
-		//Select2
-		"%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.min.js",
-		
-		//adminLTE script
-		"%PATH_ASSETS%3rdparty/adminLTE/dist/js/app.min.js",
-
-		//Bootstrap notify
-		"%PATH_ASSETS%3rdparty/bootstrap-notify-3.1.3.min.js",
-
-		//Twitter emojies
-		"%PATH_ASSETS%3rdparty/twemoji/2/twemoji.min.js",
-
-		//Textarea auto-size
-		"%PATH_ASSETS%3rdparty/jquery.textarea_autosize/jquery.textarea_autosize.min.js",
 
 	//Utilities
 	"%PATH_ASSETS%js/common/utils.js",

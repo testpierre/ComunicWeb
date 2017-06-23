@@ -35,7 +35,16 @@
         <link rel="icon" type="image/vnd.microsoft.icon" href="<?php echo config['pathAssets']; ?>img/favicon.png" />
         <link rel="shortcut icon" type="image/x-icon" href="<?php echo config['pathAssets']; ?>img/favicon.png" />
 
-        <!--Stylesheet requirements -->
+        <!--3rdPary Stylesheet requirements -->
+        <?php
+            foreach($config['3rdPartyCSSfiles'] as $file){
+                //Include CSS file
+                $file = str_replace("%PATH_ASSETS%", $config['pathAssets'], $file);
+                echo CSSFileInclusionCode($file);
+            }
+        ?>
+
+        <!--App Stylesheet requirements -->
         <?php
             foreach($config['CSSfiles'] as $file){
                 //Include CSS file
@@ -90,7 +99,16 @@
             <p><small>If this screen doesn't disappear after a while, please check javascript is enabled in your browser...</small></p>
         </div>
     
-        <!-- Javascript files inclusion -->
+        <!-- 3rdparty Javascript files inclusion -->
+        <?php
+            foreach($config['3rdPartyJSfiles'] as $file){
+                //Include JS file
+                $file = str_replace("%PATH_ASSETS%", $config['pathAssets'], $file);
+                echo javascriptFileInclusionCode($file);
+            }
+        ?>
+
+        <!-- Application Javascript files inclusion -->
         <?php
             foreach($config['JSfiles'] as $file){
                 //Include JS file
