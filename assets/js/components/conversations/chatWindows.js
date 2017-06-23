@@ -180,11 +180,17 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Add send button
 		var sendButton = createElem2({
 			appendTo: buttonGroup,
-			type: "input",
+			type: "button",
 			class: "btn btn-primary btn-flat",
 			elemType: "submit",
-			value: "Send",
 		});
+
+			//Add send icon
+			createElem2({
+				appendTo: sendButton,
+				type: "i",
+				class: "fa fa-send-o",
+			});
 
 		//Prevent textarea from adding a new line when pressing enter
 		$(inputText).keypress(function(event){
@@ -575,7 +581,6 @@ ComunicWeb.components.conversations.chatWindows = {
 		}
 		
 		//Lock send button
-		form.sendButton.value = "Sending";
 		form.sendButton.disabled = true;
 
 		//Prepare what to do next
@@ -586,7 +591,6 @@ ComunicWeb.components.conversations.chatWindows = {
 				ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to send message! Please try again...", "danger", 2);
 
 				//Unlock send button
-				form.sendButton.value = "Send";
 				form.sendButton.disabled = false;
 
 				return false;
@@ -643,7 +647,6 @@ ComunicWeb.components.conversations.chatWindows = {
 		var form = infos.box.sendMessageForm;
 
 		//Unlock send button and reset its value
-		form.sendButton.value = "Send";
 		form.sendButton.disabled = false;
 
 		//Empty textarea
