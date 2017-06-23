@@ -249,7 +249,7 @@ ComunicWeb.components.conversations.interface = {
 	sendMessage: function(infos){
 
 		//Perform an API request
-		var apiURI = "/conversations/sendMessage";
+		var apiURI = "conversations/sendMessage";
 		var params = {
 			message: infos.message,
 			conversationID: infos.conversationID,
