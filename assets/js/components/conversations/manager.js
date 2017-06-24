@@ -64,6 +64,9 @@ ComunicWeb.components.conversations.manager = {
 		//First, add the "open a conversation" new
 		this.addOpenConversationButton(conversationsContainerElem);
 
+		//Intializate conversation service
+		ComunicWeb.components.conversations.service.init();
+
 		//Then, open any already active conversation
 		var openedConversations = ComunicWeb.components.conversations.cachingOpened.getAll();
 		
@@ -72,9 +75,6 @@ ComunicWeb.components.conversations.manager = {
 			if(i < openedConversations.length)
 				ComunicWeb.components.conversations.chatWindows.openConversation(openedConversations[i]);
 		}
-
-		//Intializate conversation service
-		ComunicWeb.components.conversations.service.init();		
 
 	},
 

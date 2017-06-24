@@ -75,7 +75,13 @@ ComunicWeb.components.conversations.chatWindows = {
 
 
 		//Debug
-		infosBox.boxBody.innerHTML = "<div class='direct-chat-messages'>Hello world</p>";
+		//Create messages contener
+		infosBox.messagesArea = createElem2({
+			appendTo: infosBox.boxBody,
+			type: "div",
+			class: "direct-chat-messages",
+			innerHTML: "<p>Loading, please wait...</p>",
+		});
 
 		//Add button to get conversation members
 		infosBox.membersButton = createElem("button");
@@ -221,6 +227,10 @@ ComunicWeb.components.conversations.chatWindows = {
 	 * @return {Boolean} True for a success
 	 */
 	load: function(conversationID, conversationWindow){
+
+		//Log action
+		ComunicWeb.debug.logMessage("Loading conversation " + conversationID);
+
 		//Change conversation window name (loading state)
 		this.changeName("Loading", conversationWindow);
 
@@ -265,6 +275,9 @@ ComunicWeb.components.conversations.chatWindows = {
 				//Display conversation settings pane
 				ComunicWeb.components.conversations.chatWindows.showConversationSettings(conversationInfos);
 
+				//Register the conversation in the service
+				ComunicWeb.components.conversations.service.registerConversation(conversationID);
+
 				//Make send a message button lives
 				conversationInfos.box.sendMessageForm.formRoot.onsubmit = function(){
 					
@@ -298,6 +311,16 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Log action
 		ComunicWeb.debug.logMessage("Unloading a conversation: " + conversationID);
+
+		//Get informations
+		var conversationInfos = this.__conversationsCache["conversation-"+conversationID];
+		
+		//Empty messages area
+		emptyElem(conversationInfos.box.messagesArea);
+		conversationInfos.box.messagesArea.innerHTML = "<p>Reloading, please wait...</p>";
+
+		//Un-register conversation
+		ComunicWeb.components.conversations.service.unregisterConversation(conversationID);
 
 		//Remove informations if required
 		if(!keepInfos){
