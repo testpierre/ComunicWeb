@@ -266,7 +266,7 @@ function createFormGroup(infos){
 function checkString(value){
 	
 	//First, check string length
-	if(value.length < 5)
+	if(value.length < 3)
 		return false; //Lenght invalid
 
 	//Success, the string seems to be valid

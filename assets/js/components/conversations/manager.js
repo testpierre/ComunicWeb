@@ -73,6 +73,9 @@ ComunicWeb.components.conversations.manager = {
 				ComunicWeb.components.conversations.chatWindows.openConversation(openedConversations[i]);
 		}
 
+		//Intializate conversation service
+		ComunicWeb.components.conversations.service.init();		
+
 	},
 
 	/**
@@ -86,7 +89,7 @@ ComunicWeb.components.conversations.manager = {
 		//Create the button
 		var addButton = createElem("button", targetElem);
 		addButton.className = "btn btn-primary open-conversation-button";
-		addButton.innerHTML = "Open a conversation";
+		addButton.innerHTML = "Conversations";
 		
 		
 		//Make button lives

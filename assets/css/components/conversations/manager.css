@@ -19,4 +19,9 @@
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 	vertical-align: bottom;
+
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
