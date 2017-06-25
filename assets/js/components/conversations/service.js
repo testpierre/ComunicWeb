@@ -17,6 +17,11 @@ ComunicWeb.components.conversations.service = {
 	 * @var {Object} __serviceCache The service cache
 	 */
 	__serviceCache: false,
+
+	/**
+	 * @var {Boolean} __serviceLock Specify wether the service is already in use or not
+	 */
+	__serviceLock: false,
 	
 	/**
 	 * Initializate conversation service
@@ -31,7 +36,10 @@ ComunicWeb.components.conversations.service = {
 		//Check if an interval already exists or not
 		if(this.__intervalID)
 			clearInterval(this.__intervalID); //Remove old interval
-
+		
+		//Force the service to unlock
+		this.__serviceLock = false;
+		
 		//Initializate interval
 		this.__intervalID = setInterval(function(){
 			ComunicWeb.components.conversations.service.call();
@@ -51,10 +59,29 @@ ComunicWeb.components.conversations.service = {
 
 		//Check if the conversation element still exists or not
 		if(!byId("conversationsElem")){
-			ComunicWeb.debug.logMessage("Conversation Service : Couldn't locate conversation element, unregistering service !");
+			ComunicWeb.debug.logMessage("Conversation Service : Couldn't locate conversations element, unregistering service !");
 			clearInterval(this.__intervalID);
 			return false;
 		}
+
+		//Check at least one conversation is opened
+		if(!this.__serviceCache){
+			ComunicWeb.debug.logMessage("Conversation Service : task skipped : the service cache is empty (equals to false).");
+			return false;
+		}
+		if(JSON.stringify(this.__serviceCache) == "{}"){
+			ComunicWeb.debug.logMessage("Conversation Service : task skipped : the service cache is empty. (equals to {})");
+			return false;
+		}
+
+		//Check if the service is locked or not
+		if(this.__serviceLock){
+			ComunicWeb.debug.logMessage("Conversation Service : task skipped : the service is locked.");
+			return false;
+		}
+
+		//Lock service
+		this.__serviceLock = true;
 
 		//Perform service task
 		this.performTask();
@@ -66,6 +93,7 @@ ComunicWeb.components.conversations.service = {
 	 * @return {Boolean} True for a success
 	 */
 	performTask: function(){
+
 		console.log(this.__serviceCache);
 		//Prepare API request
 		var newConversations = [];
@@ -91,6 +119,21 @@ ComunicWeb.components.conversations.service = {
 		}
 
 		//Perform a request on the interface
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Service callback function
+	 * 
+	 * @param {Object}
+	 * @return {Boolean} True for a success
+	 */
+	callback: function(){
+
+		//Unlock service
+		this.__serviceLock = false;
 
 		//Success
 		return true;
@@ -148,6 +191,9 @@ ComunicWeb.components.conversations.service = {
 		if(this.__serviceCache){
 			clearObject(this.__serviceCache);
 		}
+
+		//Unlock service
+		this.__serviceLock = false;
 
 		//Success
 		return true;
