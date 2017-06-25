@@ -13,6 +13,7 @@ ComunicWeb.common.notificationSystem = {
 	 * @param {String} notifType Specify the notification type (info, danger, success, warning)
 	 * @param {Integer} notifDuration Optionnal, specify how much time the message will appear in seconds
 	 * @param {String} notifTitle The title of the notification
+	 * @return {Object} Informations about the notification
 	 */
 	showNotification: function(message, notifType, notifDuration, notifTitle){
 		
@@ -36,7 +37,7 @@ ComunicWeb.common.notificationSystem = {
 			options.title = notifTitle;
 		}
 		
-		$.notify(options,{
+		return $.notify(options,{
 			// settings
 			type: notifType,
 			delay: notifDuration*1000,
