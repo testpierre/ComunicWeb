@@ -119,7 +119,15 @@ ComunicWeb.components.conversations.service = {
 		}
 
 		//Perform a request on the interface
-
+		ComunicWeb.components.conversations.interface.refreshConversations(
+			newConversations,
+			conversationsToRefresh,
+			function(result){
+				//Call callback function
+				ComunicWeb.components.conversations.service.callback(result);
+			}
+		);
+		
 		//Success
 		return true;
 	},

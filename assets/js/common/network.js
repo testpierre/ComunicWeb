@@ -105,7 +105,7 @@ ComunicWeb.common.network = {
 				networkErrorMessage.id = "networkErrorMessage";
 
 				//Create a callout element within it
-				var errorName = "<i class='fa fa-warning'></i> "+"Network error";
+				var errorName = "<i class='fa fa-warning'></i> "+" Network error";
 				var errorMessage = "It seems that there is a network error, and Comunic can't access to the Internet anymore... Please check your internet connexion...";
 				var errorCallout = ComunicWeb.common.messages.createCalloutElem(errorName, errorMessage, "danger");
 				networkErrorMessage.appendChild(errorCallout)

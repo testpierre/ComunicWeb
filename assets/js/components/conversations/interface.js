@@ -265,6 +265,34 @@ ComunicWeb.components.conversations.interface = {
 	},
 
 	/**
+	 * Refresh a conversation
+	 * 
+	 * @param {Array} newConversations New conversations (which requires the 10 last messages)
+	 * @param {Object} toRefresh Conversations to refresh
+	 * @param {Function} callback The callback function
+	 * @return {Boolean} True for a success
+	 */
+	refreshConversations: function(newConversations, toRefresh, callback){
+
+		//DEBUG log informations
+		console.log("New conversations", newConversations);
+		console.log("To refresh", toRefresh);
+
+		//Perform a request on the API
+		var apiURI = "conversations/refresh";
+		var params = {
+			newConversations: newConversations,
+			toRefresh: JSON.stringify(toRefresh),
+		}
+
+		//Perform an API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+		//Success
+		return true;
+	},
+
+	/**
 	 * Empty conversations cache
 	 * 
 	 * @param {Boolean} notHard Specify that the object hasn't to be recursively cleaned
