@@ -62,8 +62,19 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginToke
                 ComunicWeb.common.network.setStatus(true);
             }
 
-            //Prepare result
-            var result = JSON.parse(apiXHR.responseText);
+            //Check if response is empty
+            if(apiXHR.responseText.length == ""){
+                //Auto-create a response for empty responses (to avoid Javascript errors and allow the script to continue to execute)
+                result = {
+                    error : {
+                        code: 0,
+                        message: "Empty response",
+                    },
+                };
+            }
+            else
+                //Prepare result
+                var result = JSON.parse(apiXHR.responseText);
 
             //We check if we got any error
             if(result.error){
