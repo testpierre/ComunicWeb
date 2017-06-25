@@ -135,10 +135,21 @@ ComunicWeb.components.conversations.service = {
 	/**
 	 * Service callback function
 	 * 
-	 * @param {Object}
+	 * @param {Object} result The result of the request
 	 * @return {Boolean} True for a success
 	 */
-	callback: function(){
+	callback: function(result){
+
+		//Check for errors
+		if(result.error){
+			ComunicWeb.debug.logMessage("Conversations Service : Couldn't update conversations !");
+
+			//Display a notification
+			ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to refresh conversations system !", "danger", 1.5);
+		}
+		else {
+			//We can continue with the result
+		}
 
 		//Unlock service
 		this.__serviceLock = false;

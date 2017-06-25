@@ -274,10 +274,6 @@ ComunicWeb.components.conversations.interface = {
 	 */
 	refreshConversations: function(newConversations, toRefresh, callback){
 
-		//DEBUG log informations
-		console.log("New conversations", newConversations);
-		console.log("To refresh", toRefresh);
-
 		//Perform a request on the API
 		var apiURI = "conversations/refresh";
 		var params = {
