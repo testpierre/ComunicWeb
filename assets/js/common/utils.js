@@ -146,6 +146,9 @@ function clearObject(object){
 	//Process each node of the object
 	for(i in object){
 		
+		if(!object[i])
+			continue;
+
 		//Check if the node is an object
 		if(object[i].toString() === "[object Object]"){
 			clearObject(object[i]); //Delete object content
