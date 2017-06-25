@@ -94,8 +94,7 @@ ComunicWeb.components.conversations.service = {
 	 */
 	performTask: function(){
 
-		console.log(this.__serviceCache);
-		//Prepare API request
+		//Prepare interface request
 		var newConversations = [];
 		var conversationsToRefresh = {}
 
@@ -107,13 +106,13 @@ ComunicWeb.components.conversations.service = {
 			var processConversation = this.__serviceCache[i].conversationID;
 
 			//Check if it is new conversation
-			if(this.__serviceCache[i].last_update === 0)
+			if(this.__serviceCache[i].last_message_id === 0)
 				newConversations.push(processConversation);
 			
 			//Else perform a simple update of the conversation
 			else {
 				conversationsToRefresh["conversation-"+processConversation] = {
-					last_update: this.__serviceCache[i].last_update,
+					last_message_id: this.__serviceCache[i].last_message_id,
 				};
 			}
 		}
@@ -139,7 +138,7 @@ ComunicWeb.components.conversations.service = {
 	 * @return {Boolean} True for a success
 	 */
 	callback: function(result){
-
+		console.log(result);
 		//Check for errors
 		if(result.error){
 			ComunicWeb.debug.logMessage("Conversations Service : Couldn't update conversations !");
@@ -149,6 +148,29 @@ ComunicWeb.components.conversations.service = {
 		}
 		else {
 			//We can continue with the result
+			//Process each conversation
+			var i;
+			for(i in result){
+
+				//Check if new entries are available
+				if(result[i].length === 0)
+					continue; //Nothing to be done
+				
+				//Extract conversation ID
+				var conversationID = this.__serviceCache[i].conversationID;
+
+				//Extract conversation ID
+				var messages = result[i];
+
+				//We update last message ID with the last message ID
+				this.__serviceCache[i].last_message_id = messages[messages.length-1].ID;
+
+				//We process each message by calling chat windows script to ask it to add messages
+				var j;
+				for(j in messages)
+					ComunicWeb.components.conversations.chatWindows.addMessage(conversationID, messages[j]);
+
+			}
 		}
 
 		//Unlock service
@@ -173,7 +195,7 @@ ComunicWeb.components.conversations.service = {
 		//Register conversation
 		this.__serviceCache['conversation-' + conversationID] = {
 			conversationID: conversationID,
-			last_update: 0,
+			last_message_id: 0,
 		};
 
 		//Success

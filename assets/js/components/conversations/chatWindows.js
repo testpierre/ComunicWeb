@@ -56,7 +56,7 @@ ComunicWeb.components.conversations.chatWindows = {
 		infosBox.conversationID = infos.conversationID;
 
 		//Change box root class name
-		infosBox.rootElem.className += " direct-chat";
+		infosBox.rootElem.className += " direct-chat direct-chat-primary";
 
 		//Adapt close button behaviour
 		infosBox.closeFunction = function(){
@@ -80,7 +80,7 @@ ComunicWeb.components.conversations.chatWindows = {
 			appendTo: infosBox.boxBody,
 			type: "div",
 			class: "direct-chat-messages",
-			innerHTML: "<p>Loading, please wait...</p>",
+			innerHTML: "",
 		});
 
 		//Add button to get conversation members
@@ -317,7 +317,7 @@ ComunicWeb.components.conversations.chatWindows = {
 		
 		//Empty messages area
 		emptyElem(conversationInfos.box.messagesArea);
-		conversationInfos.box.messagesArea.innerHTML = "<p>Reloading, please wait...</p>";
+		conversationInfos.box.messagesArea.innerHTML = "";
 
 		//Un-register conversation
 		ComunicWeb.components.conversations.service.unregisterConversation(conversationID);
@@ -678,6 +678,99 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Remove image from image input
 		form.inputImage.value = "";
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Add a message to a conversation window
+	 * 
+	 * @param {Integer} conversationID The ID of the conversation to update
+	 * @param {Object} messageInfos Informations about the message to add
+	 * @return {Boolean} True for a success
+	 */
+	addMessage: function(conversationID, messageInfos){
+
+		console.log(messageInfos);
+
+		//First, check if the conversation informations can be found
+		if(!this.__conversationsCache["conversation-"+conversationID]){
+			ComunicWeb.debug.logMessage("Conversation Chat Windows : Error ! Couldn't add a message to the conversation because the conversation was not found !");
+			return false;
+		}
+
+		//Else extract conversation informations
+		var convInfos = this.__conversationsCache["conversation-"+conversationID];
+
+		//Check if it is the current user who sent the message
+		var userIsPoster = messageInfos.ID_user == userID();
+
+		//Create message element
+		var messageElem = createElem2({
+			insertAsFirstChild: convInfos.box.messagesArea,
+			type: "div",
+			class: "direct-chat-msg " + (userIsPoster ? "right" : "")
+		});
+
+		//Display message header
+		var messageHeader = createElem2({
+			appendTo: messageElem,
+			type: "div",
+			class: "direct-chat-info clearfix"
+		});
+
+		//Add user name
+		var usernameElem = createElem2({
+			appendTo: messageHeader,
+			type: "span",
+			class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
+			innerHTML: "Loading",
+		});
+
+		//Add user account image
+		var userAccountImage = createElem2({
+			appendTo: messageElem,
+			type: "img",
+			class: "direct-chat-img",
+			src: ComunicWeb.__config.assetsURL + "img/defaultAvatar.png",
+			alt: "User account image",
+		});
+
+		//Add message
+		var messageTargetElem = createElem2({
+			appendTo: messageElem,
+			type: "div",
+			class: "direct-chat-text",
+		});
+
+		//Add text message
+		createElem2({
+			appendTo: messageTargetElem,
+			type: "span",
+			innerHTML: messageInfos.message,
+		});
+
+		//Check if an image has to be added
+		if(messageInfos.image_path != null){
+			createElem2({
+				appendTo: messageTargetElem,
+				type: "img",
+				src: messageInfos.image_path,
+				class: "conversation-msg-image"
+			});
+		}
+
+		//Load user informations
+		if(convInfos.membersInfos["user-" + messageInfos.ID_user]){
+
+			//Get informations
+			var userInfos = convInfos.membersInfos["user-" + messageInfos.ID_user];
+
+			//Replace poster name
+			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
+			userAccountImage.src = userInfos.accountImage;
+		}
 
 		//Success
 		return true;

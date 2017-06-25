@@ -27,7 +27,8 @@ function createElem(nodeType, appendTo){
  * @param {Object} infos Informations about the HTML node to create
  * @info {String} type The type of the new node
  * @info {HTMLElement} appendTo HTML Element that will receive the new node
- * @info {String} insertBefore Insert before specified HTML element
+ * @info {HTMLElement} insertBefore Insert before specified HTML element
+ * @info {HTMLElement} insertAsFirstChild Insert the new HTML Element as the first child of the specified element
  * @info {String} class The class of the new element
  * @info {String} id The ID of the new element
  * @info {String} title The title of the new element
@@ -50,6 +51,16 @@ function createElem2(infos){
 	if(infos.insertBefore)
 		infos.insertBefore.parentNode.insertBefore(newElem, infos.insertBefore);
 	
+	//Append as the first child of an element
+	if(infos.insertAsFirstChild){
+		//Check if the element as already a child or not
+		if(infos.insertAsFirstChild.firstChild)
+			infos.insertAsFirstChild.insertBefore(newElem, infos.insertAsFirstChild.firstChild);
+		//Else we can just append the newly created element
+		else
+			infos.insertAsFirstChild.appendChild(newElem);
+	}
+
 	//Specify the class of the element
 	if(infos.class)
 		newElem.className = infos.class;
@@ -221,7 +232,7 @@ function createFormGroup(infos){
 
 	}
 	//In case of textarea
-	else if(infos.type = "textarea"){
+	else if(infos.type == "textarea"){
 		//Fill label value
 		if(infos.label)
 			labelElem.innerHTML = infos.label;

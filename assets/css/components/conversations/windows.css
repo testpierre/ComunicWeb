@@ -63,3 +63,10 @@
 	-o-transform: translate(0, 0);
 	transform: translate(0, 0);
 }
+
+/**
+ * Conversations messages
+ */
+#conversationsElem .conversation-msg-image {
+	height: 50px;
+}
