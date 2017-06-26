@@ -18,7 +18,7 @@ ComunicWeb.components.emoji.parser = {
 	 * Parse emojies
 	 * 
 	 * @param {Object} infos Informations about the area to parse
-	 * @info {HTMLElement} element The element to parser
+	 * @info {HTMLElement} element The element to parse
 	 * @return {Boolean} True for a success
 	 */
 	parse: function(infos){

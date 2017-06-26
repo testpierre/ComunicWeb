@@ -70,3 +70,7 @@
 #conversationsElem .conversation-msg-image {
 	height: 50px;
 }
+
+#conversationsElem .direct-chat-text .emoji {
+	height: 1em;
+}

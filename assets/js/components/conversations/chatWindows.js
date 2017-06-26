@@ -141,6 +141,7 @@ ComunicWeb.components.conversations.chatWindows = {
 			class: "form-control",
 			placeholder: "New message...",
 		});
+		inputText.maxLength = 200;
 
 		//Enable textarea 2.0 on the message
 		var textarea2 = new ComunicWeb.components.textarea();
@@ -747,7 +748,7 @@ ComunicWeb.components.conversations.chatWindows = {
 		});
 
 		//Add text message
-		createElem2({
+		var textMessage = createElem2({
 			appendTo: messageTargetElem,
 			type: "span",
 			innerHTML: messageInfos.message,
@@ -773,6 +774,11 @@ ComunicWeb.components.conversations.chatWindows = {
 			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
 			userAccountImage.src = userInfos.accountImage;
 		}
+
+		//Parse emojies in text message
+		ComunicWeb.components.emoji.parser.parse({
+			element: textMessage,
+		});
 
 		//Enable (again) slimscrool
 		$(convInfos.box.messagesArea).slimscroll({
