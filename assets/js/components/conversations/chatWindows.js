@@ -692,8 +692,6 @@ ComunicWeb.components.conversations.chatWindows = {
 	 */
 	addMessage: function(conversationID, messageInfos){
 
-		console.log(messageInfos);
-
 		//First, check if the conversation informations can be found
 		if(!this.__conversationsCache["conversation-"+conversationID]){
 			ComunicWeb.debug.logMessage("Conversation Chat Windows : Error ! Couldn't add a message to the conversation because the conversation was not found !");
@@ -708,7 +706,7 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Create message element
 		var messageElem = createElem2({
-			insertAsFirstChild: convInfos.box.messagesArea,
+			appendTo: convInfos.box.messagesArea,
 			type: "div",
 			class: "direct-chat-msg " + (userIsPoster ? "right" : "")
 		});
@@ -727,6 +725,10 @@ ComunicWeb.components.conversations.chatWindows = {
 			class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
 			innerHTML: "Loading",
 		});
+
+		//Hide user name if it is the current user
+		if(userIsPoster)
+			usernameElem.style.display = "none";
 
 		//Add user account image
 		var userAccountImage = createElem2({
@@ -771,6 +773,17 @@ ComunicWeb.components.conversations.chatWindows = {
 			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
 			userAccountImage.src = userInfos.accountImage;
 		}
+
+		//Enable (again) slimscrool
+		$(convInfos.box.messagesArea).slimscroll({
+			height: "250px",
+		});
+
+		//Scroll to the bottom of the conversation
+		var scrollBottom = $(convInfos.box.messagesArea).prop("scrollHeight")+"px";
+		$(convInfos.box.messagesArea).slimScroll({
+			scrollTo: scrollBottom
+		});
 
 		//Success
 		return true;
