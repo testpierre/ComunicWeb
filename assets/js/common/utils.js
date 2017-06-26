@@ -33,6 +33,7 @@ function createElem(nodeType, appendTo){
  * @info {String} id The ID of the new element
  * @info {String} title The title of the new element
  * @info {String} src The src attribute of the new element
+ * @info {String} href href attribute for the src element
  * @info {String} elemType The type attribute of the new element
  * @info {String} value The value of the new element
  * @info {String} placeholder The placeholder of the new element
@@ -76,6 +77,8 @@ function createElem2(infos){
 	//Specify the source of the element
 	if(infos.src)
 		newElem.src = infos.src;
+	if(infos.href)
+		newElem.href = infos.href;
 
 	//Specify element type
 	if(infos.elemType)

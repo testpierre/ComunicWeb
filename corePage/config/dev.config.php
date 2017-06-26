@@ -19,6 +19,9 @@ $config['3rdPartyCSSfiles'] = array(
 	"%PATH_ASSETS%3rdparty/adminLTE/plugins/select2/select2.min.css",
 	"%PATH_ASSETS%3rdparty/adminLTE/dist/css/AdminLTE.min.css",
 	"%PATH_ASSETS%3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",
+
+	//Light box
+	"%PATH_ASSETS%3rdparty/lightbox/ekko-lightbox.min.css",
 );
 
 //App CSS files
@@ -81,6 +84,9 @@ $config['3rdPartyJSfiles'] = array(
 
 	//Textarea auto-size
 	"%PATH_ASSETS%3rdparty/jquery.textarea_autosize/jquery.textarea_autosize.min.js",
+
+	//Light box
+	"%PATH_ASSETS%3rdparty/lightbox/ekko-lightbox.min.js",
 );
 
 //Application JS files

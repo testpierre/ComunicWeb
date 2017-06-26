@@ -6,7 +6,7 @@ WebComunic RestClient (Javascript WebApplication)
 
 ComunicWeb would not exists without the following technologies developped by their respective owner :
 - Jquery
-- bootstrap
+- Bootstrap
 - font-awesome
 - ionicons
 - adminLTE
@@ -16,3 +16,4 @@ ComunicWeb would not exists without the following technologies developped by the
 - bootstrap-notify
 - Twitter Emoji (https://github.com/twitter/twemoji)
 - jQuery Textarea AutoSize plugin (by Javier Julio)
+- lightbox (https://github.com/ashleydw/lightbox)

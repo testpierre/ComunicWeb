@@ -794,12 +794,29 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Check if an image has to be added
 		if(messageInfos.image_path != null){
-			createElem2({
+			
+			//Image link
+			var imageLink = createElem2({
 				appendTo: messageTargetElem,
+				type:"a",
+				href: messageInfos.image_path,
+			});
+
+			//Image element
+			createElem2({
+				appendTo: imageLink,
 				type: "img",
 				src: messageInfos.image_path,
 				class: "conversation-msg-image"
 			});
+
+			//Enable lightbox
+			imageLink.onclick = function(){
+				$(this).ekkoLightbox({
+					alwaysShowClose: true,
+				});
+				return false;
+			}
 		}
 
 		//Parse emojies in text message
