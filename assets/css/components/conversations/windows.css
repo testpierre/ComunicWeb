@@ -74,3 +74,8 @@
 #conversationsElem .direct-chat-text .emoji {
 	height: 1em;
 }
+
+#conversationsElem .direct-chat-text.not-first-message::before, 
+#conversationsElem .direct-chat-text.not-first-message::after {
+	display: none;
+}

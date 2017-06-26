@@ -705,46 +705,84 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Check if it is the current user who sent the message
 		var userIsPoster = messageInfos.ID_user == userID();
 
-		//Create message element
-		var messageElem = createElem2({
-			appendTo: convInfos.box.messagesArea,
-			type: "div",
-			class: "direct-chat-msg " + (userIsPoster ? "right" : "")
-		});
+		//Check if this is the first message of the conversation or not
+		if(!convInfos.lastMessage){
+			//Initialize last message object
+			convInfos.lastMessage = {
+				userID: 0,
+				messageContainer: false,
+			}
+		}
 
-		//Display message header
-		var messageHeader = createElem2({
-			appendTo: messageElem,
-			type: "div",
-			class: "direct-chat-info clearfix"
-		});
+		//Check if message poster is the same as the last message
+		if(convInfos.lastMessage.userID == messageInfos.ID_user){
+			//Skip message container creation & user avatar rendering...
+			var messageContainer = convInfos.lastMessage.messageContainer;
+			var firstMessageFromUser = false;
+		}
+		else {
+			//Initialize user & message informations elements
+			var firstMessageFromUser = true;
 
-		//Add user name
-		var usernameElem = createElem2({
-			appendTo: messageHeader,
-			type: "span",
-			class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
-			innerHTML: "Loading",
-		});
+			//Create message element
+			var messageContainer = createElem2({
+				appendTo: convInfos.box.messagesArea,
+				type: "div",
+				class: "direct-chat-msg " + (userIsPoster ? "right" : "")
+			});
 
-		//Hide user name if it is the current user
-		if(userIsPoster)
-			usernameElem.style.display = "none";
+			//Display message header
+			var messageHeader = createElem2({
+				appendTo: messageContainer,
+				type: "div",
+				class: "direct-chat-info clearfix"
+			});
 
-		//Add user account image
-		var userAccountImage = createElem2({
-			appendTo: messageElem,
-			type: "img",
-			class: "direct-chat-img",
-			src: ComunicWeb.__config.assetsURL + "img/defaultAvatar.png",
-			alt: "User account image",
-		});
+			//Add user name
+			var usernameElem = createElem2({
+				appendTo: messageHeader,
+				type: "span",
+				class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
+				innerHTML: "Loading",
+			});
+
+			//Hide user name if it is the current user
+			if(userIsPoster)
+				usernameElem.style.display = "none";
+
+			//Add user account image
+			var userAccountImage = createElem2({
+				appendTo: messageContainer,
+				type: "img",
+				class: "direct-chat-img",
+				src: ComunicWeb.__config.assetsURL + "img/defaultAvatar.png",
+				alt: "User account image",
+			});
+
+			//Load user informations
+			if(convInfos.membersInfos["user-" + messageInfos.ID_user]){
+
+				//Get informations
+				var userInfos = convInfos.membersInfos["user-" + messageInfos.ID_user];
+
+				//Replace poster name
+				usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
+				userAccountImage.src = userInfos.accountImage;
+			}
+
+			//Update conversation informations
+			convInfos.lastMessage = {
+				userID: messageInfos.ID_user,
+				messageContainer: messageContainer,
+			}
+		}
+		
 
 		//Add message
 		var messageTargetElem = createElem2({
-			appendTo: messageElem,
+			appendTo: messageContainer,
 			type: "div",
-			class: "direct-chat-text",
+			class: "direct-chat-text " + (!firstMessageFromUser ? "not-first-message" : ""),
 		});
 
 		//Add text message
@@ -764,23 +802,12 @@ ComunicWeb.components.conversations.chatWindows = {
 			});
 		}
 
-		//Load user informations
-		if(convInfos.membersInfos["user-" + messageInfos.ID_user]){
-
-			//Get informations
-			var userInfos = convInfos.membersInfos["user-" + messageInfos.ID_user];
-
-			//Replace poster name
-			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
-			userAccountImage.src = userInfos.accountImage;
-		}
-
 		//Parse emojies in text message
 		ComunicWeb.components.emoji.parser.parse({
 			element: textMessage,
 		});
 
-		//Enable (again) slimscrool
+		//Enable slimscrool
 		$(convInfos.box.messagesArea).slimscroll({
 			height: "250px",
 		});

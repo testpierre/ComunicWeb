@@ -138,7 +138,7 @@ ComunicWeb.components.conversations.service = {
 	 * @return {Boolean} True for a success
 	 */
 	callback: function(result){
-		console.log(result);
+		
 		//Check for errors
 		if(result.error){
 			ComunicWeb.debug.logMessage("Conversations Service : Couldn't update conversations !");
