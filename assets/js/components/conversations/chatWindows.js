@@ -789,7 +789,7 @@ ComunicWeb.components.conversations.chatWindows = {
 		var textMessage = createElem2({
 			appendTo: messageTargetElem,
 			type: "span",
-			innerHTML: messageInfos.message,
+			innerHTML: removeHtmlTags(messageInfos.message), //Remove HTML tags
 		});
 
 		//Check if an image has to be added

@@ -290,3 +290,30 @@ function checkString(value){
 	return true;
 
 }
+
+/**
+ * Remove HTML carachters : < and >
+ * 
+ * @param {String} input The string to change
+ * @return {String} The updated string
+ */
+function removeHtmlTags(input){
+	
+	//Prepare update
+	var output = input;
+	
+	//Replace opening braces
+	while(output.includes("<")){
+		//Replace an occurence
+		output = output.replace("<", "&lt;");
+	}
+
+	//Replace closing braces
+	while(output.includes(">")){
+		//Replace an occurence
+		output = output.replace(">", "&gt;");
+	}
+	
+	//Return result
+	return output;
+}
