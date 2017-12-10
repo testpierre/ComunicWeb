@@ -52,3 +52,12 @@ function userID(){
 function getMultipleUsersInfos(usersID, afterGetUserInfos, forceRequest){
 	ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, afterGetUserInfos, forceRequest);
 }
+
+/**
+ * Display message on browser console
+ * 
+ * @param {String} message The message to show on browser console
+ */
+function log(message){
+    ComunicWeb.debug.logMessage(message);
+}
