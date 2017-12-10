@@ -123,7 +123,18 @@ ComunicWeb.common.page = {
 
         //Check if there is also subfolders
         if(firstPartURI.indexOf("/") != -1){
+
+            //Save the list of subfolders
+            var subfoldersURIarray = firstPartURI.split("/");
+            subfoldersURIarray.shift();
+            subfoldersURI = subfoldersURIarray.join("/");
+
+            //Remove them to find the right page
             firstPartURI = firstPartURI.split("/")[0];
+            
+        } else {
+            //No subfolder was specified
+            subfoldersURI = false;
         }
 
         //Check if specied page exists
@@ -202,6 +213,11 @@ ComunicWeb.common.page = {
         //Check if some additionnal data was specified
         if(!additionnalData)
             additionnalData = {};
+
+        //Add the subfolder URI (if any)
+        if(subfoldersURI){
+            additionnalData.subfolder = subfoldersURI;
+        }
         
         //Call the method related to the page
         eval(pageInfos.methodHandler + ("(additionnalData, pageTarget);"));

@@ -168,6 +168,9 @@ $config['JSfiles'] = array(
 		"%PATH_ASSETS%js/pages/home/home.js",
 		"%PATH_ASSETS%js/pages/home/landingPage.js",
 		
+		//User page
+		"%PATH_ASSETS%js/pages/userPage/main.js",
+
 		//Login page
 		"%PATH_ASSETS%js/pages/login.js",
 		

@@ -17,50 +17,10 @@ ComunicWeb.pages.home.home = {
 
         //Check if user is in or not
         if(userLoggedIn){
-            //Dev feature : Show result
-            targetElement.appendChild(ComunicWeb.common.messages.createCalloutElem("", "User logged in !", "info"));
             
-            //Create logout button
-            var loginButton = document.createElement("button");
-            loginButton.onclick = (function(){
-                ComunicWeb.common.page.openPage("logout");
-            });
-            loginButton.innerHTML="Logout";
-            targetElement.appendChild(loginButton);
+            //Open current user page
+            openPage("user/me");
 
-
-
-            //Dev feature emojies
-            var emojiesArea = createElem2({
-                appendTo: targetElement,
-                type: "p",
-                innerHTML: "Emoji test : :)  &#x1F1EC;&#x1F1EB;  &#x1F385;&#x1F3FB; :( (movie) (cool)"
-            });
-
-
-            //Parse emojies
-            ComunicWeb.components.emoji.parser.parse({
-                element: emojiesArea,
-            });
-
-            //Create textarea element
-            var textarea = createFormGroup({
-                target: targetElement,
-                type: "textarea",
-                label: "Textarea",
-                placeholder: "New message",
-            });
-            textarea.style.width = "200px";
-
-            //Initializate textarea
-            var textarea2 = new ComunicWeb.components.textarea();
-            textarea2.init({
-                element: textarea,
-                minHeight: "32px",
-                maxHeight: "70px",
-            });
-
-            
         }
         else{
             //Display landing page

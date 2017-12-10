@@ -15,6 +15,15 @@ ComunicWeb.pagesList = {
     },
 
     /**
+     * User profile page
+     */
+    user: {
+        pageTitle: "User Page",
+        methodHandler: "ComunicWeb.pages.userPage.main.open",
+        disableMenus: false,
+    },
+
+    /**
      * Login page
      */
     login: {

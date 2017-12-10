@@ -644,6 +644,25 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * User page
+		 */
+		userPage: {
+			
+			/**
+			 * Main user page
+			 */
+			main: {
+				
+				/**
+				 * Open user page
+				 */
+				open: function(params, target){},
+
+			},
+
+		},
+
+		/**
 		 * Login controller
 		 */
 		login:{
