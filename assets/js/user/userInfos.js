@@ -202,6 +202,33 @@ ComunicWeb.user.userInfos = {
 	},
 
 	/**
+	 * Get the user ID specified by its folder name
+	 * 
+	 * @param {String} path The path of the user
+	 * @param {Function} callback What to do once we got a response from the server
+	 */
+	getIDfromPath: function(path, callback){
+		
+		//Prepare an API request
+		var apiURI = "user/findbyfolder";
+		var params = {
+			subfolder: path
+		};
+
+		//Define what to do next
+		var next = function(response){
+			if(response.userID){
+				callback(response.userID*1);
+			}
+			else
+				//An error occured
+				callback(-1);
+		}
+
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, next);
+	},
+
+	/**
 	 * Empty users cache
 	 * 
 	 * @return {Boolean} True for a success

@@ -32,6 +32,15 @@ function openPage(pageURI, additionnalData){
 }
 
 /**
+ * Check if user is signed in or not
+ * 
+ * @return {Boolean} True if the user is signed in / false else
+ */
+function signed_in(){
+    return ComunicWeb.user.userLogin.getUserLoginState();
+}
+
+/**
  * Returns user ID (if logged in)
  * 
  * @param Nothing

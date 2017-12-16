@@ -391,6 +391,11 @@ var ComunicWeb = {
 			getNames: function(usersID, afterNames){},
 
 			/**
+			 * Get the user ID specified by its folder name
+			 */
+			getIDfromPath: function(path, callback){},
+
+			/**
 			 * Empty users cache
 			 */
 			emptyCache: function(){},
@@ -629,7 +634,6 @@ var ComunicWeb = {
 				 */
 				openHomePage: function(additionnalData, targetElement){},
 
-
 			},
 
 			/**
@@ -657,6 +661,11 @@ var ComunicWeb = {
 				 * Open user page
 				 */
 				open: function(params, target){},
+
+				/**
+				 * Open user page specified by user ID
+				 */
+				openUserPage: function(id, params, target){},
 
 			},
 
