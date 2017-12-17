@@ -32,25 +32,29 @@ $config['CSSfiles'] = array(
 	"%PATH_ASSETS%css/common/network/networkError.css",
 
 	//Components stylesheets
-	//Menubar stylesheet
-	"%PATH_ASSETS%css/components/menuBar.css",
-	
-	//Searchform stylesheet
-	"%PATH_ASSETS%css/components/searchForm.css",
-	
-	//Friendbar stylesheet
-	"%PATH_ASSETS%css/components/friends/friendsBar.css",
-	
-	//Conversations stylesheet
-	"%PATH_ASSETS%css/components/conversations/manager.css",
-	"%PATH_ASSETS%css/components/conversations/windows.css",
-	"%PATH_ASSETS%css/components/conversations/list.css",
-	
-	//User selector stylesheet
-	"%PATH_ASSETS%css/components/userSelect/userSelect.css",
+		//Menubar stylesheet
+		"%PATH_ASSETS%css/components/menuBar.css",
+		
+		//Searchform stylesheet
+		"%PATH_ASSETS%css/components/searchForm.css",
+		
+		//Friendbar stylesheet
+		"%PATH_ASSETS%css/components/friends/friendsBar.css",
+		
+		//Conversations stylesheet
+		"%PATH_ASSETS%css/components/conversations/manager.css",
+		"%PATH_ASSETS%css/components/conversations/windows.css",
+		"%PATH_ASSETS%css/components/conversations/list.css",
+		
+		//User selector stylesheet
+		"%PATH_ASSETS%css/components/userSelect/userSelect.css",
 
-	//Emojies
+		//Emojies
 	"%PATH_ASSETS%css/components/emoji/parser.css",
+
+	//Pages stylesheets
+		//User Page
+		"%PATH_ASSETS%css/pages/userPage/accessForbidden.css",
 );
 
 //3rd party JS files to include (at the end of the page)
@@ -170,6 +174,7 @@ $config['JSfiles'] = array(
 		
 		//User page
 		"%PATH_ASSETS%js/pages/userPage/main.js",
+		"%PATH_ASSETS%js/pages/userPage/accessForbidden.js",
 
 		//Login page
 		"%PATH_ASSETS%js/pages/login.js",

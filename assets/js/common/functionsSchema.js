@@ -391,6 +391,11 @@ var ComunicWeb = {
 			getNames: function(usersID, afterNames){},
 
 			/**
+			 * Get advanced informations about a user
+			 */
+			getAdvancedInfos: function(userID, callback){},
+
+			/**
 			 * Get the user ID specified by its folder name
 			 */
 			getIDfromPath: function(path, callback){},
@@ -667,7 +672,24 @@ var ComunicWeb = {
 				 */
 				openUserPage: function(id, params, target){},
 
+				/**
+				 * Display a user page
+				 */
+				displayUserPage: function(infos, params, target){},
+
 			},
+
+			/**
+			 * Page with access forbidden
+			 */
+			accessForbidden: {
+				
+				/**
+				 * Display the page for user with forbidden access
+				 */
+				display: function(id, params, target){}
+
+			}
 
 		},
 

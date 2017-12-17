@@ -83,7 +83,44 @@ ComunicWeb.pages.userPage.main = {
 		//Log action
 		log("Open user page : " + id);
 		
+		//Fetch informations about the user
+		ComunicWeb.user.userInfos.getAdvancedInfos(id, function(response){
+			
+			//Check for errors
+			if(response.error){
+				
+				//Check if the page was not found
+				if(response.error.code == 404){
+					ComunicWeb.common.error.pageNotFound(params, target);
+				}
+
+				//Check if we are not allowed to get the informations
+				if(response.error.code == 401){
+					//Display access forbidden page
+					ComunicWeb.pages.userPage.accessForbidden.display(id, params, target);
+				}
+
+			}
+			else {
+				//Display user page
+				ComunicWeb.pages.userPage.main.displayUserPage(response, params, target);
+			}
+
+
+		});
 
 	},
+
+	/**
+	 * Display a user page
+	 * 
+	 * @param {Object} infos Informations about the user to display
+	 * @param {Object} params Parametres required to open the page
+	 * @param {HTMLElement} target Target of the user page
+	 */
+	displayUserPage: function(infos, params, target){
+		console.log("Display user page based on the informations we got");
+		console.log(infos);
+	}
 
 }

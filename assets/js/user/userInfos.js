@@ -202,6 +202,25 @@ ComunicWeb.user.userInfos = {
 	},
 
 	/**
+	 * Get advanced informations about a user
+	 * 
+	 * @param {Integer} userID The ID of the user to fetch
+	 * @param {Function} callback What to do once we got the information
+	 */
+	getAdvancedInfos: function(userID, callback){
+
+		//Prepare an API request
+		var apiURI = "user/getAdvancedUserInfos";
+		var params = {
+			userID: userID
+		};
+
+		//Perform the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
+
+	/**
 	 * Get the user ID specified by its folder name
 	 * 
 	 * @param {String} path The path of the user
