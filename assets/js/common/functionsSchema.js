@@ -687,9 +687,14 @@ var ComunicWeb = {
 				/**
 				 * Display the page for user with forbidden access
 				 */
-				display: function(id, params, target){}
+				display: function(id, params, target){},
 
-			}
+				/**
+				 * Show basic user informations
+				 */
+				showBasicInfos: function(userInfos, target){},
+
+			},
 
 		},
 

@@ -5,10 +5,19 @@
  */
 
 /**
- * Callout special stylesheet
+ * User signed out
  */
-.user_page_access_forbidden {
+.user_access_denied_signed_out {
 	margin: auto;
 	margin-top: 30px;
 	max-width: 500px;
+}
+
+/**
+ * User signed in
+ */
+.box-user-access-denied {
+	margin: auto;
+	margin-top: 30px;
+	max-width: 350px;
 }
