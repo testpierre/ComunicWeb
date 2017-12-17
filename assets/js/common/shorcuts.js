@@ -32,6 +32,16 @@ function openPage(pageURI, additionnalData){
 }
 
 /**
+ * Open a user page quickly
+ * 
+ * @param {String} user The ID of the user or its directory
+ * @return {Boolean} True for a success
+ */
+function openUserPage(user){
+    return openPage("user/" + user);
+}
+
+/**
  * Check if user is signed in or not
  * 
  * @return {Boolean} True if the user is signed in / false else
