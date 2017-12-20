@@ -696,6 +696,20 @@ var ComunicWeb = {
 
 			},
 
+			/**
+			 * Handle the rendering of the friendship status
+			 */
+			friendshipStatus: {
+
+				/**
+				 * Display the friendship status
+				 */
+				display: function(userID, target){},
+
+				//TODO : implement
+
+			},
+
 		},
 
 		/**

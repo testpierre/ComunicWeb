@@ -110,7 +110,15 @@ ComunicWeb.pages.userPage.accessForbidden = {
 		});
 
 		//Add friendship request message
-		
+		var requestArea = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "text-center",
+			innerHTML: "Loading..."
+		});
+
+		//Load friendship infos
+		ComunicWeb.pages.userPage.friendshipStatus.display(userInfos.userID, requestArea);
 	}
 
 }

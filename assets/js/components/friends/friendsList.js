@@ -91,6 +91,25 @@ ComunicWeb.components.friends.list = {
 	},
 
 	/**
+	 * Get the current status of a friendship relation
+	 * 
+	 * @param {Integer} friendID The ID of the target friend
+	 * @param {Function} callback What to do once we get the response
+	 */
+	getStatus: function(friendID, callback){
+		
+		//Prepare the API request
+		var apiURI = "friends/getStatus";
+		var params = {
+			"friendID": friendID
+		};
+
+		//Process request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
+
+	/**
 	 * Empty friends cache list
 	 * 
 	 * @return {Boolean} True for a success
