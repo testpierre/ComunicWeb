@@ -32,7 +32,7 @@ ComunicWeb.pages.userPage.friendshipStatus = {
 			if(response.received_request){
 				
 				//Offer the user to reject a frienship request
-				createElem2({
+				var rejectRequest = createElem2({
 					appendTo: target,
 					type: "button",
 					class: "btn btn-xs btn-danger",
@@ -46,12 +46,51 @@ ComunicWeb.pages.userPage.friendshipStatus = {
 				})
 
 				//Offer the user to accept a frienship request
-				createElem2({
+				var acceptRequest = createElem2({
 					appendTo: target,
 					type: "button",
 					class: "btn btn-xs btn-success",
 					innerHTML: "Accept request"
 				});
+
+				//Prepare the buttons
+				acceptRequest.setAttribute("data-accept", "true");
+				rejectRequest.setAttribute("data-accept", "false");
+
+				//Setup the action
+				var respondRequest = function(){
+
+					//Lock the buttons
+					acceptRequest.disabled = true;
+					rejectRequest.disabled = true;
+
+					//Get the status of the request
+					var accept = this.getAttribute("data-accept") == "true";
+					
+					//Perform the action
+					ComunicWeb.components.friends.list.respondRequest(userID, accept, function(response){
+						
+						//Unlock the buttons
+						acceptRequest.disabled = false;
+						rejectRequest.disabled = false;
+
+						//Check for errors
+						if(response.error){
+							ComunicWeb.common.notificationSystem.showNotification("Couldn't update request status !", 
+							"danger", 5);
+						}
+
+						else {
+							//Reopen user page
+							openUserPage(userID);
+						}
+
+					});
+					
+
+				}
+				acceptRequest.onclick = respondRequest;
+				rejectRequest.onclick = respondRequest;
 
 			}
 

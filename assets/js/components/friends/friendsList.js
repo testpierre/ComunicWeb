@@ -78,7 +78,7 @@ ComunicWeb.components.friends.list = {
 			"friendID": friendID,
 		};
 		
-		if(accept)
+		if(accept == true)
 			params.accept = "true";
 		else
 			params.accept = "false";
