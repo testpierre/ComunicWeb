@@ -60,6 +60,33 @@ ComunicWeb.pages.userPage.profileInfos = {
 			innerHTML: infos.firstName + " " + infos.lastName
 		});
 
+		//Create button area
+		var buttonsArea = createElem2({
+			appendTo: boxBody,
+			type: "div",
+		});
+		buttonsArea.style.textAlign = "center";
+		buttonsArea.style.marginTop = "2px";
+		buttonsArea.style.marginBottom = "2px";
+
+		if(signed_in()) {
+
+			if(userID() != infos.userID){
+
+				//Add a button to help user create a conversation with the user
+				var conversationButton = createElem2({
+					appendTo: buttonsArea,
+					type: "button",
+					class: "btn btn-default",
+					innerHTML: "<i class='fa fa-comments'></i>"
+				});
+				
+				conversationButton.onclick = function(){
+					ComunicWeb.components.conversations.manager.openPrivate(infos.userID);
+				}
+			}
+		}
+
 		//Add list of informations about user
 		var listInfos = createElem2({
 			appendTo: boxBody,
@@ -94,7 +121,7 @@ ComunicWeb.pages.userPage.profileInfos = {
 		createElem2({
 			appendTo: accountCreationLi,
 			type: "b",
-			innerHTML: "Member since"
+			innerHTML: "Member for"
 		});
 		createElem2({
 			appendTo: accountCreationLi,
