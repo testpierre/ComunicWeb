@@ -59,5 +59,19 @@ ComunicWeb.pages.userPage.profileInfos = {
 			class: "profile-username text-center",
 			innerHTML: infos.firstName + " " + infos.lastName
 		});
+
+		//Add user status informations (if required)
+		if(signed_in()){
+			if(userID() != infos.userID){
+				var userStatus = createElem2({
+					appendTo: boxBody,
+					type: "div",
+					innerHTML: "Loading...",
+				});
+				userStatus.style.textAlign = "center";
+				ComunicWeb.pages.userPage.friendshipStatus.display(infos.userID, userStatus);
+			}
+		}
+		
 	}
 };

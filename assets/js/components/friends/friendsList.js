@@ -64,6 +64,33 @@ ComunicWeb.components.friends.list = {
 	},
 
 	/**
+	 * Update the follow status of a user
+	 * 
+	 * @param {Integer} friendID The friend ID to respond
+	 * @param {Boolean} follow Specify whether the user has to be followed or not
+	 * @param {Function} callback Specify an action to do next
+	 * @return {Boolean} True for a success
+	 */
+	setFollowing: function(friendID, follow, callback){
+		//Prepare the API request
+		var apiURI = "friends/setFollowing"
+		var params = {
+			"friendID": friendID,
+		};
+		
+		if(follow == true)
+			params.follow = "true";
+		else
+			params.follow = "false";
+		
+		//Process request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+		//Success
+		return true;
+	},
+
+	/**
 	 * Respond a friendship request
 	 * 
 	 * @param {Integer} friendID The friend ID to respond

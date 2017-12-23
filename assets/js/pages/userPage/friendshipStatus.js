@@ -160,6 +160,49 @@ ComunicWeb.pages.userPage.friendshipStatus = {
 
 			}
 
+			//Offer user to follow other user
+			else {
+
+				//Setup button
+				var followButton = createElem2({
+					appendTo: target,
+					type: "button",
+					class: "btn btn-primary btn-block",
+				});
+
+				if(response.following){
+					followButton.innerHTML = "Following";
+					followButton.setAttribute("data-following", "true");
+				}
+				else {
+					followButton.innerHTML = "Follow";
+					followButton.setAttribute("data-following", "false");
+				}
+
+				//Make the follow button live
+				followButton.onclick = function(){
+					
+					//Lock button
+					this.disabled = true;
+
+					//Check if the user has to be followed or not (reverse current state)
+					var follow = this.getAttribute("data-following") == "false";
+
+					ComunicWeb.components.friends.list.setFollowing(userID, follow, function(response){
+
+						//Check for errors
+						if(response.error){
+							ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to update following status !");
+						}
+
+						//Reload this component
+						ComunicWeb.pages.userPage.friendshipStatus.display(userID, target);
+
+					});
+				}
+
+			}
+
 		});
 
 	}
