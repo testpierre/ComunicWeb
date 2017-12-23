@@ -98,25 +98,65 @@ ComunicWeb.pages.userPage.friendshipStatus = {
 			else if(response.sent_request){
 				
 				//Offer the user to cancel a frienship request
-				createElem2({
+				var cancelRequest = createElem2({
 					appendTo: target,
 					type: "button",
 					class: "btn btn-xs btn-danger",
 					innerHTML: "Cancel request"
 				});
 
+				cancelRequest.onclick = function(){
+
+					//Lock button
+					this.disabled = true;
+
+					//Send the request
+					ComunicWeb.components.friends.list.removeRequest(userID, function(response){
+
+						//Check for errors
+						if(response.error){
+							ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to remove the request !");
+						}
+
+						//Reload this component
+						ComunicWeb.pages.userPage.friendshipStatus.display(userID, target);
+
+					});
+
+				}
+
 			}
 
-			//Display default message
-			else {
+			//Display send request message
+			else if(response.are_friend == false) {
 				
 				//Offer the user to send a frienship request
-				createElem2({
+				var sendRequestButton = createElem2({
 					appendTo: target,
 					type: "button",
 					class: "btn btn-xs btn-primary",
 					innerHTML: "Send request"
 				});
+
+				sendRequestButton.onclick = function(){
+
+					//Lock button
+					this.disabled = true;
+
+					//Send the request
+					ComunicWeb.components.friends.list.sendRequest(userID, function(response){
+
+						//Check for errors
+						if(response.error){
+							ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to send the request !");
+						}
+
+						//Reload this component
+						ComunicWeb.pages.userPage.friendshipStatus.display(userID, target);
+
+					});
+
+				}
 
 			}
 

@@ -91,6 +91,48 @@ ComunicWeb.components.friends.list = {
 	},
 
 	/**
+	 * Send (create) a friendship request
+	 * 
+	 * @param {Integer} friendID The friend ID to respond
+	 * @param {Function} afterResponse Specify an action to do next
+	 * @return {Boolean} True for a success
+	 */
+	sendRequest: function(friendID, afterResponse){
+		//Prepare the API request
+		var apiURI = "friends/sendRequest"
+		var params = {
+			"friendID": friendID,
+		};
+		
+		//Process request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, afterResponse);
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Remove (ancel) a friendship request
+	 * 
+	 * @param {Integer} friendID The target friendID
+	 * @param {Function} afterResponse Specify an action to do next
+	 * @return {Boolean} True for a success
+	 */
+	removeRequest: function(friendID, afterResponse){
+		//Prepare the API request
+		var apiURI = "friends/removeRequest"
+		var params = {
+			"friendID": friendID,
+		};
+		
+		//Process request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, afterResponse);
+
+		//Success
+		return true;
+	},
+
+	/**
 	 * Get the current status of a friendship relation
 	 * 
 	 * @param {Integer} friendID The ID of the target friend
