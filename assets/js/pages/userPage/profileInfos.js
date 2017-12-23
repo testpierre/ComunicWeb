@@ -83,7 +83,25 @@ ComunicWeb.pages.userPage.profileInfos = {
 			type: "a",
 			class: "pull-right",
 			innerHTML: infos.number_friends
-		})
+		});
+
+		//Add user account creation time
+		var accountCreationLi = createElem2({
+			appendTo: listInfos,
+			type: "li",
+			class: "list-group-item"
+		});
+		createElem2({
+			appendTo: accountCreationLi,
+			type: "b",
+			innerHTML: "Member since"
+		});
+		createElem2({
+			appendTo: accountCreationLi,
+			type: "a",
+			class: "pull-right",
+			innerHTML: ComunicWeb.common.date.timeDiffToStr(infos.account_creation_time),
+		});
 
 		//Add user status informations (if required)
 		if(signed_in()){

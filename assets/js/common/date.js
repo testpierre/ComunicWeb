@@ -83,4 +83,15 @@ ComunicWeb.common.date = {
 			return years + " years";
 		}
 	},
+
+	/**
+	 * Get the difference of time from now to a specified
+	 * timestamp and return it as a string
+	 * 
+	 * @param {Integer} time The base time
+	 * @return {String} Computed difference
+	 */
+	timeDiffToStr: function(time){
+		return this.diffToStr(this.time() - time);
+	},
 }
