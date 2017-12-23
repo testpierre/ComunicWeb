@@ -59,7 +59,7 @@ ComunicWeb.pages.userPage.main = {
 					}
 
 					else {
-						ComunicWeb.pages.userPage.main.openUserPage(id);
+						ComunicWeb.pages.userPage.main.openUserPage(id, params, target);
 					}
 
 				});
