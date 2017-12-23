@@ -710,6 +710,13 @@ var ComunicWeb = {
 
 			},
 
+			/**
+			 * Display user profile informations
+			 */
+			profileInfos: {
+				//TODO : implement
+			}
+
 		},
 
 		/**

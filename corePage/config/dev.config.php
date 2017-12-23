@@ -176,6 +176,7 @@ $config['JSfiles'] = array(
 		"%PATH_ASSETS%js/pages/userPage/main.js",
 		"%PATH_ASSETS%js/pages/userPage/accessForbidden.js",
 		"%PATH_ASSETS%js/pages/userPage/friendshipStatus.js",
+		"%PATH_ASSETS%js/pages/userPage/profileInfos.js",
 
 		//Login page
 		"%PATH_ASSETS%js/pages/login.js",

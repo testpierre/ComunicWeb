@@ -119,8 +119,33 @@ ComunicWeb.pages.userPage.main = {
 	 * @param {HTMLElement} target Target of the user page
 	 */
 	displayUserPage: function(infos, params, target){
-		console.log("Display user page based on the informations we got");
-		console.log(infos);
+
+		//Update page title
+		document.title = infos.firstName + " " + infos.lastName;
+		
+		//Create the section class content
+		var sectionContent = createElem2({
+			appendTo: target,
+			type: "section",
+			class: "content"
+		});
+
+		//Content row
+		var row = createElem2({
+			appendTo: sectionContent,
+			type: "div",
+			class: "row"
+		});
+
+		//Create left column
+		var leftColumn = createElem2({
+			appendTo: row,
+			type: "div",
+			class: "col-md-3"
+		});
+
+		//Display profile informations
+		ComunicWeb.pages.userPage.profileInfos.display(infos, leftColumn);
 	}
 
 }

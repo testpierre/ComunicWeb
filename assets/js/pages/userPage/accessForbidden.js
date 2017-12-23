@@ -70,6 +70,9 @@ ComunicWeb.pages.userPage.accessForbidden = {
 	 * @param {HTMLElement} target Target element for user informations
 	 */
 	showBasicInfos: function(userInfos, target){
+
+		//Update page title
+		document.title = userInfos.firstName + " " + userInfos.lastName;
 		
 		//Create box root
 		var boxRoot = createElem2({
