@@ -60,6 +60,31 @@ ComunicWeb.pages.userPage.profileInfos = {
 			innerHTML: infos.firstName + " " + infos.lastName
 		});
 
+		//Add list of informations about user
+		var listInfos = createElem2({
+			appendTo: boxBody,
+			type: "url",
+			class: "list-group list-group-unbordered"
+		});
+
+		//Add number of friends
+		var friendsLi = createElem2({
+			appendTo: listInfos,
+			type: "li",
+			class: "list-group-item"
+		});
+		createElem2({
+			appendTo: friendsLi,
+			type: "b",
+			innerHTML: "Friends"
+		});
+		createElem2({
+			appendTo: friendsLi,
+			type: "a",
+			class: "pull-right",
+			innerHTML: infos.number_friends
+		})
+
 		//Add user status informations (if required)
 		if(signed_in()){
 			if(userID() != infos.userID){
