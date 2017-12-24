@@ -100,8 +100,13 @@ ComunicWeb.common.page = {
      * @return {Boolean} True for a success
      */
     openPage: function(pageURI, additionnalData){
+
         //Log message
         ComunicWeb.debug.logMessage("Open the following page: " + pageURI);
+
+        //Check if some additionnal data was specified
+        if(!additionnalData)
+            additionnalData = {};
 
         //Extract the first part of the URL
         var firstPartURI = pageURI.toString();
@@ -112,8 +117,33 @@ ComunicWeb.common.page = {
         }
 
         //Check if there are $_GET parametres included with the URL
-        if(firstPartURI.includes("?") != -1){
-            firstPartURI = firstPartURI.split("?")[0];
+        if(firstPartURI.includes("?")){
+            var split = firstPartURI.split("?");
+            firstPartURI = split[0];
+
+            additionnalData.urlArgs = {};
+
+            //Process the arguments
+            var list = split[1].split("&");
+
+            for(i in list){
+
+                //Check if it is a real argument
+                if(list[i].length > 0){
+
+                    if(!list[i].includes("=")){
+                        additionnalData.urlArgs[list[i]] = null;
+                    } else {
+                        
+                        //Add the argument to the list
+                        var argument = list[i].split("=");
+                        additionnalData.urlArgs[argument[0]] = argument[1];
+
+                    }
+
+                }
+
+            }
         }
 
         //Check if pageURI is empty
@@ -209,10 +239,6 @@ ComunicWeb.common.page = {
                 ComunicWeb.components.conversations.manager.display();
             }
         }
-
-        //Check if some additionnal data was specified
-        if(!additionnalData)
-            additionnalData = {};
 
         //Add the subfolder URI (if any)
         if(subfoldersURI){
