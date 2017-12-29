@@ -160,6 +160,7 @@ $config['JSfiles'] = array(
 
 		//Like button
 		"%PATH_ASSETS%js/components/like/button.js",
+		"%PATH_ASSETS%js/components/like/interface.js",
 
 		//Modern textarea handler
 		"%PATH_ASSETS%js/components/textarea.js",

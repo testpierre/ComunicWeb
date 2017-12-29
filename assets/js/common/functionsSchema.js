@@ -625,6 +625,13 @@ var ComunicWeb = {
 				//TODO : implement
 			},
 
+			/**
+			 * Likes API interface
+			 */
+			interface: {
+				//TODO : implement
+			}
+
 		},
 
 		/**

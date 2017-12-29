@@ -88,6 +88,7 @@ ComunicWeb.components.like.button = {
 				count = newliking ? count  + 1 : count - 1;
 				
 				//Update liking status on the API
+				ComunicWeb.components.like.interface.update(kind, id, newliking);
 
 				//Display liking element again
 				ComunicWeb.components.like.button.display(kind, id, count, newliking, target);
