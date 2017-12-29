@@ -115,7 +115,7 @@ ComunicWeb.pages.userPage.main = {
 	 * Display a user page
 	 * 
 	 * @param {Object} infos Informations about the user to display
-	 * @param {Object} params Parametres required to open the page
+	 * @param {Object} params Parameters required to open the page
 	 * @param {HTMLElement} target Target of the user page
 	 */
 	displayUserPage: function(infos, params, target){
@@ -146,6 +146,16 @@ ComunicWeb.pages.userPage.main = {
 
 		//Display profile informations
 		ComunicWeb.pages.userPage.profileInfos.display(infos, leftColumn);
+
+		//Create right column
+		var rightColumn = createElem2({
+			appendTo: row,
+			type: "div",
+			class: "col-md-9"
+		});
+
+		//Display text
+		ComunicWeb.pages.userPage.posts.display(infos, params, rightColumn);
 	}
 
 }

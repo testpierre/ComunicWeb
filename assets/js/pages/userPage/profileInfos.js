@@ -63,6 +63,28 @@ ComunicWeb.pages.userPage.profileInfos = {
 			innerHTML: infos.firstName + " " + infos.lastName
 		});
 
+		//Show user likes
+		var userLikesTarget = createElem2({
+			appendTo: boxBody,
+			type: "div"
+		});
+		userLikesTarget.style.textAlign = "center";
+
+		//Check wether user is linking or not
+		var userLiking = null;
+		if(signed_in()){
+			userLiking = infos.user_like_page;
+		}
+
+		//Call component
+		ComunicWeb.components.like.button.display(
+			"user",
+			infos.userID,
+			infos.pageLikes,
+			userLiking,
+			userLikesTarget,
+		);
+
 		//Add list of informations about user
 		var listInfos = createElem2({
 			appendTo: boxBody,

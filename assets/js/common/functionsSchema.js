@@ -614,6 +614,20 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Likes handling
+		 */
+		like:{
+
+			/**
+			 * Like buttons
+			 */
+			button: {
+				//TODO : implement
+			},
+
+		},
+
+		/**
 		 * Modern textarea handler
 		 */
 		textarea: {
@@ -715,7 +729,14 @@ var ComunicWeb = {
 			 */
 			profileInfos: {
 				//TODO : implement
-			}
+			},
+
+			/**
+			 * Display user posts
+			 */
+			posts: {
+				//TODO : implement
+			},
 
 		},
 

@@ -158,6 +158,9 @@ $config['JSfiles'] = array(
 		"%PATH_ASSETS%js/components/emoji/parser.js",
 		"%PATH_ASSETS%js/components/emoji/list.js",
 
+		//Like button
+		"%PATH_ASSETS%js/components/like/button.js",
+
 		//Modern textarea handler
 		"%PATH_ASSETS%js/components/textarea.js",
 
@@ -177,6 +180,7 @@ $config['JSfiles'] = array(
 		"%PATH_ASSETS%js/pages/userPage/accessForbidden.js",
 		"%PATH_ASSETS%js/pages/userPage/friendshipStatus.js",
 		"%PATH_ASSETS%js/pages/userPage/profileInfos.js",
+		"%PATH_ASSETS%js/pages/userPage/posts.js",
 
 		//Login page
 		"%PATH_ASSETS%js/pages/login.js",
