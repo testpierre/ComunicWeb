@@ -635,6 +635,27 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Posts components
+		 */
+		posts: {
+
+			/**
+			 * Posts communication interface
+			 */
+			interface: {
+				//TODO : implement
+			},
+
+			/**
+			 * Posts UI
+			 */
+			ui: {
+
+			},
+
+		},
+
+		/**
 		 * Modern textarea handler
 		 */
 		textarea: {

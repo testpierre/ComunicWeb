@@ -1,0 +1,10 @@
+/**
+ * Main posts stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.page-contener {
+	max-width: 1500px;
+	margin: auto;
+}

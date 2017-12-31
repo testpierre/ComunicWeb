@@ -22,10 +22,48 @@ ComunicWeb.pages.userPage.posts = {
 			class: "box box-primary"
 		});
 
-		//Check whether a precise post has to be opened or not
-		//TODO implement
+		var postsBody = createElem2({
+			appendTo: postsBlock,
+			type: "div",
+			class: "box-body"
+		});
+
+		//Get the posts from the API
+		ComunicWeb.components.posts.interface.get_user(userInfos.userID, function(result){
+
+			//Check for errors
+			if(result.error){
+				//Display notification
+				ComunicWeb.common.notificationSystem.showNotification("Couldn't get user posts!", "danger", 4, "Error");
+			}
+			else {
+
+				//Show the posts
+				ComunicWeb.pages.userPage.posts._show(result, postsBody);
+
+			}
+		});
 		
-	}
+	},
+
+	/**
+	 * Show user posts
+	 * 
+	 * @param {Object} posts The list of posts to display
+	 * @param {HMTLElement} target The rendering target
+	 */
+	_show: function(posts, target){
+		
+		//Process each post
+		var i;
+		for(i in posts){
+			
+			//Display post
+			ComunicWeb.components.posts.ui.display_post(posts[i], target);
+
+		}
+
+	},
 
 
 

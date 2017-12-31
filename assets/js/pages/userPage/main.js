@@ -134,7 +134,7 @@ ComunicWeb.pages.userPage.main = {
 		var row = createElem2({
 			appendTo: sectionContent,
 			type: "div",
-			class: "row"
+			class: "row page-contener"
 		});
 
 		//Create left column
@@ -151,10 +151,10 @@ ComunicWeb.pages.userPage.main = {
 		var rightColumn = createElem2({
 			appendTo: row,
 			type: "div",
-			class: "col-md-9"
+			class: "col-md-6"
 		});
 
-		//Display text
+		//Display posts
 		ComunicWeb.pages.userPage.posts.display(infos, params, rightColumn);
 	}
 

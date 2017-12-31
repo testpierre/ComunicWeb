@@ -50,10 +50,14 @@ $config['CSSfiles'] = array(
 		"%PATH_ASSETS%css/components/userSelect/userSelect.css",
 
 		//Emojies
-	"%PATH_ASSETS%css/components/emoji/parser.css",
+		"%PATH_ASSETS%css/components/emoji/parser.css",
+
+		//Posts component
+		"%PATH_ASSETS%css/components/posts/ui.css",
 
 	//Pages stylesheets
 		//User Page
+		"%PATH_ASSETS%css/pages/userPage/main.css",
 		"%PATH_ASSETS%css/pages/userPage/accessForbidden.css",
 );
 
@@ -161,6 +165,10 @@ $config['JSfiles'] = array(
 		//Like button
 		"%PATH_ASSETS%js/components/like/button.js",
 		"%PATH_ASSETS%js/components/like/interface.js",
+
+		//Posts component
+		"%PATH_ASSETS%js/components/posts/interface.js",
+		"%PATH_ASSETS%js/components/posts/ui.js",
 
 		//Modern textarea handler
 		"%PATH_ASSETS%js/components/textarea.js",

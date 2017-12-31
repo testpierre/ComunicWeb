@@ -1,0 +1,17 @@
+/**
+ * Posts UI stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.post .post_content {
+	text-align: center;
+}
+
+.post .post-buttons {
+	text-align: center;
+}
+
+.post .post-image {
+	width: 100%;
+}
