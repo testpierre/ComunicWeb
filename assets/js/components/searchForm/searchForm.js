@@ -70,7 +70,7 @@ ComunicWeb.components.searchForm = {
 		footerLink.setAttribute("data-searchValue", textInput.value);
 
 		//Perform a request on the server
-		apiURI = "search/request";
+		apiURI = "search/user";
 		params = {
 			query: textInput.value,
 		};
