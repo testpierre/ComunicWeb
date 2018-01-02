@@ -401,6 +401,11 @@ var ComunicWeb = {
 			getIDfromPath: function(path, callback){},
 
 			/**
+			 * Get the ID or the path of a user, depending of what is available
+			 */
+			getIDorPath: function(userInfos){},
+
+			/**
 			 * Empty users cache
 			 */
 			emptyCache: function(){},

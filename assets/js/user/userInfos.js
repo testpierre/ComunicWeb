@@ -248,6 +248,25 @@ ComunicWeb.user.userInfos = {
 	},
 
 	/**
+	 * Get the ID or the path of a user, depending of what is available
+	 * 
+	 * @param {Object} userInfos Informations about the user
+	 * @return {String} The ID of the user or its path, if he has one
+	 */
+	getIDorPath: function(userInfos){
+
+		//Check if a virtual directory is available
+		if(userInfos.virtualDirectory != null){
+			return userInfos.virtualDirectory;
+		}
+
+		//Else return user ID
+		else {
+			return userInfos.userID;
+		}
+	},
+
+	/**
 	 * Empty users cache
 	 * 
 	 * @return {Boolean} True for a success

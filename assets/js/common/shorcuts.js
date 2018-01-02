@@ -61,6 +61,17 @@ function userID(){
 }
 
 /**
+ * Return the ID of a user, or its path, depending of what 
+ * is available
+ * 
+ * @param {Object} infos Informations about the user
+ * @return {String} The ID of the user, or it's path
+ */
+function userIDorPath(infos){
+    return ComunicWeb.user.userInfos.getIDorPath(infos);
+}
+
+/**
  * Get multiple users informations
  * 
  * @param {Array~Object} usersID User on which to make request (current to get connected user)
