@@ -18,7 +18,7 @@ ComunicWeb.debug = {
      */
     logMessage: function(message){
         //We check we are not in production mode
-        if(ComunicWeb.__config.productionMode != 1){
+        if(ComunicWeb.__config.productionMode != true){
             console.log("ComunicWebApp debug message", message);
         }
 
