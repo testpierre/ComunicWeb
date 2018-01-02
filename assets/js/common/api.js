@@ -16,6 +16,10 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginToke
     //Prepare the request URL
     var requestURL = ComunicWeb.__config.apiURL + apiURI;
     
+    //Add API service tokens
+    params.serviceName = ComunicWeb.__config.apiServiceName;
+    params.serviceToken = ComunicWeb.__config.apiServiceToken;
+
     //Add login tokens to params if required
     if(requireLoginTokens){
         //Get login tokens

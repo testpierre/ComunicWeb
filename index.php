@@ -72,8 +72,10 @@
                 //Site URL
                 siteURL: "<?php echo config['siteURL']; ?>",
 
-                //apiURL
+                //apiURL and credentials
                 apiURL: "<?php echo config['API_URL']; ?>",
+                apiServiceName: "<?php echo config['API_SERVICE_NAME']; ?>",
+                apiServiceToken: "<?php echo config['API_SERVICE_TOKEN']; ?>",
 
                 //Default language
                 defaultLanguage: "en",
