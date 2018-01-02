@@ -5,6 +5,12 @@
  */
 
 ComunicWeb.components.searchForm = {
+
+	/**
+	 * Store the text input area
+	 */
+	_textInput: null,
+
 	/**
 	 * Initializate a search form element
 	 * 
@@ -41,6 +47,9 @@ ComunicWeb.components.searchForm = {
 		textInput.onkeyup = function(){
 			ComunicWeb.components.searchForm.ontextchange(textInput, searchResultBox, searchBoxContainer, footerLink);
 		}
+
+		//Cache textinput area
+		this._textInput = textInput;
 
 		return true;
 	},
@@ -140,5 +149,19 @@ ComunicWeb.components.searchForm = {
 		//Apply user informations
 		userImage.src = userInfos.accountImage;
 		usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
+
+		//Make user link element live
+		userLinkElement.onclick = function() {
+			ComunicWeb.components.searchForm.close();
+			openUserPage(userIDorPath(userInfos));
+		}
 	},
+
+	/**
+	 * Close and clear the search form
+	 */
+	close: function(){
+		this._textInput.value = "";
+		this._textInput.onkeyup();
+	}
 }

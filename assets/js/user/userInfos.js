@@ -256,7 +256,7 @@ ComunicWeb.user.userInfos = {
 	getIDorPath: function(userInfos){
 
 		//Check if a virtual directory is available
-		if(userInfos.virtualDirectory != null){
+		if(userInfos.virtualDirectory != null && userInfos.virtualDirectory != ""){
 			return userInfos.virtualDirectory;
 		}
 
