@@ -100,6 +100,30 @@ ComunicWeb.components.posts.ui = {
 			}
 		}
 
+		//In case of video
+		else if(infos.kind == "movie"){
+
+			//Create video element
+			var video = createElem2({
+				appendTo: postRoot,
+				type: "video",
+				class: "video-js vjs-default-skin post-video"
+			});
+			video.setAttribute("controls", "");
+
+			//Add source
+			var video_src = createElem2({
+				appendTo: video,
+				type: "source",
+				src: infos.video_infos.url
+			});
+			video_src.type = infos.video_infos.file_type;
+
+			//Enable videoJS
+			videojs(video);
+
+		}
+
 		else {
 			//Log error
 			ComunicWeb.debug.logMessage("Not implemented kind of post: " + infos.kind);
