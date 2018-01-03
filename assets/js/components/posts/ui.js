@@ -226,6 +226,26 @@ ComunicWeb.components.posts.ui = {
 
 		}
 
+		//In case of countdown timer
+		else if (infos.kind == "countdown"){
+
+			//Create countdown target
+			var target = createElem2({
+				appendTo: postRoot,
+				type: "div",
+				class: "post-countdown"
+			});
+
+			//Set the date of the countdown time
+			var date = new Date();
+			date.setFullYear(infos.year_end);
+			date.setMonth(infos.month_end - 1); //Months starts from 0 (january) to 11 (december)
+			date.setDate(infos.day_end);
+
+			//Initialize countdown timer
+			ComunicWeb.components.countdown.init(date, target);
+		}
+
 		//If the kind of post was not implemented
 		else {
 			//Log error
@@ -241,7 +261,6 @@ ComunicWeb.components.posts.ui = {
 			class: "post_content",
 			innerHTML: infos.content
 		});
-
 
 
 
