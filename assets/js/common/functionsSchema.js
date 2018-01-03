@@ -666,6 +666,14 @@ var ComunicWeb = {
 		textarea: {
 
 		},
+
+		/**
+		 * Countdown timer
+		 */
+		countdown: {
+			//TODO : implement	
+		},
+
 	},
 
 	/**

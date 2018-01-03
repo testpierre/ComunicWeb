@@ -236,14 +236,8 @@ ComunicWeb.components.posts.ui = {
 				class: "post-countdown"
 			});
 
-			//Set the date of the countdown time
-			var date = new Date();
-			date.setFullYear(infos.year_end);
-			date.setMonth(infos.month_end - 1); //Months starts from 0 (january) to 11 (december)
-			date.setDate(infos.day_end);
-
 			//Initialize countdown timer
-			ComunicWeb.components.countdown.init(date, target);
+			ComunicWeb.components.countdown.init(infos.time_end, target);
 		}
 
 		//If the kind of post was not implemented

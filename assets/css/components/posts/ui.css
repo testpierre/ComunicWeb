@@ -29,3 +29,8 @@
 	width: 100%;
 	height: 300px;
 }
+
+.post .post-countdown {
+	text-align: center;
+	padding: 10px;
+}

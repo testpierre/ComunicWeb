@@ -201,6 +201,9 @@ class Dev {
 			//Modern textarea handler
 			"js/components/textarea.js",
 
+			//Countdown timer
+			"js/components/countdown.js",
+
 		//User scripts
 		"js/user/loginTokens.js",
 		"js/user/userLogin.js",
