@@ -120,7 +120,7 @@ ComunicWeb.components.posts.ui = {
 			video_src.type = infos.video_infos.file_type;
 
 			//Enable videoJS
-			videojs(video);
+			//videojs(video);
 
 		}
 
