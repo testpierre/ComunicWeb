@@ -90,8 +90,17 @@
 	}
 }
 
-#friendsList td {
-	vertical-align: middle;
+#friendsList ul {
+	padding-left: 0px;
+}
+
+#friendsList li {
+	list-style: none;
+}
+
+#friendsList li:hover {
+	background: #f4f4f4;
+	text-decoration: none;
 }
 
 #friendsList .account-image {
@@ -102,7 +111,17 @@
 	visibility: visible
 }
 
-#friendsList .statusRow {
-	width: 58px;
-	text-align: center;
+#friendsList h4 {
+	padding: 0;
+	margin: 0 0 0 45px;
+	color: #444444;
+	font-size: 15px;
+	position: relative;
+}
+
+#friendsList a {
+	border-bottom: 1px solid #f4f4f4;
+	display: block;
+	white-space: nowrap;
+	padding: 5px 5px 5px 5px;
 }

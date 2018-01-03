@@ -54,9 +54,11 @@ ComunicWeb.components.friends.bar = {
 	init: function(friendsListContainer){
 
 		//First, create the table container
-		var listFriendsElemTable = createElem("table", friendsListContainer);
-		listFriendsElemTable.className = "table table-condensed";
-		var listFriendsElem = createElem("tbody", listFriendsElemTable);
+		var listFriendsElem = createElem2({
+			appendTo: friendsListContainer,
+			type: "ul",
+			class: "menu"
+		});
 
 		//Refresh friends list
 		this.refresh(listFriendsElem);
@@ -118,16 +120,16 @@ ComunicWeb.components.friends.bar = {
 				//Check if the friends hasn't any friend
 				if(friendsList.length == 0){
 					//Display adapted message
-					var noFriendMessageRow = createElem("tr", listFriendsElem);
-					var noFriendMessageColumn = createElem("td", noFriendMessageRow);
-					var noFriendMessage = createElem("span", noFriendMessageColumn);
+					var noFriendMessageRow = createElem("li", listFriendsElem);
+					var noFriendMessage = createElem("span", noFriendMessageRow);
 					noFriendMessage.style.color = "#3c8dbc";
 					noFriendMessage.style.fontSize = "150%";
-					noFriendMessage.innerHTML = "You have no friends yet! <br /> We can't display anything here for you for now... :("
+					noFriendMessage.style.textAlign = "justify";
+					noFriendMessage.innerHTML = "You have no friends yet! We can't display anything here for you for now... :("
 				}
 
 				//Enable slimscroll
-				$(listFriendsElem.parentNode.parentNode).slimScroll({
+				$(listFriendsElem.parentNode).slimScroll({
 					height: '100%;'
 				});
 			});
@@ -147,21 +149,44 @@ ComunicWeb.components.friends.bar = {
 		var friendID = friendshipInfos.ID_friend;
 
 		//Create a row
-		var friendRow = createElem("tr", listFriendsElem);
+		var friendRow = createElem("li", listFriendsElem);
 
-		//Add user avatar
-		var imageRow = createElem("td", friendRow);
-		var imageElem = createElem("img", imageRow);
-		imageElem.src = userInfos.accountImage;
-		imageElem.className = "account-image";
+		//Create link
+		var friendLink = createElem2({
+			appendTo: friendRow,
+			type: "a"
+		});
+
+		//Make the link lives
+		friendLink.onclick = function(){
+			openUserPage(userIDorPath(userInfos));
+		}
+
+		//Add user account image
+		var imageRow = createElem2({
+			appendTo: friendLink,
+			type: "div",
+			class: "pull-left"
+		});
+		var imageElem = createElem2({
+			appendTo: imageRow,
+			type: "img",
+			class: "account-image",
+			src: userInfos.accountImage
+		});
 
 		//Add user name
-		var nameRow = createElem("td", friendRow);
-		nameRow.innerHTML = userInfos.firstName + " " + userInfos.lastName;
+		var nameRow = createElem2({
+			appendTo: friendLink,
+			type: "h4",
+			innerHTML: userInfos.firstName + " " + userInfos.lastName
+		});
 
 		//Add user login status
-		var statusRow = createElem("td", friendRow);
-		statusRow.className = "statusRow";					
+		var statusRow = createElem2({
+			appendTo: friendLink,
+			type: "p",
+		});			
 
 		//Check if the user was accepted or not
 		if(friendshipInfos.accepted == "1"){
