@@ -124,6 +124,23 @@ ComunicWeb.components.posts.ui = {
 
 		}
 
+		//In case of YouTube video
+		else if(infos.kind == "youtube"){
+
+			//Create iframe
+			var youtube_iframe = createElem2({
+				appendTo: postRoot,
+				type: "iframe",
+				class: "post-youtube",
+				src: "https://www.youtube-nocookie.com/embed/"+infos.file_path+"?rel=0"
+			});
+			youtube_iframe.setAttribute("frameborder", 0);
+			youtube_iframe.setAttribute("gesture", "media");
+			youtube_iframe.setAttribute("allow", "encrypted-media");
+			youtube_iframe.setAttribute("allowfullscreen", "");
+
+		}
+
 		//In case of PDF
 		else if(infos.kind == "pdf"){
 
