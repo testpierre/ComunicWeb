@@ -25,8 +25,16 @@ ComunicWeb.pages.userPage.posts = {
 		var postsBody = createElem2({
 			appendTo: postsBlock,
 			type: "div",
-			class: "box-body"
+			class: "box-body",
 		});
+
+		//Display loading message
+		var loadingMsg = createElem2({
+			appendTo: postsBody,
+			type: "p",
+			innerHTML: "Loading posts..."
+		});
+		loadingMsg.style.textAlign = "center";
 
 		//Get the posts from the API
 		ComunicWeb.components.posts.interface.get_user(userInfos.userID, function(result){
@@ -37,6 +45,9 @@ ComunicWeb.pages.userPage.posts = {
 				ComunicWeb.common.notificationSystem.showNotification("Couldn't get user posts!", "danger", 4, "Error");
 			}
 			else {
+
+				//Empty the target
+				emptyElem(postsBody);
 
 				//Show the posts
 				ComunicWeb.pages.userPage.posts._show(result, postsBody);
@@ -50,10 +61,10 @@ ComunicWeb.pages.userPage.posts = {
 	 * Show user posts
 	 * 
 	 * @param {Object} posts The list of posts to display
-	 * @param {HMTLElement} target The rendering target
+	 * @param {HTMLElement} target The rendering target
 	 */
 	_show: function(posts, target){
-		
+
 		//Process each post
 		var i;
 		for(i in posts){
@@ -63,7 +74,39 @@ ComunicWeb.pages.userPage.posts = {
 
 		}
 
+		//Check if there is not any posts
+		if(target.children.length == 0){
+			this._no_posts_msg(target);
+		}
+
 	},
+
+	/**
+	 * Display a message to inform user that there is not any post
+	 * on the page he is visiting
+	 * 
+	 * @param {HTMLElement} target The target for the message
+	 */
+	_no_posts_msg(target){
+		
+		var msgContener = createElem2({
+			appendTo: target,
+			type: "div"
+		});
+
+		var msgTitle = createElem2({
+			appendTo: msgContener,
+			type: "h2",
+			innerHTML: "No post yet"
+		});
+		msgTitle.style.textAlign = "center";
+
+		var msgContent = createElem2({
+			appendTo: msgContener,
+			type: "p",
+			innerHTML: "Nobody has posted a message on this page yet."
+		}).style.textAlign = "center";
+	}
 
 
 
