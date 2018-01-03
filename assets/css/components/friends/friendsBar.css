@@ -58,6 +58,7 @@
 	#friendsList {
 		right: 0px;
 		background-color: #ffffff;
+		min-width: 200px;
 	}
 }
 
