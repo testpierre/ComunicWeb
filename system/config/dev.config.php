@@ -37,7 +37,10 @@ class Dev {
 		"3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",
 
 		//Light box
-		"3rdparty/lightbox/ekko-lightbox.min.css"
+		"3rdparty/lightbox/ekko-lightbox.min.css",
+
+		//VideoJS
+		"3rdparty/videojs/6.4.0/video-js.min.css"
 	);
 
 	/**
@@ -76,6 +79,9 @@ class Dev {
 
 		//Light box
 		"3rdparty/lightbox/ekko-lightbox.min.js",
+
+		//VideoJS
+		"3rdparty/videojs/6.4.0/video.min.js"
 	);
 
 	/**
