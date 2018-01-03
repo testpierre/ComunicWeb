@@ -194,16 +194,10 @@ ComunicWeb.components.posts.ui = {
 			var link_heading = createElem2({
 				appendTo: linkContainer,
 				type: "h4",
-				class: "attachment-heading"
-			});
-
-			var link_a = createElem2({
-				appendTo: link_heading,
-				type: "a",
-				href: infos.link_url,
+				class: "attachment-heading",
 				innerHTML: (infos.link_title != "default" ? infos.link_title : "Web page")
 			});
-			link_a.target = "_blank";
+
 
 			//Add attachement text
 			var link_attachment_text = createElem2({
