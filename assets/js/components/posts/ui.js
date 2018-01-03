@@ -173,6 +173,66 @@ ComunicWeb.components.posts.ui = {
 
 		}
 
+		//In case of weblink
+		else if(infos.kind == "weblink"){
+
+			var linkContainer = createElem2({
+				appendTo: postRoot,
+				type: "div",
+				class: "attachment-block clearfix"
+			});
+
+			//Link image
+			var link_img = createElem2({
+				appendTo: linkContainer,
+				type: "img",
+				src: (infos.link_image != "default" ? infos.link_image : ComunicWeb.__config.assetsURL + "img/world.png"),
+				class: "attachment-img",
+			});
+
+			//Link heading
+			var link_heading = createElem2({
+				appendTo: linkContainer,
+				type: "h4",
+				class: "attachment-heading"
+			});
+
+			var link_a = createElem2({
+				appendTo: link_heading,
+				type: "a",
+				href: infos.link_url,
+				innerHTML: (infos.link_title != "default" ? infos.link_title : "Web page")
+			});
+			link_a.target = "_blank";
+
+			//Add attachement text
+			var link_attachment_text = createElem2({
+				appendTo: linkContainer,
+				type: "div",
+				class: "attachment_text",
+			});
+
+			var link_a_url = createElem2({
+				appendTo: link_attachment_text,
+				type: "a",
+				href: infos.link_url,
+				innerHTML: infos.link_url
+			});
+			link_a_url.target = "_blank";
+
+			//Add description (if any)
+			if(infos.link_description != "default"){
+				var link_description = createElem2({
+					appendTo: link_attachment_text,
+					type: "p",
+					innerHTML: infos.link_description
+				});
+			}
+
+
+		}
+
+		//If the kind of post was not implemented
 		else {
 			//Log error
 			ComunicWeb.debug.logMessage("Not implemented kind of post: " + infos.kind);
