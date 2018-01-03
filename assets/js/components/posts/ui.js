@@ -124,6 +124,38 @@ ComunicWeb.components.posts.ui = {
 
 		}
 
+		//In case of PDF
+		else if(infos.kind == "pdf"){
+
+			//Create PDF button
+			var buttonContainer = createElem2({
+				appendTo: postRoot,
+				type: "div",
+				class: "post-pdf",
+			});
+
+			var button = createElem2({
+				appendTo: buttonContainer,
+				type: "a",
+				class: "btn btn-app",
+				href: infos.file_path_url,
+			});
+			button.target = "_blank";
+
+			createElem2({
+				appendTo: button,
+				type: "i",
+				class: "fa fa-file-pdf-o"
+			});
+
+			createElem2({
+				appendTo: button,
+				type: "span",
+				innerHTML: "PDF"
+			});
+
+		}
+
 		else {
 			//Log error
 			ComunicWeb.debug.logMessage("Not implemented kind of post: " + infos.kind);
