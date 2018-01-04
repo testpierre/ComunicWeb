@@ -64,6 +64,10 @@ ComunicWeb.components.posts.ui = {
 			if(result.firstName){
 				userAccountImage.src = result.accountImage;
 				userName.innerHTML = result.firstName + " " + result.lastName;
+
+				userName.onclick = function(){
+					openUserPage(userIDorPath(result));
+				}
 			}
 		});
 
