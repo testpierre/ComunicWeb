@@ -80,6 +80,9 @@ class Dev {
 		//Light box
 		"3rdparty/lightbox/ekko-lightbox.min.js",
 
+		//ChartJS
+		"3rdparty/adminLTE/plugins/chartjs/Chart.min.js",
+
 		//VideoJS
 		//"3rdparty/videojs/6.4.0/video.min.js"
 	);

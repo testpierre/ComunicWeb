@@ -34,3 +34,11 @@
 	text-align: center;
 	padding: 10px;
 }
+
+.post .post-survey-question {
+	text-align: center;
+}
+
+.post .post-survey-chart-contener {
+	margin-bottom: 10px;
+}
