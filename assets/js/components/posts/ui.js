@@ -107,11 +107,17 @@ ComunicWeb.components.posts.ui = {
 		//In case of video
 		else if(infos.kind == "movie"){
 
+			var videoContener = createElem2({
+				appendTo: postRoot,
+				type: "div",
+				class: "post-video"
+			});
+
 			//Create video element
 			var video = createElem2({
-				appendTo: postRoot,
+				appendTo: videoContener,
 				type: "video",
-				class: "video-js vjs-default-skin post-video"
+				class: "video-js vjs-default-skin"
 			});
 			video.setAttribute("controls", "");
 
