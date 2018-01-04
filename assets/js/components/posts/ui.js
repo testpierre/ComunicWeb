@@ -244,7 +244,7 @@ ComunicWeb.components.posts.ui = {
 		else {
 			//Log error
 			ComunicWeb.debug.logMessage("Not implemented kind of post: " + infos.kind);
-			ComunicWeb.common.error.submitError("notice", "Unimplemented kind of post" + infos.kind, 0, {});
+			ComunicWeb.common.error.submitError("notice", "Unimplemented kind of post: " + infos.kind, 0, {});
 		}
 
 
