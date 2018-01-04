@@ -154,6 +154,10 @@ ComunicWeb.pages.userPage.main = {
 			class: "col-md-6"
 		});
 
+		//Display post creation form if the user is allowed to do so
+		if(infos.can_post_texts == true)
+			ComunicWeb.components.posts.form.display("user", infos.userID, rightColumn);
+
 		//Display posts
 		ComunicWeb.pages.userPage.posts.display(infos, params, rightColumn);
 	}

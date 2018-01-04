@@ -83,6 +83,12 @@ class Dev {
 		//ChartJS
 		"3rdparty/adminLTE/plugins/chartjs/Chart.min.js",
 
+		//Jquery hotkeys
+		"3rdparty/jquery.hotkeys.js",
+
+		//Bootstrap-WYSIWYG
+		"3rdparty/bootstrap-wysiwyg.js",
+
 		//VideoJS
 		//"3rdparty/videojs/6.4.0/video.min.js"
 	);
@@ -119,6 +125,7 @@ class Dev {
 
 			//Posts component
 			"css/components/posts/ui.css",
+			"css/components/posts/form.css",
 
 		//Pages stylesheets
 			//User Page
@@ -200,6 +207,7 @@ class Dev {
 			//Posts component
 			"js/components/posts/interface.js",
 			"js/components/posts/ui.js",
+			"js/components/posts/form.js",
 
 			//Modern textarea handler
 			"js/components/textarea.js",

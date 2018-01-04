@@ -655,8 +655,15 @@ var ComunicWeb = {
 			 * Posts UI
 			 */
 			ui: {
-
+				//TODO : implement
 			},
+
+			/**
+			 * Posts creation form
+			 */
+			form: {
+				//TODO : implement
+			}
 
 		},
 
