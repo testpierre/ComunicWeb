@@ -42,6 +42,37 @@ ComunicWeb.components.posts.form = {
 		//Enable bootstrap-wysiwyg
 		$(inputMessageDiv).wysiwyg();
 
+		//Add the different post types
+		var postTypesContener = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-types"
+		});
+
+		//Text
+		var textType = create_radio(postTypesContener, "post_type", "Text");
+		$(textType).iCheck("check");
+
+		//Image
+		var imageType = create_radio(postTypesContener, "post_type", "Image");
+
+		//Youtube
+		var youtubeType = create_radio(postTypesContener, "post_type", "YouTube");
+
+		//Movie
+		var movieType = create_radio(postTypesContener, "post_type", "Movie");
+
+		//Link
+		var linkType = create_radio(postTypesContener, "post_type", "Link");
+
+		//PDF
+		var pdfType = create_radio(postTypesContener, "post_type", "PDF");
+
+		//Countdown timer
+		var countdownType = create_radio(postTypesContener, "post_type", "Countdown timer");
+
+		//Survey
+		var surveyType = create_radio(postTypesContener, "post_type", "Survey");
 
 		//Add send button
 		var sendButton = createElem2({

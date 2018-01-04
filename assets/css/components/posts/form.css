@@ -13,3 +13,8 @@
 	padding: 10px;
 	margin-bottom: 10px;
 }
+
+.post-form .post-types .radio {
+	display: inline-block;
+	padding-right: 20px;
+}

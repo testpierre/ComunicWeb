@@ -30,8 +30,13 @@ class Dev {
 		"3rdparty/adminLTE/bootstrap/css/bootstrap.min.css",
 		"3rdparty/adminLTE/plugins/font-awesome/css/font-awesome.min.css",
 		"3rdparty/adminLTE/plugins/ionicons/css/ionicons.min.css",
+
+		//iCheck
 		"3rdparty/adminLTE/plugins/iCheck/square/blue.css",
 		"3rdparty/adminLTE/plugins/iCheck/flat/blue.css",
+		"3rdparty/adminLTE/plugins/iCheck/minimal/blue.css",
+
+
 		"3rdparty/adminLTE/plugins/select2/select2.min.css",
 		"3rdparty/adminLTE/dist/css/AdminLTE.min.css",
 		"3rdparty/adminLTE/dist/css/skins/_all-skins.min.css",

@@ -34,6 +34,7 @@ function createElem(nodeType, appendTo){
  * @info {String} title The title of the new element
  * @info {String} src The src attribute of the new element
  * @info {String} href href attribute for the src element
+ * @info {string} name The name of the new element
  * @info {String} elemType The type attribute of the new element
  * @info {String} value The value of the new element
  * @info {String} placeholder The placeholder of the new element
@@ -79,6 +80,10 @@ function createElem2(infos){
 		newElem.src = infos.src;
 	if(infos.href)
 		newElem.href = infos.href;
+
+	//Specify the name of the new element
+	if(infos.name)
+		newElem.name = infos.name;
 
 	//Specify element type
 	if(infos.elemType)
@@ -272,6 +277,54 @@ function createFormGroup(infos){
 
 	//Return input
 	return input;
+}
+
+/**
+ * Create a radio element
+ * 
+ * @param {HTMLElement} target The target of the radio
+ * @param {string} name The name of the radio group
+ * @param {string} label The label of the radio
+ * @return {HTMLElement} The input element of the radio
+ */
+function create_radio(target, name, label){
+
+	//Contener
+	var radioDiv = createElem2({
+		appendTo: target,
+		type: "div",
+		class: "radio icheck"
+	});
+
+	//Label
+	var radioLabel = createElem2({
+		appendTo: radioDiv,
+		type: "label"
+	});
+
+	//Input
+	var radioInput = createElem2({
+		appendTo: radioLabel,
+		type: "input",
+		name: name,
+		elemType: "radio"
+	});
+
+	//Add label
+	var labelElem = createElem2({
+		appendTo: radioLabel,
+		type: "span",
+		innerHTML: " "+ label
+	});
+
+	//Enable input
+	$(radioInput).iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue'
+	});
+
+	return radioInput;
+
 }
 
 /**
