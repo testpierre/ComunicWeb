@@ -9,7 +9,7 @@ ComunicWeb would not exists without the following technologies developped by the
 - Bootstrap
 - font-awesome
 - ionicons
-- adminLTE
+- adminLTE (http://almsaeedstudio.com/)
 - Jquery Slimscroll
 - iCheck
 - Select2 4.0
@@ -17,3 +17,6 @@ ComunicWeb would not exists without the following technologies developped by the
 - Twitter Emoji (https://github.com/twitter/twemoji)
 - jQuery Textarea AutoSize plugin (by Javier Julio)
 - lightbox (https://github.com/ashleydw/lightbox)
+- VideoJS
+- jquery.hotkeys
+- bootstrap-wysiwyg (https://github.com/steveathon/bootstrap-wysiwyg/)
