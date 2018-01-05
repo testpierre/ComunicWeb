@@ -48,6 +48,10 @@
 	display: none;
 }
 
+.post-form .post-movie button {
+	margin-right: 5px;
+}
+
 
 /**
  * Visibility choice

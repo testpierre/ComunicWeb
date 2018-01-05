@@ -75,6 +75,7 @@ ComunicWeb.components.posts.form = {
 		var surveyType = this._add_post_type(postTypesContener, "survey", "<i class='fa fa-pie-chart'></i> <span class='hidden-xs'>Survey</span>");
 
 
+
 		//Add image upload form
 		var imgUploadForm = createElem2({
 			appendTo: boxBody,
@@ -87,6 +88,7 @@ ComunicWeb.components.posts.form = {
 			type: "input",
 			elemType: "file"
 		});
+		//End : image
 
 
 		//Add Youtube input form
@@ -101,15 +103,49 @@ ComunicWeb.components.posts.form = {
 			label: "Youtube video link",
 			placeholder: "https://youtube.com/watch?v=",
 			type: "text"
-		})
+		});
+		//End : Youtube
+
 
 		//Add movie input form
 		var movieInputForm = createElem2({
 			appendTo: boxBody,
 			type: "div",
 			class: "post-movie",
-			innerHTML: "<p>Not implemented yet.</p>"
 		});
+
+		//Add choose button
+		var movieChooseButton = createElem2({
+			appendTo: movieInputForm,
+			type: "button",
+			class: "btn btn-primary",
+			innerHTML: "Choose"
+		});
+
+		var movieIDInput = createElem2({
+			appendTo: movieInputForm,
+			type: "input",
+			elemType: "hidden",
+			value: 0
+		});
+
+		var movieName = createElem2({
+			appendTo: movieInputForm,
+			type: "span",
+			innerHTML: "No movie selected."
+		});
+
+		//Make movie choose button lives
+		movieChooseButton.onclick = function(){
+			ComunicWeb.components.movies.picker.pick(function(movie){
+				//Set movie ID and name
+				movieIDInput.value = movie.id;
+				movieName.innerHTML = movie.name;
+			});
+		}
+
+		//End : movie
+
 
 		//Create post type change handler
 		var changesHandler = function(){
