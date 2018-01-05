@@ -143,9 +143,36 @@ ComunicWeb.components.posts.form = {
 				movieName.innerHTML = movie.name;
 			});
 		}
-
 		//End : movie
 
+		//Add webpage input form
+		var linkChooseForm = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-weblink"
+		});
+
+		var linkInput = createFormGroup({
+			target: linkChooseForm,
+			label: "Page URL",
+			placeholder: "https://...",
+			type: "text"
+		});
+		//End : webpage
+
+		//Add PDF specific informations
+		var pdfUploadForm = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-pdf"
+		});
+
+		var pdfFileInput = createElem2({
+			appendTo: pdfUploadForm,
+			type: "input",
+			elemType: "file"
+		});
+		//End : PDF
 
 		//Create post type change handler
 		var changesHandler = function(){
@@ -153,7 +180,8 @@ ComunicWeb.components.posts.form = {
 			imgUploadForm.style.display = imageType.checked ? "block" : "none";
 			youtubeInputForm.style.display = youtubeType.checked ? "block" : "none";
 			movieInputForm.style.display = movieType.checked ? "block" : "none";
-
+			linkChooseForm.style.display = linkType.checked ? "block" : "none";
+			pdfUploadForm.style.display = pdfType.checked ? "block" : "none";
 		};
 
 		//Apply changesHandler function to all the data types
