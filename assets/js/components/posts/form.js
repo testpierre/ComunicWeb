@@ -75,7 +75,62 @@ ComunicWeb.components.posts.form = {
 		var surveyType = this._add_post_type(postTypesContener, "survey", "<i class='fa fa-pie-chart'></i> <span class='hidden-xs'>Survey</span>");
 
 
-		//Add visibility levels
+		//Add image upload form
+		var imgUploadForm = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-image"
+		});
+
+		var imgFileInput = createElem2({
+			appendTo: imgUploadForm,
+			type: "input",
+			elemType: "file"
+		});
+
+
+		//Add Youtube input form
+		var youtubeInputForm = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-youtube",
+		});
+
+		var youtubeLinkInput = createFormGroup({
+			target: youtubeInputForm,
+			label: "Youtube video link",
+			placeholder: "https://youtube.com/watch?v=",
+			type: "text"
+		})
+
+		//Add movie input form
+		var movieInputForm = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-movie",
+			innerHTML: "<p>Not implemented yet.</p>"
+		});
+
+		//Create post type change handler
+		var changesHandler = function(){
+
+			imgUploadForm.style.display = imageType.checked ? "block" : "none";
+			youtubeInputForm.style.display = youtubeType.checked ? "block" : "none";
+			movieInputForm.style.display = movieType.checked ? "block" : "none";
+
+		};
+
+		//Apply changesHandler function to all the data types
+		textType.onclick = changesHandler;
+		imageType.onclick = changesHandler;
+		youtubeType.onclick = changesHandler;
+		movieType.onclick = changesHandler;
+		linkType.onclick = changesHandler;
+		pdfType.onclick = changesHandler;
+		countdownType.onclick = changesHandler;
+		surveyType.onclick = changesHandler;
+
+		//Right contener
 		var rightDiv = createElem2({
 			appendTo: boxBody,
 			type: "div",

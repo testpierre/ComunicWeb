@@ -4,6 +4,9 @@
  * @author Pierre HUBERT
  */
 
+/**
+ * Message text form
+ */
 .post-form .new-message {
 	width: 100%;
 	min-height: 100px;
@@ -14,6 +17,10 @@
 	margin-bottom: 10px;
 }
 
+
+/**
+ * Message type chooser
+ */
 .post-form .post-types {
 	text-align: center;
 }
@@ -31,6 +38,20 @@
 	font-size: 110%;
 }
 
+
+/**
+ * Post-types specific
+ */
+.post-form .post-image,
+.post-form .post-youtube,
+.post-form .post-movie {
+	display: none;
+}
+
+
+/**
+ * Visibility choice
+ */
 .post-form .post-visiblity-contener {
 	display: inline-block;
 	margin-right: 10px;
