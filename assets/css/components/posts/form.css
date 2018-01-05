@@ -47,7 +47,8 @@
 .post-form .post-movie,
 .post-form .post-weblink,
 .post-form .post-pdf,
-.post-form .post-countdown {
+.post-form .post-countdown,
+.post-form .post-survey {
 	display: none;
 }
 
@@ -55,6 +56,10 @@
 	margin-right: 5px;
 }
 
+.post-form .post-survey .select2-dropdown {
+	/* Hide select2 suggestions*/
+	display: none;
+}
 
 /**
  * Visibility choice

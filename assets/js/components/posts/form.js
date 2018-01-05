@@ -183,7 +183,7 @@ ComunicWeb.components.posts.form = {
 
 		var timeEndInput = createFormGroup({
 			target: countdownForm,
-			label: "Date de fin",
+			label: "End date",
 			placeholder: "dd/mm/yyyy",
 			type: "text"
 		});
@@ -194,7 +194,43 @@ ComunicWeb.components.posts.form = {
 		});
 		//End : countdown timer
 		
+		//Add survey specific informations
+		var surveyForm = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-survey"
+		});
 
+		//Survey question
+		var surveyQuestionInput = createFormGroup({
+			target: surveyForm,
+			label: "Question for the survey",
+			placeholder: "Question",
+			type: "text"
+		});
+
+		//Survey answers
+		var surveyAnswerInput = createFormGroup({
+			target: surveyForm,
+			label: "Answers",
+			type: "select2",
+			multiple: true,
+		});
+
+		//Survey message help
+		var surveyAnswerHelper = createElem2({
+			appendTo: surveyForm,
+			type: "p",
+			innerHTML: "Type your answer and then press return (enter) key to confirm it."
+		})
+
+		//Enable select2
+		$(surveyAnswerInput).select2({
+			tags: true,
+			tokenSeparators: ['\n'],
+			dropdownParent: $(surveyQuestionInput)
+		});
+		//End: survey specific
 
 		//Create post type change handler
 		var changesHandler = function(){
@@ -205,6 +241,7 @@ ComunicWeb.components.posts.form = {
 			linkChooseForm.style.display = linkType.checked ? "block" : "none";
 			pdfUploadForm.style.display = pdfType.checked ? "block" : "none";
 			countdownForm.style.display = countdownType.checked ? "block" : "none";
+			surveyForm.style.display = surveyType.checked ? "block" : "none";
 		};
 
 		//Apply changesHandler function to all the data types
