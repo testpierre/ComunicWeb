@@ -44,6 +44,9 @@ class Dev {
 		//Light box
 		"3rdparty/lightbox/ekko-lightbox.min.css",
 
+		//Datepicker
+		"3rdparty/adminLTE/plugins/datepicker/datepicker3.css",
+
 		//VideoJS
 		//"3rdparty/videojs/6.4.0/video-js.min.css"
 	);
@@ -93,6 +96,9 @@ class Dev {
 
 		//Bootstrap-WYSIWYG
 		"3rdparty/bootstrap-wysiwyg.js",
+
+		//Datepicker
+		"3rdparty/adminLTE/plugins/datepicker/bootstrap-datepicker.js",
 
 		//VideoJS
 		//"3rdparty/videojs/6.4.0/video.min.js"

@@ -45,8 +45,9 @@
 .post-form .post-image,
 .post-form .post-youtube,
 .post-form .post-movie,
-.post-form .post-weblink
-.post-form .post-pdf {
+.post-form .post-weblink,
+.post-form .post-pdf,
+.post-form .post-countdown {
 	display: none;
 }
 

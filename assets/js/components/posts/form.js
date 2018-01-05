@@ -174,6 +174,28 @@ ComunicWeb.components.posts.form = {
 		});
 		//End : PDF
 
+		//Add countdown timer specific informations
+		var countdownForm = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "post-countdown"
+		});
+
+		var timeEndInput = createFormGroup({
+			target: countdownForm,
+			label: "Date de fin",
+			placeholder: "dd/mm/yyyy",
+			type: "text"
+		});
+
+		$(timeEndInput).datepicker({
+			autoclose: true,
+			format: "dd/mm/yyyy"
+		});
+		//End : countdown timer
+		
+
+
 		//Create post type change handler
 		var changesHandler = function(){
 
@@ -182,6 +204,7 @@ ComunicWeb.components.posts.form = {
 			movieInputForm.style.display = movieType.checked ? "block" : "none";
 			linkChooseForm.style.display = linkType.checked ? "block" : "none";
 			pdfUploadForm.style.display = pdfType.checked ? "block" : "none";
+			countdownForm.style.display = countdownType.checked ? "block" : "none";
 		};
 
 		//Apply changesHandler function to all the data types
