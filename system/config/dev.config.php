@@ -132,6 +132,9 @@ class Dev {
 			"css/components/posts/ui.css",
 			"css/components/posts/form.css",
 
+			//Movies picker
+			"css/components/movies/picker.css",
+
 		//Pages stylesheets
 			//User Page
 			"css/pages/userPage/main.css",
@@ -219,6 +222,10 @@ class Dev {
 
 			//Countdown timer
 			"js/components/countdown.js",
+
+			//Movies
+			"js/components/movies/interface.js",
+			"js/components/movies/picker.js",
 
 		//User scripts
 		"js/user/loginTokens.js",

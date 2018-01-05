@@ -681,6 +681,27 @@ var ComunicWeb = {
 			//TODO : implement	
 		},
 
+		/**
+		 * Movies functions
+		 */
+		movies: {
+
+			/**
+			 * Movies communication interface
+			 */
+			interface: {
+				//TODO : implement
+			},
+
+			/**
+			 * Movies picker
+			 */
+			picker:{
+				//TODO : implement
+			},
+
+		},
+
 	},
 
 	/**
