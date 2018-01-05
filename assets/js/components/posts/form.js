@@ -74,11 +74,36 @@ ComunicWeb.components.posts.form = {
 		//Survey
 		var surveyType = this._add_post_type(postTypesContener, "survey", "<i class='fa fa-pie-chart'></i> <span class='hidden-xs'>Survey</span>");
 
+
+		//Add visibility levels
+		var rightDiv = createElem2({
+			appendTo: boxBody,
+			type: "div",
+			class: "pull-right"
+		})
+
+		//Add visibility level choice
+		var visibility_choices_contener = createElem2({
+			appendTo: rightDiv,
+			type: "div",
+			class: "post-visiblity-contener"
+		});
+
+		//Private post
+		var privateInput = this._add_visiblity_choice(visibility_choices_contener, "private", "Private", "fa-user");
+
+		//Friends-visible post
+		var friendsInput = this._add_visiblity_choice(visibility_choices_contener, "friends", "Friends", "fa-users");
+		friendsInput.checked = true;
+
+		//Worldwide post
+		this._add_visiblity_choice(visibility_choices_contener, "public", "Public", "fa-globe");
+
 		//Add send button
 		var sendButton = createElem2({
-			appendTo: boxBody,
+			appendTo: rightDiv,
 			type: "button",
-			class: "btn btn-primary pull-right",
+			class: "btn btn-primary",
 			innerHTML: "Send"
 		});
 	},
@@ -114,5 +139,41 @@ ComunicWeb.components.posts.form = {
 		});
 
 		return input;
-	}
+	},
+
+	/**
+	 * Create and add visibility level choice
+	 * 
+	 * @param {HTMLElement} target The target for the visibility level
+	 * @param {string} value The value of the visibility level
+	 * @param {string} title The title of the visibility level
+	 * @param {string} icon The name of the icon associated with the visibility level
+	 * @return {HTMLElement} The created input
+	 */
+	_add_visiblity_choice: function(target, value, title, icon){
+
+		//Visibility label
+		var visibility_contener = createElem2({
+			appendTo: target,
+			type: "label",
+		});
+
+		//Create input
+		var visibilityInput = createElem2({
+			appendTo: visibility_contener,
+			type: "input",
+			elemType: "radio",
+			name: "post_visibility",
+			value: value
+		});
+
+		//Create icon
+		var visibility_label = createElem2({
+			appendTo: visibility_contener,
+			type: "span",
+			innerHTML: "<i class='fa " + icon + "'></i>"
+		});
+
+		return visibilityInput;
+	},
 }

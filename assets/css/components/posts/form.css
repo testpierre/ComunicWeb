@@ -26,7 +26,28 @@
 	display: none;
 }
 
-.post-form-choice input:checked ~ span {
+.post-form .post-form-choice input:checked ~ span {
 	color: #72afd2;
 	font-size: 110%;
+}
+
+.post-form .post-visiblity-contener {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.post-form .post-visiblity-contener label {
+	margin-left: 5px;
+}
+
+.post-form .post-visiblity-contener input {
+	display: none;
+}
+
+.post-form .post-visiblity-contener span {
+	color: #b5bbc8;
+}
+
+.post-form .post-visiblity-contener input:checked ~ span {
+	color: #111111;
 }
