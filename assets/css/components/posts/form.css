@@ -14,7 +14,19 @@
 	margin-bottom: 10px;
 }
 
-.post-form .post-types .radio {
-	display: inline-block;
-	padding-right: 20px;
+.post-form .post-types {
+	text-align: center;
+}
+
+.post-form .post-types label {
+	margin: 5px;
+}
+
+.post-form .post-form-choice input {
+	display: none;
+}
+
+.post-form-choice input:checked ~ span {
+	color: #72afd2;
+	font-size: 110%;
 }
