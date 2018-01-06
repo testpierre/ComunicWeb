@@ -454,6 +454,7 @@ ComunicWeb.components.posts.form = {
 				//Check for errors
 				if(result.error){
 					ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to send a new post !", "danger");
+					sendButton.disabled = false;
 					return;
 				}
 
