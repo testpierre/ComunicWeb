@@ -440,6 +440,13 @@ ComunicWeb.components.posts.form = {
 				ComunicWeb.common.notificationSystem.showNotification("Please check you have chosen a post type !", "danger");
 				return;
 			}
+
+			//Get the visibility level
+			var visibilityLevel = visibility_choices_contener.querySelector("input:checked").value;
+			datas.append("visibility", visibilityLevel);
+
+			//Try to perform the request
+			
 		}
 	},
 
