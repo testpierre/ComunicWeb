@@ -3,56 +3,74 @@
  * 
  * @author Pierre HUBERT
  */
+ComunicWeb.common.api = {
+    /**
+     * Make an API request
+     * 
+     * @param {String} apiURI The URI to call in the API
+     * @param {Object} params The params to include in request
+     * @param {Boolean} requireLoginTokens Specify if login tokens are required or not
+     * @param {Function} nextAction What to do next
+     */
+    makeAPIrequest: function(apiURI, params, requireLoginTokens, nextAction){
+        //Prepare the request URL
+        var requestURL = ComunicWeb.__config.apiURL + apiURI;
+        
+        //Add API service tokens
+        params.serviceName = ComunicWeb.__config.apiServiceName;
+        params.serviceToken = ComunicWeb.__config.apiServiceToken;
 
-/**
- * Make an API request
- * 
- * @param {String} apiURI The URI to call in the API
- * @param {Object} params The params to include in request
- * @param {Boolean} requireLoginTokens Specify if login tokens are required or not
- * @param {Function} nextAction What to do next
- */
-ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginTokens, nextAction){
-    //Prepare the request URL
-    var requestURL = ComunicWeb.__config.apiURL + apiURI;
-    
-    //Add API service tokens
-    params.serviceName = ComunicWeb.__config.apiServiceName;
-    params.serviceToken = ComunicWeb.__config.apiServiceToken;
+        //Add login tokens to params if required
+        if(requireLoginTokens){
+            //Get login tokens
+            tokens = ComunicWeb.user.loginTokens.getLoginTokens();
 
-    //Add login tokens to params if required
-    if(requireLoginTokens){
-        //Get login tokens
-        tokens = ComunicWeb.user.loginTokens.getLoginTokens();
+            if(tokens){
+                //Add tokens
+                params.userToken1 = tokens.token1;
+                params.userToken2 = tokens.token2;
+            }
 
-        if(tokens){
-            //Add tokens
-            params.userToken1 = tokens.token1;
-            params.userToken2 = tokens.token2;
         }
 
-    }
+        //Prepare data to send in request
+        var count = 0;
+        var datas = "";
+        for(paramName in params){
+            //We add a "&" if it isn't the first param
+            if(count != 0)
+                datas += "&";
 
-    //Prepare data to send in request
-    var count = 0;
-    var datas = "";
-    for(paramName in params){
-        //We add a "&" if it isn't the first param
-        if(count != 0)
-            datas += "&";
+            //We add field value
+            datas += encodeURIComponent(paramName) + "=" + encodeURIComponent(params[paramName]);
 
-        //We add field value
-        datas += encodeURIComponent(paramName) + "=" + encodeURIComponent(params[paramName]);
+            count++; //Increment counter
+        }     
 
-        count++; //Increment counter
-    }     
+        //Create request
+        var apiXHR = new XMLHttpRequest();
+        apiXHR.open("POST", requestURL);
 
-    //Create request
-    var apiXHR = new XMLHttpRequest();
-    apiXHR.open("POST", requestURL);
+        //Prepare request response
+        apiXHR.onreadystatechange = function(){
+            ComunicWeb.common.api._on_state_change(apiXHR, nextAction);
+        }
 
-    //Prepare request response
-    apiXHR.onreadystatechange = function(){
+        //Set request headers
+        apiXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        //Submit request
+        apiXHR.send(datas);
+    },
+
+    /**
+     * Handle xhr request chnages
+     * 
+     * @param {XMLHttpRequest} apiXHR The request element
+     * @param {Function} nextAction What to do once the request is done
+     */
+    _on_state_change: function(apiXHR, nextAction){
+
         //We continue only if request is terminated
         if(apiXHR.readyState == 4){
 
@@ -90,11 +108,5 @@ ComunicWeb.common.api.makeAPIrequest = function(apiURI, params, requireLoginToke
             if(nextAction)
                 nextAction(result);
         }
-    }
-
-    //Set request headers
-    apiXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    //Submit request
-    apiXHR.send(datas);
-};
+    },
+}

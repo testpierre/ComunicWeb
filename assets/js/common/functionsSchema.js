@@ -51,6 +51,8 @@ var ComunicWeb = {
 			 * Make an API request
 			 */
 			makeAPIrequest: function(apiURI, params, requireLoginTokens, nextAction){},
+
+			//TODO : implement
 		},
 
 		/**
