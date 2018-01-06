@@ -37,6 +37,7 @@ ComunicWeb.components.posts.form = {
 			appendTo: boxBody,
 			type: "div",
 			class: "new-message",
+			innerHTML: ""
 		});
 
 		//Enable bootstrap-wysiwyg
@@ -285,6 +286,161 @@ ComunicWeb.components.posts.form = {
 			class: "btn btn-primary",
 			innerHTML: "Send"
 		});
+
+		//Make send button lives
+		sendButton.onclick = function(){
+
+			//Generate request
+			var datas = new FormData();
+
+			//Get the message content
+			var message_content = inputMessageDiv.innerHTML;
+			datas.append("content", message_content);
+			
+			//Check if the message includes an image
+			if(message_content.includes("data:image/")){
+				ComunicWeb.common.notificationSystem.showNotification("Please do not drag images directly in the message !", "danger");
+				return;
+			}
+
+			//Check the text value
+			if(textType.checked){
+				
+				//Check message content
+				if(!ComunicWeb.components.posts.form._check_message(message_content)){
+					ComunicWeb.common.notificationSystem.showNotification("The specified message is invalid !", "danger");
+					return;
+				}
+
+				//Specify it is a text
+				datas.append("kind", "text");
+			}
+			
+			//Check for image
+			else if(imageType.checked){
+
+				//Check for image
+				if(imgFileInput.files.length == 0){
+					ComunicWeb.common.notificationSystem.showNotification("Please choose an image !", "danger");
+					return;
+				}
+
+				//Append values
+				datas.append("kind", "image");
+				datas.append("image", imgFileInput.files[0], imgFileInput.files[0].name);
+			}
+
+			//Check for YouTube video
+			else if(youtubeType.checked){
+
+				//Get the video ID
+				var videoID = ComunicWeb.components.posts.form._get_youtube_video_id(youtubeLinkInput.value);
+
+				//Check its validity
+				if(!videoID){
+					ComunicWeb.common.notificationSystem.showNotification("The specified Youtube link seems to be invalid !", "danger");
+					return;
+				}
+
+				//Append values
+				datas.append("kind", "youtube");
+				datas.append("youtube_id", videoID);
+			}
+
+			//Check for movie
+			else if(movieType.checked){
+
+				var movieID = movieIDInput.value;
+
+				if(movieID == 0){
+					ComunicWeb.common.notificationSystem.showNotification("Please choose a movie !", "danger");
+					return;
+				}
+
+				//Append values
+				datas.append("kind", "movie");
+				datas.append("movieID", movieID);
+
+			}
+
+			//Check for PDF
+			else if(pdfType.checked){
+
+				//Check for image
+				if(pdfFileInput.files.length == 0){
+					ComunicWeb.common.notificationSystem.showNotification("Please pick a PDF !", "danger");
+					return;
+				}
+
+				//Append values
+				datas.append("kind", "pdf");
+				datas.append("image", pdfFileInput.files[0], pdfFileInput.files[0].name);
+
+			}
+
+			//Check for weblink
+			else if(linkType.checked){
+
+				//Check the given url
+				if(!check_url(linkInput.value)){
+					ComunicWeb.common.notificationSystem.showNotification("Please check the given URL !", "danger");
+					return;
+				}
+
+				//Append values
+				datas.append("kind", "weblink");
+				datas.append("url", linkInput.value);
+			}
+
+			//Check for timer
+			else if(countdownType.checked){
+
+				//Check the given time
+				if(timeEndInput.value.length < 10){
+					ComunicWeb.common.notificationSystem.showNotification("Please specify a date for the countdown timer !", "danger");
+					return;
+				}
+
+				//Append values
+				datas.append("kind", "countdown");
+				datas.append("date-end", timeEndInput.value);
+			}
+
+			//Check for survey
+			else if(surveyType.checked){
+
+				//Check the given question
+				if(surveyQuestionInput.value.length < 5){
+					ComunicWeb.common.notificationSystem.showNotification("Please specify a question for the survey !", "danger");
+					return;
+				}
+
+				//Get the answers
+				if(surveyAnswerInput.children.length < 2){
+					ComunicWeb.common.notificationSystem.showNotification("Please specify at least two options for the survey !", "danger");
+					return;
+				}
+
+				//Process the list of answers
+				var answerData = $(surveyAnswerInput).select2("data");
+				var answers = [];
+				for(i = 0; i < answerData.length; i++){
+					answers.push(removeHtmlTags(answerData[i].text));
+				}
+
+				//Append values
+				datas.append("kind", "survey");
+				datas.append("question", surveyQuestionInput.value);
+				datas.append("answers", answers.join("<>"));
+
+			}
+
+			//The post type is not supported
+			else {
+				ComunicWeb.common.notificationSystem.showNotification("Please check you have chosen a post type !", "danger");
+				return;
+			}
+		}
 	},
 
 	/**
@@ -354,5 +510,63 @@ ComunicWeb.components.posts.form = {
 		});
 
 		return visibilityInput;
+	},
+
+	/**
+	 * Check a given message content
+	 * 
+	 * @param {string} message The message to check
+	 * @return {boolean} TRUE if the message is valid / false else
+	 */
+	_check_message(message){
+
+		//Remove break line tags
+		message = message.replace("<br>", "")
+			.replace("<br/>", "")
+			.replace("<br />", "")
+			.replace("<p>", "")
+			.replace("</p>", "")
+			.replace("<b>", "")
+			.replace("</b>", "");
+
+		//Check if the message is too short
+		if(message.length < 5)
+			return false;
+		
+		//The message is valid
+		return true;
+
+	},
+
+	/**
+	 * Try to get a youtube video ID from a given URL
+	 * 
+	 * @param {string} url The string to get
+	 * @return {boolean|string} False if the URL is invalid / The video
+	 * ID else
+	 */
+	_get_youtube_video_id: function(url){
+
+		//Check if the youtube domain is included in the URL
+		if(!url.includes("youtube.com/"))
+			return false; //The link is considered as invalid
+		
+		//Check for ID specification
+		if(!url.includes("v="))
+			return false;
+		
+		//Extract video ID
+		var videoID = url.split("v=")[1];
+
+		//Check if there are other parametres after the video ID
+		if(videoID.includes("&"))
+			videoID = videoID.split("&")[0];
+		
+		//Check if the videoID is valid
+		if(videoID.includes("/"))
+			return false;
+
+		//Return video ID
+		return videoID;
 	},
 }
