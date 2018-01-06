@@ -25,4 +25,26 @@ ComunicWeb.components.posts.interface = {
 
 	},
 
+	/**
+	 * Send a new post
+	 * 
+	 * @param {string} kind The kind of page
+	 * @param {string} id The ID of the kind of page
+	 * @param {FormData} data The data of the new post
+	 * @param {function} callback The function to call once the post is posted
+	 */
+	send_post: function(kind, id, data, callback){
+
+		//Prepare the request
+		var apiURI = "posts/create";
+
+		//Append the kind of post to the request
+		data.append("kind-page", kind);
+		data.append("kind-id", id);
+
+		//Perform the request
+		ComunicWeb.common.api.makeFormDatarequest(apiURI, data, true, callback);
+
+	},
+
 }

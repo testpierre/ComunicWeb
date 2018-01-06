@@ -53,7 +53,7 @@ ComunicWeb.common.api = {
 
         //Prepare request response
         apiXHR.onreadystatechange = function(){
-            ComunicWeb.common.api._on_state_change(apiXHR, nextAction);
+            ComunicWeb.common.api._on_state_change(requestURL, apiXHR, nextAction);
         }
 
         //Set request headers
@@ -64,12 +64,55 @@ ComunicWeb.common.api = {
     },
 
     /**
+     * Make an API request with a prepared form data object
+     * 
+     * @param {String} apiURI The URI to call in the API
+     * @param {FormData} data The form data object
+     * @param {Boolean} requireLoginTokens Specify if login tokens are required or not
+     * @param {Function} nextAction What to do next
+     */
+    makeFormDatarequest: function(apiURI, data, requireLoginTokens, nextAction){
+        //Prepare the request URL
+        var requestURL = ComunicWeb.__config.apiURL + apiURI;
+        
+        //Add API service tokens
+        data.append('serviceName', ComunicWeb.__config.apiServiceName);
+        data.append('serviceToken', ComunicWeb.__config.apiServiceToken);
+
+        //Add login tokens to params if required
+        if(requireLoginTokens){
+            //Get login tokens
+            tokens = ComunicWeb.user.loginTokens.getLoginTokens();
+
+            if(tokens){
+                //Add tokens
+                data.append('userToken1', tokens.token1);
+                data.append('userToken2', tokens.token2);
+            }
+
+        }    
+
+        //Create request
+        var apiXHR = new XMLHttpRequest();
+        apiXHR.open("POST", requestURL);
+
+        //Prepare request response
+        apiXHR.onreadystatechange = function(){
+            ComunicWeb.common.api._on_state_change(requestURL, apiXHR, nextAction);
+        }
+
+        //Submit request
+        apiXHR.send(data);
+    },
+
+    /**
      * Handle xhr request chnages
      * 
+     * @param {string} requestURL The URL of the request
      * @param {XMLHttpRequest} apiXHR The request element
      * @param {Function} nextAction What to do once the request is done
      */
-    _on_state_change: function(apiXHR, nextAction){
+    _on_state_change: function(requestURL, apiXHR, nextAction){
 
         //We continue only if request is terminated
         if(apiXHR.readyState == 4){

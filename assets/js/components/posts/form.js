@@ -445,8 +445,22 @@ ComunicWeb.components.posts.form = {
 			var visibilityLevel = visibility_choices_contener.querySelector("input:checked").value;
 			datas.append("visibility", visibilityLevel);
 
+			//Lock the send button
+			sendButton.disabled = true;
+
 			//Try to perform the request
-			
+			ComunicWeb.components.posts.interface.send_post(kind, id, datas, function(result){
+
+				//Check for errors
+				if(result.error){
+					ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to send a new post !", "danger");
+					return;
+				}
+
+				//Else 
+				//DEBUG - Temporary behaviour
+				sendButton.disabled = false;
+			});
 		}
 	},
 
