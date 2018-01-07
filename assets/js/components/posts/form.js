@@ -401,9 +401,23 @@ ComunicWeb.components.posts.form = {
 					return;
 				}
 
+				//Convert the date to an array
+				var end_date_array = timeEndInput.value.split("/");
+				if(end_date_array.length < 3) {
+					ComunicWeb.common.notificationSystem.showNotification("Specified date for the countdown timer is invalid !", "danger");
+					return;
+				}
+
+				//Convert the end time to a timestamp
+				var end_date = new Date();
+				end_date.setDate(end_date_array[0]);
+				end_date.setMonth(end_date_array[1]);
+				end_date.setFullYear(end_date_array[2]);
+				var time_end = Math.floor(end_date.getTime()/1000);
+
 				//Append values
 				datas.append("kind", "countdown");
-				datas.append("date-end", timeEndInput.value);
+				datas.append("time-end", time_end);
 			}
 
 			//Check for survey
