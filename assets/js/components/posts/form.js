@@ -472,9 +472,12 @@ ComunicWeb.components.posts.form = {
 					return;
 				}
 
-				//Else 
-				//DEBUG - Temporary behaviour
-				sendButton.disabled = false;
+				//Else
+				//Display a success notification
+				ComunicWeb.common.notificationSystem.showNotification("The post has been successfully created !", "success");
+
+				//Refresh current page
+				ComunicWeb.common.page.refresh_current_page();
 			});
 		}
 	},
