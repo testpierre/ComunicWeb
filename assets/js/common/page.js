@@ -253,6 +253,17 @@ ComunicWeb.common.page = {
     },
 
     /**
+     * Refresh the current page
+     */
+    refresh_current_page: function(){
+        //Get current page URI
+        var currentPage = ComunicWeb.common.url.getCurrentWebsiteURL();
+
+        //Open a page
+        this.openPage(currentPage);
+    },
+
+    /**
      * Prepare a template load by specifiying datas
      * 
      * @return {Object} The object contener with all required infos

@@ -160,6 +160,11 @@ var ComunicWeb = {
 			openPage: function(pageURI, additionnalData){},
 
 			/**
+			 * Refresh the current page
+			 */
+			refresh_current_page: function(){},
+
+			/**
 			 * Prepare a template load by specifying datas
 			 */
 			prepareLoadTemplate: function(){},
