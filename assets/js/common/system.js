@@ -8,7 +8,7 @@ ComunicWeb.common.system = {
 	/**
 	 * Initializate the application
 	 * 
-	 * @param {String} Specify a page to open
+	 * @param {String} openPage Specify a page to open
 	 * @return {Boolean} True for a success
 	 */
 	init: function(openPage){
