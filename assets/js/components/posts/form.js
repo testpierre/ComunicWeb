@@ -411,7 +411,7 @@ ComunicWeb.components.posts.form = {
 				//Convert the end time to a timestamp
 				var end_date = new Date();
 				end_date.setDate(end_date_array[0]);
-				end_date.setMonth(end_date_array[1]);
+				end_date.setMonth(end_date_array[1] - 1); //January => 0 / December => 11
 				end_date.setFullYear(end_date_array[2]);
 				var time_end = Math.floor(end_date.getTime()/1000);
 
