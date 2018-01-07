@@ -374,7 +374,7 @@ ComunicWeb.components.posts.form = {
 
 				//Append values
 				datas.append("kind", "pdf");
-				datas.append("image", pdfFileInput.files[0], pdfFileInput.files[0].name);
+				datas.append("pdf", pdfFileInput.files[0], pdfFileInput.files[0].name);
 
 			}
 
