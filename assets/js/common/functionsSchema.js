@@ -652,6 +652,13 @@ var ComunicWeb = {
 		posts: {
 
 			/**
+			 * Visibility levels
+			 */
+			visibilityLevels: {
+				//TODO : implement
+			},
+
+			/**
 			 * Posts communication interface
 			 */
 			interface: {

@@ -270,14 +270,17 @@ ComunicWeb.components.posts.form = {
 		});
 
 		//Private post
-		var privateInput = this._add_visiblity_choice(visibility_choices_contener, "private", "Private", "fa-user");
+		var privateLevel = ComunicWeb.components.posts.visibilityLevels.private;
+		var privateInput = this._add_visiblity_choice(visibility_choices_contener, "private", privateLevel.name, privateLevel.icon);
 
 		//Friends-visible post
-		var friendsInput = this._add_visiblity_choice(visibility_choices_contener, "friends", "Friends", "fa-users");
+		var friendsLevel = ComunicWeb.components.posts.visibilityLevels.friends;
+		var friendsInput = this._add_visiblity_choice(visibility_choices_contener, "friends", friendsLevel.name, friendsLevel.icon);
 		friendsInput.checked = true;
 
 		//Worldwide post
-		this._add_visiblity_choice(visibility_choices_contener, "public", "Public", "fa-globe");
+		var publicLevel = ComunicWeb.components.posts.visibilityLevels.public;
+		this._add_visiblity_choice(visibility_choices_contener, "public", publicLevel.name, publicLevel.icon);
 
 		//Add send button
 		var sendButton = createElem2({
