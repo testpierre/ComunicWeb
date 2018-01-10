@@ -4,6 +4,17 @@
  * @author Pierre HUBERT
  */
 
+/**
+ * For the visibility
+ */
+ .post .visibility .read-only {
+	color: #b5bbc8;
+	padding-right: 10px;
+}
+
+/**
+ * For the post content
+ */
 .post .post_content {
 	text-align: center;
 }

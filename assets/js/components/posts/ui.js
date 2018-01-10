@@ -71,6 +71,104 @@ ComunicWeb.components.posts.ui = {
 			}
 		});
 
+		//Create top right area
+		var topRightArea = createElem2({
+			insertAsFirstChild: userBlock,
+			type: "div",
+			class: "pull-right",
+		})
+
+		//Load informations about visibility
+		var visibilityTarget = createElem2({
+			appendTo: topRightArea,
+			type: "div",
+			class: "visibility"
+		});
+
+
+		//Get informations about the current visibility level
+		var visibilityInfos = ComunicWeb.components.posts.visibilityLevels[infos.visibility_level];
+
+		//Check user level access
+		if(infos.user_access != "full"){
+
+			//The user can't change the visibility level of the post
+			
+
+			//Display visibility level as a simple icon
+			createElem2({
+				appendTo: visibilityTarget,
+				type: "i",
+				class: "read-only fa "+visibilityInfos.icon
+			});
+
+		}
+		else {
+
+			//The user can change the visibility level of the post
+			//Create button gropu
+			var visibilityButtonGroup = createElem2({
+				appendTo: visibilityTarget,
+				type: "div",
+				class: "btn-group"
+			});
+
+			//Visibility choose button
+			var visibilityChooseButton = createElem2({
+				appendTo: visibilityButtonGroup,
+				type: "button",
+				class: "btn btn-default dropdown-toggle",
+				elemType: "button",
+			});
+			visibilityChooseButton.setAttribute("data-toggle", "dropdown");
+
+			//Set the current value of the button
+			visibilityChooseButton.innerHTML = "<i class='fa " + visibilityInfos.icon + "'></i>";
+
+			//Add dropdown menu
+			var visibilityDropdown = createElem2({
+				appendTo: visibilityButtonGroup,
+				type: "ul",
+				class: "dropdown-menu"
+			});
+
+			//Process all visibility levels
+			var privateChoice = this._add_visibility_menu_item(visibilityDropdown, "private");
+			var friendsChoice = this._add_visibility_menu_item(visibilityDropdown, "friends");
+			var publicChoice = this._add_visibility_menu_item(visibilityDropdown, "public");
+
+			var onVisibilityLevelChoice = function(){
+
+				//Get the new visibility level
+				var new_level = this.getAttribute("data-level");
+
+				//Lock button
+				visibilityChooseButton.disabled = true;
+
+				//Make a request on the server to update the level
+				ComunicWeb.components.posts.interface.set_visibility_level(infos.ID, new_level, function(response){
+
+					//Unlock button
+					visibilityChooseButton.disabled = false;
+
+					//Check for errors
+					if(response.error){
+						ComunicWeb.common.notificationSystem.showNotification("Couldn't change post visibility level !", "danger");
+						return;
+					}
+
+					//Change the level on the button
+					visibilityChooseButton.innerHTML = "<i class='fa " + ComunicWeb.components.posts.visibilityLevels[new_level].icon + "'></i>";
+
+				});
+			}
+
+			//Set the items lives
+			privateChoice.onclick = onVisibilityLevelChoice;
+			friendsChoice.onclick = onVisibilityLevelChoice;
+			publicChoice.onclick = onVisibilityLevelChoice;
+			
+		}
 
 		//Add post attachement (if any)
 		if(infos.kind == "text"){
@@ -442,6 +540,46 @@ ComunicWeb.components.posts.ui = {
 			userLiking,
 			likesTarget
 		);
-	}
+	},
+
+	/**
+	 * Add a visibility level choice to a dropodown menu
+	 * 
+	 * @param {HTMLElement} target The target menu
+	 * @param {Object} name The name of the visibility level
+	 * @return {HTMLElement} The created element container
+	 */
+	_add_visibility_menu_item(target, name){
+
+		//Create container
+		var itemContainer = createElem2({
+			appendTo: target,
+			type: "li",
+		});
+
+		//Create link container
+		var itemLink = createElem2({
+			appendTo: itemContainer,
+			type: "a"
+		});
+		itemLink.setAttribute("data-level", name);
+
+		//Add visibility icon
+		createElem2({
+			appendTo: itemLink,
+			type: "i",
+			class: "fa " + ComunicWeb.components.posts.visibilityLevels[name].icon
+		});
+
+		//Add visibility label
+		createElem2({
+			appendTo: itemLink,
+			type: "span",
+			innerHTML: ComunicWeb.components.posts.visibilityLevels[name].name
+		});
+
+		return itemLink;
+
+	},
 
 }

@@ -47,4 +47,25 @@ ComunicWeb.components.posts.interface = {
 
 	},
 
+	/**
+	 * Change post visibility level
+	 * 
+	 * @param {int} postID The ID of the post
+	 * @param {string} new_level New visibility level for the post
+	 * @param {function} callback What to do once we got a response
+	 */
+	set_visibility_level: function(postID, new_level, callback){
+
+		//Prepare the API request
+		var APIuri = "posts/set_visibility_level";
+		var params = {
+			postID: postID,
+			new_level: new_level
+		};
+
+		//Make the request
+		ComunicWeb.common.api.makeAPIrequest(APIuri, params, true, callback);
+
+	},
+
 }
