@@ -75,8 +75,8 @@ ComunicWeb.components.posts.ui = {
 		var topRightArea = createElem2({
 			insertAsFirstChild: userBlock,
 			type: "div",
-			class: "pull-right",
-		})
+			class: "pull-right top-right-buttons",
+		});
 
 		//Load informations about visibility
 		var visibilityTarget = createElem2({
@@ -93,8 +93,6 @@ ComunicWeb.components.posts.ui = {
 		if(infos.user_access != "full"){
 
 			//The user can't change the visibility level of the post
-			
-
 			//Display visibility level as a simple icon
 			createElem2({
 				appendTo: visibilityTarget,
@@ -168,6 +166,23 @@ ComunicWeb.components.posts.ui = {
 			friendsChoice.onclick = onVisibilityLevelChoice;
 			publicChoice.onclick = onVisibilityLevelChoice;
 			
+		}
+
+		//Add a button to delete the post if the user is allowed
+		if(infos.user_access == "full" || infos.user_access == "intermediate"){
+
+			var deleteButtonDiv = createElem2({
+				appendTo: topRightArea,
+				type: "div",
+				class: "del-post-div"
+			});
+
+			var deleteButtonLink = createElem2({
+				appendTo: deleteButtonDiv,
+				type: "a",
+				innerHTML: "<i class='fa fa-trash'></i>"
+			});
+
 		}
 
 		//Add post attachement (if any)

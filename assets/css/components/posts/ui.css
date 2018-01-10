@@ -5,11 +5,32 @@
  */
 
 /**
+ * Top right actions
+ */
+.post .top-right-buttons div {
+	display: inline-block;
+	padding-right: 10px;
+}
+
+.post .top-right-buttons div .btn-group {
+	padding-right: 0px;
+}
+
+/**
  * For the visibility
  */
- .post .visibility .read-only {
+.post .visibility .read-only {
 	color: #b5bbc8;
-	padding-right: 10px;
+}
+
+/**
+ * Posts deletion
+ */
+.post .del-post-div a {
+	color: #b5bbc8;
+}
+.post .del-post-div a:active {
+	color: black;
 }
 
 /**
