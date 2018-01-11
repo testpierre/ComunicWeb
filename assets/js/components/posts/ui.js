@@ -183,6 +183,27 @@ ComunicWeb.components.posts.ui = {
 				innerHTML: "<i class='fa fa-trash'></i>"
 			});
 
+			//Make delete button lives
+			deleteButtonLink.onclick = function(){
+				
+				//Create a confirmation dialog
+				ComunicWeb.common.messages.confirm("Are you sure do you want to delete this post? The operation can not be reverted !", function(accept){
+					
+					//Check if the user cancelled the operation
+					if(!accept)
+						return;
+					
+					postRoot.style.visibility = "hidden";
+
+					//Delete the post
+					ComunicWeb.components.posts.interface.delete(infos.ID, function(response){
+
+						postRoot.style.visibility = "visible";
+
+					});
+				});
+
+			}
 		}
 
 		//Add post attachement (if any)

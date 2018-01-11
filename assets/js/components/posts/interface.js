@@ -68,4 +68,23 @@ ComunicWeb.components.posts.interface = {
 
 	},
 
+	/**
+	 * Delete a post
+	 * 
+	 * @param {int} postID The ID of the post to delete
+	 * @param {function} callback What to do once we got a reponse
+	 */
+	delete: function(postID, callback){
+
+		//Prepare an API request
+		apiURI = "posts/delete";
+		params = {
+			postID: postID
+		};
+
+		//Perform the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	}
+
 }
