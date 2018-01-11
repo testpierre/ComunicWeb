@@ -96,6 +96,11 @@ var ComunicWeb = {
 			 * Create and return a callout element
 			 */
 			createCalloutElem: function(calloutTitle, calloutMessage, calloutType){},
+
+			/**
+			 * Create and display a confirmation dialog
+			 */
+			confirm: function(message, callback){},
 		},
 
 		/**
