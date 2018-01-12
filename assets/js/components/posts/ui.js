@@ -198,7 +198,21 @@ ComunicWeb.components.posts.ui = {
 					//Delete the post
 					ComunicWeb.components.posts.interface.delete(infos.ID, function(response){
 
-						postRoot.style.visibility = "visible";
+						//Check for error
+						if(response.error){
+
+							//Display an error
+							ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to delete post !", "danger");
+							
+							//Make the post visible
+							postRoot.style.visibility = "visible";
+
+							return;
+						}
+						
+						//Delete the post
+						emptyElem(postRoot);
+						postRoot.remove();
 
 					});
 				});
