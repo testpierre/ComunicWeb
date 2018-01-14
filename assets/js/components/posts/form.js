@@ -560,7 +560,7 @@ ComunicWeb.components.posts.form = {
 	 * @param {string} message The message to check
 	 * @return {boolean} TRUE if the message is valid / false else
 	 */
-	_check_message(message){
+	_check_message: function(message){
 
 		//Remove break line tags
 		message = message.replace("<br>", "")
