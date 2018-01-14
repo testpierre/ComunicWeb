@@ -183,6 +183,13 @@ ComunicWeb.components.posts.ui = {
 				innerHTML: "<i class='fa fa-pencil'></i>"
 			});
 
+
+			//Make buttons lives
+			editButtonLink.onclick = function(){
+
+
+
+			};
 		}
 
 		//Add a button to delete the post if the user is allowed
@@ -616,7 +623,7 @@ ComunicWeb.components.posts.ui = {
 	 * @param {Object} name The name of the visibility level
 	 * @return {HTMLElement} The created element container
 	 */
-	_add_visibility_menu_item(target, name){
+	_add_visibility_menu_item: function(target, name){
 
 		//Create container
 		var itemContainer = createElem2({
