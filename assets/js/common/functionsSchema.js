@@ -682,7 +682,14 @@ var ComunicWeb = {
 			 */
 			form: {
 				//TODO : implement
-			}
+			},
+
+			/**
+			 * Post editor
+			 */
+			edit: {
+				//TODO : implement
+			},
 
 		},
 

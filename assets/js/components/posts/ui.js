@@ -187,7 +187,8 @@ ComunicWeb.components.posts.ui = {
 			//Make buttons lives
 			editButtonLink.onclick = function(){
 
-
+				//Open post editor
+				ComunicWeb.components.posts.edit.open(infos, postRoot);
 
 			};
 		}

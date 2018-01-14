@@ -85,6 +85,27 @@ ComunicWeb.components.posts.interface = {
 		//Perform the request
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 
-	}
+	},
+
+	/**
+	 * Update a message content
+	 * 
+	 * @param {int} postID The ID of the post to update
+	 * @param {string} content The new content of the post
+	 * @param {function} callback What to do once post has been updated
+	 */
+	update_content: function(postID, content, callback){
+
+		//Prepare an API request
+		apiURI = "posts/update_content";
+		params = {
+			postID: postID,
+			new_content: content
+		};
+
+		//Perform the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
 
 }
