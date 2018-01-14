@@ -24,12 +24,14 @@
 }
 
 /**
- * Posts deletion
+ * Posts deletion and edition
  */
-.post .del-post-div a {
+.post .del-post-div a,
+.post .edit-post-div a {
 	color: #b5bbc8;
 }
-.post .del-post-div a:active {
+.post .del-post-div a:active,
+.post .edit-post-div a:active {
 	color: black;
 }
 

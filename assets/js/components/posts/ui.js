@@ -168,6 +168,23 @@ ComunicWeb.components.posts.ui = {
 			
 		}
 
+		//Add a button to edit the post if the user is allowed
+		if(infos.user_access == "full"){
+
+			var editButtonDiv = createElem2({
+				appendTo: topRightArea,
+				type: "div",
+				class: "edit-post-div"
+			});
+
+			var editButtonLink = createElem2({
+				appendTo: editButtonDiv,
+				type: "a",
+				innerHTML: "<i class='fa fa-pencil'></i>"
+			});
+
+		}
+
 		//Add a button to delete the post if the user is allowed
 		if(infos.user_access == "full" || infos.user_access == "intermediate"){
 
