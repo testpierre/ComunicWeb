@@ -4,6 +4,12 @@
  * @author Pierre HUBERT
  */
 
-.edit-post-modal {
-	
+.edit-post-modal .editor {
+	width: 100%;
+	min-height: 100px;
+	font-size: 14px;
+	line-height: 18px;
+	border: 1px solid #dddddd;
+	padding: 10px;
+	margin-bottom: 10px;
 }
