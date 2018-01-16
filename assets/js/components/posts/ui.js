@@ -439,6 +439,12 @@ ComunicWeb.components.posts.ui = {
 				class: "post-survey-question"
 			});
 
+			//Answer contener
+			var surveyResponse = createElem2({
+				appendTo: postRoot,
+				type: "div",
+			});
+
 			//Create row
 			var row = createElem2({
 				appendTo: postRoot,
@@ -574,6 +580,57 @@ ComunicWeb.components.posts.ui = {
 
 			}
 
+			//Display survey response options if the user is signed in
+			if(signed_in()){
+
+				//Check if the user gave a response to the survey
+				if(infos.data_survey.user_choice != 0){
+					
+					//Create a text to display user choice
+					var choosedResponseElem = createElem2({
+						appendTo: surveyResponse,
+						class: "survey-given-response",
+						type: "p",
+						innerHTML: "Your response: " + infos.data_survey.choices[infos.data_survey.user_choice].name + " "
+					});
+
+					//Offer the user to cancel his choice
+					var cancelReponseLink = createElem2({
+						appendTo: choosedResponseElem,
+						type: "a",
+						innerHTML: "Cancel"
+					});
+
+					//Make cancel button lives
+					cancelReponseLink.onclick = function(){
+
+						ComunicWeb.common.messages.confirm("Do you really want to cancel your response to the survey ?", function(confirm){
+
+							//Check if the user cancelled
+							if(!confirm)
+								return;
+							
+							//Make a request on the server
+							ComunicWeb.components.posts.interface.cancel_survey_response(infos.ID, function(response){
+
+								//Check for errors
+								if(response.error){
+									ComunicWeb.common.notificationSystem.showNotification("Could not cancel response to survey !", "danger");
+									return;
+								}
+
+								//Reload post
+								ComunicWeb.components.posts.actions.reload_post(infos.ID, postRoot);
+
+							});
+
+						});
+
+					}
+				}
+
+
+			}
 		}
 
 		//If the kind of post was not implemented

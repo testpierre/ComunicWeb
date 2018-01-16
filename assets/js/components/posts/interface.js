@@ -127,4 +127,23 @@ ComunicWeb.components.posts.interface = {
 
 	},
 
+	/**
+	 * Cancel a response to a survey
+	 * 
+	 * @param {int} postID The ID of the target post
+	 * @param {function} callback This function is called once we got a response
+	 */
+	cancel_survey_response: function(postID, callback){
+
+		//Prepare an API request
+		apiURI = "surveys/cancel_response";
+		params = {
+			postID: postID
+		};
+
+		//Perform the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	}
+
 }

@@ -73,10 +73,18 @@
 	padding: 10px;
 }
 
+
+/**
+ * Survey specific rules
+ */
 .post .post-survey-question {
 	text-align: center;
 }
 
 .post .post-survey-chart-contener {
 	margin-bottom: 10px;
+}
+
+.post .survey-given-response {
+	text-align: center;
 }
