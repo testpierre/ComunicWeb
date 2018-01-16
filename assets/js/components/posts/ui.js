@@ -14,12 +14,17 @@ ComunicWeb.components.posts.ui = {
 	 */
 	display_post: function(infos, target){
 
-		//Create post root element
-		var postRoot = createElem2({
-			appendTo: target,
-			type: "div",
-			class: "post"
-		});
+		//Check if it is required to create a post root element or not
+		if(target.className.includes("post"))
+			postRoot = target;
+
+		else
+			//Create post root element
+			var postRoot = createElem2({
+				appendTo: target,
+				type: "div",
+				class: "post"
+			});
 
 		//Display user block
 		var userBlock = createElem2({
