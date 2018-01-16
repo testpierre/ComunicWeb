@@ -26,6 +26,25 @@ ComunicWeb.components.posts.interface = {
 	},
 
 	/**
+	 * Get single post informations
+	 * 
+	 * @param {int} postID The ID of the post to get
+	 * @param {function} callback What to do once we got post informations
+	 */
+	get_single: function(postID, callback){
+
+		//Prepare API request
+		var APIuri = "posts/get_single";
+		var params  = {
+			postID: postID
+		};
+
+		//Make the request
+		ComunicWeb.common.api.makeAPIrequest(APIuri, params, true, callback);
+
+	},
+
+	/**
 	 * Send a new post
 	 * 
 	 * @param {string} kind The kind of page
