@@ -691,6 +691,13 @@ var ComunicWeb = {
 				//TODO : implement
 			},
 
+			/**
+			 * Post actions
+			 */
+			actions: {
+				//TODO : implement
+			}
+
 		},
 
 		/**

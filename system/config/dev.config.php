@@ -220,6 +220,7 @@ class Dev {
 			"js/components/like/interface.js",
 
 			//Posts component
+			"js/components/posts/actions.js",
 			"js/components/posts/visibilityLevels.js",
 			"js/components/posts/interface.js",
 			"js/components/posts/ui.js",
