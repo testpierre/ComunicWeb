@@ -149,6 +149,12 @@ ComunicWeb.components.posts.edit = {
 				//Display success
 				ComunicWeb.common.notificationSystem.showNotification("The post has been updated !", "success");
 
+				//Reload post
+				ComunicWeb.components.posts.actions.reload_post(infos.ID, root);
+
+				//Close the modal
+				closeModal();
+
 			});
 		}
 		closeModalBtn.onclick = callback;
