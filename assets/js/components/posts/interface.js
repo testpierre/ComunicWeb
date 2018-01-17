@@ -128,6 +128,26 @@ ComunicWeb.components.posts.interface = {
 	},
 
 	/**
+	 * Send a response to a survey
+	 * 
+	 * @param {int} postID The ID of the target post
+	 * @param {int} reponseID The ID of the selected response
+	 * @param {function} callback This function is called when we got a response
+	 */
+	survey_send_response: function(postID, responseID, callback){
+
+		//Prepare an API request
+		apiURI = "surveys/send_response";
+		params = {
+			postID: postID,
+			responseID: responseID
+		};
+
+		//Perform the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	},
+
+	/**
 	 * Cancel a response to a survey
 	 * 
 	 * @param {int} postID The ID of the target post

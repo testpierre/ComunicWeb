@@ -629,6 +629,77 @@ ComunicWeb.components.posts.ui = {
 					}
 				}
 
+				else {
+
+					//Offer the user the possibility to respond the survey
+					var surveyResponseForm = createElem2({
+						appendTo: surveyResponse,
+						type: "div",
+						class: "input-group"
+					});
+
+					//Create response chooser
+					var surveyResponseChooser = createElem2({
+						appendTo: surveyResponseForm,
+						type: "select",
+						class: "form-control"
+					});
+
+					//Display options
+					for(j in survey_choices){
+						
+						//Create an element for the choice
+						option = createElem2({
+							appendTo: surveyResponseChooser,
+							type: "option",
+							innerHTML: survey_choices[j].name,
+							value: survey_choices[j].choiceID,
+						});
+
+					}
+
+					//Add confirm button
+					var chooseButtonSpan = createElem2({
+						appendTo: surveyResponseForm,
+						type: "span",
+						class: "input-group-btn"
+					});
+
+					var chooseButton = createElem2({
+						appendTo: chooseButtonSpan,
+						type: "button",
+						class: "btn btn-default",
+						innerHTML: "Send"
+					});
+
+					//Make confirm button lives
+					chooseButton.onclick = function(){
+						
+						//Get selected answer ID
+						var response_id = surveyResponseChooser.value;
+
+						//Lock send button
+						chooseButton.disabled = true;
+
+						//Perform a request on the server
+						ComunicWeb.components.posts.interface.survey_send_response(infos.ID, response_id, function(response){
+
+							//Unlock button
+							chooseButton.disabled = false;
+
+							//Check for errors
+							if(response.error){
+								ComunicWeb.common.notificationSystem.showNotification("Could send response to survey !", "danger");
+								return;
+							}
+
+							//Reload post
+							ComunicWeb.components.posts.actions.reload_post(infos.ID, postRoot);
+
+
+						});
+					}
+				}
 
 			}
 		}
