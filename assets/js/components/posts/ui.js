@@ -676,13 +676,13 @@ ComunicWeb.components.posts.ui = {
 					chooseButton.onclick = function(){
 						
 						//Get selected answer ID
-						var response_id = surveyResponseChooser.value;
+						var choice_id = surveyResponseChooser.value;
 
 						//Lock send button
 						chooseButton.disabled = true;
 
 						//Perform a request on the server
-						ComunicWeb.components.posts.interface.survey_send_response(infos.ID, response_id, function(response){
+						ComunicWeb.components.posts.interface.survey_send_response(infos.ID, choice_id, function(response){
 
 							//Unlock button
 							chooseButton.disabled = false;
