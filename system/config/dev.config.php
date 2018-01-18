@@ -227,6 +227,11 @@ class Dev {
 			"js/components/posts/form.js",
 			"js/components/posts/edit.js",
 
+			//Comments component
+			"js/components/comments/ui.js",
+			"js/components/comments/interface.js",
+			"js/components/comments/utils.js",
+
 			//Modern textarea handler
 			"js/components/textarea.js",
 

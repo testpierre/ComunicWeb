@@ -701,6 +701,34 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Comments component
+		 */
+		comments: {
+
+			/**
+			 * Comments UI interface
+			 */
+			ui:{
+				//TODO : implement
+			},
+
+			/**
+			 * Comments interface
+			 */
+			interface: {
+				//TODO : implement
+			},
+
+			/**
+			 * Comments utilities
+			 */
+			utils: {
+				//TODO : implement
+			}
+
+		},
+
+		/**
 		 * Modern textarea handler
 		 */
 		textarea: {

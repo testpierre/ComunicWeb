@@ -748,6 +748,10 @@ ComunicWeb.components.posts.ui = {
 			userLiking,
 			likesTarget
 		);
+
+		//Load comments (if possible)
+		if(infos.comments != null)
+			ComunicWeb.components.comments.ui.display(infos.comments, infos.ID, postRoot);
 	},
 
 	/**
