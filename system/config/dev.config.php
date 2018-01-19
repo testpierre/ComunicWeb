@@ -142,6 +142,9 @@ class Dev {
 			//Movies picker
 			"css/components/movies/picker.css",
 
+			//Comments component
+			"css/components/comments/ui.css",
+
 		//Pages stylesheets
 			//User Page
 			"css/pages/userPage/main.css",
