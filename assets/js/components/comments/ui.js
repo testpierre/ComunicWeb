@@ -50,17 +50,74 @@ ComunicWeb.components.comments.ui = {
 			class: "box-comments post-comments"
 		});
 
-
+		//Process the list of comments
+		for(i in infos){
+			this._show_comment(infos[i], usersInfos['user-' + infos[i].userID], contener);
+		}
 
 	},
 
 	/**
 	 * Show a comment
 	 * 
-	 * 
+	 * @param {object} infos Informations about the comment
+	 * @param {object} user Informations about the user
+	 * @param {HTMLElement} target The target for the comment
 	 */
-	_show_comment: function(){
+	_show_comment: function(infos, user, target){
+		
+		//Create comment contener
+		var commentContener = createElem2({
+			appendTo: target,
+			type: "div",
+			class: "box-comment"
+		});
 
+		//Add user image
+		createElem2({
+			appendTo: commentContener,
+			type: "img",
+			class: "img-circle imgs-sm",
+			src: user.accountImage
+		});
+
+		//Create comment text
+		var commentText = createElem2({
+			appendTo: commentContener,
+			type: "div",
+			class: "comment-text"
+		});
+
+		//Add usernmae
+		var userNameContener = createElem2({
+			appendTo: commentText,
+			type: "span",
+			class: "username",
+			innerHTML: userFullName(user)
+		});
+
+		//Add right text
+		var rightContener = createElem2({
+			appendTo: userNameContener,
+			type: "span",
+			class: "text-muted pull-right"
+		});
+
+		//Add comment creation date
+		createElem2({
+			appendTo: rightContener,
+			type: "span",
+			innerHTML: ComunicWeb.common.date.timeDiffToStr(infos.time_sent) + " ago"
+		});
+
+		//Add comment content
+		var commentContent = createElem2({
+			appendTo: commentText,
+			type: "div",
+			innerHTML: infos.content
+		});
+
+		//Add comment image (if any)
 	},
 
 }
