@@ -61,6 +61,16 @@ function userID(){
 }
 
 /**
+ * Returns the full name of a user
+ * 
+ * @param {Object} infos Informations about the user
+ * @return {String} The full name of the user
+ */
+function userFullName(infos){
+    return infos.firstName + " " + infos.lastName;
+}
+
+/**
  * Return the ID of a user, or its path, depending of what 
  * is available
  * 
