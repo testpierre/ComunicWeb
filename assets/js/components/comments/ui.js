@@ -118,6 +118,35 @@ ComunicWeb.components.comments.ui = {
 		});
 
 		//Add comment image (if any)
+		if(infos.img_url != null){
+			
+			var commentImageContener = createElem2({
+				appendTo: commentText,
+				type: "div",
+				class: "comment-img-contener"
+			});
+
+			var commentImageLink = createElem2({
+				appendTo: commentImageContener,
+				type: "a",
+				href: infos.img_url
+			});
+
+			createElem2({
+				appendTo: commentImageLink,
+				type: "img",
+				class: "comment-img",
+				src: infos.img_url
+			});
+
+			commentImageLink.onclick = function(){
+				$(this).ekkoLightbox({
+					alwaysShowClose: true,
+				});
+				return false;
+			}
+
+		}
 	},
 
 }

@@ -4,6 +4,16 @@
  * @author Pierre HUBERT
  */
 
-.post-comments{
+.post-comments {
 	padding: 10px;
+}
+
+.post-comments .comment-img-contener {
+	text-align: center;
+}
+
+.post-comments img.comment-img {
+	width: 100px !important;
+	height: auto !important;
+	float: none;
 }
