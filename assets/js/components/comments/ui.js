@@ -96,7 +96,7 @@ ComunicWeb.components.comments.ui = {
 			innerHTML: userFullName(user)
 		});
 
-		//Add right text
+		//Add right elements
 		var rightContener = createElem2({
 			appendTo: userNameContener,
 			type: "span",
@@ -109,6 +109,24 @@ ComunicWeb.components.comments.ui = {
 			type: "span",
 			innerHTML: ComunicWeb.common.date.timeDiffToStr(infos.time_sent) + " ago"
 		});
+
+		//Offer the user the possibility to delete the comment if he is allowed to do so
+		if(userID() == infos.userID){
+
+			//Create a button to delete the comment
+			var deleteCommentLink = createElem2({
+				appendTo: rightContener,
+				type: "a",
+				class: "delete-comment-link"
+			});
+
+			createElem2({
+				appendTo: deleteCommentLink,
+				type: "i",
+				class: "fa fa-trash"
+			});
+
+		}
 
 		//Add comment content
 		var commentContent = createElem2({
