@@ -126,6 +126,35 @@ ComunicWeb.components.comments.ui = {
 				class: "fa fa-trash"
 			});
 
+			//Make button lives
+			deleteCommentLink.onclick = function(){
+
+				ComunicWeb.common.messages.confirm("Are you sure do you want to delete this comment ? This operation is unrecoverable!", function(response){
+
+					//Check if user cancelled the operation
+					if(!response)
+						return;
+					
+					//Hide the comment
+					commentContener.style.visibility = "hidden";
+					
+					//Delete the comment
+					ComunicWeb.components.comments.interface.delete(infos.ID, function(response){
+
+						commentContener.style.visibility = "visible";
+
+						//Check for errors
+						if(response.error){
+							ComunicWeb.common.notificationSystem.showNotification("Could not delete comment!", "danger");
+							return;
+						}
+
+
+					});
+
+				});
+
+			}
 		}
 
 		//Add comment content
