@@ -18,11 +18,13 @@
 	float: none;
 }
 
-.post-comments .delete-comment-link {
+.post-comments .delete-comment-link,
+.post-comments .edit-comment-link {
 	margin-left: 5px;
 	color: #b5bbc8;
 }
 
-.post-comments .delete-comment-link:active {
+.post-comments .delete-comment-link:active,
+.post-comments .edit-comment-link:active {
 	color: black;
 }

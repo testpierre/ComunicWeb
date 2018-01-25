@@ -110,8 +110,25 @@ ComunicWeb.components.comments.ui = {
 			innerHTML: ComunicWeb.common.date.timeDiffToStr(infos.time_sent) + " ago"
 		});
 
-		//Offer the user the possibility to delete the comment if he is allowed to do so
+		//Offer the user the possibility to delete and update the comment if he is allowed to do so
 		if(userID() == infos.userID){
+
+			//Create a button to update the comment
+			var editCommentLink = createElem2({
+				appendTo: rightContener,
+				type: "a",
+				class: "edit-comment-link"
+			});
+
+			createElem2({
+				appendTo: deleteCommentLink,
+				type: "i",
+				class: "fa fa-edit"
+			});
+
+			//Make edit button lives
+			//Open in editor (separate file)
+
 
 			//Create a button to delete the comment
 			var deleteCommentLink = createElem2({
@@ -126,7 +143,7 @@ ComunicWeb.components.comments.ui = {
 				class: "fa fa-trash"
 			});
 
-			//Make button lives
+			//Make delete button lives
 			deleteCommentLink.onclick = function(){
 
 				ComunicWeb.common.messages.confirm("Are you sure do you want to delete this comment ? This operation is unrecoverable!", function(response){
