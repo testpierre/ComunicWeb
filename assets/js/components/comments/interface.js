@@ -7,6 +7,25 @@
 ComunicWeb.components.comments.interface = {
 
 	/**
+	 * Get informations about a single comment
+	 * 
+	 * @param {number} commentID The ID of the comment to get
+	 * @param {function} callback
+	 */
+	get_single: function(commentID, callback) {
+
+		//Perform a request on the API
+		var apiURI = "comments/get_single";
+		var params = {
+			commentID: commentID
+		};
+
+		//Make the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
+
+	/**
 	 * Update a comment content
 	 * 
 	 * @param {number} commentID The ID of the comment to update
