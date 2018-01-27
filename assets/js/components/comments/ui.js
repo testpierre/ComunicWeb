@@ -251,6 +251,27 @@ ComunicWeb.components.comments.ui = {
 			}
 
 		}
+
+		//Load likes
+		var likesTarget = createElem2({
+			appendTo: commentText,
+			type: "div",
+		});
+
+		var userLiking = null;
+		if(signed_in()){
+			userLiking = infos.userlike;
+		}
+
+		//Call component
+		ComunicWeb.components.like.button.display(
+			"comment",
+			infos.ID,
+			infos.likes,
+			userLiking,
+			likesTarget
+		);
+
 	},
 
 }
