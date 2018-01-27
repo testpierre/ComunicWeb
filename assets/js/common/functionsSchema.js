@@ -101,6 +101,11 @@ var ComunicWeb = {
 			 * Create and display a confirmation dialog
 			 */
 			confirm: function(message, callback){},
+
+			/**
+			 * Prompt the user to input a string
+			 */
+			inputString: function(title, message, defaultValue, callback){},
 		},
 
 		/**
@@ -717,6 +722,13 @@ var ComunicWeb = {
 			 */
 			interface: {
 				//TODO : implement
+			},
+
+			/**
+			 * Comments editor
+			 */
+			editor: {
+
 			},
 
 			/**
