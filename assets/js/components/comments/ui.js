@@ -121,13 +121,18 @@ ComunicWeb.components.comments.ui = {
 			});
 
 			createElem2({
-				appendTo: deleteCommentLink,
+				appendTo: editCommentLink,
 				type: "i",
 				class: "fa fa-edit"
 			});
 
 			//Make edit button lives
-			//Open in editor (separate file)
+			editCommentLink.onclick = function(){
+
+				//Open comment editor
+				ComunicWeb.components.comments.editor.open(infos, commentContener);
+				
+			}
 
 
 			//Create a button to delete the comment

@@ -7,6 +7,27 @@
 ComunicWeb.components.comments.interface = {
 
 	/**
+	 * Update a comment content
+	 * 
+	 * @param {number} commentID The ID of the comment to update
+	 * @param {string} content The new content of the comment
+	 * @param {function} callback
+	 */
+	edit: function(commentID, content, callback){
+
+		//Perform a request on the API
+		var apiURI = "comments/edit";
+		var params = {
+			commentID: commentID,
+			content: content
+		};
+
+		//Make the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
+
+	/**
 	 * Delete a comment
 	 * 
 	 * @param {number} commentID The ID of the comment to delete
