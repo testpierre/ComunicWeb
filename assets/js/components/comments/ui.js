@@ -58,6 +58,30 @@ ComunicWeb.components.comments.ui = {
 	},
 
 	/**
+	 * Display a single comment
+	 * 
+	 * @param {Object} infos Informations about the comment to display
+	 * @param {HTMLElement} target The target for the comment
+	 */
+	display_comment: function(infos, target){
+
+		//Get informations about the user
+		ComunicWeb.user.userInfos.getUserInfos(infos.userID, function(result){
+
+			//Check for errors
+			if(result.error){
+				ComunicWeb.common.notificationSystem.showNotification("Couldn't get informations about a user!", "danger");
+				return;
+			}
+
+			//Display the comment
+			ComunicWeb.components.comments.ui._show_comment(infos, result, target);
+
+		});
+
+	},
+
+	/**
 	 * Show a comment
 	 * 
 	 * @param {object} infos Informations about the comment
@@ -66,12 +90,23 @@ ComunicWeb.components.comments.ui = {
 	 */
 	_show_comment: function(infos, user, target){
 		
-		//Create comment contener
-		var commentContener = createElem2({
-			appendTo: target,
-			type: "div",
-			class: "box-comment"
-		});
+		//Create comment contener (if required)
+		if(target.className != "box-comment"){
+
+			var commentContener = createElem2({
+				appendTo: target,
+				type: "div",
+				class: "box-comment"
+			});
+
+		}
+
+		//Empty comment contener
+		else {
+			emptyElem(target);
+			var commentContener = target;
+		}
+		
 
 		//Add user image
 		createElem2({

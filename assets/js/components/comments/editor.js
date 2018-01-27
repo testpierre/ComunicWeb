@@ -31,7 +31,8 @@ ComunicWeb.components.comments.editor = {
 				}
 
 				//Else perform next actions
-				
+				//Reload the comment
+				ComunicWeb.components.comments.actions.reload(infos.ID, root);
 			});
 
 		}

@@ -232,6 +232,7 @@ class Dev {
 
 			//Comments component
 			"js/components/comments/ui.js",
+			"js/components/comments/actions.js",
 			"js/components/comments/interface.js",
 			"js/components/comments/editor.js",
 			"js/components/comments/utils.js",

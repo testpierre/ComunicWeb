@@ -718,6 +718,13 @@ var ComunicWeb = {
 			},
 
 			/**
+			 * Comment actions
+			 */
+			actions: {
+				//TODO : implement
+			},
+
+			/**
 			 * Comments interface
 			 */
 			interface: {
