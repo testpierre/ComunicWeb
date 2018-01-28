@@ -144,6 +144,7 @@ class Dev {
 
 			//Comments component
 			"css/components/comments/ui.css",
+			"css/components/comments/form.css",
 
 		//Pages stylesheets
 			//User Page
@@ -234,6 +235,7 @@ class Dev {
 			"js/components/comments/ui.js",
 			"js/components/comments/actions.js",
 			"js/components/comments/interface.js",
+			"js/components/comments/form.js",
 			"js/components/comments/editor.js",
 			"js/components/comments/utils.js",
 

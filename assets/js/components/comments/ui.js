@@ -55,6 +55,11 @@ ComunicWeb.components.comments.ui = {
 			this._show_comment(infos[i], usersInfos['user-' + infos[i].userID], contener);
 		}
 
+		//Add comment creation form (if possible)
+		if(signed_in()){
+			ComunicWeb.components.comments.form.display(postID, contener)
+		}
+
 	},
 
 	/**

@@ -1,0 +1,25 @@
+/**
+ * Comments form stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.comment-creation-form {
+	margin-top: 10px;
+}
+
+.comment-creation-form:first-child {
+	margin-top: 0px;
+}
+
+.comment-creation-form .comment-image-select {
+	margin-bottom: -2px !important;
+}
+
+.comment-creation-form .comment-image-select input[type="file"]{
+	display: none;
+}
+
+.comment-creation-form .comment-image-select a {
+	color: black;
+}

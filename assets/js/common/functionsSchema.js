@@ -732,10 +732,17 @@ var ComunicWeb = {
 			},
 
 			/**
+			 * Comments creation form
+			 */
+			form: {
+				//TODO : implement
+			},
+
+			/**
 			 * Comments editor
 			 */
 			editor: {
-
+				//TODO : implement
 			},
 
 			/**
