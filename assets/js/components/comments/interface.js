@@ -7,6 +7,24 @@
 ComunicWeb.components.comments.interface = {
 
 	/**
+	 * Create a new comment
+	 * 
+	 * @param {number} postID The ID of the target post
+	 * @param {FormData} data The data of the new comment
+	 * @param {function} callback
+	 */
+	create: function(postID, data, callback){
+
+		//Prepare the request
+		var apiURI = "comments/create";
+		data.append("postID", postID);
+
+		//Make it
+		ComunicWeb.common.api.makeFormDatarequest(apiURI, data, true, callback);
+
+	},
+
+	/**
 	 * Get informations about a single comment
 	 * 
 	 * @param {number} commentID The ID of the comment to get

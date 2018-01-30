@@ -33,8 +33,10 @@ ComunicWeb.components.comments.form = {
 			type: "input",
 			elemType: "text",
 			class: "form-control",
-			placeholder: "New comment..."
+			placeholder: "New comment...",
+			name: "content"
 		});
+		
 
 		//Add button group
 		var buttonsGroup = createElem2({
@@ -53,7 +55,8 @@ ComunicWeb.components.comments.form = {
 		var imageFile = createElem2({
 			appendTo: addImageLabel,
 			type: "input",
-			elemType: "file"
+			elemType: "file",
+			name: "image"
 		});
 
 		var imageButton = createElem2({
@@ -73,7 +76,36 @@ ComunicWeb.components.comments.form = {
 
 		//Catch form when submitted
 		commentForm.onsubmit = function(){
-			alert("Send !");
+
+			//Check for image
+			var hasImage = imageFile.files.length > 0;
+
+			//Check the comment
+			if(!hasImage && newCommentText.value < 5){
+				ComunicWeb.common.notificationSystem.showNotification("Please type a valid comment! (at least 5 characters)", "danger");
+				return false;
+			}
+
+			//Lock send button
+			sendButton.disabled = true;
+
+			//Try to create the comment
+			var formData = new FormData(commentForm);
+			ComunicWeb.components.comments.interface.create(postID, formData, function(result){
+
+				//Unlock send button
+				sendButton.disabled = false;
+
+				//Check for errors
+				if(result.error){
+					ComunicWeb.common.notificationSystem.showNotification("Couldn't create comment! (check its content)", "danger");
+					return;
+				}
+
+				//Perform next actions
+			});
+
+
 			return false;
 		}
 	},
