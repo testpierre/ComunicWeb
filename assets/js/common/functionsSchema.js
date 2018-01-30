@@ -52,6 +52,11 @@ var ComunicWeb = {
 			 */
 			makeAPIrequest: function(apiURI, params, requireLoginTokens, nextAction){},
 
+			/**
+			 * Make an API request with a prepared form data object
+			 */
+			makeFormDatarequest: function(apiURI, data, requireLoginTokens, nextAction){},
+
 			//TODO : implement
 		},
 
