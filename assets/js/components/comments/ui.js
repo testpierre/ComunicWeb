@@ -211,7 +211,9 @@ ComunicWeb.components.comments.ui = {
 							return;
 						}
 
-
+						//Delete the comment node
+						emptyElem(commentContener);
+						commentContener.remove();
 					});
 
 				});
