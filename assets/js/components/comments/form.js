@@ -13,12 +13,25 @@ ComunicWeb.components.comments.form = {
 	 */
 	display: function(postID, target){
 		
-		//Create form contener
-		var commentForm = createElem2({
-			appendTo: target,
-			type: "form",
-			class: "comment-creation-form"
-		});
+		//Check if we are creating a new comment of or reseting an existing one
+		if(target.className != "comment-creation-form"){
+
+			//Create form contener
+			var commentForm = createElem2({
+				appendTo: target,
+				type: "form",
+				class: "comment-creation-form"
+			});
+
+		}
+		else {
+
+			//Reset current form
+			emptyElem(target);
+			var commentForm = target;
+
+		}
+		
 
 		//Create input group
 		var inputGroup = createElem2({
@@ -102,7 +115,15 @@ ComunicWeb.components.comments.form = {
 					return;
 				}
 
-				//Perform next actions
+				//Reset the creation form
+				ComunicWeb.components.comments.form.display(postID, commentForm);
+
+				//Load the new comment before the form element
+				var newCommentTarget = createElem2({
+					insertBefore: commentForm,
+					type: "div"
+				});
+				ComunicWeb.components.comments.actions.reload(result.commentID, newCommentTarget);
 			});
 
 
