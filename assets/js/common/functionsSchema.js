@@ -902,6 +902,22 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Post page
+		 */
+		postPage: {
+
+			/**
+			 * Post page main script
+			 */
+			main: {
+
+				//TODO: implement
+
+			},
+
+		},
+
+		/**
 		 * Login controller
 		 */
 		login:{

@@ -267,6 +267,9 @@ class Dev {
 			"js/pages/userPage/profileInfos.js",
 			"js/pages/userPage/posts.js",
 
+			//Post page
+			"js/pages/postPage/main.js",
+
 			//Login page
 			"js/pages/login.js",
 			

@@ -24,6 +24,15 @@ ComunicWeb.pagesList = {
     },
 
     /**
+     * Single post page
+     */
+    post: {
+        pageTitle: "Post",
+        methodHandler: "ComunicWeb.pages.postPage.main.open",
+        disableMenus: false
+    },
+
+    /**
      * Login page
      */
     login: {
