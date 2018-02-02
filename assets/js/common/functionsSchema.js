@@ -918,6 +918,20 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Latest posts page
+		 */
+		latestPosts: {
+
+			/**
+			 * Main script
+			 */
+			main: {
+				//TODO: implement
+			},
+
+		},
+
+		/**
 		 * Login controller
 		 */
 		login:{

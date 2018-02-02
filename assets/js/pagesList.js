@@ -33,6 +33,15 @@ ComunicWeb.pagesList = {
     },
 
     /**
+     * Latest post
+     */
+    latest: {
+        pageTitle: "Latest",
+        methodHandler: "ComunicWeb.pages.latestPosts.main.open",
+        disableMenus: false
+    },
+
+    /**
      * Login page
      */
     login: {

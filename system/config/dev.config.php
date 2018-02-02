@@ -153,6 +153,9 @@ class Dev {
 
 			//Post page
 			"css/pages/postPage/main.css",
+
+			//Latest post page stylesheet
+			"css/pages/latestPosts/main.css",
 	);
 
 	/**
@@ -272,6 +275,9 @@ class Dev {
 
 			//Post page
 			"js/pages/postPage/main.js",
+
+			//Latest posts page
+			"js/pages/latestPosts/main.js",
 
 			//Login page
 			"js/pages/login.js",

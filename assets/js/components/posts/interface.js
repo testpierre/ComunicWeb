@@ -26,6 +26,22 @@ ComunicWeb.components.posts.interface = {
 	},
 
 	/**
+	 * Get the list of the latest posts
+	 * 
+	 * @param {function} callback What to do when we got response
+	 */
+	get_latest: function(callback){
+
+		//Prepare API request
+		var APIuri = "posts/get_latest";
+		var params = {};
+
+		//Perform the request
+		ComunicWeb.common.api.makeAPIrequest(APIuri, params, true, callback);
+
+	},
+
+	/**
 	 * Get single post informations
 	 * 
 	 * @param {int} postID The ID of the post to get
