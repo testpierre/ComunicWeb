@@ -150,6 +150,9 @@ class Dev {
 			//User Page
 			"css/pages/userPage/main.css",
 			"css/pages/userPage/accessForbidden.css",
+
+			//Post page
+			"css/pages/postPage/main.css",
 	);
 
 	/**

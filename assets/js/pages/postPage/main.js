@@ -57,14 +57,36 @@ ComunicWeb.pages.postPage.main = {
 
 			}
 
-			//Create post contener
-			var postContener = createElem2({
+			//Create row
+			var pageRow = createElem2({
 				appendTo: target,
-				type: "div"
+				type: "div",
+				class: "row single-post-row"
+			});
+
+			//Post column
+			var column = createElem2({
+				appendTo: pageRow,
+				type: "div",
+				class: "col-md-6"
+			});
+
+			//Create post box
+			var postBox = createElem2({
+				appendTo: column,
+				type: "div",
+				class: "box box-primary"
+			});
+
+			//Create box body
+			var boxBody = createElem2({
+				appendTo: postBox,
+				type: "div",
+				class: "box-body"
 			});
 
 			//Display the post
-			ComunicWeb.components.posts.ui.display_post(response, postContener);
+			ComunicWeb.components.posts.ui.display_post(response, boxBody);
 
 		});
 
