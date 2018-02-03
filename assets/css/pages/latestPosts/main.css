@@ -3,3 +3,13 @@
  *
  * @author Pierre HUBERT
  */
+
+/**
+ * Error message
+ */
+.latestPostsError {
+	width: 100%;
+	max-width: 500px;
+	margin: auto;
+	margin-top: 30px;
+}

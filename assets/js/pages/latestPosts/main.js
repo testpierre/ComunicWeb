@@ -20,6 +20,11 @@ ComunicWeb.pages.latestPosts.main = {
 			//Check for errors - display a modal
 			if(response.error){
 				
+				//Display modal error
+				var error = ComunicWeb.common.messages.createCalloutElem("Error", "Could not get the list of the latest posts ! Please try to refresh the page...", "danger");
+				error.className += " latestPostsError";
+				target.appendChild(error);
+
 				return;
 			}
 
