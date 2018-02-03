@@ -10,14 +10,20 @@ ComunicWeb.components.posts.interface = {
 	 * Get user posts
 	 * 
 	 * @param {int} userID The ID of the target user
+	 * @param {int} lastPostID The ID of the last post loaded
 	 * @param {function} callback Callback function
 	 */
-	get_user: function(userID, callback){
+	get_user: function(userID, lastPostID, callback){
+
+		//Load the previous posts to the loaded post if required
+		if(lastPostID > 0)
+			lastPostID = lastPostID-1;
 
 		//Prepare the API request
 		var APIuri = "posts/get_user";
 		var params = {
-			userID: userID
+			userID: userID,
+			startFrom: lastPostID
 		};
 
 		//Make the request
