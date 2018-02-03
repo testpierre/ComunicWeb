@@ -17,7 +17,7 @@ ComunicWeb.components.posts.interface = {
 
 		//Load the previous posts to the loaded post if required
 		if(lastPostID > 0)
-			lastPostID = lastPostID-1;
+			lastPostID--;
 
 		//Prepare the API request
 		var APIuri = "posts/get_user";
@@ -34,13 +34,19 @@ ComunicWeb.components.posts.interface = {
 	/**
 	 * Get the list of the latest posts
 	 * 
+	 * @param {number} lastPostID The ID of the loast loaded post (or 0)
 	 * @param {function} callback What to do when we got response
 	 */
-	get_latest: function(callback){
+	get_latest: function(lastPostID, callback){
+
+		if(lastPostID > 0)
+			lastPostID--;
 
 		//Prepare API request
 		var APIuri = "posts/get_latest";
-		var params = {};
+		var params = {
+			startFrom: lastPostID
+		};
 
 		//Perform the request
 		ComunicWeb.common.api.makeAPIrequest(APIuri, params, true, callback);
