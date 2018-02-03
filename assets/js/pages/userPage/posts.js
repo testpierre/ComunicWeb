@@ -148,7 +148,7 @@ ComunicWeb.pages.userPage.posts = {
 	 * 
 	 * @param {HTMLElement} target The target for the message
 	 */
-	_no_posts_msg(target){
+	_no_posts_msg: function(target){
 		
 		var msgContener = createElem2({
 			appendTo: target,
