@@ -79,7 +79,7 @@ ComunicWeb.pages.latestPosts.main = {
 
 		//Check if there aren't any post to display
 		if(list.length == 0){
-
+			//Display message
 			var message = ComunicWeb.common.messages.createCalloutElem("No post to display", "Posts from you and your friend will appear here...", "info");
 			message.className += " noLatestPosts";
 			boxBody.appendChild(message);
