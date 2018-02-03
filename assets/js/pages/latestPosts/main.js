@@ -40,7 +40,7 @@ ComunicWeb.pages.latestPosts.main = {
 		var column = createElem2({
 			appendTo: pageRow,
 			type: "div",
-			class: "col-md-6"
+			class: "col-md-5"
 		});
 
 		//Create post box
