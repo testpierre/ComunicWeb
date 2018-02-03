@@ -136,7 +136,7 @@ ComunicWeb.pages.userPage.posts = {
 		}
 
 		//Check if there is not any posts
-		if(posts.length == 0 && this._last_post_id == 0){
+		if(this._last_post_id == 0){
 			this._no_posts_msg(target);
 		}
 
