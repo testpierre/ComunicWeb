@@ -73,10 +73,16 @@ ComunicWeb.pages.latestPosts.main = {
 
 		//Process the list of posts
 		for (let index = 0; index < list.length; index++) {
-
 			//Display the post
 			ComunicWeb.components.posts.ui.display_post(list[index], boxBody);
+		}
 
+		//Check if there aren't any post to display
+		if(list.length == 0){
+
+			var message = ComunicWeb.common.messages.createCalloutElem("No post to display", "Posts from you and your friend will appear here...", "info");
+			message.className += " noLatestPosts";
+			boxBody.appendChild(message);
 		}
 	}
 }
