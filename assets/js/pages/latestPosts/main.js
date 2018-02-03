@@ -29,8 +29,54 @@ ComunicWeb.pages.latestPosts.main = {
 			}
 
 			//Display the list of posts
-
+			ComunicWeb.pages.latestPosts.main._display_list(response, target);
 		});
 
 	},
+
+	/**
+	 * Display the list of latest post
+	 * 
+	 * @param {Object} list The list of posts to display
+	 * @param {HTMLElement} target The target for the posts
+	 */
+	_display_list: function(list, target){
+
+		//Create post list box
+		//Create row
+		var pageRow = createElem2({
+			appendTo: target,
+			type: "div",
+			class: "row latest-posts-row"
+		});
+
+		//Post column
+		var column = createElem2({
+			appendTo: pageRow,
+			type: "div",
+			class: "col-md-6"
+		});
+
+		//Create post box
+		var postBox = createElem2({
+			appendTo: column,
+			type: "div",
+			class: "box box-primary"
+		});
+
+		//Create box body
+		var boxBody = createElem2({
+			appendTo: postBox,
+			type: "div",
+			class: "box-body"
+		});
+
+		//Process the list of posts
+		for (let index = 0; index < list.length; index++) {
+
+			//Display the post
+			ComunicWeb.components.posts.ui.display_post(list[index], boxBody);
+
+		}
+	}
 }
