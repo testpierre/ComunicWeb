@@ -77,14 +77,11 @@ var ComunicWeb = {
 			getCurrentLanguage: function(){},
 
 			/**
-			 * Include and install specified language
-			 */
-			installLanguage: function(languageID){},
-
-			/**
 			 * Initializate languages
 			 */
 			initLanguages: function(){},
+
+			//TODO : implement
 
 			/**
 			 *  Return a string in correct language

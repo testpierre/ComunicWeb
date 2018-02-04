@@ -189,8 +189,9 @@ class Dev {
 		"js/common/date.js",
 		"js/common/system.js",
 
-		//Default langage
+		//Languages
 		"js/langs/en.inc.js",
+		"js/langs/fr.inc.js",
 
 		//Components
 			//Mail caching
