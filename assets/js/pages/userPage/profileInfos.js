@@ -85,7 +85,7 @@ ComunicWeb.pages.userPage.profileInfos = {
 			infos.userID,
 			infos.pageLikes,
 			userLiking,
-			userLikesTarget,
+			userLikesTarget
 		);
 
 
