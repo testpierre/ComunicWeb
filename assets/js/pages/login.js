@@ -31,10 +31,19 @@ ComunicWeb.pages.login = {
 		}
 
 		//Prepare additional data
-		var additionalTemplateData = {};
+		var additionalTemplateData = {
+			
+			//Apply translations
+			"login_top_msg": lang("_login_page_top_msg"),
+			"_login_page_remember_me": lang("_login_page_remember_me"),
+			"email": lang("_login_page_email_placeholder"),
+			"password": lang("_login_page_password_placeholder"),
+			"sign_in": lang("_login_page_submit"),
+		};
 
 		//Preparing next actions
 		var afterParsingTemplate = function(){
+
 			//Change body class name
 			document.body.className = "login-page hold-transition";
 
@@ -92,7 +101,7 @@ ComunicWeb.pages.login = {
 			ComunicWeb.common.formChecker.checkInput(userpasswordInput, true) //Check password input
 		)){
 		   //Error notification
-		   ComunicWeb.common.notificationSystem.showNotification("Please check what you've typed !", "error");
+		   ComunicWeb.common.notificationSystem.showNotification(lang("_login_page_bad_input"), "error");
 
 		   //Stop function execution
 		   return false;
@@ -137,7 +146,7 @@ ComunicWeb.pages.login = {
 	 */
 	displayLoginError: function(){
 		//Create error modal
-		errorMessageElem = ComunicWeb.common.messages.createCalloutElem("Login failed", "Please check your usermail and password", "danger");
+		errorMessageElem = ComunicWeb.common.messages.createCalloutElem(lang("_login_page_error_head"), lang("_login_page_error_message"), "danger");
 
 		//Apply error modal
 		document.getElementById('loginMessagesTarget').innerHTML = "";
