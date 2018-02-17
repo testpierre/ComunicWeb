@@ -121,7 +121,8 @@ ComunicWeb.components.comments.form = {
 				//Load the new comment before the form element
 				var newCommentTarget = createElem2({
 					insertBefore: commentForm,
-					type: "div"
+					type: "div",
+					class: "box-comment"
 				});
 				ComunicWeb.components.comments.actions.reload(result.commentID, newCommentTarget);
 			});
