@@ -28,6 +28,7 @@ ComunicWeb.components.notifications.dropdown = {
 			href: "#",
 			innerHTML: '<i class="fa fa-bell-o"></i>'
 		});
+		dropdownToggle.setAttribute("data-toggle", "dropdown");
 
 		//Add notification number
 		var notificationsNumber = createElem2({
@@ -38,7 +39,19 @@ ComunicWeb.components.notifications.dropdown = {
 		});
 
 		//Add dropdown menu
-		
+		var dropdownMenu = createElem2({
+			appendTo: dropdown,
+			type: "ul",
+			class: "dropdown-menu"
+		});
+
+		//Add dropdown header
+		var dropdownHeader = createElem2({
+			appendTo: dropdownMenu,
+			type: "li",
+			class: "header",
+			innerHTML: "Notifications"
+		});
 
 	},
 
