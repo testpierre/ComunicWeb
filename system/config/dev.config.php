@@ -256,6 +256,9 @@ class Dev {
 			"js/components/movies/interface.js",
 			"js/components/movies/picker.js",
 
+			//Notifications
+			"js/components/notifications/dropdown.js",
+
 		//User scripts
 		"js/user/loginTokens.js",
 		"js/user/userLogin.js",

@@ -35,6 +35,9 @@ ComunicWeb.components.menuBar.authenticated = {
 		//Add friends list button
 		this.addFriendListButton(navbarRightElemList);
 
+		//Add notifications dropdown
+		ComunicWeb.components.notifications.dropdown.display(navbarRightElemList);
+
 		//Add dropdown menu
 		this.addDropdown(navbarRightElemList);
 		

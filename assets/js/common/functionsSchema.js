@@ -499,6 +499,8 @@ var ComunicWeb = {
 				 * Add search form element
 				 */
 				addSearchForm: function(navbarElem){},
+
+				//TODO : implement
 			},
 		},
 
@@ -790,6 +792,23 @@ var ComunicWeb = {
 			},
 
 		},
+
+
+		/**
+		 * Notifications components
+		 */
+		notifications: {
+
+			/**
+			 * Notifications menu dropdown
+			 */
+			dropdown:{
+
+				//TODO : implement
+
+			}
+
+		}
 
 	},
 
