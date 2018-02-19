@@ -82,9 +82,18 @@ ComunicWeb.components.notifications.dropdown = {
 	 * 
 	 * @param {HTMLElement} list The notifications list to refresh
 	 */
-	refresh: function(list){
+	refresh_list: function(list){
 
-		//Perform a request on the database
+		//Perform a request on the API
+		ComunicWeb.components.notifications.interface.get_list_unread(function(result){
+
+			//Check for errors
+			if(result.error){
+				ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to retrieve notifications list !", "danger");
+				return;
+			}
+
+		});
 
 	},
 }
