@@ -820,6 +820,20 @@ var ComunicWeb = {
 			 */
 			interface: {
 				//TODO : implement
+			},
+
+			/**
+			 * Notifications UI
+			 */
+			ui: {
+				//TODO : implement
+			},
+
+			/**
+			 * Notifications utilities
+			 */
+			utils: {
+				//TODO : implement
 			}
 
 		}

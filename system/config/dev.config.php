@@ -260,6 +260,8 @@ class Dev {
 			"js/components/notifications/dropdown.js",
 			"js/components/notifications/service.js",
 			"js/components/notifications/interface.js",
+			"js/components/notifications/ui.js",
+			"js/components/notifications/utils.js",
 
 		//User scripts
 		"js/user/loginTokens.js",
