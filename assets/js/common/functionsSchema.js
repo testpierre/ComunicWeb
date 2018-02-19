@@ -806,6 +806,20 @@ var ComunicWeb = {
 
 				//TODO : implement
 
+			},
+
+			/**
+			 * Notification refresh service
+			 */
+			service: {
+				//TODO : implement
+			},
+
+			/**
+			 * Notifications interface
+			 */
+			interface: {
+				//TODO : implement
 			}
 
 		}

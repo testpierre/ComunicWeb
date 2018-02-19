@@ -53,6 +53,8 @@ ComunicWeb.components.notifications.dropdown = {
 			innerHTML: "Notifications"
 		});
 
+		//Initialize service
+		ComunicWeb.components.notifications.service.init(notificationsNumber, true);
 	},
 
 }
