@@ -17,7 +17,7 @@ ComunicWeb.components.notifications.dropdown = {
 		var dropdown = createElem2({
 			appendTo: target,
 			type: "li",
-			class: "dropdown notifications-menu"
+			class: "dropdown messages-menu"
 		});
 
 		//Add dropdown toggle
@@ -54,8 +54,12 @@ ComunicWeb.components.notifications.dropdown = {
 		});
 
 		//Add notifications list
-		var notificationsList = createElem2({
+		var notificationsListContener = createElem2({
 			appendTo: dropdownMenu,
+			type: "li"
+		});
+		var notificationsList = createElem2({
+			appendTo: notificationsListContener,
 			type: "ul",
 			class: "menu"
 		});
@@ -93,7 +97,35 @@ ComunicWeb.components.notifications.dropdown = {
 				return;
 			}
 
+			//Get the list of required users informations
+			var users_id = ComunicWeb.components.notifications.utils.get_users_id(result);
+			
+			//Get informations about the users
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(users_id, function(users){
+
+				//Check for errors
+				if(users.error){
+					ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to retrieve users informations for the notifications !", "danger");
+					return;
+				}
+
+
+				//Empty the target list
+				list.innerHTML = "";
+
+				//Process the list of notifications
+				for (let i = 0; i < result.length; i++) {
+					const notification = result[i];
+					
+					//Display the notification
+					ComunicWeb.components.notifications.ui.display_notification(notification, list, users);
+				}
+
+			}, false);
+			
+
 		});
 
 	},
+
 }

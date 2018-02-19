@@ -146,6 +146,9 @@ class Dev {
 			"css/components/comments/ui.css",
 			"css/components/comments/form.css",
 
+			//Notifications component
+			"css/components/notifications/ui.css",
+
 		//Pages stylesheets
 			//User Page
 			"css/pages/userPage/main.css",

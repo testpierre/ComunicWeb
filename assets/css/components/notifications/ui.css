@@ -1,0 +1,13 @@
+/**
+ * Notifications UI
+ *
+ * @author Pierre HUBERT
+ */
+
+.notification-contener p {
+	white-space: normal;
+}
+
+.notification-contener .notification-creation-time {
+	color: #888888;
+}
