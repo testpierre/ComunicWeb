@@ -53,8 +53,38 @@ ComunicWeb.components.notifications.dropdown = {
 			innerHTML: "Notifications"
 		});
 
+		//Add notifications list
+		var notificationsList = createElem2({
+			appendTo: dropdownMenu,
+			type: "ul",
+			class: "menu"
+		});
+
+		//Enable slimscroll
+		$(notificationsList).slimScroll({
+			height: '100%'
+		});
+
 		//Initialize service
 		ComunicWeb.components.notifications.service.init(notificationsNumber, true);
+
+		//Refresh the notifications list if the user click the dropdown button
+		dropdownToggle.onclick = function(){
+
+			ComunicWeb.components.notifications.dropdown.refresh_list(notificationsList);
+
+		}
+		
 	},
 
+	/**
+	 * Refresh the list of notifications
+	 * 
+	 * @param {HTMLElement} list The notifications list to refresh
+	 */
+	refresh: function(list){
+
+		//Perform a request on the database
+
+	},
 }
