@@ -53,8 +53,13 @@ ComunicWeb.components.notifications.ui = {
 		//Create notification action
 		var action = function(){
 
+			//Mark the notification as seen
+			ComunicWeb.components.notifications.interface.mark_seen(data.id, true);
+
+			//Process specific action
 			if(data.on_elem_type = "post"){
 
+				//Open associated post page
 				openPage("post/" + data.on_elem_id);
 
 			}
