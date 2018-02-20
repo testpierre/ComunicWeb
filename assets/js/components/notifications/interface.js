@@ -58,4 +58,19 @@ ComunicWeb.components.notifications.interface = {
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 
 	},
+
+	/**
+	 * Delete all the notifications of the user
+	 * 
+	 * @param {function} callback
+	 */
+	delete_all: function(callback){
+
+		//Perform an API request
+		var apiURI = "notifications/delete_all";
+		var params = {};
+
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	}
 }

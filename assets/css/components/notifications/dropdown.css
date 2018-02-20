@@ -1,0 +1,10 @@
+/**
+ * Notifications dropdown stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.no-notification-msg {
+	text-align: center;
+	padding: 20px;
+}

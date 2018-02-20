@@ -147,6 +147,7 @@ class Dev {
 			"css/components/comments/form.css",
 
 			//Notifications component
+			"css/components/notifications/dropdown.css",
 			"css/components/notifications/ui.css",
 
 		//Pages stylesheets

@@ -64,6 +64,49 @@ ComunicWeb.components.notifications.dropdown = {
 			class: "menu"
 		});
 
+		//Add dropdown bottom
+		var dropdownBottom = createElem2({
+			appendTo: dropdownMenu,
+			type: "li",
+			class: "footer"
+		});
+
+		//Add a button to offer the user to delete all his notifications
+		var deleteAllLink = createElem2({
+			appendTo: dropdownBottom,
+			type: "a",
+			href: "#",
+			innerHTML: "Delete all"
+		});
+
+		//Make the delete all notifications link lives
+		deleteAllLink.onclick = function(){
+
+			ComunicWeb.common.messages.confirm("Are you sure do you want to delete all the notifications ? This operation can not be cancelled !", function(accept){
+
+				//We continue only if the user confirmed the operation
+				if(!accept)
+					return;
+
+				//Perform a request to the server through the interface
+				ComunicWeb.components.notifications.interface.delete_all(function(result){
+
+					//Check for errors
+					if(result.error){
+						ComunicWeb.common.notificationSystem.showNotification("An error occured while trying to delete all the notifications !", "danger");
+						return;
+					}
+
+					//Display success
+					ComunicWeb.common.notificationSystem.showNotification("The entire list of notification has been cleared.", "success");
+
+				});
+
+
+			});
+
+		};
+
 		//Enable slimscroll
 		$(notificationsList).slimScroll({
 			height: '100%'
@@ -119,6 +162,13 @@ ComunicWeb.components.notifications.dropdown = {
 					
 					//Display the notification
 					ComunicWeb.components.notifications.ui.display_notification(notification, list, users);
+				}
+
+				//Display a message if there isn't any notification to display
+				if(result.length == 0){
+
+					list.innerHTML = "<li class='no-notification-msg'>You do not have any notification yet.</li>";
+
 				}
 
 			}, false);
