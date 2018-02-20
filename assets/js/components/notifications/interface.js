@@ -55,7 +55,7 @@ ComunicWeb.components.notifications.interface = {
 			delete_similar: delete_similar
 		};
 
-		ComunicWeb.common.api.makeAPIrequest(apiURI, params, false, callback);
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 
 	},
 }
