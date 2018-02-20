@@ -50,6 +50,17 @@ ComunicWeb.components.notifications.ui = {
 
 		}
 
+		//Create notification action
+		var action = function(){
+
+			if(data.on_elem_type = "post"){
+
+				openPage("post/" + data.on_elem_id);
+
+			}
+
+		};
+
 		//Create the notification object
 		var notificationContener = createElem2({
 			appendTo: target,
@@ -62,6 +73,7 @@ ComunicWeb.components.notifications.ui = {
 			appendTo: notificationContener,
 			type: "a"
 		});
+		notificationLink.onclick = action;
 
 		//Add notification left content
 		var notificationLeftContent = createElem2({
