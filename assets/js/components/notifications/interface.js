@@ -23,6 +23,22 @@ ComunicWeb.components.notifications.interface = {
 	},
 
 	/**
+	 * Get the number of unread news such as notifications or conversations
+	 * 
+	 * @param {function} callback
+	 */
+	getAllUnread: function(callback){
+
+		//Perform API request
+		var apiURI = "notifications/count_all_news";
+		var params = {};
+
+		//Perform the request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+		
+	}
+
+	/**
 	 * Get the list of unread notifications
 	 * 
 	 * @param {function} callback
