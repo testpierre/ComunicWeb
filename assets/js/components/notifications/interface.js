@@ -35,8 +35,8 @@ ComunicWeb.components.notifications.interface = {
 
 		//Perform the request
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
-		
-	}
+
+	},
 
 	/**
 	 * Get the list of unread notifications

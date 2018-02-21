@@ -7,11 +7,26 @@
 ComunicWeb.components.notifications.dropdown = {
 
 	/**
+	 * Display new data dropdowns
+	 * 
+	 * @param {HTMLElement} target The target for the notification area
+	 */
+	display: function(target){
+		
+		//Display the number of notifications
+		var notifs_number_elem = this.display_notifications_dropdown(target);
+
+		//Initialize service
+		ComunicWeb.components.notifications.service.init(notifs_number_elem, true);
+	},
+
+	/**
 	 * Display notifications dropdown
 	 * 
 	 * @param {HTMLElement} target The target of the notification dropdown
+	 * @return {HTMLElement} The HTML element that contains the number of unread notifications
 	 */
-	display: function(target){
+	display_notifications_dropdown: function(target){
 
 		//Create the button
 		var dropdown = createElem2({
@@ -112,16 +127,13 @@ ComunicWeb.components.notifications.dropdown = {
 			height: '100%'
 		});
 
-		//Initialize service
-		ComunicWeb.components.notifications.service.init(notificationsNumber, true);
-
 		//Refresh the notifications list if the user click the dropdown button
 		dropdownToggle.onclick = function(){
-
-			ComunicWeb.components.notifications.dropdown.refresh_list(notificationsList);
-
+			ComunicWeb.components.notifications.dropdown.refresh_list_notifications(notificationsList);
 		}
 		
+		//Return the number of notifications target
+		return notificationsNumber;
 	},
 
 	/**
@@ -129,7 +141,7 @@ ComunicWeb.components.notifications.dropdown = {
 	 * 
 	 * @param {HTMLElement} list The notifications list to refresh
 	 */
-	refresh_list: function(list){
+	refresh_list_notifications: function(list){
 
 		//Perform a request on the API
 		ComunicWeb.components.notifications.interface.get_list_unread(function(result){

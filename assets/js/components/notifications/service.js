@@ -24,17 +24,17 @@ ComunicWeb.components.notifications.service = {
 				return clearInterval(interval);
 
 			//Get the number of notifications from the API
-			ComunicWeb.components.notifications.interface.getNbUnreads(function(response){
+			ComunicWeb.components.notifications.interface.getAllUnread(function(response){
 
 				//Continue in case of success
 				if(response.error)
 					return;
 
 				//Update the target
-				target.innerHTML = response.number;
+				target.innerHTML = response.notifications;
 
 				//If the number of notifications equals 0, hide the target if required
-				if(response.number == 0 && auto_hide)
+				if(response.notifications == 0 && auto_hide)
 					target.style.display = "none";
 				else
 					target.style.display = "block";
