@@ -13,8 +13,10 @@ ComunicWeb.components.notifications.service = {
 	 * the number of unread notifications
 	 * @param {Bool} auto_hide Automatically hide the notifications 
 	 * number if there is not any new notification
+	 * @param {HTMLElement} target_conversations Optionnal, defins the target
+	 * for the number of conversations
 	 */
-	init: function(target, auto_hide){
+	init: function(target, auto_hide, target_conversations){
 
 		//Initialize interval
 		var interval = setInterval(function(){
@@ -38,6 +40,20 @@ ComunicWeb.components.notifications.service = {
 					target.style.display = "none";
 				else
 					target.style.display = "block";
+				
+				//Update the number of conversations if possible too
+				if(target_conversations){
+
+					//Update the target
+					target_conversations.innerHTML = response.conversations;
+
+					//If the number of notifications equals 0, hide the target if required
+					if(response.notifications == 0 && auto_hide)
+					target_conversations.style.display = "none";
+					else
+					target_conversations.style.display = "block";
+
+				}
 
 			});
 
