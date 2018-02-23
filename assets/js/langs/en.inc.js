@@ -18,4 +18,9 @@ ComunicWeb.common.langs.en = {
     _login_page_error_head: "Login failed",
     _login_page_error_message: "Please check your usermail and password !",
     _login_page_bad_input: "Please check what you've typed !",
+
+    //Menu bar - login form
+    _menu_bar_login_btn: "Login",
+    _menu_bar_login_passwd: "Password",
+    _menu_bar_login_email: "Email address",
 }

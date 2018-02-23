@@ -29,7 +29,7 @@ ComunicWeb.components.menuBar.notAuthenticated = {
 		//Add email input
 		var emailInput = createElem("input", emailFormGroup);
 		emailInput.className = "form-control";
-		emailInput.placeholder = "Email address";
+		emailInput.placeholder = lang("_menu_bar_login_email");
 		emailInput.type = "email";
 		emailInput.value = ComunicWeb.components.mailCaching.get();
 
@@ -40,7 +40,7 @@ ComunicWeb.components.menuBar.notAuthenticated = {
 		//Add password input
 		var passwordInput = createElem("input", passwordFormGroup);
 		passwordInput.className = "form-control";
-		passwordInput.placeholder = "Password";
+		passwordInput.placeholder = lang("_menu_bar_login_passwd");
 		passwordInput.type = "password";
 
 		//Add submit button formGroup
@@ -50,7 +50,7 @@ ComunicWeb.components.menuBar.notAuthenticated = {
 		//Add submit input
 		var submitInput = createElem("input", submitFromGroup);
 		submitInput.className = "form-control";
-		submitInput.value = "Login";
+		submitInput.value = lang("_menu_bar_login_btn");
 		submitInput.type = "submit";
 
 		//Add submit form behaviour

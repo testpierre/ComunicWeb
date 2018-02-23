@@ -18,4 +18,9 @@ ComunicWeb.common.langs.fr = {
     _login_page_error_head: "La connexion a échouée",
     _login_page_error_message: "Veuillez vérifier votre identifiant et votre mot de passe !",
     _login_page_bad_input: "Veuillez vérifier votre saisie...",
+
+    //Menu bar - login form
+    _menu_bar_login_btn: "Connexion",
+    _menu_bar_login_passwd: "Mot de passe",
+    _menu_bar_login_email: "Addresse mail",
 }
