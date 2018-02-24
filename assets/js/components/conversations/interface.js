@@ -289,6 +289,21 @@ ComunicWeb.components.conversations.interface = {
 	},
 
 	/**
+	 * Get the list of unread conversations
+	 * 
+	 * @param {function} callback
+	 */
+	getUnreadConversations: function(callback){
+
+		//Perform a request on the API
+		var apiURI = "conversations/get_list_unread";
+		var params = {};
+
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
+
+	/**
 	 * Empty conversations cache
 	 * 
 	 * @param {Boolean} notHard Specify that the object hasn't to be recursively cleaned

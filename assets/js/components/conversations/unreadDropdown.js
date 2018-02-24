@@ -87,11 +87,108 @@ ComunicWeb.components.conversations.unreadDropdown = {
 
 		//Refresh the unread conversations list if the user click the dropdown button
 		dropdownToggle.onclick = function(){
-			ComunicWeb.components.conversations.dropdown.refresh_list_conversations(conversationsList);
+			ComunicWeb.components.conversations.unreadDropdown.refresh_list_conversations(conversationsList);
 		}
 		
 		//Return the number of conversations target
 		return conversationsNumber;
 	},
 
+	/**
+	 * Refresh the list of conversations
+	 * 
+	 * @param {HTMLElement} target The target to display the conversations
+	 */
+	refresh_list_conversations: function(target){
+
+		//Perform a request through the interface
+		ComunicWeb.components.conversations.interface.getUnreadConversations(function(conversations){
+
+			//Check for errors
+			if(conversations.error){
+				//Display an error
+				ComunicWeb.common.notificationSystem.showNotification("Could not retrieve the list of unread conversations !", "danger");
+				return;
+			}
+
+			//Get the list of users ID
+			var usersID = [];
+
+			//Process the list of conversations
+			for (let index = 0; index < conversations.length; index++) {
+				const entry = conversations[index];
+				
+				var userID = entry.userID;
+				if(!usersID.includes(userID))
+					usersID.push(userID);
+			}
+
+			//Get informations about the users
+			ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, function(usersInfos){
+
+				//Check for errors
+				if(usersInfos.error){
+					//Display an error
+					ComunicWeb.common.notificationSystem.showNotification("Could not get informations about some users !", "danger");
+					return;
+				}
+
+				//Display the list of conversations
+				ComunicWeb.components.conversations.unreadDropdown._display_list(target, conversations, usersInfos);
+			});
+		});
+
+	},
+
+	/**
+	 * Display the list of conversations
+	 * 
+	 * @param {HTMLElement} target The target for the fields
+	 * @param {array} conversations The list of conversations
+	 * @param {object} usersInfos Informations about related users
+	 */
+	_display_list: function(target, conversations, usersInfos){
+
+		//Empty the target
+		target.innerHTML = "";
+
+		//Process each conversation
+		for (let index = 0; index < conversations.length; index++) {
+			
+			//Get the conversation
+			const conversation = conversations[index];
+
+			//Get informations about the user
+			const userInfos = usersInfos["user-" + conversation.userID];
+			
+			//Create list element
+			var convLi = createElem2({
+				appendTo: target,
+				type: "li"
+			});
+
+			//Create the conversation link element
+			var convLink = createElem2({
+				appendTo: convLi,
+				type: "a",
+				href: "#"
+			});
+
+			//Add left elements
+			var leftElems = createElem2({
+				appendTo: convLink,
+				type: "div",
+				class: "pull-left"
+			});
+
+			//Add user account image on the left
+			var userAccountImage = createElem2({
+				appendTo: leftElems,
+				type: "img",
+				class: "img-circle",
+				src: userInfos.accountImage
+			});
+		}
+
+	},
 }
