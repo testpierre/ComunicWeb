@@ -222,6 +222,7 @@ class Dev {
 			"js/components/conversations/service.js",
 			"js/components/conversations/cachingOpened.js",
 			"js/components/conversations/utils.js",
+			"js/components/conversations/unreadDropdown.js",
 			
 			//User selector
 			"js/components/userSelect/userSelect.js",

@@ -608,6 +608,13 @@ var ComunicWeb = {
 			 */
 			utils:{
 				//TODO : implement
+			},
+
+			/**
+			 * Unread conversations list dropdown
+			 */
+			unreadDropdown: {
+				//TODO : implementd
 			}
 		},
 
