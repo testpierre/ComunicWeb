@@ -188,6 +188,45 @@ ComunicWeb.components.conversations.unreadDropdown = {
 				class: "img-circle",
 				src: userInfos.accountImage
 			});
+
+			//Add item top informations
+			var liTop = createElem2({
+				appendTo: convLink,
+				type: "h4",
+				innerHTML: userFullName(userInfos)
+			});
+
+			//Add item top small informations
+			var liTopSmall = createElem2({
+				appendTo: liTop,
+				type: "small"
+			});
+
+			//Add the message post time
+			var conversationLastActive = createElem2({
+				appendTo: liTopSmall,
+				type: "span",
+				innerHTML: '<i class="fa fa-clock-o"></i> ' + ComunicWeb.common.date.timeDiffToStr(conversation.last_active) + " ago"
+			});
+
+			//Add conversation name (if available)
+			if(conversation.conv_name != ""){
+
+				var	targetConversation = createElem2({
+					appendTo: convLink,
+					type: "p",
+					innerHTML: conversation.conv_name,
+				});
+
+			}
+
+
+			//Add the message
+			var conversationMessage = createElem2({
+				appendTo: convLink,
+				type: "p",
+				innerHTML: "<em>"+conversation.message+"</em>"
+			})
 		}
 
 	},
