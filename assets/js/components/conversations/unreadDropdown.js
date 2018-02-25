@@ -173,6 +173,7 @@ ComunicWeb.components.conversations.unreadDropdown = {
 				type: "a",
 				href: "#"
 			});
+			convLink.setAttribute("data-conversation-id", conversation.id);
 
 			//Add left elements
 			var leftElems = createElem2({
@@ -220,13 +221,17 @@ ComunicWeb.components.conversations.unreadDropdown = {
 
 			}
 
-
 			//Add the message
 			var conversationMessage = createElem2({
 				appendTo: convLink,
 				type: "p",
 				innerHTML: "<em>"+conversation.message+"</em>"
-			})
+			});
+
+			//Make the conversation link lives
+			convLink.onclick = function(){
+				openConversation(this.getAttribute("data-conversation-id"));
+			}
 		}
 
 	},

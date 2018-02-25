@@ -101,3 +101,14 @@ function getMultipleUsersInfos(usersID, afterGetUserInfos, forceRequest){
 function log(message){
     ComunicWeb.debug.logMessage(message);
 }
+
+/**
+ * Open a conversation specified by its ID
+ * 
+ * @param {number} id The ID of the conversation to open
+ */
+function openConversation(id){
+    ComunicWeb.components.conversations.manager.addConversation({
+        conversationID: id
+    });
+}
