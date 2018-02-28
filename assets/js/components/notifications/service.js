@@ -48,10 +48,10 @@ ComunicWeb.components.notifications.service = {
 					target_conversations.innerHTML = response.conversations;
 
 					//If the number of notifications equals 0, hide the target if required
-					if(response.notifications == 0 && auto_hide)
-					target_conversations.style.display = "none";
+					if(response.conversations == 0 && auto_hide)
+						target_conversations.style.display = "none";
 					else
-					target_conversations.style.display = "block";
+						target_conversations.style.display = "block";
 
 				}
 
