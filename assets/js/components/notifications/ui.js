@@ -25,15 +25,27 @@ ComunicWeb.components.notifications.ui = {
 		var message = userFullName(from_user) + " ";
 
 		//Notification action
+		//Comment
 		if(data.type == "comment_created")
 			message += "posted a comment";
 		
+		//About friendship requests
+		if(data.type == "sent_friend_request")
+			message += "sent you a friendship request.";
+		if(data.type == "accepted_friend_request")
+			message += "accepted your friendship request.";
+		if(data.type == "rejected_friend_request")
+			message += "rejected your friendship request.";
+
+		//Generic element creation
 		if(data.type == "elem_created"){
 
 			if(data.on_elem_type == "post")
 				message += "created a new post";
 
 		}
+
+		//Space separator
 		message += " ";
 
 		//Notification target
@@ -57,10 +69,19 @@ ComunicWeb.components.notifications.ui = {
 			ComunicWeb.components.notifications.interface.mark_seen(data.id, true);
 
 			//Process specific action
-			if(data.on_elem_type = "post"){
+			//For the post
+			if(data.on_elem_type == "post"){
 
 				//Open associated post page
 				openPage("post/" + data.on_elem_id);
+
+			}
+
+			//For the friendship requests
+			if(data.on_elem_type == "friend_request"){
+				
+				//Open user page
+				openUserPage(data.from_user_id);
 
 			}
 
