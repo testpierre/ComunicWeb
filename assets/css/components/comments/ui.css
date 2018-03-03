@@ -28,3 +28,9 @@
 .post-comments .edit-comment-link:active {
 	color: black;
 }
+
+.post-comments .comment-content .emoji {
+	float: none;
+    height: 1em !important;
+    width: auto !important;
+}

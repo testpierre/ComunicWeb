@@ -225,7 +225,13 @@ ComunicWeb.components.comments.ui = {
 		var commentContent = createElem2({
 			appendTo: commentText,
 			type: "div",
+			class: "comment-content",
 			innerHTML: infos.content
+		});
+
+		//Parse emojies
+		ComunicWeb.components.emoji.parser.parse({
+			element: commentContent
 		});
 
 		//Add comment image (if any)

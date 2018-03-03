@@ -720,7 +720,10 @@ ComunicWeb.components.posts.ui = {
 			innerHTML: infos.content
 		});
 
-
+		//Parse emojies
+		ComunicWeb.components.emoji.parser.parse({
+			element: postContent
+		});
 
 		//Add bottom elements container
 		var bottomArea = createElem2({
