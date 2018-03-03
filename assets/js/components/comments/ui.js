@@ -128,7 +128,7 @@ ComunicWeb.components.comments.ui = {
 			class: "comment-text"
 		});
 
-		//Add usernmae
+		//Add username
 		var userNameContener = createElem2({
 			appendTo: commentText,
 			type: "span",
