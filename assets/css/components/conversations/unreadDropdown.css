@@ -1,0 +1,9 @@
+/**
+ * Unread conversations dropdown stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.no-unread-conversation-msg {
+	padding: 20px;
+}

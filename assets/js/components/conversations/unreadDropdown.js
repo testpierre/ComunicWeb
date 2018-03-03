@@ -234,5 +234,18 @@ ComunicWeb.components.conversations.unreadDropdown = {
 			}
 		}
 
+		//Display a specific message if there is not any new conversation
+		if(conversations.length == 0){
+
+			//Display a message in the target
+			createElem2({
+				appendTo: target,
+				type: "p",
+				class: "no-unread-conversation-msg",
+				innerHTML: "You do not have any unread messages in the conversations you are following..."
+			});
+
+		}
+
 	},
 }

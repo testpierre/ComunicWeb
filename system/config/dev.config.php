@@ -127,6 +127,7 @@ class Dev {
 			"css/components/conversations/manager.css",
 			"css/components/conversations/windows.css",
 			"css/components/conversations/list.css",
+			"css/components/conversations/unreadDropdown.css",
 			
 			//User selector stylesheet
 			"css/components/userSelect/userSelect.css",
