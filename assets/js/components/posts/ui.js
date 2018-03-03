@@ -689,7 +689,7 @@ ComunicWeb.components.posts.ui = {
 
 							//Check for errors
 							if(response.error){
-								ComunicWeb.common.notificationSystem.showNotification("Could send response to survey !", "danger");
+								ComunicWeb.common.notificationSystem.showNotification("Could not send response to survey !", "danger");
 								return;
 							}
 
