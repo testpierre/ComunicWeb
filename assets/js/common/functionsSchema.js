@@ -548,6 +548,13 @@ var ComunicWeb = {
 			bar:{
 				//TODO : implement
 			},
+
+			/**
+			 * Friends list modal box
+			 */
+			listModal: {
+				//TODO : implement
+			}
 		},
 
 		/**

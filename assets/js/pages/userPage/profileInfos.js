@@ -108,12 +108,19 @@ ComunicWeb.pages.userPage.profileInfos = {
 			type: "b",
 			innerHTML: "Friends"
 		});
-		createElem2({
+		var friendsListLink = createElem2({
 			appendTo: friendsLi,
 			type: "a",
 			class: "pull-right",
 			innerHTML: infos.number_friends
 		});
+
+		//Make the user number lives
+		friendsListLink.onclick = function(){
+
+			ComunicWeb.components.friends.listModal.display(infos.userID);
+
+		};
 
 		//Add user status informations (if required)
 		if(signed_in()){
