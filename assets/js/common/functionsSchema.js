@@ -554,6 +554,13 @@ var ComunicWeb = {
 			 */
 			listModal: {
 				//TODO : implement
+			},
+
+			/**
+			 * Friends interface
+			 */
+			interface: {
+				//TODO : implement
 			}
 		},
 

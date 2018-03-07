@@ -122,6 +122,7 @@ class Dev {
 			
 			//Friendbar stylesheet
 			"css/components/friends/friendsBar.css",
+			"css/components/friends/listModal.css",
 			
 			//Conversations stylesheet
 			"css/components/conversations/manager.css",
@@ -214,6 +215,7 @@ class Dev {
 			"js/components/friends/friendsList.js",
 			"js/components/friends/friendsBar.js",
 			"js/components/friends/listModal.js",
+			"js/components/friends/interface.js",
 			
 			//Private conversations
 			"js/components/conversations/manager.js",
