@@ -198,7 +198,7 @@ ComunicWeb.components.friends.listModal = {
 				//Add users name
 				createElem2({
 					appendTo: userLink,
-					type: "span",
+					type: "div",
 					class: "friends-name",
 					innerHTML: userFullName(users["user-" + id])
 				});

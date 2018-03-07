@@ -3,3 +3,34 @@
  *
  * @author Pierre HUBERT
  */
+
+.friends-list-ro .friend {
+	display: inline-block;
+	width: 170px;
+	max-width: 100%;
+	margin: 5px;
+}
+
+.friends-list-ro .friend a {
+	color: white;
+}
+
+.friends-list-ro .friend a:hover {
+	color: #001F3F;
+}
+
+.friends-list-ro .friend img {
+	margin: auto 10px auto auto;
+	max-width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	visibility: visible;
+}
+
+.friends-list-ro .friend .friends-name {
+	display: inline-block;
+	white-space: normal;
+	max-width: 100px;
+	text-align: left;
+	vertical-align: middle;
+}
