@@ -561,6 +561,13 @@ var ComunicWeb = {
 			 */
 			interface: {
 				//TODO : implement
+			},
+
+			/**
+			 * Friends utilities
+			 */
+			utils: {
+				//TODO : implement
 			}
 		},
 
