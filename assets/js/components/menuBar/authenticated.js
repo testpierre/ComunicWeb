@@ -78,7 +78,7 @@ ComunicWeb.components.menuBar.authenticated = {
 		//Add logout link
 		var logoutButton = createElem("li", dropdownContent);
 		var logoutButtonLink = createElem("a", logoutButton);
-		logoutButtonLink.innerHTML = "Logout";
+		logoutButtonLink.innerHTML = lang("_menu_bar_action_logout");
 		logoutButton.onclick = function(){openPage("logout")};
 
 		//Return dropdown content element
@@ -131,7 +131,7 @@ ComunicWeb.components.menuBar.authenticated = {
 		//Add user name
 		var userNameElem = createElem("span", userlinkelement);
 		userNameElem.className = "hidden-xs";
-		userNameElem.innerHTML = "Loading...";
+		userNameElem.innerHTML = lang("_loading");
 
 		//Make a request to get informations about the user
 		ComunicWeb.user.userInfos.getUserInfos("current", (function(userInfos){
@@ -168,7 +168,7 @@ ComunicWeb.components.menuBar.authenticated = {
 		//Create search input
 		var searchInput = createElem("input", formGroup);
 		searchInput.className = "form-control";
-		searchInput.placeholder = "Search...";
+		searchInput.placeholder = lang("_menu_bar_search_placeholder");
 		searchInput.type = "text";
 		searchInput.id = "navbar-search-input";
 

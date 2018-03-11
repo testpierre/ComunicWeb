@@ -5,6 +5,9 @@
  */
 ComunicWeb.common.langs.en = {
 
+    //Really really common messages
+    _loading: "Loading...",
+
     //Error messages
     "__fatal_error": "Fatal error",
     "__fatal_error_explanation": "A fatal error occured : <i>%p</i>. Please try to refresh the page...",
@@ -23,4 +26,11 @@ ComunicWeb.common.langs.en = {
     _menu_bar_login_btn: "Login",
     _menu_bar_login_passwd: "Password",
     _menu_bar_login_email: "Email address",
+
+    //Menu bar - authenticated
+    _menu_bar_search_placeholder: "Search...",
+    _menu_bar_action_logout: "Logout",
+
+    //Posts form
+
 }
