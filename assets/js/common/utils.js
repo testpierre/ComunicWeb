@@ -384,3 +384,18 @@ function check_url(url){
 
 	return url.match(regex) == null ? false : true;
 }
+
+/**
+ * Add a space in an HTML element
+ * 
+ * @param {HTMLElement} target The target element for the space
+ */
+function add_space(target){
+
+	createElem2({
+		appendTo: target,
+		type: "span",
+		innerHTML: "&nbsp;"
+	});
+	
+}
