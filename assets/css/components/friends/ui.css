@@ -40,3 +40,7 @@
 	display: inline-block;
 	width: 250px;
 }
+
+.personnal-friends-list .friend .friends-actions .btn {
+	width: 100px;
+}

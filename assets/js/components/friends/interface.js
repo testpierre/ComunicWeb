@@ -66,6 +66,27 @@ ComunicWeb.components.friends.interface = {
 	},
 
 	/**
+	 * Update the posts text authorization status of a friend
+	 * 
+	 * @param {number} friendID The ID of the target friend
+	 * @param {boolean} allow TRUE if the user can post texts / FALSE else
+	 * @param {function} callback
+	 */
+	set_can_post_texts: function(friendID, allow, callback){
+
+		//Prepare API request
+		var apiURI = "friends/set_can_post_texts";
+		var params = {
+			friendID: friendID,
+			allow: allow
+		};
+
+		//Perform API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
+
+	/**
 	 * Remove a user from the friend list
 	 * 
 	 * @param {numbert} userID The ID of the user to remove

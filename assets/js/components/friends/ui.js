@@ -142,13 +142,12 @@ ComunicWeb.components.friends.ui = {
 				followButton.setAttribute("data-set-following", "true");
 			}
 			else {
-				followButton.innerHTML = "Following";
+				followButton.innerHTML = "<i class='fa fa-check'></i>  Following";
 				followButton.setAttribute("data-set-following", "false");
 			}
 
 			add_space(actionsOnFriendArea);
 
-			//Check if the user can post text on user page
 			followButton.onclick = function(){
 
 				//Check if the request is to follow or not the user
@@ -169,6 +168,40 @@ ComunicWeb.components.friends.ui = {
 					ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContener);
 				});
 
+			}
+
+			//Check if the user can post text on user page
+			var postTextsButton = createElem2({
+				appendTo: actionsOnFriendArea,
+				type: "button",
+				class: "btn btn-primary"
+			});
+
+			if(friend.canPostTexts){
+				postTextsButton.innerHTML = "<i class='fa fa-check'></i> Post Texts";
+				postTextsButton.setAttribute("data-allow-post-texts", "false");
+			}
+			else {
+				postTextsButton.innerHTML = "Post Texts";
+				postTextsButton.setAttribute("data-allow-post-texts", "true");
+			}
+
+			//Make the button lives
+			postTextsButton.onclick = function(){
+				
+				//Check out if we have to allow or disallow texts post
+				var allow_post = this.getAttribute("data-allow-post-texts") == "true";
+
+				//Update the status
+				ComunicWeb.components.friends.interface.set_can_post_texts(friendID, allow_post, function(r){
+
+					if(r.error)
+						ComunicWeb.common.notificationSystem.showNotification("Could not update posts creation status !", "danger");
+					
+					//Update friendship informations
+					ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContener);
+
+				});
 			}
 		}
 
