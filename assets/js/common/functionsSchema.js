@@ -557,6 +557,13 @@ var ComunicWeb = {
 			},
 
 			/**
+			 * Friends user interface
+			 */
+			ui: {
+				//TODO: implement
+			},
+
+			/**
 			 * Friends interface
 			 */
 			interface: {

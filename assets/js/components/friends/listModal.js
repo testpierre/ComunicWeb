@@ -255,97 +255,15 @@ ComunicWeb.components.friends.listModal = {
 			//Display each friend
 			list.forEach(friend => {
 
-				//Get informations about the friend
-				const friendID = friend.ID_friend;
-
-				//Create friend contener
-				const friendContener = createElem2({
-					appendTo: listTarget,
-					type: "div",
-					class: "friend"
-				});
-
-				//Create user link
-				const userLink = createElem2({
-					appendTo: friendContener,
-					type: "a"
-				});
-
-				//Add user account image
-				createElem2({
-					appendTo: userLink,
-					type: "img",
-					src: users["user-" + friendID].accountImage
-				});
-
-				//Add users name
-				createElem2({
-					appendTo: userLink,
-					type: "div",
-					class: "friends-name",
-					innerHTML: userFullName(users["user-" + friendID])
-				});
-
-				//Make the link button lives
-				userLink.onclick = function(){
-					
-					//Open user page
-					openUserPage(userIDorPath(users["user-" + friendID]));
-
-					//Close all modals
-					$(".modal").modal("hide");
-
-				}
-
-				//Check if the friendship has been accepted or not
-
-				//Display following state
-
-				//Check if the user can post text on user page
-
-				//Offer to delete friendship
-				const deleteLink = createElem2({
-					appendTo: friendContener,
-					type: "a",
-					innerHTML: "<i class='fa fa-trash'></i>"
-				});
-
-				//Make the delete button lives
-				deleteLink.onclick = function(){
-
-					//Prompt user confirmation
-					if(ComunicWeb.common.messages.confirm("Do you really want to delete this user from your friends list ?", function(confirm){
-						
-						//Check if the user cancelled the operation
-						if(!confirm)
-							return;
-						
-						//Try to delete the friend from the list
-						friendContener.style.visibility = "hidden";
-						ComunicWeb.components.friends.interface.remove_friend(friendID, function(result){
-
-							//Make friend contener visible
-							friendContener.style.visibility = "visible";
-
-							//Check for errors
-							if(result.error){
-								ComunicWeb.common.notificationSystem.showNotification("Could not delete friend !", "danger");
-								return;
-							}
-
-							//Delete the element
-							friendContener.remove();
-
-						});
-
-					}));
-
-				}
+				//Display the friend
+				ComunicWeb.components.friends.ui.show_personnal_friend(listTarget, friend, users["user-"+friend.ID_friend]);
 
 			});
 
 		});
 
-	}
+	},
+
+	
 
 };

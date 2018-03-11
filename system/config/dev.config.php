@@ -214,6 +214,7 @@ class Dev {
 			//Friends components
 			"js/components/friends/friendsList.js",
 			"js/components/friends/friendsBar.js",
+			"js/components/friends/ui.js",
 			"js/components/friends/listModal.js",
 			"js/components/friends/interface.js",
 			"js/components/friends/utils.js",
