@@ -44,6 +44,25 @@ ComunicWeb.components.friends.interface = {
 
 		//Perform API request
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	},
+
+	/**
+	 * Remove a user from the friend list
+	 * 
+	 * @param {numbert} userID The ID of the user to remove
+	 * @param {function} callback What to do once we got a response
+	 */
+	remove_friend: function(userID, callback){
+
+		//Prepare API request
+		var apiURI = "friends/remove";
+		var params = {
+			friendID: userID
+		};
+
+		//Perform API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
 	}
 
 }

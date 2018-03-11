@@ -136,7 +136,13 @@ ComunicWeb.components.friends.listModal = {
 		closeModal.onclick = respond;
 	
 		//Display the right version of the friends list
-		if(userID() != user){
+		if(userID() == user){
+
+			//Show the friends list of the user
+			this._show_personnal(modalBody, list);
+
+		}
+		else {
 			
 			//Display a read-only list of friends
 			this._show_read_only(modalBody, list, user);
@@ -218,5 +224,128 @@ ComunicWeb.components.friends.listModal = {
 		});
 
 	},
+
+	/**
+	 * Show the list of friends of the user
+	 * 
+	 * @param {HTMLElement} target The target element for the list
+	 * @param {array} list The list of friends of the user
+	 */
+	_show_personnal: function(target, list){
+
+		//Get the list of friends ID
+		var usersID = ComunicWeb.components.friends.utils.getUsersIdFromPersonnalList(list);
+
+		//Create list target
+		var listTarget = createElem2({
+			appendTo: target,
+			type: "div",
+			class: "personnal-friends-list"
+		});
+
+		//Get informations about the users
+		ComunicWeb.user.userInfos.getMultipleUsersInfos(usersID, function(users){
+
+			//Check for errors
+			if(users.error){
+				ComunicWeb.common.notificationSystem.showNotification("Could not get informations about friends !", "danger");
+				return;
+			}
+
+			//Display each friend
+			list.forEach(friend => {
+
+				//Get informations about the friend
+				const friendID = friend.ID_friend;
+
+				//Create friend contener
+				const friendContener = createElem2({
+					appendTo: listTarget,
+					type: "div",
+					class: "friend"
+				});
+
+				//Create user link
+				const userLink = createElem2({
+					appendTo: friendContener,
+					type: "a"
+				});
+
+				//Add user account image
+				createElem2({
+					appendTo: userLink,
+					type: "img",
+					src: users["user-" + friendID].accountImage
+				});
+
+				//Add users name
+				createElem2({
+					appendTo: userLink,
+					type: "div",
+					class: "friends-name",
+					innerHTML: userFullName(users["user-" + friendID])
+				});
+
+				//Make the link button lives
+				userLink.onclick = function(){
+					
+					//Open user page
+					openUserPage(userIDorPath(users["user-" + friendID]));
+
+					//Close all modals
+					$(".modal").modal("hide");
+
+				}
+
+				//Check if the friendship has been accepted or not
+
+				//Display following state
+
+				//Check if the user can post text on user page
+
+				//Offer to delete friendship
+				const deleteLink = createElem2({
+					appendTo: friendContener,
+					type: "a",
+					innerHTML: "<i class='fa fa-trash'></i>"
+				});
+
+				//Make the delete button lives
+				deleteLink.onclick = function(){
+
+					//Prompt user confirmation
+					if(ComunicWeb.common.messages.confirm("Do you really want to delete this user from your friends list ?", function(confirm){
+						
+						//Check if the user cancelled the operation
+						if(!confirm)
+							return;
+						
+						//Try to delete the friend from the list
+						friendContener.style.visibility = "hidden";
+						ComunicWeb.components.friends.interface.remove_friend(friendID, function(result){
+
+							//Make friend contener visible
+							friendContener.style.visibility = "visible";
+
+							//Check for errors
+							if(result.error){
+								ComunicWeb.common.notificationSystem.showNotification("Could not delete friend !", "danger");
+								return;
+							}
+
+							//Delete the element
+							friendContener.remove();
+
+						});
+
+					}));
+
+				}
+
+			});
+
+		});
+
+	}
 
 };
