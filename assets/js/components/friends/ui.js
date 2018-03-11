@@ -62,13 +62,20 @@ ComunicWeb.components.friends.ui = {
 
 		}
 
+		//Create actions area
+		var actionsOnFriendArea = createElem2({
+			appendTo: friendContener, 
+			type: "div",
+			class: "friends-actions"
+		});
+
 		//Check if the friendship has been accepted or not
 		if(friend.accepted == 0){
 
 			//Offer the user to accept or reject friendship request
 			//Reject
 			var rejectRequestBtn = createElem2({
-				appendTo: friendContener,
+				appendTo: actionsOnFriendArea,
 				type: "input",
 				elemType: "button",
 				class: "btn btn-danger",
@@ -76,18 +83,18 @@ ComunicWeb.components.friends.ui = {
 			});
 			rejectRequestBtn.setAttribute("data-accept-request", "false");
 			
-			add_space(friendContener);
+			add_space(actionsOnFriendArea);
 
 			//Accept
 			var acceptRequestBtn = createElem2({
-				appendTo: friendContener,
+				appendTo: actionsOnFriendArea,
 				type: "button",
 				class: "btn btn-success",
 				innerHTML: "Accepter"
 			});
 			acceptRequestBtn.setAttribute("data-accept-request", "true");
 
-			add_space(friendContener);
+			add_space(actionsOnFriendArea);
 
 			//Make the buttons lives
 			var respond = function(){
@@ -125,7 +132,7 @@ ComunicWeb.components.friends.ui = {
 
 			//Display following state
 			var followButton = createElem2({
-				appendTo: friendContener,
+				appendTo: actionsOnFriendArea,
 				type: "button",
 				class: "btn btn-primary"
 			});
@@ -139,7 +146,7 @@ ComunicWeb.components.friends.ui = {
 				followButton.setAttribute("data-set-following", "false");
 			}
 
-			add_space(friendContener);
+			add_space(actionsOnFriendArea);
 
 			//Check if the user can post text on user page
 			followButton.onclick = function(){
