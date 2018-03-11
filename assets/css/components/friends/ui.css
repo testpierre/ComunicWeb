@@ -4,17 +4,14 @@
  * @author Pierre HUBERT
  */
 
-.personnal-friends-list .friend a,
-.friends-list-ro .friend a {
+.personnal-friends-list .friend a {
 	color: white;
 }
-.personnal-friends-list .friend a:hover,
-.friends-list-ro .friend a:hover {
+.personnal-friends-list .friend a:hover {
 	color: #001F3F;
 }
 
-.personnal-friends-list .friend img,
-.friends-list-ro .friend img {
+.personnal-friends-list .friend img {
 	margin: auto 10px auto auto;
 	max-width: 40px;
 	height: 40px;
@@ -22,8 +19,7 @@
 	visibility: visible;
 }
 
-.personnal-friends-list .friend .friends-name,
-.friends-list-ro .friend .friends-name {
+.personnal-friends-list .friend .friends-name {
 	display: inline-block;
 	white-space: normal;
 	max-width: 100px;
