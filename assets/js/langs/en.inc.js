@@ -7,6 +7,8 @@ ComunicWeb.common.langs.en = {
 
     //Really really common messages
     _loading: "Loading...",
+    _send: "Send",
+    _choose: "Choisir",
 
     //Error messages
     "__fatal_error": "Fatal error",
@@ -32,5 +34,24 @@ ComunicWeb.common.langs.en = {
     _menu_bar_action_logout: "Logout",
 
     //Posts form
+    _post_type_text: "Text",
+    _post_type_youtube: "Youtube",
+    _post_type_image: "Image",
+    _post_type_movie: "Movie",
+    _post_type_link: "Weblink",
+    _post_type_pdf: "PDF",
+    _post_type_countdown: "Timer",
+    _post_type_survey: "Survey",
+    
+    _input_youtube_link_label: "Youtube video link",
+    _no_movie_selected: "No movie selected.",
+    _input_page_url_label: "Page URL",
+    _input_countdown_enddate: "End date",
+    _input_survey_question_label: "Question for the survey",
+    _input_survey_question_placeholder: "Question",
+    _input_survey_answers_label: "Answers",
+    _input_survey_answers_hint: "Type your answer and then press return (enter) key to confirm it.",
+
+    _err_drag_image_post: "Please do not drag images directly in the message !",
 
 }

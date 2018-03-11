@@ -51,29 +51,29 @@ ComunicWeb.components.posts.form = {
 		});
 
 		//Text
-		var textType = this._add_post_type(postTypesContener, "text", "Text");
+		var textType = this._add_post_type(postTypesContener, "text", lang("_post_type_text"));
 		textType.checked = true;
 
 		//Image
-		var imageType = this._add_post_type(postTypesContener, "image", "<i class='fa fa-picture-o'></i> <span class='hidden-xs'>Image</span>");
+		var imageType = this._add_post_type(postTypesContener, "image", "<i class='fa fa-picture-o'></i> <span class='hidden-xs'>"+lang("_post_type_image")+"</span>");
 
 		//Youtube
-		var youtubeType = this._add_post_type(postTypesContener, "youtube", "<i class='fa fa-youtube-play'></i> <span class='hidden-xs'>YouTube</span>");
+		var youtubeType = this._add_post_type(postTypesContener, "youtube", "<i class='fa fa-youtube-play'></i> <span class='hidden-xs'>"+lang("_post_type_youtube")+"</span>");
 
 		//Movie
-		var movieType = this._add_post_type(postTypesContener, "movie", "<i class='fa fa-file-movie-o'></i> <span class='hidden-xs'>Movie</span>");
+		var movieType = this._add_post_type(postTypesContener, "movie", "<i class='fa fa-file-movie-o'></i> <span class='hidden-xs'>"+lang("_post_type_movie")+"</span>");
 
 		//Link
-		var linkType = this._add_post_type(postTypesContener, "link", "<i class='fa fa-link'></i> <span class='hidden-xs'>Weblink</span>");
+		var linkType = this._add_post_type(postTypesContener, "link", "<i class='fa fa-link'></i> <span class='hidden-xs'>"+lang("_post_type_link")+"</span>");
 
 		//PDF
-		var pdfType = this._add_post_type(postTypesContener, "pdf", "<i class='fa fa-file-pdf-o'></i> <span class='hidden-xs'>PDF</span>");
+		var pdfType = this._add_post_type(postTypesContener, "pdf", "<i class='fa fa-file-pdf-o'></i> <span class='hidden-xs'>"+lang("_post_type_pdf")+"</span>");
 
 		//Countdown timer
-		var countdownType = this._add_post_type(postTypesContener, "countdown", "<i class='fa fa-clock-o'></i> <span class='hidden-xs'>Timer</span>");
+		var countdownType = this._add_post_type(postTypesContener, "countdown", "<i class='fa fa-clock-o'></i> <span class='hidden-xs'>"+lang("_post_type_countdown")+"</span>");
 
 		//Survey
-		var surveyType = this._add_post_type(postTypesContener, "survey", "<i class='fa fa-pie-chart'></i> <span class='hidden-xs'>Survey</span>");
+		var surveyType = this._add_post_type(postTypesContener, "survey", "<i class='fa fa-pie-chart'></i> <span class='hidden-xs'>"+lang("_post_type_survey")+"</span>");
 
 
 
@@ -101,7 +101,7 @@ ComunicWeb.components.posts.form = {
 
 		var youtubeLinkInput = createFormGroup({
 			target: youtubeInputForm,
-			label: "Youtube video link",
+			label: lang("_input_youtube_link_label"),
 			placeholder: "https://youtube.com/watch?v=",
 			type: "text"
 		});
@@ -120,7 +120,7 @@ ComunicWeb.components.posts.form = {
 			appendTo: movieInputForm,
 			type: "button",
 			class: "btn btn-primary",
-			innerHTML: "Choose"
+			innerHTML: lang("_choose")
 		});
 
 		var movieIDInput = createElem2({
@@ -133,7 +133,7 @@ ComunicWeb.components.posts.form = {
 		var movieName = createElem2({
 			appendTo: movieInputForm,
 			type: "span",
-			innerHTML: "No movie selected."
+			innerHTML: lang("_no_movie_selected")
 		});
 
 		//Make movie choose button lives
@@ -155,7 +155,7 @@ ComunicWeb.components.posts.form = {
 
 		var linkInput = createFormGroup({
 			target: linkChooseForm,
-			label: "Page URL",
+			label: lang("_input_page_url_label"),
 			placeholder: "https://...",
 			type: "text"
 		});
@@ -184,7 +184,7 @@ ComunicWeb.components.posts.form = {
 
 		var timeEndInput = createFormGroup({
 			target: countdownForm,
-			label: "End date",
+			label: lang("_input_countdown_enddate"),
 			placeholder: "dd/mm/yyyy",
 			type: "text"
 		});
@@ -205,15 +205,15 @@ ComunicWeb.components.posts.form = {
 		//Survey question
 		var surveyQuestionInput = createFormGroup({
 			target: surveyForm,
-			label: "Question for the survey",
-			placeholder: "Question",
+			label: lang("_input_survey_question_label"),
+			placeholder: lang("_input_survey_question_placeholder"),
 			type: "text"
 		});
 
 		//Survey answers
 		var surveyAnswerInput = createFormGroup({
 			target: surveyForm,
-			label: "Answers",
+			label: lang("_input_survey_answers_label"),
 			type: "select2",
 			multiple: true,
 		});
@@ -222,7 +222,7 @@ ComunicWeb.components.posts.form = {
 		var surveyAnswerHelper = createElem2({
 			appendTo: surveyForm,
 			type: "p",
-			innerHTML: "Type your answer and then press return (enter) key to confirm it."
+			innerHTML: lang("_input_survey_answers_hint"),
 		})
 
 		//Enable select2
@@ -287,7 +287,7 @@ ComunicWeb.components.posts.form = {
 			appendTo: rightDiv,
 			type: "button",
 			class: "btn btn-primary",
-			innerHTML: "Send"
+			innerHTML: lang("_send")
 		});
 
 		//Make send button lives
@@ -302,7 +302,7 @@ ComunicWeb.components.posts.form = {
 			
 			//Check if the message includes an image
 			if(message_content.includes("data:image/")){
-				ComunicWeb.common.notificationSystem.showNotification("Please do not drag images directly in the message !", "danger");
+				ComunicWeb.common.notificationSystem.showNotification(lang("_err_drag_image_post"), "danger");
 				return;
 			}
 
