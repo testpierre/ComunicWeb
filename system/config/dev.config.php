@@ -218,6 +218,7 @@ class Dev {
 			"js/components/friends/listModal.js",
 			"js/components/friends/interface.js",
 			"js/components/friends/utils.js",
+			"js/components/friends/actions.js",
 			
 			//Private conversations
 			"js/components/conversations/manager.js",

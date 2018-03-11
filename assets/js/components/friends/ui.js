@@ -109,9 +109,8 @@ ComunicWeb.components.friends.ui = {
 					}
 					else {
 
-						//Display again the friend
-						friend.accepted = 1;
-						ComunicWeb.components.friends.ui.show_personnal_friend(friendContener, friend, user);
+						//Update friendship informations
+						ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContener);
 					}
 
 				});
@@ -125,8 +124,45 @@ ComunicWeb.components.friends.ui = {
 		else {
 
 			//Display following state
+			var followButton = createElem2({
+				appendTo: friendContener,
+				type: "button",
+				class: "btn btn-primary"
+			});
+
+			if(friend.following == 0){
+				followButton.innerHTML = "Follow";
+				followButton.setAttribute("data-set-following", "true");
+			}
+			else {
+				followButton.innerHTML = "Following";
+				followButton.setAttribute("data-set-following", "false");
+			}
+
+			add_space(friendContener);
 
 			//Check if the user can post text on user page
+			followButton.onclick = function(){
+
+				//Check if the request is to follow or not the user
+				var follow = this.getAttribute("data-set-following") == "true";
+
+				//Lock button
+				followButton.disabled = true;
+
+				//Perform callback action
+				ComunicWeb.components.friends.list.setFollowing(friendID, follow, function(r){
+					
+					//Check for errors
+					if(r.error){
+						ComunicWeb.common.notificationSystem.showNotification("Could not update follow state !", "danger");
+					}
+
+					//Update friendship informations
+					ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContener);
+				});
+
+			}
 		}
 
 		

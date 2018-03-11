@@ -575,6 +575,13 @@ var ComunicWeb = {
 			 */
 			utils: {
 				//TODO : implement
+			},
+
+			/**
+			 * Friends actions
+			 */
+			actions: {
+				//TODO : implement
 			}
 		},
 

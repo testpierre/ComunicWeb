@@ -7,6 +7,25 @@
 ComunicWeb.components.friends.interface = {
 
 	/**
+	 * Get single friend informations
+	 * 
+	 * @param {number} friendID The ID of the target friend
+	 * @param {function} callback Callback function
+	 */
+	get_single_friend: function(friendID, callback){
+
+		//Prepare the API request
+		var apiURI = "friends/get_single_infos";
+		var params = {
+			friendID: friendID
+		};
+
+		//Perform API request
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+
+	},
+
+	/**
 	 * Get the list of friends of the current user
 	 * 
 	 * @param {boolean} complete Specify whether the complete list
