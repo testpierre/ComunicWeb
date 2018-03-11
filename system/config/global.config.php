@@ -10,7 +10,7 @@ class Config {
 	/**
 	 * Application version
 	 */
-	const VERSION = "0.1";
+	const VERSION = "0.1.1";
 
 	/**
 	 * API access and credentials
