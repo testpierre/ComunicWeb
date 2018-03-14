@@ -177,6 +177,11 @@ var ComunicWeb = {
 			refresh_current_page: function(){},
 
 			/**
+			 * Inform of page location update
+			 */
+			location_updated: function(new_location){},
+
+			/**
 			 * Prepare a template load by specifying datas
 			 */
 			prepareLoadTemplate: function(){},

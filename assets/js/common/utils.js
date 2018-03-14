@@ -399,3 +399,24 @@ function add_space(target){
 	});
 	
 }
+
+
+/**
+ * Page URL update detection
+ * 
+ * @source https://stackoverflow.com/a/1931090/3781411
+ */
+window.location.changed = function(e){};
+
+(function() //create a scope so 'location' is not global
+{
+    var m_loc = window.location.href;
+    setInterval(function()
+    {
+        if(m_loc != window.location.href)
+        {
+			m_loc = window.location.href;
+			window.location.changed(window.location);
+        }
+    }, 900);
+})();

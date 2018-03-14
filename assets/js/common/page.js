@@ -5,6 +5,12 @@
  */
 
 ComunicWeb.common.page = {
+
+    /**
+     * Save the current page url
+     */
+    _current_url: "",
+
     /**
      * Empty current page content
      * 
@@ -183,6 +189,9 @@ ComunicWeb.common.page = {
         //Change page URL
         ComunicWeb.common.url.changeURI(document.title, pageURI);
 
+        //Save new url
+        this._current_url = window.location.href.toString();
+
         //Get the main contener of the page
         var mainContenerElem = byId("wrapper");
 
@@ -261,6 +270,21 @@ ComunicWeb.common.page = {
 
         //Open a page
         this.openPage(currentPage);
+    },
+
+    /**
+     * Inform of page location update
+     * 
+     * @param {location} new_location The new location of the page
+     */
+    location_updated: function(new_location){
+
+        //Check if the url change has already been handled or not
+        if(new_location.href.toString() != this._current_url)
+
+            //Open the page using url detection
+            this.refresh_current_page();
+
     },
 
     /**

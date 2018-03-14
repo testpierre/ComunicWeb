@@ -24,6 +24,11 @@ ComunicWeb.common.system = {
 			$(document.body).tooltip("disable");
 		});
 
+		//Enable page URLs detection
+		window.location.changed = function(e){
+			ComunicWeb.common.page.location_updated(e);
+		}
+
 		/**
 		 * Prepare login
 		 */
