@@ -4,10 +4,10 @@
  * @author Pierre HUBERT
  */
 
-.notification-contener p {
+.notification-container p {
 	white-space: normal;
 }
 
-.notification-contener .notification-creation-time {
+.notification-container .notification-creation-time {
 	color: #888888;
 }

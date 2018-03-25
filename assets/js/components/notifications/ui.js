@@ -88,15 +88,15 @@ ComunicWeb.components.notifications.ui = {
 		};
 
 		//Create the notification object
-		var notificationContener = createElem2({
+		var notificationContainer = createElem2({
 			appendTo: target,
 			type: "li",
-			class: "notification-contener"
+			class: "notification-container"
 		});
 
 		//Create notification link
 		var notificationLink = createElem2({
-			appendTo: notificationContener,
+			appendTo: notificationContainer,
 			type: "a"
 		});
 		notificationLink.onclick = action;

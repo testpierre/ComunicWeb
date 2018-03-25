@@ -33,8 +33,8 @@ ComunicWeb.pages.userPage.profileInfos = {
 	 */
 	createMainBox: function(infos, target){
 		
-		//Create box contener
-		var boxContener = createElem2({
+		//Create box container
+		var boxContainer = createElem2({
 			appendTo: target,
 			type: "div",
 			class: "box box-primary"
@@ -42,7 +42,7 @@ ComunicWeb.pages.userPage.profileInfos = {
 
 		//Setup box body
 		var boxBody = createElem2({
-			appendTo: boxContener,
+			appendTo: boxContainer,
 			type: "div",
 			class: "box-body box-profile"
 		});

@@ -24,7 +24,7 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Create a conversation window
 		var conversationWindow = this.create({
-			target: byId(ComunicWeb.components.conversations.manager.__conversationsContenerID),
+			target: byId(ComunicWeb.components.conversations.manager.__conversationsContainerID),
 			conversationID: conversationID,
 		});
 
@@ -75,7 +75,7 @@ ComunicWeb.components.conversations.chatWindows = {
 
 
 		//Debug
-		//Create messages contener
+		//Create messages container
 		infosBox.messagesArea = createElem2({
 			appendTo: infosBox.boxBody,
 			type: "div",
@@ -120,8 +120,8 @@ ComunicWeb.components.conversations.chatWindows = {
 	 */
 	addMessageform: function(infosBox){
 
-		//Create form contener
-		var conversationFormContener = createElem2({
+		//Create form container
+		var conversationFormContainer = createElem2({
 			appendTo: infosBox.boxFooter,
 			type: "form",
 			class: "create-message-form"
@@ -129,7 +129,7 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Create input group
 		var inputGroup = createElem2({
-			appendTo: conversationFormContener,
+			appendTo: conversationFormContainer,
 			type: "div",
 			class: "input-group"
 		});
@@ -209,7 +209,7 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Add required elements to infosBox
 		infosBox.sendMessageForm = {
-			formRoot: conversationFormContener,
+			formRoot: conversationFormContainer,
 			sendButton: sendButton,
 			inputText: inputText,
 			textarea2: textarea2,

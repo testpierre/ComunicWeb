@@ -134,7 +134,7 @@ ComunicWeb.pages.userPage.main = {
 		var row = createElem2({
 			appendTo: sectionContent,
 			type: "div",
-			class: "row page-contener"
+			class: "row page-container"
 		});
 
 		//Create left column

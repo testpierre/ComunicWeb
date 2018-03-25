@@ -96,7 +96,7 @@ ComunicWeb.components.posts.edit = {
 		var updateDiv = createElem2({
 			appendTo: modalBody,
 			type: "div",
-			class: "editor-contener"
+			class: "editor-container"
 		});
 
 		//Create update editor

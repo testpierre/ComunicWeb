@@ -44,36 +44,36 @@ ComunicWeb.components.posts.form = {
 		$(inputMessageDiv).wysiwyg();
 
 		//Add the different post types
-		var postTypesContener = createElem2({
+		var postTypesContainer = createElem2({
 			appendTo: boxBody,
 			type: "div",
 			class: "post-types"
 		});
 
 		//Text
-		var textType = this._add_post_type(postTypesContener, "text", lang("_post_type_text"));
+		var textType = this._add_post_type(postTypesContainer, "text", lang("_post_type_text"));
 		textType.checked = true;
 
 		//Image
-		var imageType = this._add_post_type(postTypesContener, "image", "<i class='fa fa-picture-o'></i> <span class='hidden-xs'>"+lang("_post_type_image")+"</span>");
+		var imageType = this._add_post_type(postTypesContainer, "image", "<i class='fa fa-picture-o'></i> <span class='hidden-xs'>"+lang("_post_type_image")+"</span>");
 
 		//Youtube
-		var youtubeType = this._add_post_type(postTypesContener, "youtube", "<i class='fa fa-youtube-play'></i> <span class='hidden-xs'>"+lang("_post_type_youtube")+"</span>");
+		var youtubeType = this._add_post_type(postTypesContainer, "youtube", "<i class='fa fa-youtube-play'></i> <span class='hidden-xs'>"+lang("_post_type_youtube")+"</span>");
 
 		//Movie
-		var movieType = this._add_post_type(postTypesContener, "movie", "<i class='fa fa-file-movie-o'></i> <span class='hidden-xs'>"+lang("_post_type_movie")+"</span>");
+		var movieType = this._add_post_type(postTypesContainer, "movie", "<i class='fa fa-file-movie-o'></i> <span class='hidden-xs'>"+lang("_post_type_movie")+"</span>");
 
 		//Link
-		var linkType = this._add_post_type(postTypesContener, "link", "<i class='fa fa-link'></i> <span class='hidden-xs'>"+lang("_post_type_link")+"</span>");
+		var linkType = this._add_post_type(postTypesContainer, "link", "<i class='fa fa-link'></i> <span class='hidden-xs'>"+lang("_post_type_link")+"</span>");
 
 		//PDF
-		var pdfType = this._add_post_type(postTypesContener, "pdf", "<i class='fa fa-file-pdf-o'></i> <span class='hidden-xs'>"+lang("_post_type_pdf")+"</span>");
+		var pdfType = this._add_post_type(postTypesContainer, "pdf", "<i class='fa fa-file-pdf-o'></i> <span class='hidden-xs'>"+lang("_post_type_pdf")+"</span>");
 
 		//Countdown timer
-		var countdownType = this._add_post_type(postTypesContener, "countdown", "<i class='fa fa-clock-o'></i> <span class='hidden-xs'>"+lang("_post_type_countdown")+"</span>");
+		var countdownType = this._add_post_type(postTypesContainer, "countdown", "<i class='fa fa-clock-o'></i> <span class='hidden-xs'>"+lang("_post_type_countdown")+"</span>");
 
 		//Survey
-		var surveyType = this._add_post_type(postTypesContener, "survey", "<i class='fa fa-pie-chart'></i> <span class='hidden-xs'>"+lang("_post_type_survey")+"</span>");
+		var surveyType = this._add_post_type(postTypesContainer, "survey", "<i class='fa fa-pie-chart'></i> <span class='hidden-xs'>"+lang("_post_type_survey")+"</span>");
 
 
 
@@ -255,7 +255,7 @@ ComunicWeb.components.posts.form = {
 		countdownType.onclick = changesHandler;
 		surveyType.onclick = changesHandler;
 
-		//Right contener
+		//Right container
 		var rightDiv = createElem2({
 			appendTo: boxBody,
 			type: "div",
@@ -263,24 +263,24 @@ ComunicWeb.components.posts.form = {
 		})
 
 		//Add visibility level choice
-		var visibility_choices_contener = createElem2({
+		var visibility_choices_container = createElem2({
 			appendTo: rightDiv,
 			type: "div",
-			class: "post-visiblity-contener"
+			class: "post-visiblity-container"
 		});
 
 		//Private post
 		var privateLevel = ComunicWeb.components.posts.visibilityLevels.private;
-		var privateInput = this._add_visiblity_choice(visibility_choices_contener, "private", privateLevel.name, privateLevel.icon);
+		var privateInput = this._add_visiblity_choice(visibility_choices_container, "private", privateLevel.name, privateLevel.icon);
 
 		//Friends-visible post
 		var friendsLevel = ComunicWeb.components.posts.visibilityLevels.friends;
-		var friendsInput = this._add_visiblity_choice(visibility_choices_contener, "friends", friendsLevel.name, friendsLevel.icon);
+		var friendsInput = this._add_visiblity_choice(visibility_choices_container, "friends", friendsLevel.name, friendsLevel.icon);
 		friendsInput.checked = true;
 
 		//Worldwide post
 		var publicLevel = ComunicWeb.components.posts.visibilityLevels.public;
-		this._add_visiblity_choice(visibility_choices_contener, "public", publicLevel.name, publicLevel.icon);
+		this._add_visiblity_choice(visibility_choices_container, "public", publicLevel.name, publicLevel.icon);
 
 		//Add send button
 		var sendButton = createElem2({
@@ -459,7 +459,7 @@ ComunicWeb.components.posts.form = {
 			}
 
 			//Get the visibility level
-			var visibilityLevel = visibility_choices_contener.querySelector("input:checked").value;
+			var visibilityLevel = visibility_choices_container.querySelector("input:checked").value;
 			datas.append("visibility", visibilityLevel);
 
 			//Lock the send button
@@ -495,14 +495,14 @@ ComunicWeb.components.posts.form = {
 	 */
 	_add_post_type: function(target, value, label){
 
-		var postTypeContener = createElem2({
+		var postTypeContainer = createElem2({
 			appendTo: target,
 			type: "label",
 			class: "post-form-choice"
 		});
 		
 		var input = createElem2({
-			appendTo: postTypeContener,
+			appendTo: postTypeContainer,
 			type: "input",
 			elemType: "radio",
 			name: "post_type",
@@ -510,7 +510,7 @@ ComunicWeb.components.posts.form = {
 		});
 
 		createElem2({
-			appendTo: postTypeContener,
+			appendTo: postTypeContainer,
 			type: "span",
 			innerHTML: label
 		});
@@ -530,14 +530,14 @@ ComunicWeb.components.posts.form = {
 	_add_visiblity_choice: function(target, value, title, icon){
 
 		//Visibility label
-		var visibility_contener = createElem2({
+		var visibility_container = createElem2({
 			appendTo: target,
 			type: "label",
 		});
 
 		//Create input
 		var visibilityInput = createElem2({
-			appendTo: visibility_contener,
+			appendTo: visibility_container,
 			type: "input",
 			elemType: "radio",
 			name: "post_visibility",
@@ -546,7 +546,7 @@ ComunicWeb.components.posts.form = {
 
 		//Create icon
 		var visibility_label = createElem2({
-			appendTo: visibility_contener,
+			appendTo: visibility_container,
 			type: "span",
 			innerHTML: "<i class='fa " + icon + "'></i>"
 		});

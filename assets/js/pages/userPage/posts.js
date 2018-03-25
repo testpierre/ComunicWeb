@@ -150,20 +150,20 @@ ComunicWeb.pages.userPage.posts = {
 	 */
 	_no_posts_msg: function(target){
 		
-		var msgContener = createElem2({
+		var msgContainer = createElem2({
 			appendTo: target,
 			type: "div"
 		});
 
 		var msgTitle = createElem2({
-			appendTo: msgContener,
+			appendTo: msgContainer,
 			type: "h2",
 			innerHTML: "No post yet"
 		});
 		msgTitle.style.textAlign = "center";
 
 		var msgContent = createElem2({
-			appendTo: msgContener,
+			appendTo: msgContainer,
 			type: "p",
 			innerHTML: "Nobody has posted a message on this page yet."
 		}).style.textAlign = "center";

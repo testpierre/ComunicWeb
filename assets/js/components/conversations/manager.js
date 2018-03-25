@@ -7,9 +7,9 @@
 ComunicWeb.components.conversations.manager = {
 
 	/**
-	 * @var {String} The ID of the conversation contener
+	 * @var {String} The ID of the conversation container
 	 */
-	__conversationsContenerID: "conversationsElem",
+	__conversationsContainerID: "conversationsElem",
 
 	/**
 	 * Display conversations manager
@@ -19,7 +19,7 @@ ComunicWeb.components.conversations.manager = {
 	display: function(){
 
 		//Try to get conversation manager
-		var conversationsContainerElem = byId(this.__conversationsContenerID);
+		var conversationsContainerElem = byId(this.__conversationsContainerID);
 
 		//Check if element exists or not
 		if(conversationsContainerElem){
@@ -33,7 +33,7 @@ ComunicWeb.components.conversations.manager = {
 
 		//Create conversations manager element
 		var conversationsContainerElem = createElem("div");
-		conversationsContainerElem.id = this.__conversationsContenerID;
+		conversationsContainerElem.id = this.__conversationsContainerID;
 		
 		//Insert the element at the right place
 		var pageTarget = byId("pageTarget");

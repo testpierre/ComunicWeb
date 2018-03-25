@@ -55,12 +55,12 @@ ComunicWeb.components.conversations.unreadDropdown = {
 		});
 
 		//Add conversations list
-		var conversationsListContener = createElem2({
+		var conversationsListContainer = createElem2({
 			appendTo: dropdownMenu,
 			type: "li"
 		});
 		var conversationsList = createElem2({
-			appendTo: conversationsListContener,
+			appendTo: conversationsListContainer,
 			type: "ul",
 			class: "menu"
 		});

@@ -72,12 +72,12 @@ ComunicWeb.components.notifications.dropdown = {
 		});
 
 		//Add notifications list
-		var notificationsListContener = createElem2({
+		var notificationsListContainer = createElem2({
 			appendTo: dropdownMenu,
 			type: "li"
 		});
 		var notificationsList = createElem2({
-			appendTo: notificationsListContener,
+			appendTo: notificationsListContainer,
 			type: "ul",
 			class: "menu"
 		});

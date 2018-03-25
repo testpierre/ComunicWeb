@@ -15,13 +15,13 @@ ComunicWeb.components.friends.ui = {
 	 */
 	show_personnal_friend: function(target, friend, user){
 
-		//Create friend contener, if required
+		//Create friend container, if required
 		if(target.className == "friend"){
-			var friendContener = target;
-			emptyElem(friendContener);
+			var friendContainer = target;
+			emptyElem(friendContainer);
 		}
 		else
-			var friendContener = createElem2({
+			var friendContainer = createElem2({
 				appendTo: target,
 				type: "div",
 				class: "friend"
@@ -32,7 +32,7 @@ ComunicWeb.components.friends.ui = {
 
 		//Create user link
 		const userLink = createElem2({
-			appendTo: friendContener,
+			appendTo: friendContainer,
 			type: "a"
 		});
 
@@ -64,7 +64,7 @@ ComunicWeb.components.friends.ui = {
 
 		//Create actions area
 		var actionsOnFriendArea = createElem2({
-			appendTo: friendContener, 
+			appendTo: friendContainer, 
 			type: "div",
 			class: "friends-actions"
 		});
@@ -112,12 +112,12 @@ ComunicWeb.components.friends.ui = {
 					}
 
 					if(!accept){
-						friendContener.remove();
+						friendContainer.remove();
 					}
 					else {
 
 						//Update friendship informations
-						ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContener);
+						ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContainer);
 					}
 
 				});
@@ -165,7 +165,7 @@ ComunicWeb.components.friends.ui = {
 					}
 
 					//Update friendship informations
-					ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContener);
+					ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContainer);
 				});
 
 			}
@@ -199,7 +199,7 @@ ComunicWeb.components.friends.ui = {
 						ComunicWeb.common.notificationSystem.showNotification("Could not update posts creation status !", "danger");
 					
 					//Update friendship informations
-					ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContener);
+					ComunicWeb.components.friends.actions.refresh_single_personnal(friendID, friendContainer);
 
 				});
 			}
@@ -209,7 +209,7 @@ ComunicWeb.components.friends.ui = {
 
 		//Offer to delete friendship
 		const deleteLink = createElem2({
-			appendTo: friendContener,
+			appendTo: friendContainer,
 			type: "a",
 			innerHTML: "<i class='fa fa-trash'></i>"
 		});
@@ -225,11 +225,11 @@ ComunicWeb.components.friends.ui = {
 					return;
 				
 				//Try to delete the friend from the list
-				friendContener.style.visibility = "hidden";
+				friendContainer.style.visibility = "hidden";
 				ComunicWeb.components.friends.interface.remove_friend(friendID, function(result){
 
-					//Make friend contener visible
-					friendContener.style.visibility = "visible";
+					//Make friend container visible
+					friendContainer.style.visibility = "visible";
 
 					//Check for errors
 					if(result.error){
@@ -238,7 +238,7 @@ ComunicWeb.components.friends.ui = {
 					}
 
 					//Delete the element
-					friendContener.remove();
+					friendContainer.remove();
 
 				});
 

@@ -43,8 +43,8 @@ ComunicWeb.components.comments.ui = {
 	 */
 	_process_comments: function(infos, usersInfos, postID, target){
 
-		//Create comments contener
-		var contener = createElem2({
+		//Create comments container
+		var container = createElem2({
 			appendTo: target,
 			type: "div",
 			class: "box-comments post-comments"
@@ -52,12 +52,12 @@ ComunicWeb.components.comments.ui = {
 
 		//Process the list of comments
 		for(i in infos){
-			this._show_comment(infos[i], usersInfos['user-' + infos[i].userID], contener);
+			this._show_comment(infos[i], usersInfos['user-' + infos[i].userID], container);
 		}
 
 		//Add comment creation form (if possible)
 		if(signed_in()){
-			ComunicWeb.components.comments.form.display(postID, contener)
+			ComunicWeb.components.comments.form.display(postID, container)
 		}
 
 	},
@@ -95,10 +95,10 @@ ComunicWeb.components.comments.ui = {
 	 */
 	_show_comment: function(infos, user, target){
 		
-		//Create comment contener (if required)
+		//Create comment container (if required)
 		if(target.className != "box-comment"){
 
-			var commentContener = createElem2({
+			var commentContainer = createElem2({
 				appendTo: target,
 				type: "div",
 				class: "box-comment"
@@ -106,16 +106,16 @@ ComunicWeb.components.comments.ui = {
 
 		}
 
-		//Empty comment contener
+		//Empty comment container
 		else {
 			emptyElem(target);
-			var commentContener = target;
+			var commentContainer = target;
 		}
 		
 
 		//Add user image
 		createElem2({
-			appendTo: commentContener,
+			appendTo: commentContainer,
 			type: "img",
 			class: "img-circle imgs-sm",
 			src: user.accountImage
@@ -123,13 +123,13 @@ ComunicWeb.components.comments.ui = {
 
 		//Create comment text
 		var commentText = createElem2({
-			appendTo: commentContener,
+			appendTo: commentContainer,
 			type: "div",
 			class: "comment-text"
 		});
 
 		//Add username
-		var userNameContener = createElem2({
+		var userNameContainer = createElem2({
 			appendTo: commentText,
 			type: "span",
 			class: "username",
@@ -137,15 +137,15 @@ ComunicWeb.components.comments.ui = {
 		});
 
 		//Add right elements
-		var rightContener = createElem2({
-			appendTo: userNameContener,
+		var rightContainer = createElem2({
+			appendTo: userNameContainer,
 			type: "span",
 			class: "text-muted pull-right"
 		});
 
 		//Add comment creation date
 		createElem2({
-			appendTo: rightContener,
+			appendTo: rightContainer,
 			type: "span",
 			innerHTML: ComunicWeb.common.date.timeDiffToStr(infos.time_sent) + " ago"
 		});
@@ -155,7 +155,7 @@ ComunicWeb.components.comments.ui = {
 
 			//Create a button to update the comment
 			var editCommentLink = createElem2({
-				appendTo: rightContener,
+				appendTo: rightContainer,
 				type: "a",
 				class: "edit-comment-link"
 			});
@@ -170,14 +170,14 @@ ComunicWeb.components.comments.ui = {
 			editCommentLink.onclick = function(){
 
 				//Open comment editor
-				ComunicWeb.components.comments.editor.open(infos, commentContener);
+				ComunicWeb.components.comments.editor.open(infos, commentContainer);
 				
 			}
 
 
 			//Create a button to delete the comment
 			var deleteCommentLink = createElem2({
-				appendTo: rightContener,
+				appendTo: rightContainer,
 				type: "a",
 				class: "delete-comment-link"
 			});
@@ -198,12 +198,12 @@ ComunicWeb.components.comments.ui = {
 						return;
 					
 					//Hide the comment
-					commentContener.style.visibility = "hidden";
+					commentContainer.style.visibility = "hidden";
 					
 					//Delete the comment
 					ComunicWeb.components.comments.interface.delete(infos.ID, function(response){
 
-						commentContener.style.visibility = "visible";
+						commentContainer.style.visibility = "visible";
 
 						//Check for errors
 						if(response.error){
@@ -212,8 +212,8 @@ ComunicWeb.components.comments.ui = {
 						}
 
 						//Delete the comment node
-						emptyElem(commentContener);
-						commentContener.remove();
+						emptyElem(commentContainer);
+						commentContainer.remove();
 					});
 
 				});
@@ -237,14 +237,14 @@ ComunicWeb.components.comments.ui = {
 		//Add comment image (if any)
 		if(infos.img_url != null){
 			
-			var commentImageContener = createElem2({
+			var commentImageContainer = createElem2({
 				appendTo: commentText,
 				type: "div",
-				class: "comment-img-contener"
+				class: "comment-img-container"
 			});
 
 			var commentImageLink = createElem2({
-				appendTo: commentImageContener,
+				appendTo: commentImageContainer,
 				type: "a",
 				href: infos.img_url
 			});

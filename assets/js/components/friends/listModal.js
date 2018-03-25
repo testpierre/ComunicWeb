@@ -162,7 +162,7 @@ ComunicWeb.components.friends.listModal = {
 	 */
 	_show_read_only: function(target, ids, user){
 
-		//Create the friends list contener
+		//Create the friends list container
 		var list = createElem2({
 			appendTo: target,
 			type: "div",
@@ -182,7 +182,7 @@ ComunicWeb.components.friends.listModal = {
 			ids.forEach(id => {
 				
 				//Display the user
-				const userContener = createElem2({
+				const userContainer = createElem2({
 					appendTo: list,
 					type: "div",
 					class: "friend"
@@ -190,7 +190,7 @@ ComunicWeb.components.friends.listModal = {
 
 				//Create user link
 				const userLink = createElem2({
-					appendTo: userContener,
+					appendTo: userContainer,
 					type: "a"
 				});
 

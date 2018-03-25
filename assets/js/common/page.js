@@ -192,19 +192,19 @@ ComunicWeb.common.page = {
         //Save new url
         this._current_url = window.location.href.toString();
 
-        //Get the main contener of the page
-        var mainContenerElem = byId("wrapper");
+        //Get the main container of the page
+        var mainContainerElem = byId("wrapper");
 
         //If we didn't get anything, clean the page and create a wrapper element
-        if(!mainContenerElem){
-           var mainContenerElem = this.emptyPage(true);
+        if(!mainContainerElem){
+           var mainContainerElem = this.emptyPage(true);
         }
 
         //We check if the page is a full screen page or not
         if(pageInfos.disableMenus){
             //We force the screen to be cleaned
-             var mainContenerElem = this.emptyPage(true);
-             var pageTarget = mainContenerElem; //The page directly goes to the main target
+             var mainContainerElem = this.emptyPage(true);
+             var pageTarget = mainContainerElem; //The page directly goes to the main target
         }
         //Else
         else {
@@ -214,10 +214,10 @@ ComunicWeb.common.page = {
 
             //We empty screen if we couldn't rich it
             if(!pageTarget){
-                mainContenerElem.innerHTML = "";
+                mainContainerElem.innerHTML = "";
 
                 //We create the pagetTarget element
-                var pageTarget = createElem("div", mainContenerElem);
+                var pageTarget = createElem("div", mainContainerElem);
                 pageTarget.id = "pageTarget";
             }
             else{
@@ -290,7 +290,7 @@ ComunicWeb.common.page = {
     /**
      * Prepare a template load by specifiying datas
      * 
-     * @return {Object} The object contener with all required infos
+     * @return {Object} The object container with all required infos
      */
     prepareLoadTemplate: function(){
         //Create an object
@@ -310,10 +310,10 @@ ComunicWeb.common.page = {
      * @param {Object} dataTemplate Datas to pass to the template (to parse it)
      * @param {String} templateURI URI pointing on the template
      * @param {function} afterParsingHTMLtemplate What to do once the template is loaded
-     * @param {Boolean} cleanContener Specify if contener has to be cleaned or not
+     * @param {Boolean} cleanContainer Specify if container has to be cleaned or not
      * @return {Boolean} False if it fails
      */
-    getAndShowTemplate: function(targetElem, dataTemplate, templateURI, afterParsingHTMLtemplate, cleanContener){
+    getAndShowTemplate: function(targetElem, dataTemplate, templateURI, afterParsingHTMLtemplate, cleanContainer){
 
         //First, get the template URL
         templateURL = ComunicWeb.__config.templatesURL + templateURI;
@@ -321,8 +321,8 @@ ComunicWeb.common.page = {
         //Define how to apply the template
         var afterDownloadTemplateContent = function(templateContent){
 
-            //If required, clean the contener
-            if(cleanContener){
+            //If required, clean the container
+            if(cleanContainer){
                 targetElem.innerHTML = "";
             }
 
@@ -442,10 +442,10 @@ ComunicWeb.common.page = {
      * @param {String} templateURI URI pointing on the template
      * @param {Object} additionalData Additionnal to pass to the template
      * @param {function} afterParsingJSONtemplate What to do once JSON template is loaded
-     * @param {Boolean} cleanContener Specify wether the template contener has to be cleaned or not
+     * @param {Boolean} cleanContainer Specify wether the template container has to be cleaned or not
      * @return {Boolean} Flase if it fails
      */
-    getAndShowJSONtemplate: function(targetElem, templateURI, additionalData, afterParsingJSONtemplate, cleanContener){
+    getAndShowJSONtemplate: function(targetElem, templateURI, additionalData, afterParsingJSONtemplate, cleanContainer){
         //Define template URL
         var templateURL = ComunicWeb.__config.templatesURL + templateURI;
 

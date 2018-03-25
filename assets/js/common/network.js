@@ -7,7 +7,7 @@
 ComunicWeb.common.network = {
 
 	/**
-	 * @var {object} Cache contener
+	 * @var {object} Cache container
 	 */
 	cache: {},
 
@@ -100,7 +100,7 @@ ComunicWeb.common.network = {
 
 			//Check if error message exists or not
 			if(!byId("networkErrorMessage")){
-				//Create error message contener
+				//Create error message container
 				var networkErrorMessage = createElem("div", document.body);
 				networkErrorMessage.id = "networkErrorMessage";
 

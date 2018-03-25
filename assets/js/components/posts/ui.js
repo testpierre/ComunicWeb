@@ -285,7 +285,7 @@ ComunicWeb.components.posts.ui = {
 		//In case of video
 		else if(infos.kind == "movie"){
 
-			var videoContener = createElem2({
+			var videoContainer = createElem2({
 				appendTo: postRoot,
 				type: "div",
 				class: "post-video"
@@ -293,7 +293,7 @@ ComunicWeb.components.posts.ui = {
 
 			//Create video element
 			var video = createElem2({
-				appendTo: videoContener,
+				appendTo: videoContainer,
 				type: "video",
 				class: "video-js vjs-default-skin"
 			});
@@ -439,7 +439,7 @@ ComunicWeb.components.posts.ui = {
 				class: "post-survey-question"
 			});
 
-			//Answer contener
+			//Answer container
 			var surveyResponse = createElem2({
 				appendTo: postRoot,
 				type: "div",
@@ -449,7 +449,7 @@ ComunicWeb.components.posts.ui = {
 			var row = createElem2({
 				appendTo: postRoot,
 				type: "div",
-				class: "row post-survey-chart-contener"
+				class: "row post-survey-chart-container"
 			});
 
 			//Create canvas column
@@ -459,8 +459,8 @@ ComunicWeb.components.posts.ui = {
 				class: "col-md-8"
 			});
 
-			//Chart contener
-			var chartContener = createElem2({
+			//Chart container
+			var chartContainer = createElem2({
 				appendTo: leftColumn,
 				type: "div",
 				class: "chart-responsive"
@@ -468,7 +468,7 @@ ComunicWeb.components.posts.ui = {
 
 			//Create canvas
 			var canvas = createElem2({
-				appendTo: chartContener,
+				appendTo: chartContainer,
 				type: "canvas",
 			});
 			canvas.style.height = "150px";

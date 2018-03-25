@@ -64,23 +64,23 @@
 /**
  * Visibility choice
  */
-.post-form .post-visiblity-contener {
+.post-form .post-visiblity-container {
 	display: inline-block;
 	margin-right: 10px;
 }
 
-.post-form .post-visiblity-contener label {
+.post-form .post-visiblity-container label {
 	margin-left: 5px;
 }
 
-.post-form .post-visiblity-contener input {
+.post-form .post-visiblity-container input {
 	display: none;
 }
 
-.post-form .post-visiblity-contener span {
+.post-form .post-visiblity-container span {
 	color: #b5bbc8;
 }
 
-.post-form .post-visiblity-contener input:checked ~ span {
+.post-form .post-visiblity-container input:checked ~ span {
 	color: #111111;
 }

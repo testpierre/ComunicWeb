@@ -19,7 +19,7 @@ ComunicWeb.common.messages.createCalloutElem = function(calloutTitle, calloutMes
     if(!calloutType)
         var calloutType = "info";
 
-    //Create callout main contener
+    //Create callout main container
     var calloutElem = document.createElement('div');
     calloutElem.className = "callout callout-" + calloutType;
 

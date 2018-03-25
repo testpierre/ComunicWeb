@@ -289,7 +289,7 @@ function createFormGroup(infos){
  */
 function create_radio(target, name, label){
 
-	//Contener
+	//Container
 	var radioDiv = createElem2({
 		appendTo: target,
 		type: "div",

@@ -189,7 +189,7 @@ var ComunicWeb = {
 			/**
 			 * Load, parse and show an HTML template
 			 */
-			getAndShowTemplate: function(targetElem, dataTemplate, templateURI, nextAction, cleanContener){},
+			getAndShowTemplate: function(targetElem, dataTemplate, templateURI, nextAction, cleanContainer){},
 
 			/**
 			 * Convert a JSON object into html elements
@@ -199,7 +199,7 @@ var ComunicWeb = {
 			/**
 			 * Get and show a JSON template
 			 */
-			getAndShowJSONtemplate: function(targetElem, templateURI, additionalData, afterParsingJSONtemplate, cleanContener){},
+			getAndShowJSONtemplate: function(targetElem, templateURI, additionalData, afterParsingJSONtemplate, cleanContainer){},
 		},
 
 		/**
@@ -230,7 +230,7 @@ var ComunicWeb = {
 		network: {
 
 			/**
-			 * @var {object} Cache contener
+			 * @var {object} Cache container
 			 */
 			cache: {},
 			

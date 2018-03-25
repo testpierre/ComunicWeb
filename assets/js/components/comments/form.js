@@ -16,7 +16,7 @@ ComunicWeb.components.comments.form = {
 		//Check if we are creating a new comment of or reseting an existing one
 		if(target.className != "comment-creation-form"){
 
-			//Create form contener
+			//Create form container
 			var commentForm = createElem2({
 				appendTo: target,
 				type: "form",
