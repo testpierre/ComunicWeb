@@ -211,6 +211,9 @@ class Dev {
 			"js/components/menuBar/common.js",
 			"js/components/menuBar/notAuthenticated.js",
 			"js/components/menuBar/authenticated.js",
+
+			//Bottom view
+			"js/components/bottom/main.js",
 			
 			//Friends components
 			"js/components/friends/friendsList.js",

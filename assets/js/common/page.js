@@ -203,8 +203,8 @@ ComunicWeb.common.page = {
         //We check if the page is a full screen page or not
         if(pageInfos.disableMenus){
             //We force the screen to be cleaned
-             var mainContainerElem = this.emptyPage(true);
-             var pageTarget = mainContainerElem; //The page directly goes to the main target
+            var mainContainerElem = this.emptyPage(true);
+            var pageTarget = mainContainerElem; //The page directly goes to the main target
         }
         //Else
         else {
@@ -228,15 +228,16 @@ ComunicWeb.common.page = {
             //Set wrapper class
             pageTarget.className = "content-wrapper";
 
-            //Ask adminLTE to fix layout
-            if($.AdminLTE.layout)
-                $.AdminLTE.layout.fix();
+            
 
             //Set body class
             document.body.className="hold-transition fixed skin-blue layout-top-nav";
 
             //We load the menubar
             ComunicWeb.components.menuBar.common.display();
+
+            //Bottom
+            ComunicWeb.components.bottom.main.display();
 
             //We load specific components for logged in users
             if(ComunicWeb.user.userLogin.getUserLoginState()){
@@ -247,6 +248,10 @@ ComunicWeb.common.page = {
                 //We load conversations manager (login required)
                 ComunicWeb.components.conversations.manager.display();
             }
+            
+            //Ask adminLTE to fix layout
+            if($.AdminLTE.layout)
+                $.AdminLTE.layout.fix();
         }
 
         //Add the subfolder URI (if any)

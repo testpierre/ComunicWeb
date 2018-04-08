@@ -510,6 +510,20 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Pages bottom
+		 */
+		bottom: {
+
+			/**
+			 * Main bottom script file
+			 */
+			main: {
+				//TODO : implement
+			},
+
+		},
+
+		/**
 		 * Mails caching component
 		 */
 		mailCaching: {
