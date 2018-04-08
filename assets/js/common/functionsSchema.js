@@ -524,6 +524,13 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Language picker
+		 */
+		langPicker: {
+			//TODO : implement
+		},
+
+		/**
 		 * Mails caching component
 		 */
 		mailCaching: {

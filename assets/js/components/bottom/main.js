@@ -49,6 +49,9 @@ ComunicWeb.components.bottom.main = {
 			type: "a",
 			innerHTML: "<i class='fa fa-globe'></i> Language"
 		});
+		langLink.onclick = function(){
+			ComunicWeb.components.langPicker.show();
+		};
 	}
 
 }

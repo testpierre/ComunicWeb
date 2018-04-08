@@ -1,0 +1,9 @@
+/**
+ * Language picker modal stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.pick-language-modal .modal-body {
+	text-align: center;
+}

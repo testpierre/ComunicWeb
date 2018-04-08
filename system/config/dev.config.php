@@ -116,6 +116,9 @@ class Dev {
 		//Components stylesheets
 			//Menubar stylesheet
 			"css/components/menuBar.css",
+
+			//Language picker stylesheet
+			"css/components/languagePicker.css",
 			
 			//Searchform stylesheet
 			"css/components/searchForm.css",
@@ -214,6 +217,9 @@ class Dev {
 
 			//Bottom view
 			"js/components/bottom/main.js",
+
+			//Language picker
+			"js/components/languagePicker.js",
 			
 			//Friends components
 			"js/components/friends/friendsList.js",
