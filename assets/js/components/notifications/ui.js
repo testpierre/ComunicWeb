@@ -51,14 +51,10 @@ ComunicWeb.components.notifications.ui = {
 		//Notification target
 		if(data.from_container_type == "user_page"){
 
-			if(data.from_container_type == "user_page"){
-
-				if(data.from_user_id == data.from_container_id)
-					message += "on his / her page";
-				else
-					message += "on "+userFullName(users["user-"+data.from_container_id])+"'s page";
-
-			}
+			if(data.from_user_id == data.from_container_id)
+				message += "on his / her page";
+			else
+				message += "on "+userFullName(users["user-"+data.from_container_id])+"'s page";
 
 		}
 
