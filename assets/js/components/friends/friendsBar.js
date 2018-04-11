@@ -160,6 +160,9 @@ ComunicWeb.components.friends.bar = {
 		//Make the link lives
 		friendLink.onclick = function(){
 			openUserPage(userIDorPath(userInfos));
+
+			//For the responsive mode
+			ComunicWeb.components.friends.bar.toggleShowHide();
 		}
 
 		//Add user account image
