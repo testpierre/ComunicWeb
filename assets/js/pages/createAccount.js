@@ -106,6 +106,24 @@ ComunicWeb.pages.createAccount = {
 			innerHTML: "Create the account"
 		});
 
+		//Add bottom links area
+		var bottomLinks = createElem2({
+			appendTo: formRoot,
+			type: "div",
+			class: "bottom-form-links"
+		});
+
+		//Create a link to redirect to the login page
+		var loginLink = createElem2({
+			appendTo: bottomLinks,
+			type: "a",
+			innerHTML: "Login with an existing account"
+		});
+		loginLink.onclick = function(){
+			openPage("login");
+		}
+
+
 		//Make the form lives
 		submitButton.onclick = function(){
 

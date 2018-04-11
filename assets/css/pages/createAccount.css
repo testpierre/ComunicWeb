@@ -28,3 +28,8 @@
 .create-account-form .submit-form {
 	text-align: center;
 }
+
+.create-account-form .bottom-form-links {
+	text-align: center;
+	margin-top: 15px;
+}
