@@ -28,7 +28,7 @@ ComunicWeb.common.formChecker = {
 
         //TextInput
         if(inputType == "text"){
-            inputOK = (input.value == "" ? false:true);
+            inputOK = (input.value.length < 3 ? false:true);
         }
 
         //MailInput
@@ -38,7 +38,7 @@ ComunicWeb.common.formChecker = {
 
         //Password input
         else if(inputType == "password"){
-            inputOK = (input.value == "" ? false:true);
+            inputOK = (input.value.length < 3 ? false:true);
         }
 
         //Unsupported input type
