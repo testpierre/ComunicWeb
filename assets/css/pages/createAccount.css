@@ -21,6 +21,10 @@
 	text-align: center;
 }
 
+.create-account-form .callout p {
+	text-align: justify;
+}
+
 .create-account-form .submit-form {
 	text-align: center;
 }

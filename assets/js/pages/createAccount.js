@@ -47,6 +47,12 @@ ComunicWeb.pages.createAccount = {
 			innerHTML: "Use the following form to create an account and join the network : "
 		});
 
+		//Create the message target
+		var messagesTarget = createElem2({
+			appendTo: formRoot,
+			type: "div"
+		});
+
 		//Input user first name
 		var firstNameInput = createFormGroup({
 			target: formRoot,
@@ -99,6 +105,59 @@ ComunicWeb.pages.createAccount = {
 			class: "btn btn-primary",
 			innerHTML: "Create the account"
 		});
-	},
 
+		//Make the form lives
+		submitButton.onclick = function(){
+
+			//Empty the message target
+			emptyElem(messagesTarget);
+
+			//Check the first name
+			if(!ComunicWeb.common.formChecker.checkInput(firstNameInput, true))
+				return notify("Please check your first name !", "danger");
+			
+			//Check the last name
+			if(!ComunicWeb.common.formChecker.checkInput(lastNameInput, true))
+				return notify("Please check your last name !", "danger");
+
+			//Check the email address
+			if(!ComunicWeb.common.formChecker.checkInput(emailInput, true))
+				return notify("Please check your email address !", "danger");
+			
+			//Check the password
+			if(!ComunicWeb.common.formChecker.checkInput(passwordInput, true))
+				return notify("Please check your password !", "danger");
+			
+			//Check the confirmation password
+			if(passwordInput.value != confirmPasswordInput.value)
+				return notify("The two passwords are not the same !", "danger");
+			
+			//Lock create account button
+			submitButton.disabled = true;
+			
+			//Try to create the account
+			if(ComunicWeb.components.account.interface.createAccount(
+				firstNameInput.value,
+				lastNameInput.value,
+				emailInput.value,
+				passwordInput.value,
+				function(response){
+
+					//Unlock button
+					submitButton.disabled = false;
+
+					//Check for error
+					if(response.error){
+						//Display an error
+						messagesTarget.appendChild(ComunicWeb.common.messages.createCalloutElem(
+							"Account creation failed",
+							"An error occured while trying to create your account. It is most likely to be a server error, or the given email address is already associated with an account.",
+							"danger"
+						));
+						return;
+					}
+				}
+			));
+		};
+	},
 }

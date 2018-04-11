@@ -442,6 +442,20 @@ var ComunicWeb = {
 	components: {
 
 		/**
+		 * Account component
+		 */
+		account: {
+
+			/**
+			 * Interface
+			 */
+			interface: {
+				//TODO : implement
+			},
+
+		},
+
+		/**
 		 * Menubar
 		 */
 		menuBar: {

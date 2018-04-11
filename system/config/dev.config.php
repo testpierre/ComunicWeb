@@ -207,6 +207,9 @@ class Dev {
 		"js/langs/fr.inc.js",
 
 		//Components
+			//Account component
+			"js/components/account/interface.js",
+
 			//Mail caching
 			"js/components/mailCaching.js",
 			

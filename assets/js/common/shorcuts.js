@@ -112,3 +112,15 @@ function openConversation(id){
         conversationID: id
     });
 }
+
+/**
+ * Display a notification
+ * 
+ * @param {string} message The message of the notification
+ * @param {string} type The type of the notification (danger, info, success, primary)
+ * @param {number} duration The notification duration
+ * @param {string} title The title of the notification
+ */
+function notify(message, type, duration, title){
+    ComunicWeb.common.notificationSystem.showNotification(message, type, duration, title)
+}
