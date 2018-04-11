@@ -166,6 +166,9 @@ class Dev {
 
 			//Latest post page stylesheet
 			"css/pages/latestPosts/main.css",
+
+			//Create account page
+			"css/pages/createAccount.css",
 	);
 
 	/**
@@ -311,6 +314,9 @@ class Dev {
 
 			//Login page
 			"js/pages/login.js",
+
+			//Create account page
+			"js/pages/createAccount.js",
 			
 			//Logout page
 			"js/pages/logout.js",

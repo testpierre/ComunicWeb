@@ -51,6 +51,15 @@ ComunicWeb.pagesList = {
     },
 
     /**
+     * Create account page
+     */
+    create_account: {
+        pageTitle: "Create an account",
+        methodHandler: "ComunicWeb.pages.createAccount.openPage",
+        disableMenus: false
+    },
+
+    /**
      * Logout page
      */
     logout: {

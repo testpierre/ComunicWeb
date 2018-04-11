@@ -13,7 +13,7 @@
 			<h3>Free social network that respect your privacy.</h3>
 			<br />
 
-			<div class="btn btn-lg btn-primary">Create account</div>
+			<a class="btn btn-lg btn-primary" target="create_account">Create account</a>
 			<a class="btn btn-lg btn-success" target="login">Sign in</a>
 		</div>
 	</div>

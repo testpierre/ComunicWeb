@@ -1066,6 +1066,15 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Create account controller
+		 */
+		createAccount: {
+
+			//TODO : implement
+
+		},
+
+		/**
 		 * Logout controller
 		 */
 		logout: {
