@@ -16,7 +16,7 @@ ComunicWeb.common.langs.en = {
 
     //Login form
     _login_page_top_msg: "Login to your Comunic account.",
-    _login_page_remember_me: "Rememeber me",
+    _login_page_remember_me: "Remember me",
     _login_page_email_placeholder: "Email",
     _login_page_password_placeholder: "Password",
     _login_page_submit: "Sign In",
