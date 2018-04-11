@@ -156,6 +156,9 @@ ComunicWeb.pages.createAccount = {
 						));
 						return;
 					}
+
+					//Redirect to the account created page
+					openPage("account_created");
 				}
 			));
 		};

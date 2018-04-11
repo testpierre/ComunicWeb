@@ -320,6 +320,7 @@ class Dev {
 
 			//Create account page
 			"js/pages/createAccount.js",
+			"js/pages/accountCreated.js",
 			
 			//Logout page
 			"js/pages/logout.js",
