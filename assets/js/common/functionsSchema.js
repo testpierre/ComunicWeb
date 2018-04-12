@@ -1058,6 +1058,26 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * User settings page
+		 */
+		settings: {
+
+			/**
+			 * Main script
+			 */
+			main: {
+				//TODO : implement
+			},
+			
+			/**
+			 * Navigation pane
+			 */
+			navigationPane: {
+				//TODO : implement
+			},
+		},
+
+		/**
 		 * Login controller
 		 */
 		login:{

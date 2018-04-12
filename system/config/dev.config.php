@@ -167,6 +167,9 @@ class Dev {
 			//Latest post page stylesheet
 			"css/pages/latestPosts/main.css",
 
+			//User account page
+			"css/pages/settings/main.css",
+
 			//Create account page
 			"css/pages/createAccount.css",
 	);
@@ -314,6 +317,10 @@ class Dev {
 
 			//Latest posts page
 			"js/pages/latestPosts/main.js",
+
+			//User settings page
+			"js/pages/settings/main.js",
+			"js/pages/settings/navigationPane.js",
 
 			//Login page
 			"js/pages/login.js",

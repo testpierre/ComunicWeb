@@ -42,6 +42,15 @@ ComunicWeb.pagesList = {
     },
 
     /**
+     * User settings page
+     */
+    settings: {
+        pageTitle: "Settings",
+        methodHandler: "ComunicWeb.pages.settings.main.open",
+        disableMenus: false
+    },
+
+    /**
      * Login page
      */
     login: {

@@ -1,0 +1,11 @@
+/**
+ * Main settings styleesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.settings-page-container {
+	max-width: 1000px;
+	margin: auto;
+	margin-top: 10px;
+}
