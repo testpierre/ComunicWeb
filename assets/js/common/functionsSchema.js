@@ -1075,6 +1075,27 @@ var ComunicWeb = {
 			navigationPane: {
 				//TODO : implement
 			},
+
+			/**
+			 * Settings sections list
+			 */
+			sectionsList: {
+				//TODO : implement
+			},
+
+			/**
+			 * Settings sections script
+			 */
+			sections: {
+
+				/**
+				 * General section
+				 */
+				general: {
+					//TODO : implement
+				},
+
+			},
 		},
 
 		/**

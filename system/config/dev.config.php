@@ -321,6 +321,9 @@ class Dev {
 			//User settings page
 			"js/pages/settings/main.js",
 			"js/pages/settings/navigationPane.js",
+			"js/pages/settings/sectionsList.js",
+				//Settings sections
+				"js/pages/settings/sections/general.js",
 
 			//Login page
 			"js/pages/login.js",

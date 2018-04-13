@@ -32,8 +32,38 @@ ComunicWeb.pages.settings.main = {
 			class: "col-md-3"
 		});
 
+		//Right area
+		var rightArea = createElem2({
+			appendTo: row,
+			type: "div",
+			class: "col-md-9"
+		});
+
 		//Display left navigation pane
 		ComunicWeb.pages.settings.navigationPane.display(leftArea);
+
+		//Determine which page to open
+		var section = args.subfolder ? args.subfolder : "general";
+		
+		//Check if the section exists or not
+		if(ComunicWeb.pages.settings.sectionsList[section]){
+			
+			//Extract section information
+			var section = ComunicWeb.pages.settings.sectionsList[section];
+			
+			//Update document title
+			document.title += section.title;
+
+			//Call handler
+			eval(section.handler + "(args, rightArea);");
+
+		}
+
+		//The section is not found
+		else {
+			//Display error page (404)
+			ComunicWeb.common.error.pageNotFound(args, target);
+		}
 	},
 
 }
