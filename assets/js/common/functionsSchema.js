@@ -572,6 +572,20 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Settings component
+		 */
+		settings: {
+
+			/**
+			 * Settings interface
+			 */
+			interface: {
+				//TODO : implement
+			},
+
+		},
+
+		/**
 		 * Friends list
 		 */
 		friends: {

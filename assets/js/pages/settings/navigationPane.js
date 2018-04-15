@@ -60,6 +60,9 @@ ComunicWeb.pages.settings.navigationPane = {
 			type: "a",
 			innerHTML: "<i class='fa fa-user'></i> General"
 		});
+		sectionGeneralLink.onclick = function(){
+			openPage("settings/general");
+		};
 	}
 
 }

@@ -218,6 +218,9 @@ class Dev {
 			
 			//Search form
 			"js/components/searchForm/searchForm.js",
+
+			//Settings
+			"js/components/settings/interface.js",
 			
 			//Main menubar
 			"js/components/menuBar/common.js",
@@ -322,6 +325,7 @@ class Dev {
 			"js/pages/settings/main.js",
 			"js/pages/settings/navigationPane.js",
 			"js/pages/settings/sectionsList.js",
+
 				//Settings sections
 				"js/pages/settings/sections/general.js",
 
