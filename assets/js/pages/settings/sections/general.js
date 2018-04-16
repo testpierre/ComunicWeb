@@ -31,6 +31,21 @@ ComunicWeb.pages.settings.sections.general = {
 		//Display loading message
 		var loadingMsg = ComunicWeb.common.messages.createCalloutElem("Loading", "Please wait while this page is loading...", "info");
 		boxBody.appendChild(loadingMsg);
+
+		//Load general settings information
+		ComunicWeb.components.settings.interface.getGeneral(function(infos){
+
+			//Remove loading message
+			loadingMsg.remove();
+
+			//Check for errors
+			if(infos.error){
+				var errMsg = ComunicWeb.common.messages.createCalloutElem("Error", "An error occured while retrieving account settings...", "danger");
+				boxBody.appendChild(errMsg);
+			}
+
+			
+		});
 	}
 
 };
