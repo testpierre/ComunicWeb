@@ -164,6 +164,10 @@ class Dev {
 			//Post page
 			"css/pages/postPage/main.css",
 
+			//Settings page
+				//Sections sections
+				"css/pages/settings/sections/general.css",
+
 			//Latest post page stylesheet
 			"css/pages/latestPosts/main.css",
 

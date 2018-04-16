@@ -18,7 +18,20 @@ ComunicWeb.pages.settings.sections.general = {
 		var box = createElem2({
 			appendTo: target,
 			type: "div",
-			class: "box box-primary"
+			class: "box box-primary box-general-settings"
+		});
+
+		//Add box header
+		var boxHead = createElem2({
+			appendTo: box,
+			type: "div",
+			class: "box-header",
+		});
+		var boxTitle = createElem2({
+			appendTo: boxHead,
+			type: "h3",
+			class: "box-title",
+			innerHTML: "General settings"
 		});
 
 		//Create box body
@@ -44,8 +57,39 @@ ComunicWeb.pages.settings.sections.general = {
 				boxBody.appendChild(errMsg);
 			}
 
-			
+			//Display the settings form
+			ComunicWeb.pages.settings.sections.general._show_form(infos, boxBody);
 		});
-	}
+	},
+
+	/**
+	 * Show the settings form
+	 * 
+	 * @param {object} infos Informations about the user (General settings)
+	 * @param {HTMLElement} target The target for the page
+	 */
+	_show_form: function(infos, target){
+
+		//Display user ID
+		createFormGroup({
+			target: target,
+			label: "User ID",
+			type: "text",
+			value: infos.id,
+			disabled: true,
+			additionalGroupClasses: "input-user-id"
+		});
+
+		//Display user name
+		createFormGroup({
+			target: target,
+			label: "Email address",
+			type: "email",
+			value: infos.email,
+			disabled: true,
+			additionalGroupClasses: "input-user-email"
+		});
+
+	},
 
 };

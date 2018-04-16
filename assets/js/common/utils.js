@@ -39,6 +39,7 @@ function createElem(nodeType, appendTo){
  * @info {String} value The value of the new element
  * @info {String} placeholder The placeholder of the new element
  * @info {String} innerHTML Specify the html content of the newly created element
+ * @info {boolean} disabled Set whether the field should be disabled or not (input only)
  * @return {HTMLElement} The newly created element
  */
 function createElem2(infos){
@@ -100,6 +101,10 @@ function createElem2(infos){
 	//Specify node content
 	if(infos.innerHTML)
 		newElem.innerHTML = infos.innerHTML;
+
+	//Set field state
+	if(infos.disabled)
+		infos.disabled = true;
 
 	//Return newly created element
 	return newElem;
@@ -190,12 +195,27 @@ function checkMail(emailAddress){
  * * @info {Boolean} checked Defines if the fields has to be checked or not (checkbox only)
  * * @info {Boolean} multiple Defines if the fields can accept more than one response
  * * @info {String} type The type of the field
+ * * @info {string} value The default value of the input
+ * * @info {boolean} disabled Set whether the field should be disabled or not
+ * * @info {string} additionalGroupClasses Additionnal form group class names
  * @return {HTMLElement} The input 
  */
 function createFormGroup(infos){
+
+	//Check for default value
+	var value = infos.value ? infos.value : "";
+
+	//Check if the field has to be disabled
+	var disabled = infos.disabled;
+
 	//Create formgroup
 	var formGroup = createElem("div", infos.target);
 	formGroup.className = "form-group";
+
+	//Add optionnal classes if required
+	if(infos.additionalGroupClasses){
+		formGroup.className += " " + infos.additionalGroupClasses;
+	}
 
 	//Add label
 	var labelElem = createElem("label", formGroup);
@@ -206,6 +226,7 @@ function createFormGroup(infos){
 		//Create checkbox
 		var input = createElem("input", labelElem) ;
 		input.type = "checkbox";
+		input.disabled = disabled;
 
 		//Check if input has to be checked by default
 		if(infos.checked){
@@ -236,6 +257,7 @@ function createFormGroup(infos){
 		var input = createElem("select", formGroup);
 		input.style.width = "100%";
 		input.className = "form-control select2";
+		input.disabled = disabled;
 		if(infos.multiple) //For multiple changes
 			input.setAttribute("multiple", "multiple");
 		if(infos.placeholder) //Placeholder if required
@@ -256,6 +278,8 @@ function createFormGroup(infos){
 			type: "textarea",
 			class: "form-control",
 			placeholder: infos.placeholder,
+			value: value,
+			disabled: disabled
 		});
 
 	}
@@ -273,6 +297,8 @@ function createFormGroup(infos){
 		input.className = "form-control";
 		input.type = infos.type;
 		input.placeholder = infos.placeholder;
+		input.value = value;
+		input.disabled = disabled;
 	}
 
 	//Return input
