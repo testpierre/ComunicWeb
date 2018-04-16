@@ -14,7 +14,7 @@ ComunicWeb.components.settings.interface = {
 	getGeneral: function(callback){
 
 		//Make a request over the API
-		var apiURI = "/settings/get_general/";
+		var apiURI = "settings/get_general";
 		var params = {};
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 
