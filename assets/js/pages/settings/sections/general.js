@@ -177,7 +177,7 @@ ComunicWeb.pages.settings.sections.general = {
 		});
 
 		//Personnal website
-		var lastName = createFormGroup({
+		var personnalWebsite = createFormGroup({
 			target: target,
 			label: "Personnal website (optionnal)",
 			type: "text",
@@ -186,13 +186,40 @@ ComunicWeb.pages.settings.sections.general = {
 		});
 
 		//Virtual directory
-		var lastName = createFormGroup({
+		var virtualDirectory = createFormGroup({
 			target: target,
 			label: "Virtual directory for your user page (" + ComunicWeb.__config.siteURL + "user/{virtual_directory})",
 			type: "text",
 			placeholder: "Eg. john.way",
 			value: infos.virtual_directory != "null" ? infos.virtual_directory : ""
 		});
+
+		//Auto-check the virtual directory when it is updated
+		var checkTarget = createElem2({
+			appendTo: target,
+			type: "small"
+		});
+		
+		virtualDirectory.onkeyup = function(){
+			checkTarget.innerHTML = "Checking availability...";
+
+			//Get the directory to check
+			var directory = virtualDirectory.value;
+
+			//Check if the directory is empty
+			if(directory == ""){
+				checkTarget.innerHTML = "";
+				return;
+			}
+
+			//Perform a request on the API
+			ComunicWeb.components.settings.interface.checkUserDirectoryAvailability(directory, function(callback){
+
+				//Check if the directory is available or not
+				checkTarget.innerHTML = callback.error ? "<invalidDirectory>This directory is not available!</invalidDirectory>" : "This directory seems to be available!";
+
+			})
+		}
 
 		//Submit button
 		var sendButton = createElem2({
@@ -205,7 +232,7 @@ ComunicWeb.pages.settings.sections.general = {
 		//Make the submit button lives
 		sendButton.onclick = function(){
 
-
+			//Check the given values
 
 		};
 	},

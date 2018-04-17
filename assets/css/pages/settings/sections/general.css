@@ -20,3 +20,8 @@
 	margin: auto;
 	display: block;
 }
+
+invalidDirectory {
+	color: red;
+	font-size: 120%;
+}

@@ -20,4 +20,18 @@ ComunicWeb.components.settings.interface = {
 
 	},
 
+	/**
+	 * Check the availability of the virtual directory for user
+	 * 
+	 * @param {string} directory The directory to check
+	 * @param {function} callback The result of the request
+	 */
+	checkUserDirectoryAvailability: function(directory, callback){
+		var apiURI = "settings/check_user_directory_availability";
+		var params = {
+			directory: directory
+		};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	}
+
 }
