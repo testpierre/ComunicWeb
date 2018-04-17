@@ -21,6 +21,17 @@ ComunicWeb.components.settings.interface = {
 	},
 
 	/**
+	 * Set (update) general account settings
+	 * 
+	 * @param {object} settings New general account settings
+	 * @param {function} callback Callback function
+	 */
+	setGeneral: function(settings, callback){
+		var apiURI = "settings/set_general";
+		ComunicWeb.common.api.makeAPIrequest(apiURI, settings, true, callback);
+	},
+
+	/**
 	 * Check the availability of the virtual directory for user
 	 * 
 	 * @param {string} directory The directory to check

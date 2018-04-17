@@ -169,7 +169,7 @@ ComunicWeb.pages.settings.sections.general = {
 		});
 
 		//Public friends list
-		var allowPostsFromFriends = createFormGroup({
+		var publicFriendsList = createFormGroup({
 			target: target,
 			type: "checkbox",
 			label: "Make your friend list public",
@@ -233,7 +233,51 @@ ComunicWeb.pages.settings.sections.general = {
 		sendButton.onclick = function(){
 
 			//Check the given values
+			if(!ComunicWeb.common.formChecker.checkInput(firstName, true))
+				return notify("Please check your first name!", "danger");
 
+			if(!ComunicWeb.common.formChecker.checkInput(lastName, true))
+				return notify("Please check your last name!", "danger");
+			
+			if(personnalWebsite.value != ""){
+				if(!check_url(personnalWebsite.value))
+					return notify("Please check the given URL !", "danger");
+			}
+
+			//Pack all the values in an object
+			var settings = {
+				firstName: firstName.value,
+				lastName: lastName.value,
+				isPublic: publicPage.checked,
+				isOpen: openPage.checked,
+				allowComments: allowComments.checked,
+				allowPostsFromFriends: allowPostsFromFriends.checked,
+				publicFriendsList: publicFriendsList.checked,
+				personnalWebsite: personnalWebsite.value,
+				virtualDirectory: virtualDirectory.value
+			};
+
+			//Lock send button
+			sendButton.style.visibility = "hidden";
+
+			//Perform the request over the API
+			ComunicWeb.components.settings.interface.setGeneral(settings, function(result){
+
+				//Unlock send button
+				sendButton.style.visibility = "visible";
+
+				//Check for errors
+				if(result.error){
+					notify("An error occured while updating user settings!", "danger");
+					return;
+				}
+
+				//Success
+				notify("Your settings have been successfully saved !", "success");
+
+				//Reset the system
+				ComunicWeb.common.system.reset();
+			});
 		};
 	},
 
