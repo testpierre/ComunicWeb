@@ -70,6 +70,13 @@ ComunicWeb.pages.settings.sections.general = {
 	 */
 	_show_form: function(infos, target){
 
+		//Main account information
+		createElem2({
+			appendTo: target,
+			type: "h4",
+			innerHTML: "Main account information"
+		});
+
 		//Display user ID
 		createFormGroup({
 			target: target,
@@ -80,7 +87,7 @@ ComunicWeb.pages.settings.sections.general = {
 			additionalGroupClasses: "input-user-id"
 		});
 
-		//Display user name
+		//Display user email
 		createFormGroup({
 			target: target,
 			label: "Email address",
@@ -90,6 +97,117 @@ ComunicWeb.pages.settings.sections.general = {
 			additionalGroupClasses: "input-user-email"
 		});
 
+		//Display user first name
+		var firstName = createFormGroup({
+			target: target,
+			label: "First name",
+			placeholder: "Your first name",
+			type: "text",
+			value: infos.firstName,
+		});
+
+		//Last name
+		var lastName = createFormGroup({
+			target: target,
+			label: "Last name",
+			placeholder: "Your last name",
+			type: "text",
+			value: infos.lastName
+		});
+
+		//Page settings
+		add_space(target);
+		createElem2({
+			appendTo: target,
+			type: "h4",
+			innerHTML: "Page settings"
+		});
+
+		//Public page
+		var publicPage = createFormGroup({
+			target: target,
+			type: "checkbox",
+			label: "Make your page public (available to every Comunic users)",
+			checked: infos.is_public
+		});
+
+		//Open page
+		var openPage = createFormGroup({
+			target: target,
+			type: "checkbox",
+			label: "Make your page open (available for the entire world)",
+			checked: infos.is_open
+		});
+		
+		//Make the public and open button begin synchronized
+		$(publicPage).on("ifChanged", function(){
+			if(!publicPage.checked){
+				$(openPage).iCheck("uncheck");
+			}
+		});
+		$(openPage).on("ifChanged", function(){
+			if(openPage.checked){
+				$(publicPage).iCheck("check");
+			}
+		});
+
+
+		//Allow comments creation
+		var allowComments = createFormGroup({
+			target: target,
+			type: "checkbox",
+			label: "Allow the comments on your page",
+			checked: infos.allow_comments
+		});
+
+		//Allow posts from friends
+		var allowPostsFromFriends = createFormGroup({
+			target: target,
+			type: "checkbox",
+			label: "Allow the posts from your friends on your page",
+			checked: infos.allow_posts_from_friends
+		});
+
+		//Public friends list
+		var allowPostsFromFriends = createFormGroup({
+			target: target,
+			type: "checkbox",
+			label: "Make your friend list public",
+			checked: infos.allow_posts_from_friends
+		});
+
+		//Personnal website
+		var lastName = createFormGroup({
+			target: target,
+			label: "Personnal website (optionnal)",
+			type: "text",
+			placeholder: "https://...",
+			value: infos.personnal_website != "null" ? infos.personnal_website : ""
+		});
+
+		//Virtual directory
+		var lastName = createFormGroup({
+			target: target,
+			label: "Virtual directory for your user page (" + ComunicWeb.__config.siteURL + "user/{virtual_directory})",
+			type: "text",
+			placeholder: "Eg. john.way",
+			value: infos.virtual_directory != "null" ? infos.virtual_directory : ""
+		});
+
+		//Submit button
+		var sendButton = createElem2({
+			appendTo: target,
+			type: "div",
+			class: "btn btn-primary submit-form",
+			innerHTML: "Update"
+		});
+
+		//Make the submit button lives
+		sendButton.onclick = function(){
+
+
+
+		};
 	},
 
 };

@@ -14,3 +14,9 @@
 	display: inline-block;
 	margin-left: 1%;
 }
+
+.box-general-settings .submit-form {
+	width: 100px;
+	margin: auto;
+	display: block;
+}
