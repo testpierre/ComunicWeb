@@ -43,6 +43,20 @@ ComunicWeb.components.settings.interface = {
 			directory: directory
 		};
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
-	}
+	},
+
+	/**
+	 * Get security account settings
+	 * 
+	 * @param {string} password The password of the user
+	 * @param {function} callback Callback function
+	 */
+	getSecurity: function(password, callback){
+		var apiURI = "settings/get_security";
+		var params = {
+			password: password
+		};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	},
 
 }

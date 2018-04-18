@@ -3,3 +3,28 @@
  *
  * @author Pierre HUBERT
  */
+
+
+/**
+ * Prompt user password box
+ */
+.box-security-settings .prompt-user-password h4,
+.box-security-settings .prompt-user-password p {
+	text-align: center;
+}
+
+.box-security-settings .prompt-user-password label {
+	display: none;
+}
+
+.box-security-settings .prompt-user-password .submit-form {
+	width: 100px;
+	margin: auto;
+	display: block;
+}
+
+
+
+/**
+ * Global box rules
+ */
