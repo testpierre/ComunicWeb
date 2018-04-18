@@ -63,6 +63,20 @@ ComunicWeb.pages.settings.navigationPane = {
 		sectionGeneralLink.onclick = function(){
 			openPage("settings/general");
 		};
+
+		//Account security
+		var sectionSecurity = createElem2({
+			appendTo: elemList,
+			type: "li",
+		});
+		var sectionSecurityLink = createElem2({
+			appendTo: sectionSecurity,
+			type: "a",
+			innerHTML: "<i class='fa fa-lock'></i> Security"
+		});
+		sectionSecurityLink.onclick = function(){
+			openPage("settings/security");
+		};
 	}
 
 }

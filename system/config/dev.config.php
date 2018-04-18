@@ -167,6 +167,7 @@ class Dev {
 			//Settings page
 				//Sections sections
 				"css/pages/settings/sections/general.css",
+				"css/pages/settings/sections/security.css",
 
 			//Latest post page stylesheet
 			"css/pages/latestPosts/main.css",
@@ -332,6 +333,7 @@ class Dev {
 
 				//Settings sections
 				"js/pages/settings/sections/general.js",
+				"js/pages/settings/sections/security.js",
 
 			//Login page
 			"js/pages/login.js",
