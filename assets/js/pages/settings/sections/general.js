@@ -115,6 +115,14 @@ ComunicWeb.pages.settings.sections.general = {
 			value: infos.lastName
 		});
 
+		//Allow mails from Comunic
+		var allowEmails = createFormGroup({
+			target: target,
+			type: "checkbox",
+			label: "Allow Comunic to send you emails",
+			checked: infos.allow_comunic_mails
+		});
+
 		//Page settings
 		add_space(target);
 		createElem2({
@@ -248,6 +256,7 @@ ComunicWeb.pages.settings.sections.general = {
 			var settings = {
 				firstName: firstName.value,
 				lastName: lastName.value,
+				allow_comunic_mails: allowEmails.checked,
 				isPublic: publicPage.checked,
 				isOpen: openPage.checked,
 				allowComments: allowComments.checked,
