@@ -181,7 +181,7 @@ ComunicWeb.pages.settings.sections.general = {
 			target: target,
 			type: "checkbox",
 			label: "Make your friend list public",
-			checked: infos.allow_posts_from_friends
+			checked: infos.public_friends_list
 		});
 
 		//Personnal website
