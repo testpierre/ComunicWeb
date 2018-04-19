@@ -149,7 +149,8 @@ ComunicWeb.pages.settings.sections.security = {
 			type: "p",
 			innerHTML: "In this section, you can set two security question that will help you to " + 
 				"recover an access to your account if you lose your password. Do not worry about " +
-				"uppercase and lowercase characters."
+				"uppercase and lowercase characters. <br /> <strong>Warning !</strong> All the fields " +
+				"on the page must be filled to get the security questions usable."
 		});
 
 		//Display first security question
