@@ -35,7 +35,7 @@ ComunicWeb.components.settings.interface = {
 	 * Check the availability of the virtual directory for user
 	 * 
 	 * @param {string} directory The directory to check
-	 * @param {function} callback The result of the request
+	 * @param {function} callback
 	 */
 	checkUserDirectoryAvailability: function(directory, callback){
 		var apiURI = "settings/check_user_directory_availability";
@@ -58,5 +58,16 @@ ComunicWeb.components.settings.interface = {
 		};
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 	},
+
+	/**
+	 * Set (update) security account settings
+	 * 
+	 * @param {object} settings New settings
+	 * @param {function} callback 
+	 */
+	setSecurity: function(settings, callback){
+		var apiURI = "settings/set_security";
+		ComunicWeb.common.api.makeAPIrequest(apiURI, settings, true, callback);
+	}
 
 }

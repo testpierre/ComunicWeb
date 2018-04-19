@@ -28,3 +28,8 @@
 /**
  * Global box rules
  */
+.security-settings-form .submit-form {
+	width: 150px;
+	margin: auto;
+	display: block;
+}
