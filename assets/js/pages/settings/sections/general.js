@@ -55,6 +55,7 @@ ComunicWeb.pages.settings.sections.general = {
 			if(infos.error){
 				var errMsg = ComunicWeb.common.messages.createCalloutElem("Error", "An error occured while retrieving account settings...", "danger");
 				boxBody.appendChild(errMsg);
+				return;
 			}
 
 			//Display the settings form
