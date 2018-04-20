@@ -32,16 +32,29 @@ ComunicWeb.components.posts.form = {
 			class: "box-body"
 		});
 
+		//Make sure emojie picker is already initialized
+		ComunicWeb.components.emoji.picker.init();
+
+		//Create post message contener
+		var newPostMessageContener = createElem2({
+			appendTo: boxBody,
+			type: "div"
+		});
+
 		//Create post message textarea
 		var inputMessageDiv = createElem2({
-			appendTo: boxBody,
+			appendTo: newPostMessageContener,
 			type: "div",
-			class: "new-message",
+			class: "new-message wdt-emoji-bundle-enabled",
 			innerHTML: ""
 		});
 
 		//Enable bootstrap-wysiwyg
 		$(inputMessageDiv).wysiwyg();
+
+		//Enable emojies picker
+		ComunicWeb.components.emoji.picker.addPicker(inputMessageDiv);
+
 
 		//Add the different post types
 		var postTypesContainer = createElem2({

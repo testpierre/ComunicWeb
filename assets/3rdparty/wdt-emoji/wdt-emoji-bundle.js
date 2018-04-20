@@ -875,7 +875,7 @@
 
     if (selection.ce) { // if contenteditable
       el.focus();
-      document.execCommand('insertText', false, emo);
+      el.innerHTML += emo; //COMUNIC EDIT document.execCommand('insertText', false, emo); 
     } else {
       var textBefore = val.substring(0, selection.start);
       textBefore = textBefore.replace(/:\S*$/, '')

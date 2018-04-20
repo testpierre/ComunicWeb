@@ -11,7 +11,7 @@ ComunicWeb.components.emoji.picker = {
 	'<a href="#" class="wdt-emoji-popup-mobile-closer"> &times; </a>' +
 	'<div class="wdt-emoji-menu-content">' +
 	'	<div id="wdt-emoji-menu-header">' +
-	'		<a class="wdt-emoji-tab active" data-group-name="Recent"></a>' +
+	'		<!--<a class="wdt-emoji-tab active" data-group-name="Recent"></a>-->' +
 	'		<a class="wdt-emoji-tab" data-group-name="People"></a>' +
 	'		<a class="wdt-emoji-tab" data-group-name="Nature"></a>' +
 	'		<a class="wdt-emoji-tab" data-group-name="Foods"></a>' +
@@ -20,7 +20,7 @@ ComunicWeb.components.emoji.picker = {
 	'		<a class="wdt-emoji-tab" data-group-name="Objects"></a>' +
 	'		<a class="wdt-emoji-tab" data-group-name="Symbols"></a>' +
 	'		<a class="wdt-emoji-tab" data-group-name="Flags"></a>' +
-	'		<a class="wdt-emoji-tab" data-group-name="Custom"></a>' +
+	'		<!--<a class="wdt-emoji-tab" data-group-name="Custom"></a>-->' +
 	'	</div>' +
 	'	<div class="wdt-emoji-scroll-wrapper">' +
 	'		<div id="wdt-emoji-menu-items">' +
