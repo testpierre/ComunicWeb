@@ -93,7 +93,6 @@ ComunicWeb.components.notifications.dropdown = {
 		var deleteAllLink = createElem2({
 			appendTo: dropdownBottom,
 			type: "a",
-			href: "#",
 			innerHTML: "Delete all"
 		});
 
