@@ -446,3 +446,23 @@ window.location.changed = function(e){};
         }
     }, 900);
 })();
+
+
+/**
+ * jQuery special event that detects the deletion
+ * of a DOM element
+ * 
+ * @source StackOverFlow answer from mtkopone
+ */
+(function($){
+
+	$.event.special.destroyed = {
+
+		remove: function(o){
+			if(o.handler)
+				o.handler();
+		}
+
+	}
+
+})(jQuery);

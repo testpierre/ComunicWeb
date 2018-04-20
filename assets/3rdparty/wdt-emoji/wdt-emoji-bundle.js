@@ -289,6 +289,20 @@
 
     addClass(this, 'wdt-emoji-picker-open');
     //this.innerHTML = wdtEmojiBundle.emoji.replace_colons(':sunglasses:'); //COMUNIC - EDIT
+    
+
+    //COMUNIC EDIT
+    //Make the picker close automatically if the parent element is removed
+    var interval = setInterval(function(){
+      if(!parent.isConnected){
+        wdtEmojiBundle.close();
+        clearInterval(interval);
+      }
+
+    }, 2500);
+    //END COMUNIC EDIT
+
+
   };
 
   /**
