@@ -168,6 +168,7 @@ class Dev {
 				//Sections sections
 				"css/pages/settings/sections/general.css",
 				"css/pages/settings/sections/security.css",
+				"css/pages/settings/sections/password.css",
 
 			//Latest post page stylesheet
 			"css/pages/latestPosts/main.css",
@@ -334,6 +335,7 @@ class Dev {
 				//Settings sections
 				"js/pages/settings/sections/general.js",
 				"js/pages/settings/sections/security.js",
+				"js/pages/settings/sections/password.js",
 
 			//Login page
 			"js/pages/login.js",

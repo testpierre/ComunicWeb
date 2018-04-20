@@ -1115,6 +1115,13 @@ var ComunicWeb = {
 				security: {
 					//TODO : implement
 				},
+
+				/**
+				 * Password section
+				 */
+				password: {
+					//TODO : implement
+				},
 			},
 		},
 

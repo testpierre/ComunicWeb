@@ -68,6 +68,21 @@ ComunicWeb.components.settings.interface = {
 	setSecurity: function(settings, callback){
 		var apiURI = "settings/set_security";
 		ComunicWeb.common.api.makeAPIrequest(apiURI, settings, true, callback);
-	}
+	},
 
+	/**
+	 * Update the password of the user
+	 * 
+	 * @param {string} oldPassword The old password of the user
+	 * @param {string} newPassword The new password
+	 * @param {function} callback
+	 */
+	updatePassword: function(oldPassword, newPassword, callback){
+		var apiURI = "settings/update_password";
+		var params = {
+			oldPassword: oldPassword,
+			newPassword: newPassword
+		};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	},
 }

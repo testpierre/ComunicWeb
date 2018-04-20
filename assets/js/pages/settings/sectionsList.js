@@ -22,5 +22,11 @@ ComunicWeb.pages.settings.sectionsList = {
 		handler: "ComunicWeb.pages.settings.sections.security.open",
 	},
 
-
+	/**
+	 * Password settings
+	 */
+	password: {
+		title: "Password",
+		handler: "ComunicWeb.pages.settings.sections.password.open",
+	},
 }
