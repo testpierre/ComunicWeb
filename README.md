@@ -20,3 +20,4 @@ ComunicWeb would not exists without the following technologies developped by the
 - VideoJS
 - jquery.hotkeys
 - bootstrap-wysiwyg (https://github.com/steveathon/bootstrap-wysiwyg/)
+- wdt-emoji-bundle (http://ned.im/wdt-emoji-bundle)

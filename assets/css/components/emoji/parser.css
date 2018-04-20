@@ -8,5 +8,6 @@
  * Emoji images global style
  */
 .emoji {
-	height: 2em;
+	width: auto !important;
+	height: 2em !important;
 }

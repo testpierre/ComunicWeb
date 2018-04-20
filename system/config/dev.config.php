@@ -48,7 +48,10 @@ class Dev {
 		"3rdparty/adminLTE/plugins/datepicker/datepicker3.css",
 
 		//VideoJS
-		//"3rdparty/videojs/6.4.0/video-js.min.css"
+		//"3rdparty/videojs/6.4.0/video-js.min.css",
+
+		//Emoji picker
+		"3rdparty/wdt-emoji/wdt-emoji-bundle.css",
 	);
 
 	/**
@@ -101,7 +104,11 @@ class Dev {
 		"3rdparty/adminLTE/plugins/datepicker/bootstrap-datepicker.js",
 
 		//VideoJS
-		//"3rdparty/videojs/6.4.0/video.min.js"
+		//"3rdparty/videojs/6.4.0/video.min.js",
+
+		//Emoji picker
+		"3rdparty/wdt-emoji/emoji.min.js",
+		"3rdparty/wdt-emoji/wdt-emoji-bundle.js",
 	);
 
 	/**
@@ -139,6 +146,7 @@ class Dev {
 
 			//Emojies
 			"css/components/emoji/parser.css",
+			"css/components/emoji/picker.css",
 
 			//Posts component
 			"css/components/posts/ui.css",
@@ -265,6 +273,7 @@ class Dev {
 			//Emojies
 			"js/components/emoji/parser.js",
 			"js/components/emoji/list.js",
+			"js/components/emoji/picker.js",
 
 			//Like button
 			"js/components/like/button.js",

@@ -732,6 +732,13 @@ var ComunicWeb = {
 			list: {
 				//TODO : implement
 			},
+
+			/**
+			 * Emojie picker
+			 */
+			picker: {
+				//TODO : implement
+			},
 			
 		},
 

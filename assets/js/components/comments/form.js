@@ -45,7 +45,7 @@ ComunicWeb.components.comments.form = {
 			appendTo: inputGroup,
 			type: "input",
 			elemType: "text",
-			class: "form-control",
+			class: "form-control wdt-emoji-open-on-colon",
 			placeholder: "New comment...",
 			name: "content"
 		});
@@ -57,6 +57,27 @@ ComunicWeb.components.comments.form = {
 			type: "span",
 			class: "input-group-btn"
 		});
+
+
+
+		//Add emoji pick button
+		var addEmojieLabel = createElem2({
+			appendTo: buttonsGroup,
+			type: "label",
+			class: "comment-emoji-select"
+		});
+
+		var imageLabel = createElem2({
+			appendTo: addEmojieLabel,
+			type: "a",
+			class: "btn btn-flat",
+			innerHTML: "<i class='fa fa-smile-o'></i>"
+		});
+
+		//Add a picker on the label
+		ComunicWeb.components.emoji.picker.addPicker(newCommentText, addEmojieLabel);
+
+
 
 		//Add image pick button
 		var addImageLabel = createElem2({
@@ -77,7 +98,7 @@ ComunicWeb.components.comments.form = {
 			type: "a",
 			class: "btn btn-flat",
 			innerHTML: "<i class='fa fa-picture-o'></i>"
-		})
+		});
 
 		//Add send button
 		var sendButton = createElem2({
