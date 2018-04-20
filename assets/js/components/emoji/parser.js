@@ -15,6 +15,11 @@ ComunicWeb.components.emoji.parser = {
 	__twemojiBase: ComunicWeb.__config.assetsURL + "3rdparty/twemoji/2/",
 
 	/**
+	 * EmojiConvertor instance
+	 */
+	__emojiConvertor: null,
+
+	/**
 	 * Parse emojies
 	 * 
 	 * @param {Object} infos Informations about the area to parse
@@ -26,11 +31,33 @@ ComunicWeb.components.emoji.parser = {
 		//Peform string parsing
 		infos.element.innerHTML = this.shorcutToHTMLcode(infos.element.innerHTML);
 
+		//Perform colon conversion
+		infos.element.innerHTML = this.colonConversion(infos.element.innerHTML);
+
 		//Perform Twitter parsing
 		this.twitterEmojiesParsing(infos.element);
 
 		//Success
 		return true;
+	},
+
+	/**
+	 * Perform the conversion from colon code to Emoji code
+	 * 
+	 * @param {string} string The string to convert
+	 * @return {string} Converted string
+	 */
+	colonConversion: function(string){
+
+		//Check if the emoji convertor has to be created
+		if(this.__emojiConvertor == null){
+			this.__emojiConvertor = new EmojiConvertor();
+			this.__emojiConvertor.init_env(); // else auto-detection will trigger when we first convert
+			this.__emojiConvertor.replace_mode = 'unified';
+			this.__emojiConvertor.allow_native = true;
+		}
+
+		return this.__emojiConvertor.replace_colons(string);
 	},
 
 	/**
