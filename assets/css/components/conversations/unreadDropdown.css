@@ -7,3 +7,8 @@
 .no-unread-conversation-msg {
 	padding: 20px;
 }
+
+.new-conversations-dropdown .message-content {
+	white-space: normal;
+	font-style: italic;
+}

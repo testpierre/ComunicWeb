@@ -18,7 +18,7 @@ ComunicWeb.components.conversations.unreadDropdown = {
 		var dropdown = createElem2({
 			appendTo: target,
 			type: "li",
-			class: "dropdown messages-menu"
+			class: "dropdown messages-menu new-conversations-dropdown"
 		});
 
 		//Add dropdown toggle
@@ -225,7 +225,8 @@ ComunicWeb.components.conversations.unreadDropdown = {
 			var conversationMessage = createElem2({
 				appendTo: convLink,
 				type: "p",
-				innerHTML: "<em>"+conversation.message+"</em>"
+				class: "message-content",
+				innerHTML: conversation.message
 			});
 
 			//Make the conversation link lives
