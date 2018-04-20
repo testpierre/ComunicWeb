@@ -226,7 +226,7 @@ ComunicWeb.components.conversations.unreadDropdown = {
 				appendTo: convLink,
 				type: "p",
 				class: "message-content",
-				innerHTML: conversation.message
+				innerHTML: removeHtmlTags(conversation.message)
 			});
 
 			//Make the conversation link lives
