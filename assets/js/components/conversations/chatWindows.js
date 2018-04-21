@@ -654,36 +654,13 @@ ComunicWeb.components.conversations.chatWindows = {
 			ComunicWeb.components.conversations.chatWindows.resetCreateMessageForm(convInfos);
 		}
 
-		//Check if an image is included with the message or not
-		if(form.inputImage.files[0]){
-			//Include the image with the request (export the image as URL)
-			var reader = new FileReader();
-			reader.readAsDataURL(form.inputImage.files[0]);
-			var sendImage = reader.result;
-
-			//The function will resume once the image is fully converted
-			reader.addEventListener("load", function() {
-
-				//Send the message throught the interface
-				ComunicWeb.components.conversations.interface.sendMessage({
-					conversationID: convInfos.infos.ID,
-					message: form.inputText.value,
-					image: reader.result,
-					callback: onceSent
-				});
-
-			}, false);
-
-		}
-		else {
-			//Send the message throught the interface
-			ComunicWeb.components.conversations.interface.sendMessage({
-				conversationID: convInfos.infos.ID,
-				message: form.inputText.value,
-				callback: onceSent
-			});
-		}
-			
+		//Send the message throught the interface
+		ComunicWeb.components.conversations.interface.sendMessage({
+			conversationID: convInfos.infos.ID,
+			message: form.inputText.value,
+			image: form.inputImage,
+			callback: onceSent
+		});
 		
 		//Success
 		return true;

@@ -242,7 +242,7 @@ ComunicWeb.components.conversations.interface = {
 	 * @param {Object} infos Informations about the message to send
 	 * @info {Integer} conversationID The ID of the conversation
 	 * @info {String} message The message to send
-	 * @info {String} image Optionnal, base64-encoded image
+	 * @info {HTMLElement} image Optionnal, input field with an image
 	 * @info {function} callback What to do once the image was successfully sent
 	 * @return {Boolean} true for a success
 	 */
@@ -250,18 +250,37 @@ ComunicWeb.components.conversations.interface = {
 
 		//Perform an API request
 		var apiURI = "conversations/sendMessage";
-		var params = {
-			message: infos.message,
-			conversationID: infos.conversationID,
+
+		var hasImage = false;
+		if(infos.image){
+			if(infos.image.files[0])
+				hasImage = true;
 		}
 
-		//Add an image (if any specified)
-		if(infos.image)
-			params.image = infos.image;
-		
-		//Perform an API request
-		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, infos.callback);
+		//Check wether an image has to be included or not
+		if(!hasImage){
 
+			//Prepare request
+			var params = {
+				message: infos.message,
+				conversationID: infos.conversationID,
+			};
+
+			//Perform an API request
+			ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, infos.callback);
+		}
+
+		//If we have an image, we must do a formdata request
+		else {
+
+			var fd = new FormData();
+			fd.append("message", infos.message);
+			fd.append("conversationID", infos.conversationID);
+			fd.append("image", infos.image.files[0], infos.image.files[0].name);
+
+			//Perform an API request
+			ComunicWeb.common.api.makeFormDatarequest(apiURI, fd, true, infos.callback);
+		}
 	},
 
 	/**
