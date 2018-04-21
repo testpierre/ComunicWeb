@@ -435,7 +435,7 @@ ComunicWeb.components.posts.ui = {
 			var surveyQuestion = createElem2({
 				appendTo: postRoot,
 				type: "h4",
-				innerHTML: infos.data_survey.infos.question,
+				innerHTML: infos.data_survey.question,
 				class: "post-survey-question"
 			});
 
