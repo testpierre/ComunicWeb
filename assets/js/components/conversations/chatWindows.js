@@ -165,6 +165,36 @@ ComunicWeb.components.conversations.chatWindows = {
 			class: "input-group-btn",
 		});
 
+		//Add emojie button
+		var emojiButton = createElem2({
+			appendTo: buttonGroup,
+			type: "button",
+			elemType: "button",
+			class: "btn btn-flat btn-add-emoji",
+		});
+		
+			//Add image icon
+			createElem2({
+				type: "i",
+				appendTo: emojiButton, 
+				class: "fa fa-smile-o"
+			});
+		
+		//Make emojie button lives
+		ComunicWeb.components.emoji.picker.addPicker(inputText, emojiButton, function(){
+			
+			//Make the emojie picker visible
+			wdtEmojiBundle.popup.style.top = (abs_height_bottom_screen()-357)+"px";
+
+			//Make the smile button visible
+			var currLeft = Number(wdtEmojiBundle.popup.style.left.replace("px", ""));
+			var potentialLeft = currLeft - 20;
+
+			if(potentialLeft > 0)
+				wdtEmojiBundle.popup.style.left = potentialLeft + "px";
+
+		});
+
 		//Add image button
 		var imageButton = createElem2({
 			appendTo: buttonGroup,

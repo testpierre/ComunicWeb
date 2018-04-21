@@ -426,6 +426,14 @@ function add_space(target){
 	
 }
 
+/**
+ * Get the current absolute position bottom of the screen
+ * 
+ * @return {number} The bottom on the screen
+ */
+function abs_height_bottom_screen(){
+	return window.scrollY + $(window).height();
+}
 
 /**
  * Page URL update detection

@@ -75,8 +75,10 @@ ComunicWeb.components.emoji.picker = {
 	 * 
 	 * @param {HTMLElement} elem Target element
 	 * @param {HTMLElement} trigger Alternative element to trigger picker
+	 * @param {function} afterPicker Optionnal function to call once the openPicker
+	 * function has been called on trigger click
 	 */
-	addPicker: function(elem, trigger){
+	addPicker: function(elem, trigger, afterPicker){
 
 		//Make sure the system is ready
 		this.init();
@@ -87,13 +89,15 @@ ComunicWeb.components.emoji.picker = {
 			return;
 		}
 
-		trigger.addEventListener('click', wdtEmojiBundle.openPicker);
+		trigger.addEventListener('click', function(e){
+			wdtEmojiBundle.openPicker.call(this, e);
+
+			if(afterPicker)
+				afterPicker(e);
+		});
 
 		var parent = elem.parentNode;
 		parent.className += ' wdt-emoji-picker-parent';
-		if (elem.className.includes('wdt-emoji-open-on-colon')) {
-			parent.addEventListener('keyup', wdtEmojiBundle.onKeyup)
-		}
 		elem.className += ' wdt-emoji-bundle-enabled wdt-emoji-picker-ready';
 	}
 
