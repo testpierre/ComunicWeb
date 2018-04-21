@@ -43,6 +43,9 @@ ComunicWeb.pages.settings.sections.security = {
 
 		//Append the form to query user password
 		this._append_form_prompt_user_password(boxBody);
+
+		//Offer the user to update its password too
+		ComunicWeb.pages.settings.sections.password.open(args, target);
 	},
 
 	/**
