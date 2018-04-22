@@ -303,9 +303,9 @@ ComunicWeb.components.posts.ui = {
 			var video_src = createElem2({
 				appendTo: video,
 				type: "source",
-				src: infos.video_infos.url
+				src: infos.video_info.url
 			});
-			video_src.type = infos.video_infos.file_type;
+			video_src.type = infos.video_info.file_type;
 
 			//Enable videoJS
 			//videojs(video);
