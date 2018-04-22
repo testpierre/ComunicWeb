@@ -45,7 +45,7 @@ ComunicWeb.components.comments.form = {
 			appendTo: inputGroup,
 			type: "input",
 			elemType: "text",
-			class: "form-control wdt-emoji-open-on-colon",
+			class: "form-control",
 			placeholder: "New comment...",
 			name: "content"
 		});
