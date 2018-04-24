@@ -121,7 +121,7 @@ ComunicWeb.pages.latestPosts.main = {
 	_display_list: function(list, target){
 
 		//Process the list of posts
-		for (let index = 0; index < list.length; index++) {
+		for (var index = 0; index < list.length; index++) {
 
 			//Display the post
 			ComunicWeb.components.posts.ui.display_post(list[index], target);

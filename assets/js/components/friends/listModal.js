@@ -179,7 +179,7 @@ ComunicWeb.components.friends.listModal = {
 			}
 
 			//Parse the list of friends
-			ids.forEach(id => {
+			ids.forEach(function(id){
 				
 				//Display the user
 				const userContainer = createElem2({
@@ -253,7 +253,7 @@ ComunicWeb.components.friends.listModal = {
 			}
 
 			//Display each friend
-			list.forEach(friend => {
+			list.forEach(function(friend){
 
 				//Display the friend
 				ComunicWeb.components.friends.ui.show_personnal_friend(listTarget, friend, users["user-"+friend.ID_friend]);

@@ -16,7 +16,7 @@ ComunicWeb.components.notifications.utils = {
 
 		var users = [];
 
-		for (let index = 0; index < list.length; index++) {
+		for (var index = 0; index < list.length; index++) {
 			const notif = list[index];
 			
 			if(!users.includes(notif.from_user_id))

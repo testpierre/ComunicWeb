@@ -69,7 +69,7 @@ ComunicWeb.components.langPicker = {
 		];
 
 		var buttons = [];
-		langs.forEach(lang => {
+		langs.forEach(function(lang){
 
 			const button = createElem2({
 				appendTo: modalBody,
@@ -118,7 +118,7 @@ ComunicWeb.components.langPicker = {
 			//Restart the app
 			ComunicWeb.common.system.reset();
 		}
-		buttons.forEach(btn => {btn.onclick  = respond;});
+		buttons.forEach(function(btn){btn.onclick  = respond;});
 	
 		//Make the buttons live
 		cancelButton.onclick = closeModal;

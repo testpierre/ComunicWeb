@@ -115,7 +115,7 @@ ComunicWeb.components.conversations.unreadDropdown = {
 			var usersID = [];
 
 			//Process the list of conversations
-			for (let index = 0; index < conversations.length; index++) {
+			for (var index = 0; index < conversations.length; index++) {
 				const entry = conversations[index];
 				
 				var userID = entry.userID;
@@ -153,7 +153,7 @@ ComunicWeb.components.conversations.unreadDropdown = {
 		target.innerHTML = "";
 
 		//Process each conversation
-		for (let index = 0; index < conversations.length; index++) {
+		for (var index = 0; index < conversations.length; index++) {
 			
 			//Get the conversation
 			const conversation = conversations[index];

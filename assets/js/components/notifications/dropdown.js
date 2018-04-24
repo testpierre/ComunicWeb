@@ -171,7 +171,7 @@ ComunicWeb.components.notifications.dropdown = {
 				list.innerHTML = "";
 
 				//Process the list of notifications
-				for (let i = 0; i < result.length; i++) {
+				for (var i = 0; i < result.length; i++) {
 					const notification = result[i];
 					
 					//Display the notification

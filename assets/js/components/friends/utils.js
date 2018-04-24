@@ -16,7 +16,7 @@ ComunicWeb.components.friends.utils = {
 
 		//Parse the list
 		usersID = [];
-		list.forEach(friend => {
+		list.forEach(function(friend){
 			//Extract user id
 			usersID.push(friend.ID_friend);
 		});
