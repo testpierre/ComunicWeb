@@ -831,7 +831,7 @@ ComunicWeb.components.conversations.chatWindows = {
 			element: textMessage,
 		});
 
-		//Enable slimscrool
+		//Enable slimscroll
 		$(convInfos.box.messagesArea).slimscroll({
 			height: "250px",
 		});
@@ -842,9 +842,54 @@ ComunicWeb.components.conversations.chatWindows = {
 			scrollTo: scrollBottom
 		});
 
+		//Initialize top scroll detection if required
+		this.initTopScrollDetection(conversationID);
+
 		//Success
 		return true;
 	},
+
+	/**
+	 * Init top scroll detection (if required)
+	 * 
+	 * @param {number} conversationID The ID of the target conversation
+	 */
+	initTopScrollDetection: function(conversationID){
+
+		//Extract conversation informations
+		var convInfo = this.__conversationsCache["conversation-"+conversationID];
+		
+		//Check if nothing has to be done
+		if(convInfo.box.initializedScrollDetection)
+			return;
+		
+		//Mark scroll detection as initialized
+		convInfo.box.initializedScrollDetection = true;
+
+		var scrollDetectionLocked = false;
+		var scrollTopCount = 0;
+		$(convInfo.box.messagesArea).slimScroll().bind("slimscrolling", function(e, pos){
+
+			if(scrollDetectionLocked)
+				return;
+
+			if(pos != 0){
+				scrollTopCount = 0;
+			}
+
+			scrollTopCount++;
+
+			//Check top count
+			if(scrollTopCount < 3)
+				return;
+			
+			//Lock the detection
+			scrollDetectionLocked = true;
+
+			//Fetch older messages
+			console.log("Fetch old messages");
+		});
+	}
 }
 
 //Register conversations cache cleaning function

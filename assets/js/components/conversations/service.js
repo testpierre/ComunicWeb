@@ -227,6 +227,41 @@ ComunicWeb.components.conversations.service = {
 	},
 
 	/**
+	 * Get the oldest messages of a conversation
+	 * 
+	 * @param {number} conversationID The ID of the target conversation
+	 * @return {numbert} The ID of the oldest message / -1 in case of failure
+	 */
+	getOldestMessageID: function(conversationID){
+
+		//Try to fetch information
+		if(this.__serviceCache){
+			if(this.__serviceCache['conversation-'+conversationID]){
+				return this.__serviceCache['conversation-'+conversationID].first_message_id;
+			}
+		}
+
+		//The conversation was not found
+		return -1;
+	},
+
+	/**
+	 * Set the oldest messages of a conversation
+	 * 
+	 * @param {number} conversationID The ID of the target conversation
+	 * @param {numbert} firstMessageID New value for the first known message id
+	 */
+	setOldestMessageID: function(conversationID, firstMessageID){
+
+		//Try to fetch information
+		if(this.__serviceCache){
+			if(this.__serviceCache['conversation-'+conversationID]){
+				this.__serviceCache['conversation-'+conversationID].first_message_id = firstMessageID;
+			}
+		}
+	},
+
+	/**
 	 * Empty service cache (unregister all conversations)
 	 * 
 	 * @return {Boolean} True for a success
