@@ -374,7 +374,7 @@ ComunicWeb.components.posts.ui = {
 			var link_img = createElem2({
 				appendTo: linkContainer,
 				type: "img",
-				src: (infos.link_image != "default" ? infos.link_image : ComunicWeb.__config.assetsURL + "img/world.png"),
+				src: (infos.link_image != null ? infos.link_image : ComunicWeb.__config.assetsURL + "img/world.png"),
 				class: "attachment-img",
 			});
 
@@ -383,7 +383,7 @@ ComunicWeb.components.posts.ui = {
 				appendTo: linkContainer,
 				type: "h4",
 				class: "attachment-heading",
-				innerHTML: (infos.link_title != "default" ? infos.link_title : "Web page")
+				innerHTML: (infos.link_title != null ? infos.link_title : "Web page")
 			});
 
 
@@ -403,7 +403,7 @@ ComunicWeb.components.posts.ui = {
 			link_a_url.target = "_blank";
 
 			//Add description (if any)
-			if(infos.link_description != "default"){
+			if(infos.link_description != null){
 				var link_description = createElem2({
 					appendTo: link_attachment_text,
 					type: "p",
