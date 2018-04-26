@@ -3,7 +3,7 @@
  * 
  * Ensure that the content of the conversations is up to date
  * 
- * @author Pierre HUBER
+ * @author Pierre HUBERT
  */
 
 ComunicWeb.components.conversations.service = {
@@ -19,7 +19,7 @@ ComunicWeb.components.conversations.service = {
 	__serviceCache: false,
 
 	/**
-	 * @var {Boolean} __serviceLock Specify wether the service is already in use or not
+	 * @var {Boolean} __serviceLock Specify whether the service is already in use or not
 	 */
 	__serviceLock: false,
 	
@@ -162,7 +162,9 @@ ComunicWeb.components.conversations.service = {
 				//Extract conversation ID
 				var messages = result[i];
 
-				//We update last message ID with the last message ID
+				//We update first and last message ID with the last message ID
+				if(messages[0].ID < this.__serviceCache[i].first_message_id || this.__serviceCache[i].first_message_id == 0)
+					this.__serviceCache[i].first_message_id = messages[0].ID;
 				this.__serviceCache[i].last_message_id = messages[messages.length-1].ID;
 
 				//We process each message by calling chat windows script to ask it to add messages
@@ -195,6 +197,7 @@ ComunicWeb.components.conversations.service = {
 		//Register conversation
 		this.__serviceCache['conversation-' + conversationID] = {
 			conversationID: conversationID,
+			first_message_id: 0,
 			last_message_id: 0,
 		};
 
