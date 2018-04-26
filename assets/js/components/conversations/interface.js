@@ -323,6 +323,27 @@ ComunicWeb.components.conversations.interface = {
 	},
 
 	/**
+	 * Get older message of a conversation
+	 * 
+	 * @param {number} conversationID The ID of the conversation
+	 * @param {number} oldestMessageID The ID of the oldest message known
+	 * @param {number} limit The limit
+	 * @param {function} callback
+	 */
+	getOlderMessages: function(conversationID, oldestMessageID, limit, callback){
+
+		//Perform a request on the API
+		var apiURI = "conversations/get_older_messages";
+		var params = {
+			conversationID: conversationID,
+			oldest_message_id: oldestMessageID,
+			limit: limit
+		};
+
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	},
+
+	/**
 	 * Empty conversations cache
 	 * 
 	 * @param {Boolean} notHard Specify that the object hasn't to be recursively cleaned

@@ -887,7 +887,34 @@ ComunicWeb.components.conversations.chatWindows = {
 			scrollDetectionLocked = true;
 
 			//Fetch older messages
-			console.log("Fetch old messages");
+			ComunicWeb.components.conversations.interface.getOlderMessages(
+				conversationID,
+				ComunicWeb.components.conversations.service.getOldestMessageID(conversationID),
+				10,
+				function(result){
+
+					//Unlock scroll detection
+					scrollDetectionLocked = false;
+
+					//Check for errors
+					if(result.error){
+						notify("An error occured while trying to fetch older messages for the conversation !");
+						return;
+					}
+
+					//Check for results
+					if(result.length == 0){
+						//Lock scroll detection in order to avoid useless traffic
+						scrollDetectionLocked = true;
+						return;
+					}
+
+					//Save the ID of the oldest message
+					ComunicWeb.components.conversations.service.setOldestMessageID(result[0].ID);
+
+					//Process the messages in reverse order
+				}
+			);
 		});
 	}
 }
