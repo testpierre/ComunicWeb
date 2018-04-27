@@ -714,12 +714,48 @@ ComunicWeb.components.conversations.chatWindows = {
 			convInfos.messages = [];
 		}
 
+		//Get message HTML element add append it
+		var uiMessageInfo = this._get_message_element(convInfos, messageInfo);
+		convInfos.box.messagesArea.appendChild(uiMessageInfo.rootElem);
+
+		//Perform post-processing operations
+		var num = convInfos.messages.push(uiMessageInfo);
+
+		//Check if it is not the first message from the current user
+		this._makeMessageFollowAnotherMessage(convInfos, num - 1);
+
+		//Enable slimscroll
+		$(convInfos.box.messagesArea).slimscroll({
+			height: "250px",
+		});
+
+		//Scroll to the bottom of the conversation
+		var scrollBottom = $(convInfos.box.messagesArea).prop("scrollHeight")+"px";
+		$(convInfos.box.messagesArea).slimScroll({
+			scrollTo: scrollBottom
+		});
+
+		//Initialize top scroll detection if required
+		this.initTopScrollDetection(conversationID);
+
+		//Success
+		return true;
+	},
+
+	/**
+	 * Generate message HTML node based on given information
+	 * 
+	 * @param {object} conversationInfo Information about the created conversation
+	 * @param {object} message Information about the target message
+	 * @return {object} Information about the created message element
+	 */
+	_get_message_element: function(conversationInfo, message){
+
 		//Check if it is the current user who sent the message
-		var userIsPoster = messageInfo.ID_user == userID();
+		var userIsPoster = message.ID_user == userID();
 
 		//Create message element
 		var messageContainer = createElem2({
-			appendTo: convInfos.box.messagesArea,
 			type: "div",
 			class: "direct-chat-msg " + (userIsPoster ? "right" : "")
 		});
@@ -753,16 +789,15 @@ ComunicWeb.components.conversations.chatWindows = {
 		});
 
 		//Load user informations
-		if(convInfos.membersInfos["user-" + messageInfo.ID_user]){
+		if(conversationInfo.membersInfos["user-" + message.ID_user]){
 
 			//Get informations
-			var userInfos = convInfos.membersInfos["user-" + messageInfo.ID_user];
+			var userInfos = conversationInfo.membersInfos["user-" + message.ID_user];
 
 			//Replace poster name
 			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
 			userAccountImage.src = userInfos.accountImage;
 		}
-		
 
 		//Add message
 		var messageTargetElem = createElem2({
@@ -775,24 +810,24 @@ ComunicWeb.components.conversations.chatWindows = {
 		var textMessage = createElem2({
 			appendTo: messageTargetElem,
 			type: "span",
-			innerHTML: removeHtmlTags(messageInfo.message), //Remove HTML tags
+			innerHTML: removeHtmlTags(message.message), //Remove HTML tags
 		});
 
 		//Check if an image has to be added
-		if(messageInfo.image_path != null){
+		if(message.image_path != null){
 			
 			//Image link
 			var imageLink = createElem2({
 				appendTo: messageTargetElem,
 				type:"a",
-				href: messageInfo.image_path,
+				href: message.image_path,
 			});
 
 			//Image element
 			createElem2({
 				appendTo: imageLink,
 				type: "img",
-				src: messageInfo.image_path,
+				src: message.image_path,
 				class: "conversation-msg-image"
 			});
 
@@ -810,65 +845,43 @@ ComunicWeb.components.conversations.chatWindows = {
 			element: textMessage,
 		});
 
-		//Save information about the message
-		var uiMessageInfo = {
-			userID: messageInfo.ID_user,
+		//Return information about the message
+		return {
+			userID: message.ID_user,
 			rootElem: messageContainer,
 			userNameElem: usernameElem,
 			messageTargetElem: messageTargetElem,
 			accountImage: userAccountImage
 		};
 
-
-		//Perform post-processing operations
-		var num = convInfos.messages.push(uiMessageInfo);
-
-		//Check if it is not the first message from the current user
-		if(convInfos.messages[num - 2]){
-			
-			if(convInfos.messages[num-2].userID == messageInfo.ID_user){
-				
-				//Update object class name
-				uiMessageInfo.messageTargetElem.className += " not-first-message";
-
-				//Hide user name and account image
-				uiMessageInfo.userNameElem.style.display = "none";
-				uiMessageInfo.accountImage.style.display = "none";
-
-				//Update the class of the previous message
-				convInfos.messages[num-2].rootElem.className += " not-last-message-from-user";
-			}
-
-		}
-
-		//Enable slimscroll
-		$(convInfos.box.messagesArea).slimscroll({
-			height: "250px",
-		});
-
-		//Scroll to the bottom of the conversation
-		var scrollBottom = $(convInfos.box.messagesArea).prop("scrollHeight")+"px";
-		$(convInfos.box.messagesArea).slimScroll({
-			scrollTo: scrollBottom
-		});
-
-		//Initialize top scroll detection if required
-		this.initTopScrollDetection(conversationID);
-
-		//Success
-		return true;
 	},
 
 	/**
-	 * Generate message HTML node based on given information
+	 * Make a conversation message "follow" another conversation message from the
+	 * same user
 	 * 
-	 * @param {object} conversationInfo Information about the created conversation
-	 * @param {object} info Information about the target message
-	 * @return {object} Information about the created message element
+	 * @param {object} conv Information about the target conversation
+	 * @param {number} num The number of the conversation message to update
 	 */
-	_get_message_element: function(conversationID, info){
+	_makeMessageFollowAnotherMessage: function(conv, num){
 
+		if(conv.messages[num - 1]){
+			
+			if(conv.messages[num-1].userID == conv.messages[num].userID){
+				
+				//Update object class name
+				conv.messages[num].messageTargetElem.className += " not-first-message";
 
+				//Hide user name and account image
+				conv.messages[num].userNameElem.style.display = "none";
+				conv.messages[num].accountImage.style.display = "none";
+
+				//Update the class of the previous message
+				conv.messages[num-1].rootElem.className += " not-last-message-from-user";
+
+			}
+
+		}
 
 	},
 
