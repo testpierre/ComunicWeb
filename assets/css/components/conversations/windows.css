@@ -92,3 +92,11 @@
 #conversationsElem .direct-chat-text.not-first-message::after {
 	display: none;
 }
+
+#conversationsElem .direct-chat-msg.not-last-message-from-user {
+	margin-bottom: 0px;
+}
+
+#conversationsElem .direct-chat-msg.not-last-message-from-user .direct-chat-img {
+	margin-bottom: -5px;
+}

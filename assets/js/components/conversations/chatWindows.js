@@ -695,10 +695,10 @@ ComunicWeb.components.conversations.chatWindows = {
 	 * Add a message to a conversation window
 	 * 
 	 * @param {Integer} conversationID The ID of the conversation to update
-	 * @param {Object} messageInfos Informations about the message to add
+	 * @param {Object} messageInfo Information about the message to add
 	 * @return {Boolean} True for a success
 	 */
-	addMessage: function(conversationID, messageInfos){
+	addMessage: function(conversationID, messageInfo){
 
 		//First, check if the conversation informations can be found
 		if(!this.__conversationsCache["conversation-"+conversationID]){
@@ -709,79 +709,58 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Else extract conversation informations
 		var convInfos = this.__conversationsCache["conversation-"+conversationID];
 
-		//Check if it is the current user who sent the message
-		var userIsPoster = messageInfos.ID_user == userID();
-
 		//Check if this is the first message of the conversation or not
-		if(!convInfos.lastMessage){
-			//Initialize last message object
-			convInfos.lastMessage = {
-				userID: 0,
-				messageContainer: false,
-			}
+		if(!convInfos.messages){
+			convInfos.messages = [];
 		}
 
-		//Check if message poster is the same as the last message
-		if(convInfos.lastMessage.userID == messageInfos.ID_user){
-			//Skip message container creation & user avatar rendering...
-			var messageContainer = convInfos.lastMessage.messageContainer;
-			var firstMessageFromUser = false;
-		}
-		else {
-			//Initialize user & message informations elements
-			var firstMessageFromUser = true;
+		//Check if it is the current user who sent the message
+		var userIsPoster = messageInfo.ID_user == userID();
 
-			//Create message element
-			var messageContainer = createElem2({
-				appendTo: convInfos.box.messagesArea,
-				type: "div",
-				class: "direct-chat-msg " + (userIsPoster ? "right" : "")
-			});
+		//Create message element
+		var messageContainer = createElem2({
+			appendTo: convInfos.box.messagesArea,
+			type: "div",
+			class: "direct-chat-msg " + (userIsPoster ? "right" : "")
+		});
 
-			//Display message header
-			var messageHeader = createElem2({
-				appendTo: messageContainer,
-				type: "div",
-				class: "direct-chat-info clearfix"
-			});
+		//Display message header
+		var messageHeader = createElem2({
+			appendTo: messageContainer,
+			type: "div",
+			class: "direct-chat-info clearfix"
+		});
 
-			//Add user name
-			var usernameElem = createElem2({
-				appendTo: messageHeader,
-				type: "span",
-				class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
-				innerHTML: "Loading",
-			});
+		//Add user name
+		var usernameElem = createElem2({
+			appendTo: messageHeader,
+			type: "span",
+			class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
+			innerHTML: "Loading",
+		});
 
-			//Hide user name if it is the current user
-			if(userIsPoster)
-				usernameElem.style.display = "none";
+		//Hide user name if it is the current user
+		if(userIsPoster)
+			usernameElem.style.display = "none";
 
-			//Add user account image
-			var userAccountImage = createElem2({
-				appendTo: messageContainer,
-				type: "img",
-				class: "direct-chat-img",
-				src: ComunicWeb.__config.assetsURL + "img/defaultAvatar.png",
-				alt: "User account image",
-			});
+		//Add user account image
+		var userAccountImage = createElem2({
+			appendTo: messageContainer,
+			type: "img",
+			class: "direct-chat-img",
+			src: ComunicWeb.__config.assetsURL + "img/defaultAvatar.png",
+			alt: "User account image",
+		});
 
-			//Load user informations
-			if(convInfos.membersInfos["user-" + messageInfos.ID_user]){
+		//Load user informations
+		if(convInfos.membersInfos["user-" + messageInfo.ID_user]){
 
-				//Get informations
-				var userInfos = convInfos.membersInfos["user-" + messageInfos.ID_user];
+			//Get informations
+			var userInfos = convInfos.membersInfos["user-" + messageInfo.ID_user];
 
-				//Replace poster name
-				usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
-				userAccountImage.src = userInfos.accountImage;
-			}
-
-			//Update conversation informations
-			convInfos.lastMessage = {
-				userID: messageInfos.ID_user,
-				messageContainer: messageContainer,
-			}
+			//Replace poster name
+			usernameElem.innerHTML = userInfos.firstName + " " + userInfos.lastName;
+			userAccountImage.src = userInfos.accountImage;
 		}
 		
 
@@ -789,31 +768,31 @@ ComunicWeb.components.conversations.chatWindows = {
 		var messageTargetElem = createElem2({
 			appendTo: messageContainer,
 			type: "div",
-			class: "direct-chat-text " + (!firstMessageFromUser ? "not-first-message" : ""),
+			class: "direct-chat-text ",
 		});
 
 		//Add text message
 		var textMessage = createElem2({
 			appendTo: messageTargetElem,
 			type: "span",
-			innerHTML: removeHtmlTags(messageInfos.message), //Remove HTML tags
+			innerHTML: removeHtmlTags(messageInfo.message), //Remove HTML tags
 		});
 
 		//Check if an image has to be added
-		if(messageInfos.image_path != null){
+		if(messageInfo.image_path != null){
 			
 			//Image link
 			var imageLink = createElem2({
 				appendTo: messageTargetElem,
 				type:"a",
-				href: messageInfos.image_path,
+				href: messageInfo.image_path,
 			});
 
 			//Image element
 			createElem2({
 				appendTo: imageLink,
 				type: "img",
-				src: messageInfos.image_path,
+				src: messageInfo.image_path,
 				class: "conversation-msg-image"
 			});
 
@@ -831,6 +810,37 @@ ComunicWeb.components.conversations.chatWindows = {
 			element: textMessage,
 		});
 
+		//Save information about the message
+		var uiMessageInfo = {
+			userID: messageInfo.ID_user,
+			rootElem: messageContainer,
+			userNameElem: usernameElem,
+			messageTargetElem: messageTargetElem,
+			accountImage: userAccountImage
+		};
+
+
+		//Perform post-processing operations
+		var num = convInfos.messages.push(uiMessageInfo);
+
+		//Check if it is not the first message from the current user
+		if(convInfos.messages[num - 2]){
+			
+			if(convInfos.messages[num-2].userID == messageInfo.ID_user){
+				
+				//Update object class name
+				uiMessageInfo.messageTargetElem.className += " not-first-message";
+
+				//Hide user name and account image
+				uiMessageInfo.userNameElem.style.display = "none";
+				uiMessageInfo.accountImage.style.display = "none";
+
+				//Update the class of the previous message
+				convInfos.messages[num-2].rootElem.className += " not-last-message-from-user";
+			}
+
+		}
+
 		//Enable slimscroll
 		$(convInfos.box.messagesArea).slimscroll({
 			height: "250px",
@@ -847,6 +857,19 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Success
 		return true;
+	},
+
+	/**
+	 * Generate message HTML node based on given information
+	 * 
+	 * @param {object} conversationInfo Information about the created conversation
+	 * @param {object} info Information about the target message
+	 * @return {object} Information about the created message element
+	 */
+	_get_message_element: function(conversationID, info){
+
+
+
 	},
 
 	/**
