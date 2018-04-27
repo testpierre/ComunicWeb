@@ -700,7 +700,7 @@ ComunicWeb.components.conversations.chatWindows = {
 	 */
 	addMessage: function(conversationID, messageInfo){
 
-		//First, check if the conversation informations can be found
+		//First, check if the conversation information can be found
 		if(!this.__conversationsCache["conversation-"+conversationID]){
 			ComunicWeb.debug.logMessage("Conversation Chat Windows : Error ! Couldn't add a message to the conversation because the conversation was not found !");
 			return false;
@@ -740,6 +740,43 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		//Success
 		return true;
+	},
+
+	/**
+	 * Add old messages to a conversation window
+	 * 
+	 * @param {number} conversationID The ID of the target conversation
+	 * @param {array} messages The list of messages to add
+	 */
+	addOldMessages: function(conversationID, messages){
+
+		//First, check if the conversation information can be found
+		if(!this.__conversationsCache["conversation-"+conversationID]){
+			ComunicWeb.debug.logMessage("Conversation Chat Windows : Error ! Couldn't add a message to the conversation because the conversation was not found !");
+			return false;
+		}
+
+		//Else extract conversation informations
+		var conv = this.__conversationsCache["conversation-"+conversationID];
+
+		//Process the list of messages in reverse order
+		messages.reverse();
+		messages.forEach(function(message){
+
+			//Get message element
+			var uiMessageInfo = ComunicWeb.components.conversations.chatWindows._get_message_element(conv, message);
+
+			//Add the messages at the begining of the conversation
+			conv.box.messagesArea.insertBefore(uiMessageInfo.rootElem, conv.messages[0].rootElem);
+
+			//Add the message to the list
+			conv.messages.unshift(uiMessageInfo);			
+
+			//Check if some information about the post can be updated
+			ComunicWeb.components.conversations.chatWindows._makeMessageFollowAnotherMessage(conv, 1);
+
+		});
+
 	},
 
 	/**
@@ -946,9 +983,10 @@ ComunicWeb.components.conversations.chatWindows = {
 					}
 
 					//Save the ID of the oldest message
-					ComunicWeb.components.conversations.service.setOldestMessageID(result[0].ID);
+					ComunicWeb.components.conversations.service.setOldestMessageID(conversationID, result[0].ID);
 
-					//Process the messages in reverse order
+					//Display the list of messages
+					ComunicWeb.components.conversations.chatWindows.addOldMessages(conversationID, result);
 				}
 			);
 		});
