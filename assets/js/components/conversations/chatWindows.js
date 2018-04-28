@@ -759,6 +759,9 @@ ComunicWeb.components.conversations.chatWindows = {
 		//Else extract conversation informations
 		var conv = this.__conversationsCache["conversation-"+conversationID];
 
+		//Save the position of the oldest message element
+		var currOldestMessageElem = conv.messages[0].rootElem;
+
 		//Process the list of messages in reverse order
 		messages.reverse();
 		messages.forEach(function(message){
@@ -777,6 +780,13 @@ ComunicWeb.components.conversations.chatWindows = {
 
 		});
 
+		//Update slimscroll
+		newScrollPos = currOldestMessageElem.offsetTop - 30;
+		if(newScrollPos < 0)
+			newScrollPos = 0;
+		$(conv.box.messagesArea).slimScroll({
+			scrollTo: newScrollPos + "px"
+		});
 	},
 
 	/**
