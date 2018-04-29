@@ -16,10 +16,10 @@ require_once __DIR__."/config/global.config.php";
  * @param string $config The configuration to use to load a page
  * @return string Generated source page
  */
-function load_page(string $config) : string{
+function load_page(string $config) : string {
 
     //Load configuration
-    require __DIR__."/config/".$config.".config.php";
+    load_config($config);
     $conf = new $config();
 
     //Load page template
@@ -32,12 +32,29 @@ function load_page(string $config) : string{
     $source = str_replace("{js_config}", get_javascript_config($conf), $source);
 
     //Update assets inclusion
-    $source = str_replace("{THIRD_PARTY_CSS}", src_inc_list_css($conf::ASSETS_URL, $conf::THIRD_PARTY_CSS), $source);
-    $source = str_replace("{APP_CSS}", src_inc_list_css($conf::ASSETS_URL, $conf::APP_CSS), $source);
-    $source = str_replace("{THIRD_PARTY_JS}", src_inc_list_js($conf::ASSETS_URL, $conf::THIRD_PARTY_JS), $source);
-    $source = str_replace("{APP_JS}", src_inc_list_js($conf::ASSETS_URL, $conf::APP_JS), $source);
+    if(is_array($conf::THIRD_PARTY_CSS)){
+        $source = str_replace("{THIRD_PARTY_CSS}", src_inc_list_css($conf::ASSETS_URL, $conf::THIRD_PARTY_CSS), $source);
+        $source = str_replace("{APP_CSS}", src_inc_list_css($conf::ASSETS_URL, $conf::APP_CSS), $source);
+        $source = str_replace("{THIRD_PARTY_JS}", src_inc_list_js($conf::ASSETS_URL, $conf::THIRD_PARTY_JS), $source);
+        $source = str_replace("{APP_JS}", src_inc_list_js($conf::ASSETS_URL, $conf::APP_JS), $source);
+    }
+    else {
+        $source = str_replace("{THIRD_PARTY_CSS}", src_inc_css($conf::ASSETS_URL.$conf::THIRD_PARTY_CSS), $source);
+        $source = str_replace("{APP_CSS}", src_inc_css($conf::ASSETS_URL.$conf::APP_CSS), $source);
+        $source = str_replace("{THIRD_PARTY_JS}", src_inc_js($conf::ASSETS_URL.$conf::THIRD_PARTY_JS), $source);
+        $source = str_replace("{APP_JS}", src_inc_js($conf::ASSETS_URL.$conf::APP_JS), $source);
+    }
 
     return $source;
+}
+
+/**
+ * Load a configuration
+ * 
+ * @param string $name The name of the configuration to load
+ */
+function load_config(string $config){
+    require_once __DIR__."/config/".$config.".config.php";
 }
 
 /**
@@ -74,8 +91,8 @@ function get_javascript_config($config) : string {
         //Default language
         defaultLanguage: '".$config::DEFAULT_LANGUAGE."',
 
-        //LanguagesPath
-        languagesPath: '".$config::ASSETS_URL.$config::LANGUAGE_PATH."', 
+        "/*LanguagesPath
+        "languagesPath: '".$config::ASSETS_URL.$config::LANGUAGE_PATH."', */."
 
     };
 

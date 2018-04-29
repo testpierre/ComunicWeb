@@ -18,7 +18,12 @@ class Dev {
 	const PROD_MODE = false;
 
 	/**
-	 * Path to assets
+	 * Path to assets (relative to the base project)
+	 */
+	const PATH_ASSETS = "assets/";
+
+	/**
+	 * URL to assets
 	 */
 	const ASSETS_URL = "http://devweb.local/comunic/v2/assets/";
 
@@ -30,6 +35,7 @@ class Dev {
 		"3rdparty/adminLTE/bootstrap/css/bootstrap.min.css",
 		"3rdparty/adminLTE/plugins/font-awesome/css/font-awesome.min.css",
 		"3rdparty/adminLTE/plugins/ionicons/css/ionicons.min.css",
+		"3rdparty/adminLTE/plugins/googleFonts/css.css",
 
 		//iCheck
 		"3rdparty/adminLTE/plugins/iCheck/square/blue.css",
