@@ -10,6 +10,13 @@
 
 //Defines some utilities
 
+/**
+ * Display a message on the screen
+ * 
+ * @param string $message The message to display on the screen
+ * @param bool $new_section Specify whether the message refers to a 
+ * new build section or not
+ */
 function notice(string $message, bool $new_section = false) {
 	echo ($new_section ? "\n\n" : "").$message,"\n";
 }
@@ -193,3 +200,8 @@ RewriteRule . index.php [L]
 </IfModule>
 ';
 file_put_contents($output.".htaccess", $htaccess);
+
+
+//Done
+notice("Done.", TRUE);
+
