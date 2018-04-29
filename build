@@ -8,6 +8,9 @@
 
 <?php
 
+//Output directory
+define("OUTPUT_DIRECTORY", __DIR__."/output/");
+
 //Defines some utilities
 
 /**
@@ -97,15 +100,18 @@ function rcopy(string $src, string $dst) {
 //Initialize page
 require_once __DIR__."/system/system.php";
 
-//Get the build configuration
-if(!isset($_SERVER['argv'][1]))
-	exit("Usage: ./build [configuration]");
+
+/**
+ * Build application
+ */
+function build() {
+
+if(!isset($_SERVER['argv'][2]))
+	exit(notice("Usage: ./build build [configuration]", TRUE));
 
 //Defines some variables
-$output = __DIR__."/output/";
 $debug_conf = "dev";
-$release_conf = $_SERVER['argv'][1];
-
+$release_conf = $_SERVER['argv'][2];
 
 
 //Load configurations
@@ -119,16 +125,16 @@ $path_debug_assets = __DIR__."/".$debug::PATH_ASSETS;
 
 load_config($release_conf);
 $release = new $release_conf;
-$path_release_assets = $output.$release::PATH_ASSETS;
+$path_release_assets = OUTPUT_DIRECTORY.$release::PATH_ASSETS;
 
 
 
 
 //Clean directory
 notice("Clean build directory", TRUE);
-if(file_exists($output))
-	delDir($output);
-mkdir($output, 0777, true);
+if(file_exists(OUTPUT_DIRECTORY))
+	delDir(OUTPUT_DIRECTORY);
+mkdir(OUTPUT_DIRECTORY, 0777, true);
 mkdir($path_release_assets, 0777, true);
 
 
@@ -199,7 +205,7 @@ if(isset($_SERVER["REDIRECT_URL"])){
     }
 } ?>';
 $page_src .= load_page($release_conf);
-file_put_contents($output."index.php", $page_src);
+file_put_contents(OUTPUT_DIRECTORY."index.php", $page_src);
 
 // Add .htaccess file
 $htaccess = '<IfModule mod_rewrite.c>
@@ -210,9 +216,38 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php [L]
 </IfModule>
 ';
-file_put_contents($output.".htaccess", $htaccess);
+file_put_contents(OUTPUT_DIRECTORY.".htaccess", $htaccess);
 
 
 //Done
 notice("Done.", TRUE);
 
+} //BUILD
+
+/**
+ * Clean build directory
+ */
+function clean(){
+	notice("Cleaning build directory.", TRUE);
+	delDir(OUTPUT_DIRECTORY);
+}
+
+//Get the action and do it
+if(!isset($_SERVER['argv'][1]))
+	exit("Usage: ./build [action]");
+$action = $_SERVER['argv'][1];
+
+switch($action){
+
+	case "build":
+		build();
+		break;
+	
+	case "clean":
+		clean();
+		break;
+	
+	default:
+		notice("Accepted commands are build, clean.", TRUE);
+
+}
