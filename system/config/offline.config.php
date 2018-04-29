@@ -1,11 +1,11 @@
 <?php
 /**
- * PHP build config for the website
+ * PHP offline build config for the website
  *
  * @author Pierre HUBERT
  */
 
-class Build {
+class Offline {
 
 	/**
 	 * API access and credentials

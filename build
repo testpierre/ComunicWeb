@@ -97,11 +97,14 @@ function rcopy(string $src, string $dst) {
 //Initialize page
 require_once __DIR__."/system/system.php";
 
+//Get the build configuration
+if(!isset($_SERVER['argv'][1]))
+	exit("Usage: ./build [configuration]");
 
 //Defines some variables
 $output = __DIR__."/output/";
 $debug_conf = "dev";
-$release_conf = "build";
+$release_conf = $_SERVER['argv'][1];
 
 
 
@@ -187,7 +190,7 @@ if(isset($_SERVER["REDIRECT_URL"])){
         exit();
     }
 } ?>';
-$page_src .= load_page("build");
+$page_src .= load_page($release_conf);
 file_put_contents($output."index.php", $page_src);
 
 // Add .htaccess file
