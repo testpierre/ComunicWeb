@@ -84,9 +84,9 @@ function get_javascript_config($config) : string {
         siteURL: '".$config::SITE_URL."',
 
         //API configuration
-        apiURL: '".Config::API_URL."',
-        apiServiceName: '".Config::API_SERVICE_NAME."',
-        apiServiceToken: '".Config::API_SERVICE_TOKEN."',
+        apiURL: '".$config::API_URL."',
+        apiServiceName: '".$config::API_SERVICE_NAME."',
+        apiServiceToken: '".$config::API_SERVICE_TOKEN."',
 
         //Default language
         defaultLanguage: '".$config::DEFAULT_LANGUAGE."',
