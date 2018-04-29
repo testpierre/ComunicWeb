@@ -87,7 +87,7 @@ ComunicWeb.pages.userPage.posts = {
 	 * @param {HTMLElement} target The target for the posts
 	 * @param {function} callback What to do once the posts have been loaded
 	 */
-	_load_posts(userInfos, target, callback){
+	_load_posts: function(userInfos, target, callback){
 
 		//Get the posts from the API
 		ComunicWeb.components.posts.interface.get_user(userInfos.userID, this._last_post_id, function(result){

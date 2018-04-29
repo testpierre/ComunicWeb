@@ -109,7 +109,7 @@ ComunicWeb.components.userSelect = {
 	 * @param {array} usersID The ID of the users to push in select2 element
 	 * @return {Boolean} True for a success
 	 */
-	pushEntries(inputSelect, usersID){
+	pushEntries: function(inputSelect, usersID){
 
 		//Get informations about the entries
 		getMultipleUsersInfos(usersID, function(usersInfos){
