@@ -29,4 +29,12 @@ ComunicWeb.pages.settings.sectionsList = {
 		title: "Password",
 		handler: "ComunicWeb.pages.settings.sections.password.open",
 	},
+
+	/**
+	 * Account image
+	 */
+	account_image: {
+		title: "Account image",
+		handler: "ComunicWeb.pages.settings.sections.accountImage.open"
+	},
 }

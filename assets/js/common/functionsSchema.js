@@ -100,6 +100,11 @@ var ComunicWeb = {
 			createCalloutElem: function(calloutTitle, calloutMessage, calloutType){},
 
 			/**
+			 * Create and return a callout element
+			 */
+			createLoadingCallout: function(target){},
+
+			/**
 			 * Create and display a confirmation dialog
 			 */
 			confirm: function(message, callback){},
@@ -1127,6 +1132,13 @@ var ComunicWeb = {
 				 * Password section
 				 */
 				password: {
+					//TODO : implement
+				},
+
+				/**
+				 * Account image section
+				 */
+				accountImage: {
 					//TODO : implement
 				},
 			},

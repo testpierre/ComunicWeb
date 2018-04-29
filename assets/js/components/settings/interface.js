@@ -85,4 +85,15 @@ ComunicWeb.components.settings.interface = {
 		};
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 	},
+
+	/**
+	 * Get account image settings from the API
+	 * 
+	 * @param {function} callback
+	 */
+	getAccountImage: function(callback){
+		var apiURI = "settings/get_account_image";
+		var params = {};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	}
 }

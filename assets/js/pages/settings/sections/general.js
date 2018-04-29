@@ -42,7 +42,7 @@ ComunicWeb.pages.settings.sections.general = {
 		});
 
 		//Display loading message
-		var loadingMsg = ComunicWeb.common.messages.createCalloutElem("Loading", "Please wait while this page is loading...", "info");
+		var loadingMsg = ComunicWeb.common.messages.createLoadingCallout();
 		boxBody.appendChild(loadingMsg);
 
 		//Load general settings information

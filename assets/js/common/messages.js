@@ -38,6 +38,24 @@ ComunicWeb.common.messages.createCalloutElem = function(calloutTitle, calloutMes
 }
 
 /**
+ * Create loading callout element
+ * 
+ * @param {HTMLElement} target Optionnal, the target of the callout element
+ * @return {HTMLElement} Generated loading callout element
+ */
+ComunicWeb.common.messages.createLoadingCallout = function(target){
+
+    var elem = this.createCalloutElem("Loading", "Please wait while this page is loading...", "info");
+
+    if(target)
+        target.appendChild(elem);
+
+    return elem;
+
+}
+
+
+/**
  * Create a confirmation dialog
  * 
  * @param {string} message The confirmation message

@@ -77,6 +77,20 @@ ComunicWeb.pages.settings.navigationPane = {
 		sectionSecurityLink.onclick = function(){
 			openPage("settings/security");
 		};
+
+		//Account image
+		var sectionSecurity = createElem2({
+			appendTo: elemList,
+			type: "li",
+		});
+		var sectionSecurityLink = createElem2({
+			appendTo: sectionSecurity,
+			type: "a",
+			innerHTML: "<i class='fa fa-file-image-o'></i> Account image"
+		});
+		sectionSecurityLink.onclick = function(){
+			openPage("settings/account_image");
+		};
 	}
 
 }
