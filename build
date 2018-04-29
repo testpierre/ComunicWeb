@@ -145,8 +145,9 @@ files_to_file($thirdPartyDebugFiles, $targetThirdPartyCSS);
 //3rd party JS
 notice("Third Party JS");
 $thirdPartyDebugFiles = array_put_begining($path_debug_assets, $debug::THIRD_PARTY_JS);
+$targetThirdPartyUnminifiedJS = $path_release_assets.$release::THIRD_PARTY_UNMINIFIED_JS;
 $targetThirdPartyJS = $path_release_assets.$release::THIRD_PARTY_JS;
-files_to_file($thirdPartyDebugFiles, $targetThirdPartyJS);
+files_to_file($thirdPartyDebugFiles, $targetThirdPartyUnminifiedJS);
 
 //App CSS
 notice("App CSS");
@@ -157,8 +158,9 @@ files_to_file($appDebugFiles, $targetAppCSS);
 //App JS
 notice("App JS");
 $appDebugFiles = array_put_begining($path_debug_assets, $debug::APP_JS);
+$targetAppUnminifiedJS = $path_release_assets.$release::APP_UNMINIFIED_JS;
 $targetAppJS = $path_release_assets.$release::APP_JS;
-files_to_file($appDebugFiles, $targetAppJS);
+files_to_file($appDebugFiles, $targetAppUnminifiedJS);
 
 
 //Make some adpations on third party files
@@ -166,11 +168,17 @@ $source = file_get_contents($targetThirdPartyCSS);
 $source = str_replace("../fonts/fontawesome", "fontawesome_fonts/fontawesome", $source);
 file_put_contents($targetThirdPartyCSS, $source);
 
+
+//Minify Javascript files
+exec("/usr/bin/uglifyjs '".$targetThirdPartyUnminifiedJS."' -c -o '".$targetThirdPartyJS."'");
+exec("/usr/bin/uglifyjs '".$targetAppUnminifiedJS."' -c -o '".$targetAppJS."'");
+
 //Copy font awesome files and twemojies files + Google Fonts
 rcopy($path_debug_assets."3rdparty/adminLTE/plugins/font-awesome/fonts", $path_release_assets."fontawesome_fonts");
 rcopy($path_debug_assets."3rdparty/twemoji/2/72x72/", $path_release_assets."3rdparty/twemoji/2/72x72/");
 rcopy($path_debug_assets."3rdparty/adminLTE/plugins/googleFonts/googleFonts/", $path_release_assets."googleFonts/");
 rcopy($path_debug_assets."3rdparty/wdt-emoji/sheets/", $path_release_assets."3rdparty/wdt-emoji/sheets/");
+
 
 //Copy images and templates
 rcopy($path_debug_assets."img/", $path_release_assets."img/");

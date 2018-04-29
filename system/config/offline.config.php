@@ -45,9 +45,9 @@ class Offline {
 	const THIRD_PARTY_JS = "third_party.js";
 
 	/**
-	 * Third party Javascript files (bundle)
+	 * Third party Javascript files (unminified)
 	 */
-	const THIRD_PARTY_BUNDLE_JS = "third_party.bundle.js";
+	const THIRD_PARTY_UNMINIFIED_JS = "third_party.unminified.js";
 
 	/**
 	 * Application CSS files
@@ -60,9 +60,9 @@ class Offline {
 	const APP_JS = "app.js";
 
 	/**
-	 * Application JS files (bundles)
+	 * Application JS files (unminifieds)
 	 */
-	const APP_BUNDLE_JS = "app.bundle.js";
+	const APP_UNMINIFIED_JS = "app.unminified.js";
 
 	/**
 	 * Language settings
