@@ -24,9 +24,11 @@ ComunicWeb.common.messages.createCalloutElem = function(calloutTitle, calloutMes
     calloutElem.className = "callout callout-" + calloutType;
 
     //Add title
-    var calloutTitleElem = document.createElement("h4");
-    calloutTitleElem.innerHTML =  calloutTitle;
-    calloutElem.appendChild(calloutTitleElem)
+    if(calloutTitle != ""){
+        var calloutTitleElem = document.createElement("h4");
+        calloutTitleElem.innerHTML =  calloutTitle;
+        calloutElem.appendChild(calloutTitleElem)
+    }
 
     //Add callout body
     var calloutBody = document.createElement("div");
