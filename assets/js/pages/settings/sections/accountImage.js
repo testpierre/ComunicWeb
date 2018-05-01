@@ -57,7 +57,61 @@ ComunicWeb.pages.settings.sections.accountImage = {
 			}
 
 			//Apply account image settings
+			var accountImageForm = createElem2({
+				type: "div",
+				appendTo: boxBody
+			});
 			
+			//First, offer the user to upload a new account image
+			var newAccountImageLabel = createElem2({
+				appendTo: accountImageForm,
+				type: "label"
+			});
+			var fileInput = createElem2({
+				appendTo: newAccountImageLabel,
+				type: "input",
+				elemType: "file"
+			});
+			fileInput.style.display = "none";
+			var chooseButton = createElem2({
+				appendTo: newAccountImageLabel,
+				type: "div",
+				class: "btn btn-primary",
+				innerHTML: "Upload a new picture"
+			});
+
+			//Add event listener
+			fileInput.addEventListener("change", function(e){
+				
+				//Check if no file have been selected
+				if(fileInput.files.length == 0)
+					return;
+
+				//Upload the new file
+				//Display a callout message
+				var message = ComunicWeb.common.messages.createCalloutElem("", "Please wait while your picture is being uploaded...");
+				boxBody.insertBefore(message, accountImageForm);
+
+				//Upload the image
+				var fd = new FormData();
+				fd.append("picture", fileInput.files[0], fileInput.files[0].name);
+				ComunicWeb.components.settings.interface.uploadAccountImage(fd, function(result){
+
+					//Remove message
+					message.remove();
+
+					//Check for errors
+					if(result.error){
+						notify("An error occured while trying to upload your image !", "danger");
+						return;
+					}
+
+					notify("Your picture has been successfully uploaded !", "success");
+					
+					//Reload current page
+					ComunicWeb.common.system.reset();
+				});
+			});
 		});
 	},
 }

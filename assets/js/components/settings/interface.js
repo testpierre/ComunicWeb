@@ -95,5 +95,16 @@ ComunicWeb.components.settings.interface = {
 		var apiURI = "settings/get_account_image";
 		var params = {};
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	},
+
+	/**
+	 * Upload a new account image
+	 * 
+	 * @param {FormData} data The data containing information about the new account image
+	 * @param {function} callback
+	 */
+	uploadAccountImage: function(data, callback){
+		var apiURI = "settings/upload_account_image";
+		ComunicWeb.common.api.makeFormDatarequest(apiURI, data, true, callback);
 	}
 }
