@@ -106,5 +106,16 @@ ComunicWeb.components.settings.interface = {
 	uploadAccountImage: function(data, callback){
 		var apiURI = "settings/upload_account_image";
 		ComunicWeb.common.api.makeFormDatarequest(apiURI, data, true, callback);
+	},
+
+	/**
+	 * Delete current user account image
+	 * 
+	 * @param {function} callback
+	 */
+	deleteAccountImage: function(callback){
+		var apiURI = "settings/delete_account_image";
+		var params = {};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 	}
 }

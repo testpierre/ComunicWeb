@@ -7,3 +7,9 @@
 .box-account-image-settings {
 	text-align: center;
 }
+
+.box-account-image-settings .settings-account-image-preview {
+	max-width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
