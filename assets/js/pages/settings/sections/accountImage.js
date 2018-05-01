@@ -77,7 +77,7 @@ ComunicWeb.pages.settings.sections.accountImage = {
 				appendTo: newAccountImageLabel,
 				type: "div",
 				class: "btn btn-primary",
-				innerHTML: "Upload a new picture"
+				innerHTML: "Upload a new account image"
 			});
 
 			//Add event listener
