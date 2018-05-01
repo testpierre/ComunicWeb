@@ -117,5 +117,19 @@ ComunicWeb.components.settings.interface = {
 		var apiURI = "settings/delete_account_image";
 		var params = {};
 		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
+	},
+
+	/**
+	 * Update the visibility of the account image
+	 * 
+	 * @param {string} visibility The new visibility level for the account image
+	 * @param {function} callback
+	 */
+	updateAccountImageVisibility: function(visibility, callback){
+		var apiURI = "settings/set_account_image_visibility";
+		var params = {
+			visibility: visibility
+		};
+		ComunicWeb.common.api.makeAPIrequest(apiURI, params, true, callback);
 	}
 }

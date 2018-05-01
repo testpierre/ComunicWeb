@@ -4,7 +4,7 @@
  * @author Pierre HUBERT
  */
 
-.box-account-image-settings {
+.box-account-image-settings .box-body {
 	text-align: center;
 }
 
@@ -14,4 +14,8 @@
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.box-account-image-settings .account-image-visibility-form {
+	text-align: justify;
 }

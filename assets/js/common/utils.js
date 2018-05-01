@@ -191,8 +191,9 @@ function checkMail(emailAddress){
  * @param {Object} infos Informations about the formgroup element to create
  * * @info {HTMLElement} target The target of the field
  * * @info {String} label The label of the field
+ * * @info {string} name The name of the field
  * * @info {String} placeholder The placeholder of the field
- * * @info {Boolean} checked Defines if the fields has to be checked or not (checkbox only)
+ * * @info {Boolean} checked Defines if the fields has to be checked or not (checkbox/radio only)
  * * @info {Boolean} multiple Defines if the fields can accept more than one response
  * * @info {String} type The type of the field
  * * @info {string} value The default value of the input
@@ -245,6 +246,41 @@ function createFormGroup(infos){
       		radioClass: 'iradio_flat-blue'
 		});
 	}
+
+	//In case of radio input
+	else if(infos.type == "radio"){
+
+		//Create radio
+		var input = createElem("input", labelElem) ;
+		input.type = "radio";
+		input.disabled = disabled;
+
+		if(infos.name)
+			input.name = infos.name;
+		
+		if(infos.value)
+			input.value = infos.value;
+
+		//Check if input has to be checked by default
+		if(infos.checked){
+			if(infos.checked === true){
+				input.checked = "true";
+			}
+		}
+
+		//Add label value
+		var labelValue = createElem("span", labelElem);
+		labelValue.innerHTML = " "+infos.label;
+
+		//Enable iCheck
+		$(input).iCheck({
+			checkboxClass: 'icheckbox_flat-blue',
+      		radioClass: 'iradio_flat-blue'
+		});
+
+	}
+
+	//Select2
 	else if(infos.type == "select2"){
 		//In case of select2 element
 		//Check for label

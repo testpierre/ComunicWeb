@@ -152,6 +152,7 @@ ComunicWeb.pages.settings.sections.accountImage = {
 			innerHTML: "Delete image"
 		});
 
+		//Make delete button lives
 		deleteImage.addEventListener("click", function(e){
 			ComunicWeb.common.messages.confirm("Do you really want to delete your account image ? The operation can not be reverted !", function(res){
 
@@ -180,6 +181,81 @@ ComunicWeb.pages.settings.sections.accountImage = {
 				});
 
 			});
+		});
+
+		//Add the form to update visibility level
+		add_space(accountImageForm);
+		add_space(accountImageForm);
+
+		var visibilityForm = createElem2({
+			appendTo: accountImageForm,
+			type: "form",
+			class: "account-image-visibility-form"
+		});
+
+		//Title
+		createElem2({
+			appendTo: visibilityForm,
+			type: "h4",
+			innerHTML: "Account image visibility"
+		});
+
+		//Add the options
+		//Open
+		createFormGroup({
+			target: visibilityForm,
+			label: "Everyone",
+			name: "account-image-visibility",
+			type: "radio",
+			value: "open",
+			checked: info.visibility == "open"
+		});
+
+		//Public
+		createFormGroup({
+			target: visibilityForm,
+			label: "All Comunic users",
+			name: "account-image-visibility",
+			type: "radio",
+			value: "public",
+			checked: info.visibility == "public"
+		});
+
+		//Friends
+		createFormGroup({
+			target: visibilityForm,
+			label: "My friends only",
+			name: "account-image-visibility",
+			type: "radio", 
+			value: "friends",
+			checked: info.visibility == "friends"
+		});
+
+		//Add update button
+		var updateButton = createElem2({
+			appendTo: visibilityForm,
+			type: "div",
+			class: "btn btn-primary",
+			innerHTML: "Update visibility"
+		});
+
+		updateButton.addEventListener("click", function(e){
+
+			//Get the new visibility level
+			var newVisibility = visibilityForm.elements["account-image-visibility"].value;
+
+			//Make a request over the server
+			ComunicWeb.components.settings.interface.updateAccountImageVisibility(newVisibility, function(callback){
+
+				//Check for errors
+				if(callback.error){
+					notify("Could update the visibility of your account image!", "danger");
+				}
+				else
+					notify("The visibility of your account image have been successfully updated!", "success");
+
+			});
+
 		});
 	}
 }
