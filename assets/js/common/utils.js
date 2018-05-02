@@ -371,7 +371,7 @@ function create_radio(target, name, label){
 	});
 
 	//Add label
-	var labelElem = createElem2({
+	createElem2({
 		appendTo: radioLabel,
 		type: "span",
 		innerHTML: " "+ label
