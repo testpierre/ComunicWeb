@@ -127,8 +127,6 @@ function byId(nodeName){
  * @return {Boolean} True for a success
  */
 function emptyElem(container){
-	//Get children references
-	var children = container.children;
 
 	//Process each child
 	while(container.children.length > 0){
