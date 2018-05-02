@@ -11,6 +11,9 @@
 //Output directory
 define("OUTPUT_DIRECTORY", __DIR__."/output/");
 
+//Temporary file
+define("TEMP_FILE", __DIR__."/output/temp");
+
 //Defines some utilities
 
 /**
@@ -55,6 +58,43 @@ function files_to_file(array $files, string $target) : bool {
 	}
 
 	return file_put_contents($target, $source) != FALSE;
+}
+
+/**
+ * Copy an array of files into a specific target file using uglifyJS
+ * 
+ * @param array $files The name of the source file
+ * @param string $target The target file
+ * @return bool TRUE in case of success / FALSE in case of failure
+ */
+function js_files_to_file(array $files, string $target){
+
+	$source = "";
+
+	//Delete any previous temporary file
+	if(file_exists(TEMP_FILE))
+		unlink(TEMP_FILE);
+
+	foreach($files as $file){
+
+		//Compress file
+		notice("Parsing with UGLIFYJS: ".$file);
+		exec("/usr/bin/uglifyjs '".$file."' -c -o ".TEMP_FILE, $output, $exit_code);
+		
+		//Get the content of the file
+		$source .= "\n".file_get_contents(TEMP_FILE);
+
+		if($exit_code != 0){
+			notice("An error (".$exit_code.") occured while parsing file ".$file, TRUE);
+			exit(10);
+		}
+	}
+
+	//Delete the temp file
+	unlink(TEMP_FILE);
+
+	return file_put_contents($target, $source) != FALSE;
+
 }
 
 /**
@@ -151,9 +191,8 @@ files_to_file($thirdPartyDebugFiles, $targetThirdPartyCSS);
 //3rd party JS
 notice("Third Party JS");
 $thirdPartyDebugFiles = array_put_begining($path_debug_assets, $debug::THIRD_PARTY_JS);
-$targetThirdPartyUnminifiedJS = $path_release_assets.$release::THIRD_PARTY_UNMINIFIED_JS;
 $targetThirdPartyJS = $path_release_assets.$release::THIRD_PARTY_JS;
-files_to_file($thirdPartyDebugFiles, $targetThirdPartyUnminifiedJS);
+js_files_to_file($thirdPartyDebugFiles, $targetThirdPartyJS);
 
 //App CSS
 notice("App CSS");
@@ -164,20 +203,14 @@ files_to_file($appDebugFiles, $targetAppCSS);
 //App JS
 notice("App JS");
 $appDebugFiles = array_put_begining($path_debug_assets, $debug::APP_JS);
-$targetAppUnminifiedJS = $path_release_assets.$release::APP_UNMINIFIED_JS;
 $targetAppJS = $path_release_assets.$release::APP_JS;
-files_to_file($appDebugFiles, $targetAppUnminifiedJS);
+js_files_to_file($appDebugFiles, $targetAppJS);
 
 
 //Make some adpations on third party files
 $source = file_get_contents($targetThirdPartyCSS);
 $source = str_replace("../fonts/fontawesome", "fontawesome_fonts/fontawesome", $source);
 file_put_contents($targetThirdPartyCSS, $source);
-
-
-//Minify Javascript files
-exec("/usr/bin/uglifyjs '".$targetThirdPartyUnminifiedJS."' -c -o '".$targetThirdPartyJS."'");
-exec("/usr/bin/uglifyjs '".$targetAppUnminifiedJS."' -c -o '".$targetAppJS."'");
 
 //Copy font awesome files and twemojies files + Google Fonts
 rcopy($path_debug_assets."3rdparty/adminLTE/plugins/font-awesome/fonts", $path_release_assets."fontawesome_fonts");
