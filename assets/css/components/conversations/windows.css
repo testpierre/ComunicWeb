@@ -80,6 +80,14 @@
 /**
  * Conversations messages
  */
+
+#conversationsElem .date-conversation-message {
+	margin-top: 2px;
+	text-align: center;
+	font-size: 70%;
+	font-style: italic;
+}
+
 #conversationsElem .conversation-msg-image {
 	height: 50px;
 }

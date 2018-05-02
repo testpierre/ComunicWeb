@@ -814,11 +814,17 @@ ComunicWeb.components.conversations.chatWindows = {
 			class: "direct-chat-info clearfix"
 		});
 
+		//Add top information
+		var topInfosElem = createElem2({
+			appendTo: messageHeader,
+			type: "div",
+			class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
+		});
+
 		//Add user name
 		var usernameElem = createElem2({
-			appendTo: messageHeader,
+			appendTo: topInfosElem,
 			type: "span",
-			class: "direct-chat-name pull-" + (userIsPoster ? "right" : "left"),
 			innerHTML: "Loading",
 		});
 
@@ -887,6 +893,14 @@ ComunicWeb.components.conversations.chatWindows = {
 			}
 		}
 
+		//Add date
+		var dateElem = createElem2({
+			appendTo: messageContainer,
+			type: "div",
+			class: "date-conversation-message",
+			innerHTML: ComunicWeb.common.date.timeDiffToStr(message.time_insert)
+		});
+
 		//Parse emojies in text message
 		ComunicWeb.components.emoji.parser.parse({
 			element: textMessage,
@@ -897,6 +911,8 @@ ComunicWeb.components.conversations.chatWindows = {
 			userID: message.ID_user,
 			rootElem: messageContainer,
 			userNameElem: usernameElem,
+			dateElem: dateElem,
+			time_insert: message.time_insert,
 			messageTargetElem: messageTargetElem,
 			accountImage: userAccountImage
 		};
@@ -928,6 +944,11 @@ ComunicWeb.components.conversations.chatWindows = {
 
 			}
 
+
+			//Check the difference of time between the two messages
+			if(conv.messages[num].time_insert - conv.messages[num - 1].time_insert < 3600
+				|| conv.messages[num].dateElem.innerHTML == conv.messages[num - 1].dateElem.innerHTML)
+				conv.messages[num].dateElem.style.display = "none";
 		}
 
 	},
