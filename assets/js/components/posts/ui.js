@@ -721,7 +721,7 @@ ComunicWeb.components.posts.ui = {
 		});
 
 		//Parse emojies
-		ComunicWeb.components.emoji.parser.parse({
+		ComunicWeb.components.textParser.parse({
 			element: postContent
 		});
 

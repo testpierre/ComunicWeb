@@ -874,6 +874,13 @@ var ComunicWeb = {
 		},
 
 		/**
+		 * Comunic specific text parser
+		 */
+		textParser: {
+			//TODO : implement
+		},
+
+		/**
 		 * Countdown timer
 		 */
 		countdown: {

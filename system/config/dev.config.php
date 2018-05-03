@@ -313,6 +313,9 @@ class Dev {
 			//Modern textarea handler
 			"js/components/textarea.js",
 
+			//Comunic custom text parser
+			"js/components/textParser.js",
+
 			//Countdown timer
 			"js/components/countdown.js",
 

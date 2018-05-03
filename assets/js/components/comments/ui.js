@@ -230,7 +230,7 @@ ComunicWeb.components.comments.ui = {
 		});
 
 		//Parse emojies
-		ComunicWeb.components.emoji.parser.parse({
+		ComunicWeb.components.textParser.parse({
 			element: commentContent
 		});
 

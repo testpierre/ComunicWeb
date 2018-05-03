@@ -902,7 +902,7 @@ ComunicWeb.components.conversations.chatWindows = {
 		});
 
 		//Parse emojies in text message
-		ComunicWeb.components.emoji.parser.parse({
+		ComunicWeb.components.textParser.parse({
 			element: textMessage,
 		});
 
