@@ -197,7 +197,7 @@ ComunicWeb.pages.settings.sections.general = {
 		//Virtual directory
 		var virtualDirectory = createFormGroup({
 			target: target,
-			label: "Virtual directory for your user page (" + ComunicWeb.__config.siteURL + "user/{virtual_directory})",
+			label: "Virtual directory for your user page (" + ComunicWeb.__config.siteURL + "user/{virtual_directory})<br />Account tag (in the form @{virtual_directory})",
 			type: "text",
 			placeholder: "Eg. john.way",
 			value: infos.virtual_directory != "null" ? infos.virtual_directory : ""
