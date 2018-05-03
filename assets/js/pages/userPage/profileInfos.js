@@ -64,6 +64,16 @@ ComunicWeb.pages.userPage.profileInfos = {
 		});
 
 
+		//Add user virtual directory (if any)
+		if(infos.virtualDirectory != ""){
+			var userTag = createElem2({
+				appendTo: boxBody,
+				type: "div",
+				innerHTML: "@"+ infos.virtualDirectory,
+				class: "user-tag-in-profile"
+			});
+		}
+
 
 		//Show user likes
 		var userLikesTarget = createElem2({

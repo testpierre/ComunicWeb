@@ -1,0 +1,12 @@
+/**
+ * Profile information stylesheet
+ *
+ * @author Pierre HUBERT
+ */
+
+.user-tag-in-profile {
+	color: #6f737b;
+	text-align: center;
+	font-size: 90%;
+	margin-bottom: 10px;
+}
