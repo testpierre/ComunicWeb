@@ -10,3 +10,17 @@
 a {
     cursor: pointer;
 }
+
+/**
+ * <a> like elements
+ */
+.a {
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    color: #3c8dbc;
+}
+
+.a:focus, .a:hover {
+    color: #72afd2;
+}
