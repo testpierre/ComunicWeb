@@ -38,7 +38,7 @@
 		<div class="message">
 			<h1>Congratulations!</h1>
 			<br />
-			<h4>Your account has been successfully created! Login now to use all the features of Comunic !</h4>
+			<h4>Your account has been successfully created! <br /> Login now to use all the features of Comunic!</h4>
 			<br />
 			<a target="login" class="btn btn-primary btn-lg">Login</a>
 		</div>
