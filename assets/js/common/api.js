@@ -137,9 +137,30 @@ ComunicWeb.common.api = {
                     },
                 };
             }
-            else
-                //Prepare result
-                var result = JSON.parse(apiXHR.responseText);
+            else {
+
+                //Catch JSON parsing errors
+                try {
+
+                    //Parse result
+                    var result = JSON.parse(apiXHR.responseText);
+
+                } catch (error) {
+                    
+                    //Report error
+                    ComunicWeb.common.error.syntaxtError(error, apiXHR.responseText);
+
+                    //Set arbitray result content
+                    result = {
+                        error : {
+                            code: 1,
+                            message: "Invalid response",
+                        },
+                    };
+
+                }
+            }
+                
 
             //We check if we got any error
             if(result.error){

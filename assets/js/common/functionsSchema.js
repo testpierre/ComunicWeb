@@ -105,6 +105,11 @@ var ComunicWeb = {
 			createLoadingCallout: function(target){},
 
 			/**
+			 * Create dialog skeleton
+			 */
+			createDialogSkeleton: function(info){},
+
+			/**
 			 * Create and display a confirmation dialog
 			 */
 			confirm: function(message, callback){},
@@ -133,6 +138,11 @@ var ComunicWeb = {
 			 * Handle a 404 not found error
 			 */
 			pageNotFound: function(additionnalData, targetElement){},
+
+			/**
+			 * Handles and display SyntaxtError
+			 */
+			syntaxtError: function(error, additional){},
 		},
 
 		/**

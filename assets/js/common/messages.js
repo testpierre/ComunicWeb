@@ -58,6 +58,93 @@ ComunicWeb.common.messages.createLoadingCallout = function(target){
 
 
 /**
+ * Create dialog skeleton
+ * 
+ * @param {object} info Information about the callout to create
+ * @argument {string} type The type of modal
+ * @param {string} title The title of the modal
+ * @return {object} Information about the created dialog
+ */
+ComunicWeb.common.messages.createDialogSkeleton = function(info){
+
+    data = {};
+
+    //Get modal type
+    var modalType = info.type ? info.type : "default";
+
+    //Get modal title
+    var modalTitle = info.title ? info.title : "";
+
+    //Create a modal root
+    data.modal = createElem2({
+        type: "div",
+        class: "modal modal-" + modalType
+    });
+
+    var modalDialog = createElem2({
+        appendTo: data.modal,
+        type: "div",
+        class: "modal-dialog"
+    });
+
+    data.modalContent = createElem2({
+        appendTo: modalDialog,
+        type: "div",
+        class: "modal-content",
+    });
+
+    //Modal header
+    data.modalHeader = createElem2({
+        appendTo: data.modalContent,
+        type: "div",
+        class: "modal-header"
+    });
+
+    data.closeModal = createElem2({
+        appendTo: data.modalHeader,
+        type: "button",
+        class: "close",
+    });
+
+    createElem2({
+        appendTo: data.closeModal,
+        type: "span",
+        innerHTML: "x"
+    });
+
+    //Modal title
+    data.modalTitle = createElem2({
+        appendTo: data.modalHeader,
+        type: "h4",
+        class: "modal-title",
+        innerHTML: modalTitle
+    });
+
+    //Modal body
+    data.modalBody = createElem2({
+        appendTo: data.modalContent,
+        type: "div",
+        class: "modal-body",
+    });
+
+    //Modal footer
+    data.modalFooter = createElem2({
+        appendTo: data.modalContent,
+        type: "div",
+        class: "modal-footer"
+    });
+
+    data.cancelButton = createElem2({
+        appendTo: data.modalFooter,
+        type: "button",
+        class: "btn btn-default",
+        innerHTML: "Cancel"
+    });
+
+    return data;
+}
+
+/**
  * Create a confirmation dialog
  * 
  * @param {string} message The confirmation message

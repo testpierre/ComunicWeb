@@ -14,7 +14,7 @@
  */
 ComunicWeb.common.error.submitError = function(errorLevel, errorMessage, errorCode, errorData){
 	//Prepare API request
-	var apiURI = "webApp/reportError";
+	/*var apiURI = "webApp/reportError";
 	var params = {
 		"errorLevel": errorLevel,
 		"errorMessage": errorMessage,
@@ -27,7 +27,7 @@ ComunicWeb.common.error.submitError = function(errorLevel, errorMessage, errorCo
 	nextAction = function(){};
 
 	//Send API request
-	ComunicWeb.common.api.makeAPIrequest(apiURI, params, requireLoginToken, nextAction);
+	ComunicWeb.common.api.makeAPIrequest(apiURI, params, requireLoginToken, nextAction);*/
 }
 
 /**
@@ -98,4 +98,75 @@ ComunicWeb.common.error.pageNotFound = function(additionnalData, targetElement){
 
 	//Everything seems to be OK
 	return true;
+}
+
+/**
+ * Handles and display SyntaxtError
+ * 
+ * @param {SyntaxError} error The error
+ * @param {string} additional Additionnal information to include with
+ * the report
+ */
+ComunicWeb.common.error.syntaxtError = function(error, additional){
+	
+	//Create a modal dialog to report error
+	var dialog = ComunicWeb.common.messages.createDialogSkeleton({
+		type: "danger",
+		title: "An error occurred"
+	});
+
+	//Display modal
+	$(dialog.modal).modal("show");
+
+	//Create close modal function
+	var closeModal = function(){
+		$(dialog.modal).modal('hide');
+        emptyElem(dialog.modal);
+        dialog.modal.remove();
+	}
+	dialog.closeModal.onclick = closeModal;
+	dialog.cancelButton.onclick =  closeModal;
+
+	//Create error container
+	var errorContainer = createElem2({
+		appendTo: dialog.modalBody,
+		type: "div"
+	});
+
+	//Message
+	createElem2({
+		appendTo: errorContainer,
+		type: "p",
+		innerHTML: "An error has just occured. There are the details of the error. If this error occurs several times, please inform us at contact@communiquons.org ."
+	});
+
+	//Locate error
+	createElem2({
+		appendTo: errorContainer,
+		type: "p",
+		innerHTML: "<b>File:</b> "+error.fileName+" <b>Line:</b> " + error.lineNumber+ " <b>Column:</b> " + error.columnNumber
+	});
+
+	//Error message
+	createElem2({
+		appendTo: errorContainer,
+		type: "p",
+		innerHTML: "<b>Message:</b> " + error.message,
+	});
+
+	//Stack trace
+	createElem2({
+		appendTo: errorContainer,
+		type: "pre",
+		innerHTML: error.stack
+	});
+
+	//Check for additional information
+	if(additional){
+		createElem2({
+			appendTo: errorContainer,
+			type: "pre",
+			innerHTML: "Additionnal information: \n " + additional
+		});
+	}
 }
