@@ -13,7 +13,7 @@
 			<h3>Free social network that respect your privacy.</h3>
 			<br />
 
-			<a class="btn btn-lg btn-primary" target="create_account">Create account</a>
+			<a class="btn btn-lg btn-primary" target="create_account">Sign up</a>
 			<a class="btn btn-lg btn-success" target="login">Sign in</a>
 		</div>
 	</div>
@@ -23,13 +23,15 @@
 
 <!-- Page styles -->
 <style type="text/css">
+
 	#homeLandingScreen{
+		background-image: url("{backgroundImage}");
+		background-position: 0% 50%;
 		width: 100%;
 		height: 100%;
 		position: fixed;
 		text-align: center;
 		padding: 10px;
-		background-position: 50% 50%;
 		display: table;
 		top: 0;
 	}

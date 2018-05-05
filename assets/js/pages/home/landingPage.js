@@ -17,16 +17,14 @@ ComunicWeb.pages.home.landingPage = {
         document.title = "Comunic, a transparent social network";
 
         //Prepare additional data
-        var additionalData = {};
+        var additionalData = {
+            
+            //Background image URL
+            backgroundImage: ComunicWeb.__config.assetsURL + "img/pages/home/landingPage/img_background.jpg"
 
-        //Preparing next actions
-        var afterParsingTemplate = function(){
-
-            //Change home background
-            byId("homeLandingScreen").style.backgroundImage = "url('"+ComunicWeb.__config.assetsURL + "img/pages/home/landingPage/img_background.jpg')";
         };
 
         //Apply template
-        ComunicWeb.common.page.getAndShowTemplate(targetElement, additionalData, "pages/home/landingPage/home.tpl", afterParsingTemplate, true);
+        ComunicWeb.common.page.getAndShowTemplate(targetElement, additionalData, "pages/home/landingPage/home.tpl", false, true);
     }
 };
