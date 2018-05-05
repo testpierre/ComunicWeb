@@ -14,3 +14,7 @@
 .about-user-box {
 	word-break: break-all;
 }
+
+.about-user-box .emoji {
+	height: 1em !important;
+}

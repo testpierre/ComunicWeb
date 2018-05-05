@@ -237,6 +237,41 @@ ComunicWeb.pages.userPage.profileInfos = {
 			});
 		}
 
+		//Add user public note (if any)
+		if(infos.publicNote){
+			var userNote = createElem2({
+				appendTo: boxBody,
+				type: "strong"
+			});
+			createElem2({
+				appendTo: userNote,
+				type: "i",
+				class: "fa fa-file-text-o margin-r-5"
+			});
+			createElem2({
+				appendTo: userNote,
+				type: "span",
+				innerHTML: "Note"
+			});
+			var publicNotes = createElem2({
+				appendTo: boxBody,
+				type: "p",
+				class: "text-muted",
+				innerHTML: infos.publicNote
+			});
+
+			//Parse text
+			ComunicWeb.components.textParser.parse({
+				element: publicNotes
+			});
+
+			//Add separator
+			createElem2({
+				appendTo: boxBody,
+				type: "hr",
+			});
+		}
+
 		//Add informations about membership
 		var membershipInfos = createElem2({
 			appendTo: boxBody,
