@@ -176,7 +176,7 @@ ComunicWeb.pages.userPage.profileInfos = {
 		var boxRoot = createElem2({
 			appendTo: target,
 			type: "div",
-			class: "box box-primary"
+			class: "box box-primary about-user-box"
 		});
 
 		//Add box header
