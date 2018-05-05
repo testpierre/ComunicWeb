@@ -194,6 +194,15 @@ ComunicWeb.pages.settings.sections.general = {
 			value: infos.personnal_website != "null" ? infos.personnal_website : ""
 		});
 
+		//Public notes
+		var publicNotes = createFormGroup({
+			target: target,
+			label: "Public notes for your account 255 characters max (optionnal)",
+			type: "textarea",
+			placeholder: "Notes about your account...",
+			value: infos.publicNote != "null" ? infos.publicNote : ""
+		});
+
 		//Virtual directory
 		var virtualDirectory = createFormGroup({
 			target: target,
@@ -264,7 +273,8 @@ ComunicWeb.pages.settings.sections.general = {
 				allowPostsFromFriends: allowPostsFromFriends.checked,
 				publicFriendsList: publicFriendsList.checked,
 				personnalWebsite: personnalWebsite.value,
-				virtualDirectory: virtualDirectory.value
+				virtualDirectory: virtualDirectory.value,
+				publicNote: publicNotes.value,
 			};
 
 			//Lock send button
