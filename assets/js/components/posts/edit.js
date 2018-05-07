@@ -99,6 +99,12 @@ ComunicWeb.components.posts.edit = {
 			class: "editor-container"
 		});
 
+		//iOS fix : use slimscroll if required
+		updateDiv.style.maxHeight = (window.innerHeight - 200) + "px";
+		$(updateDiv).slimscroll({
+			height: "100%"
+		});
+
 		//Create update editor
 		var editorDiv = createElem2({
 			appendTo: updateDiv,
