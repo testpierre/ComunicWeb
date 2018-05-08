@@ -60,7 +60,7 @@ ComunicWeb.components.textParser = {
 		//Get the list of user tags of the target
 		var nodes = target.getElementsByTagName("userTag");
 
-		for (const num in nodes) {
+		for (var num in nodes) {
 			if (nodes.hasOwnProperty(num)) {
 				const node = nodes[num];
 				
