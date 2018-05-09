@@ -1,0 +1,14 @@
+language: php
+
+#Target PHP versions
+php:
+ - 7.0
+ - 7.1
+ - 7.2
+ 
+ before_script:
+  - sudo apt update
+  - sudo apt install -y uglifyjs
+  
+  script:
+  - sh './builder build offline'
