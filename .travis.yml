@@ -1,17 +1,14 @@
+sudo: required
+
 language: php
+
+services:
+- docker
 
 #Target PHP versions
 php:
  - 7.0
- - 7.1
- - 7.2
- 
-before_script:
-  - sudo apt-get update
-  - sudo apt-get install -y uglifyjs
   
 script:
-  - ls
-  - uglifyjs -v
-  - ./builder build offline
+  - docker run -ti docker pull pierre42100/docker-comunicwebappscratch git clone https://github.com/testpierre/ComunicWeb webapp; webapp/builder build offline
   
