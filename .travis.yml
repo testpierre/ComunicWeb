@@ -12,3 +12,4 @@ php:
   
   script:
   - sh './builder build offline'
+  
