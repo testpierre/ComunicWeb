@@ -12,5 +12,5 @@ before_script:
   
 script:
   - ls
-  - sh './builder build offline'
+  - ./builder build offline
   
