@@ -10,5 +10,4 @@ php:
  - 7.0
   
 script:
-  - docker run -ti pierre42100/docker-comunicwebappscratch git clone https://github.com/testpierre/ComunicWeb webapp; webapp/builder build offline
-  
+  - docker run -t -v $(pwd):/data pierre42100/docker-comunicwebappscratch /data/builder build offline
