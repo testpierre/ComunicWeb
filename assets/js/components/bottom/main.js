@@ -3,6 +3,9 @@
  * 
  * @author Pierre HUBERT
  */
+//This must crash
+mlqs lqs;
+{l:d; dl:d}
 
 ComunicWeb.components.bottom.main = {
 
